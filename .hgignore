@@ -1,0 +1,12 @@
+syntax: glob
+.DS_Store
+*.o
+_*_
+.depend
+spinify
+*.swp
+*.BAK
+*.bak
+
+syntax: regexp
+^build/

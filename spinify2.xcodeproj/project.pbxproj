@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */; };
+		EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
+		EB2B6E7410E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
+		EB2B6EB010E1802E006C32D5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8DD76F6C0486A84900D96B5E /* spinify2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spinify2; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = graphtest; path = build/Debug/graphtest; sourceTree = "<group>"; };
+		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };
+		EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = src/Graph.cpp; sourceTree = "<group>"; };
+		EB2B6E7210E1770C006C32D5 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Graph.h; path = src/Graph.h; sourceTree = "<group>"; };
+		EB2B6EAE10E18018006C32D5 /* spinify2.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; name = spinify2.1; path = doc/spinify2.1; sourceTree = "<group>"; };
+		EB2B6EAF10E1802E006C32D5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB2B6E0010E1624E006C32D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* spinify2 */ = {
+			isa = PBXGroup;
+			children = (
+				EB2B6E0C10E1628A006C32D5 /* Tests */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = spinify2;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				EB2B6EAF10E1802E006C32D5 /* main.cpp */,
+				EB2B6E7110E1770C006C32D5 /* Graph.cpp */,
+				EB2B6E7210E1770C006C32D5 /* Graph.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* spinify2 */,
+				EB2B6E0210E1624E006C32D5 /* graphtest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				EB2B6EAE10E18018006C32D5 /* spinify2.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		EB2B6E0C10E1628A006C32D5 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* spinify2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "spinify2" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = spinify2;
+			productInstallPath = "$(HOME)/bin";
+			productName = spinify2;
+			productReference = 8DD76F6C0486A84900D96B5E /* spinify2 */;
+			productType = "com.apple.product-type.tool";
+		};
+		EB2B6E0110E1624E006C32D5 /* graphtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB2B6E0810E1626E006C32D5 /* Build configuration list for PBXNativeTarget "graphtest" */;
+			buildPhases = (
+				EB2B6DFF10E1624E006C32D5 /* Sources */,
+				EB2B6E0010E1624E006C32D5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = graphtest;
+			productName = graphtest;
+			productReference = EB2B6E0210E1624E006C32D5 /* graphtest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "spinify2" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* spinify2 */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* spinify2 */,
+				EB2B6E0110E1624E006C32D5 /* graphtest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB2B6E7410E1770C006C32D5 /* Graph.cpp in Sources */,
+				EB2B6EB010E1802E006C32D5 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB2B6DFF10E1624E006C32D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */,
+				EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"_GLIBCXX_DEBUG=1",
+					"_GLIBCXX_DEBUG_PEDANTIC=1",
+				);
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = spinify2;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = spinify2;
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		EB2B6E0410E1624F006C32D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = graphtest;
+			};
+			name = Debug;
+		};
+		EB2B6E0510E1624F006C32D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = graphtest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "spinify2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "spinify2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB2B6E0810E1626E006C32D5 /* Build configuration list for PBXNativeTarget "graphtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB2B6E0410E1624F006C32D5 /* Debug */,
+				EB2B6E0510E1624F006C32D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
