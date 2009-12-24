@@ -12,29 +12,40 @@
 
 #include <vector>
 
-struct Node {
-	int spin;
-	std::vector<struct Node*> nghbor;
-	std::vector<struct Edge*> edges;
+
+class Node {
+	public:int spin;
+	std::vector<class Edge*> edges;
+
 	Node();
-	int setSpin(int);
-	void addNghbor(struct Node*, struct Edge*);
+	void setSpin(int);
+	int getSpin();
+	int degree();
+	void addNghbor(class Edge&);
 };
 
 
-struct Edge {
-	struct Node* endpt[2];
-	Edge();
-};
-	
+class Edge {
+	public:int data;
+	class Node* v1;
+	class Node* v2;
 
-struct Graph {
-	std::vector<struct Node*> nodes;
-	std::vector<struct Edge*> edges;
+	Edge(class Node&, class Node&);
+	void setData(int);
+	int getData();
+	class Node* getOtherEnd(class Node&);
+};
+
+
+class Graph {
+public:	std::vector<class Node> nodes;
+	std::vector<class Edge> edges;
+
 	Graph();
 	~Graph();
 	void addNode(int N = 1);
-	void addEdge(struct Node*, struct Node*);
+	void addEdge(class Node&, class Node&);
+	Node& operator[](int i);
 };
 
 #endif

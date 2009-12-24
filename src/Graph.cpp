@@ -8,60 +8,71 @@
  */
 
 #include "Graph.h"
-//#include <iostream>
+#include <iostream>
 
-Node::Node() {
-	spin = 0;
-}
+Node::Node() { spin = 0; }
 
-int Node::setSpin(int sp) {
+void Node::setSpin(int sp) {
 	if(sp == -1 || sp == 1) {
 		spin = sp;
-		return 0;
+		return;
 	}
 	else {
-		return 1;
+		std::cerr << "spin can be 1 or -1 only." << std::endl;
+		return;
 	}
 }
 
-void Node::addNghbor(Node* pN, Edge* pE) {
-	nghbor.push_back(pN);
-	edges.push_back(pE);
+int Node::getSpin() { return spin; }
+
+int Node::degree() { return edges.size(); }
+
+void Node::addNghbor(Edge& rE) { edges.push_back(&rE); }
+
+
+Edge::Edge(Node& rN, Node& rM) {
+	data = 0;
+	v1 = &rN;
+	v2 = &rM;
 }
 
-Edge::Edge() {
-	endpt[0] = NULL;
-	endpt[1] = NULL;
-}
+void Edge::setData(int x) { data = x; }
+
+int Edge::getData() { return data; }
+
+Node* Edge::getOtherEnd(Node& rN) {
+	if (v1 == &rN)
+		return v2;
+	else
+		return v1;
+}	
+
 
 Graph::Graph() {
 }
 
 Graph::~Graph() {
-	// std::cout << "freeing ..." << std::endl;
-	for (int i = 0; i < nodes.size(); i++) {
-		delete nodes[i];
+	/*for (int i = 0; i < nodes.size(); i++) {
+		std::cout << "freeing node " << i << std::endl;
+		delete &nodes[i];
 	}
 	for (int i = 0; i < edges.size(); i++) {
-		delete edges[i];
-	}
+		delete &edges[i];
+	}*/
 }
 
 void Graph::addNode(int N) {
-	for(int i = 0; i < N; i++) {
-		Node* n = new Node;
-		nodes.push_back(n);
-	}
+	for(int i = 0; i < N; i++)
+		nodes.push_back(Node());
 }
 
-void Graph::addEdge(Node* pN, Node* pM) {
-	Edge* e = new Edge;
-	e->endpt[0] = pN;
-	e->endpt[1] = pM;
-	pN->addNghbor(pM, e);
-	pM->addNghbor(pN, e);
-	edges.push_back(e);
+void Graph::addEdge(Node& rN, Node& rM) {
+	edges.push_back(Edge(rN, rM));
+	rN.addNghbor(edges.back());
+	rM.addNghbor(edges.back());
 }
+
+Node& Graph::operator[](int i) { return nodes[i]; }
 	
 
 	

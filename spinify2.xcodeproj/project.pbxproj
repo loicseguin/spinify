@@ -27,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		8DD76F6C0486A84900D96B5E /* spinify2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spinify2; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = graphtest; path = build/Debug/graphtest; sourceTree = "<group>"; };
+		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };
 		EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = src/Graph.cpp; sourceTree = "<group>"; };
 		EB2B6E7210E1770C006C32D5 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Graph.h; path = src/Graph.h; sourceTree = "<group>"; };
