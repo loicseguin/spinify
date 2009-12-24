@@ -10,3 +10,5 @@ spinify
 
 syntax: regexp
 ^build/
+^spinify2.xcodeproj/
+
