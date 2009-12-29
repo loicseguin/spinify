@@ -33,14 +33,14 @@ int main(void) {
 	// Create the test graph.
 	Graph G;
 	G.addNode(6);
-	G.addEdge(G[0], G[1]);
-	G.addEdge(G[0], G[3]);
-	G.addEdge(G[0], G[4]);
-	G.addEdge(G[1], G[2]);
-	G.addEdge(G[1], G[3]);
-	G.addEdge(G[1], G[5]);
-	G.addEdge(G[2], G[4]);
-	G.addEdge(G[4], G[5]);
+	G.addEdge(0, 1);
+	G.addEdge(0, 3);
+	G.addEdge(0, 4);
+	G.addEdge(1, 2);
+	G.addEdge(1, 3);
+	G.addEdge(1, 5);
+	G.addEdge(2, 4);
+	G.addEdge(4, 5);
 	
 	// Assign some spins and data.
 	G[0].setSpin(-1);
@@ -50,11 +50,11 @@ int main(void) {
 	G[4].setSpin(-1);
 	G[5].setSpin(1);
 	G.edges[0].setData(4);
-	//G.edges[2].setData(-56);
-	//G.edges[3].setData(102);
-	//G.edges[4].setData(12);
-	//G.edges[5].setData(42);
-	//G.edges[7].setData(98);
+	G.edges[2].setData(-56);
+	G.edges[3].setData(102);
+	G.edges[4].setData(12);
+	G.edges[5].setData(42);
+	G.edges[7].setData(98);
 	
 	
 	// Print graph info.
@@ -64,7 +64,7 @@ int main(void) {
 		cout << "  " << G[i].getID() << " (" << setw(2)
 			 << G[i].getSpin() << "):  ";
 		for (int j = 0; j < G[i].degree(); j++) {
-			cout << G[i][j]->getID() << "    ";
+			cout << G.edges[G[i][j]].getID() << "    ";
 		}
 		cout << endl;
 	}
@@ -75,7 +75,7 @@ int main(void) {
 		cout << "  "  << G.edges[i].getID() << " (" << setw(3)
 		<< G.edges[i].getData() << "):  ";
 		for (int j = 0; j < 2; j++) {
-			cout << G.edges[i][j]->getID() << "    ";
+			cout << G[G.edges[i][j]].getID() << "    ";
 		}
 		cout << endl;
 	}

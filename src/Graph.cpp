@@ -32,27 +32,23 @@ int Node::getSpin() { return spin; }
 
 int Node::degree() { return edges.size(); }
 
-void Node::addNghbor(Edge& rE) {
-	edges.push_back(&rE);
-	std::cout << "  added edge " << edges.back()->getID() << " to node "
-	<< getID() << std::endl;
-}
+void Node::addNghbor(int n) { edges.push_back(n); }
 
-Edge* Node::operator[](int i) {
+int Node::operator[](int i) {
 	if (i >= 0 && i < degree())
 		return edges[i];
 	else {
 		std::cerr << "Error: invalid edge index." << std::endl;
-		return 0;
+		return -1;
 	}
 }
 
 
-Edge::Edge(Node& rN, Node& rM, int name) {
+Edge::Edge(int n, int m, int name = 0) {
 	data = 0;
 	idnum = name;
-	v1 = &rN;
-	v2 = &rM;
+	v1 = n;
+	v2 = m;
 }
 
 int Edge::getID() { return idnum; }
@@ -61,33 +57,33 @@ void Edge::setData(int x) { data = x; }
 
 int Edge::getData() { return data; }
 
-Node* Edge::getOtherEnd(Node& rN) {
-	if (v1 == &rN)
+int Edge::getOtherEnd(int n) {
+	if (v1 == n)
 		return v2;
-	else if (v2 == &rN)
+	else if (v2 == n)
 		return v1;
 	else {
 		std::cerr << "Error: vertex not an endpoint." << std::endl;
-		return 0;
+		return -1;
 	}
 
 }
 
-Node* Edge::operator[](int i) {
+int Edge::operator[](int i) {
 	if (i == 0)
 		return v1;
 	if (i == 1)
 		return v2;
 	else {
 		std::cerr << "Error: invalid edge endpoint index." << std::endl;
-		return 0;
+		return -1;
 	}
 }
 
 
-Graph::Graph() {
-	edges.reserve(10);
-	nodes.reserve(10);
+Graph::Graph(int N) {
+	edges.reserve(N);
+	nodes.reserve(N);
 }
 
 Graph::~Graph() {}
@@ -100,13 +96,12 @@ void Graph::addNode(int N) {
 		nodes.push_back(Node(j++));
 }
 
-void Graph::addEdge(Node& rN, Node& rM) {
+void Graph::addEdge(int n, int m) {
 	static int j = 0;
-	edges.push_back(Edge(rN, rM, j++));
-	Edge& rE = edges.back();
-	std::cout << "Adding edge " << rE.getID() << "..." << std::endl;
-	rN.addNghbor(rE);
-	rM.addNghbor(rE);
+	edges.push_back(Edge(n, m, j++));
+	int edge_index = edges.size() - 1;
+	nodes[n].addNghbor(edge_index);
+	nodes[m].addNghbor(edge_index);
 }
 
 Node& Graph::operator[](int i) {

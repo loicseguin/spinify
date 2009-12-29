@@ -53,15 +53,15 @@ class Node {
 	 */
 	int spin;
 	int idnum;
-	std::vector<class Edge*> edges;
+	std::vector<int> edges;
 public:
 	Node(int idnum);
 	int getID();
 	void setSpin(int);
 	int getSpin();
 	int degree();
-	void addNghbor(class Edge&);
-	Edge* operator[](int i);
+	void addNghbor(int);
+	int operator[](int i);
 };
 
 
@@ -71,15 +71,15 @@ class Edge {
 	 */
 	int data;
 	int idnum;
-	class Node* v1;
-	class Node* v2;
+	int v1;
+	int v2;
 public:
-	Edge(class Node&, class Node&, int idnum);
+	Edge(int n, int m, int idnum);
 	int getID();
 	void setData(int);
 	int getData();
-	class Node* getOtherEnd(class Node&);
-	Node* operator[](int i);
+	int getOtherEnd(int);
+	int operator[](int i);
 };
 
 
@@ -87,11 +87,11 @@ class Graph {
 	std::vector<class Node> nodes;
 public:
 	std::vector<class Edge> edges;
-	Graph();
+	Graph(int N = 10);
 	~Graph();
 	int size();
 	void addNode(int N = 1);
-	void addEdge(class Node&, class Node&);
+	void addEdge(int n, int m);
 	Node& operator[](int i);
 };
 
