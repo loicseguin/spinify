@@ -8,10 +8,12 @@
  */
 
 #include "Graph.h"
+#include "tezuka.h"
 #include <iostream>
 
 Node::Node(int name = 0) {
 	spin = 0;
+	data = 0;
 	idnum = name;
 }
 
@@ -43,8 +45,12 @@ int Node::operator[](int i) {
 	}
 }
 
+void Node::setData(int x) { data = x; }
 
-Edge::Edge(int n, int m, int name = 0) {
+int Node::getData() { return data; }
+
+
+Edge::Edge(int n, int m, int name) {
 	data = 0;
 	idnum = name;
 	v1 = n;
@@ -113,8 +119,34 @@ Node& Graph::operator[](int i) {
 		return *(Node*) 0;
 	}
 }
-	
 
-	
-	
-	
+void Graph::initRect(int L, int W) {
+	if (size() != 0) {
+		edges.clear();
+		nodes.clear();
+	}
+	int N = L * W;
+	addNode(N);
+	for (int i = 0; i < N; i++) {
+		addEdge(i, (i + 1) % W + W * (i / W));
+		addEdge(i, (i + W) % N);
+	}
+}
+
+void Graph::randSpin() {
+	//set_seed();
+	for (int i = 0; i < size(); i++) {
+		unsigned int rval = alea();
+		if (rval % 2 == 0)
+			nodes[i].setSpin(-1);
+		else
+			nodes[i].setSpin(1);
+	}
+}
+
+void Graph::resetData() {
+	for (int i = 0; i < edges.size(); i++)
+		edges[i].setData(0);
+	for (int i = 0; i < size(); i++)
+		nodes[i].setData(0);
+}
