@@ -9,6 +9,7 @@
 
 
 #include "../src/Graph.h"
+#include "../src/tezuka.h"
 #include <iostream>
 #include <iomanip>
 
@@ -17,28 +18,29 @@ using namespace std;
 int main(void) {
 	//Create a rectangle toroidal graph.
 	Graph G;
-	G.initRect(3, 5);
+	G.initRect(10, 10);
+	set_seed();
 	G.randSpin();
 	
 	// Print graph info.
 	cout << "Printing node info:" << endl
-	<< "  node (spin): edge1 edge2 ..." << endl;
+	<< "node (spin):   edge1 edge2 ..." << endl;
 	for (int i = 0; i < G.size(); i++) {
-		cout << "  " << G[i].getID() << " (" << setw(2)
-		<< G[i].getSpin() << "):  ";
+		cout << setw(3) << G[i].getID() << "   (" << setw(2)
+		<< G[i].getSpin() << ") : ";
 		for (int j = 0; j < G[i].degree(); j++) {
-			cout << G[i][j] << "    ";
+			cout << setw(6) << G[i][j];
 		}
 		cout << endl;
 	}
 	
 	cout << endl << "Printing edge info:" << endl
-	<< "  edge (data): node1 node2" << endl;
+	<< "edge (data):  node1 node2" << endl;
 	for (int i = 0; i < G.edges.size(); i++) {
-		cout << "  "  << G.edges[i].getID() << " (" << setw(3)
-		<< G.edges[i].getData() << "):  ";
+		cout << setw(4)  << G.edges[i].getID() << " (" << setw(3)
+		<< G.edges[i].getData() << ") :";
 		for (int j = 0; j < 2; j++) {
-			cout << G.edges[i][j] << "    ";
+			cout << setw(6) << G.edges[i][j];
 		}
 		cout << endl;
 	}

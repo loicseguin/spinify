@@ -16,6 +16,7 @@
 #ifndef SIMUL_H
 #define SIMUL_H
 
+
 #include "Graph.h"
 
 
@@ -32,7 +33,7 @@ class Simul {
 	 *
 	 * swendsen() runs one step of the SWW algorithm.
 	 *
-	 * thermalize() repeatedly calls swendsen().
+	 * thermalize() calls swendsen() n times.
 	 *
 	 * setParams() set the temperature and the interaction coefficient.
 	 *
@@ -45,11 +46,13 @@ class Simul {
 	} params;
 public:
 	Simul(Graph* pH = NULL);
-	void thermalize();
+	void thermalize(int n = 500);
 	void setParams(double betaval = 0.44068679350977151262,
 				   int Jval = -1);
 	double getBeta();
 	int getJ();
+	double measureE();
+	int findDecorrelTime(double (Simul::*measure)());
 };
 
 

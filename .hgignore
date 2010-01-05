@@ -7,6 +7,14 @@ spinify
 *.swp
 *.BAK
 *.bak
+*.pyc
+src/spinify2
+test/graphtest
+test/randtest
+test/recttest
+test/simultest
+test/swendsentest
+
 
 syntax: regexp
 ^build/

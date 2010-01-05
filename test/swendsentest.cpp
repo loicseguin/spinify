@@ -35,12 +35,12 @@ int main (int argc, char * const argv[]) {
 	G.initRect(L, W);
 	G.randSpin();
 	Simul S(&G);
-	//S.setParams(10, -1);
-	prGraph(&G, L, W);
-	for (int i = 0; i < 2000; i++) {
-		S.thermalize();
-	}
-	prGraph(&G, L, W);
+	//S.setParams(0.001, -1);
+	//prGraph(&G, L, W);
+	S.thermalize(1000);
+	//prGraph(&G, L, W);
+	std::cout << "Internal energy per spin: " << S.measureE() << std::endl;
+	std::cout << "Decorrelation time: " << S.findDecorrelTime(&Simul::measureE) << std::endl;
 	
     return 0;
 }
