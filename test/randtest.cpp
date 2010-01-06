@@ -13,7 +13,6 @@
 using namespace std;
 
 int main () {
-	set_seed();
 	for (int i = 0; i < 100; i++) {
 		cout << alea() << endl;
 	}

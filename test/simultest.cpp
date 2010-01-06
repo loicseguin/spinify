@@ -27,7 +27,6 @@ double avg2(double* pV, const int nV) {
 int main (int argc, char * const argv[]) {
 	std::cout << "SPINIFY\nThe Ising model simulator\n\n";
 	std::cout << "=== Tests on the 100x100 rectangular lattice ===\n\n";
-	set_seed();
 	Graph G;
 	int L = 100;
 	int W = 100;

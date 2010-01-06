@@ -19,7 +19,6 @@ int main(void) {
 	//Create a rectangle toroidal graph.
 	Graph G;
 	G.initRect(10, 10);
-	set_seed();
 	G.randSpin();
 	
 	// Print graph info.

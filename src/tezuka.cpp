@@ -23,6 +23,11 @@ void set_seed (void)
 
 unsigned int alea (void)
 {
+	static int flag = 0;
+	if (flag == 0) {
+		set_seed();
+		flag = 1;
+	}
 	b = ((s1 << Q1) ^ s1) & Mask1;
 	s1 = ((s1 << S1) ^ (b >> P1mS1)) & Mask1;
 	b = ((s2 << Q2) ^ s2) & Mask2;

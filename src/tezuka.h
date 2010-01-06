@@ -5,7 +5,9 @@
  *   Simul. 1, 2 (Apr. 1991), 99-112. DOI= http://doi.acm.org/10.1145/116890.116892
  *
  * Calling set_seed() sets the necessary seeds for the generator.
- * alea() returns a random number between 1 and RANDMAX = 2147483648.
+ * The first time it is called, alea() calls set_seed() so the user no
+ * longer has to worry about this. Then, alea() returns a random number
+ * between 1 and RANDMAX = 2147483648.
  *
  */
 

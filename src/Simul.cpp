@@ -34,7 +34,6 @@ void Simul::thermalize(int n) {
 }
 
 void Simul::swendsen() {
-	static int counter = 0;
 	pG->resetData();
 	for (int i = 0; i < pG->size(); i++) {
 		if ((*pG)[i].getData() == 0) {
@@ -63,10 +62,6 @@ void Simul::swendsen() {
 				}
 			}
 		}
-	}
-	counter++;
-	if (counter % 1000 == 0) {
-		std::cout << "Number of calls to swendsen = " << counter << std::endl;
 	}
 	return;
 }
