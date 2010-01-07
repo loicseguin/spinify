@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cmath>
 
 
 double avg2(double* pV, const int nV) {
@@ -23,6 +24,15 @@ double avg2(double* pV, const int nV) {
 	return sum / nV;
 }
 
+double stdDev(double *pV, const int nV) {
+	double avgV = avg2(pV, nV);
+	double sum = 0;
+	for (int i = 0; i < nV; i++) {
+		sum += (pV[i] - avgV)*(pV[i] - avgV);
+	}
+	return sqrt(sum / nV);
+}
+
 
 int main (int argc, char * const argv[]) {
 	std::cout << "SPINIFY\nThe Ising model simulator\n\n";
@@ -30,27 +40,34 @@ int main (int argc, char * const argv[]) {
 	Graph G;
 	int L = 100;
 	int W = 100;
+	int nTherm = 30000;
+	int nMeasure = 20000;
 	G.initRect(L, W);
 	G.randSpin();
 	Simul S(&G);
 	
 	// Test 1
-	/*std::cout << "Test 1. Thermalized 10000 times, 5000 measures.\n";
-	S.thermalize(50000);
+	std::cout << "Test 1. Thermalized " << nTherm <<" times, " << nMeasure << " measures.\n";
+	S.thermalize(nTherm);
 	int K = S.findDecorrelTime(&Simul::measureE);
+	std::cout << "        Beta: " << S.getBeta() << std::endl;
 	std::cout << "        Decorrelation time: " << K << std::endl;
 	
-	double Data[10000];
-	for (int i = 0; i < 10000; i++) {
+	double Data[nMeasure];
+	for (int i = 0; i < nMeasure; i++) {
 		S.thermalize(K);
 		Data[i] = S.measureE();
 	}
 	
-	double avgData = avg2(Data, 10000);
-	std::cout << "        Average Internal energy per spin: " << avgData << std::endl;*/
+	double avgData = avg2(Data, nMeasure);
+	double sdData = stdDev(Data, nMeasure);
+	std::cout.precision(10);
+	std::cout << "        Average Internal energy per spin: " << avgData << std::endl;
+	std::cout.precision(10);
+	std::cout << "        Standard deviation: " << sdData << std::endl;
 	
 	// Test 2
-	std::cout << "Test 2. 50 measures for 100 temps.\n";
+	/*std::cout << "Test 2. 50 measures for 100 temps.\n";
 	std::string fileName;
 	fileName = "/Users/loic/Projects/spinify2/test/testResults.py";
 	std::ofstream outFile(fileName.c_str());
@@ -83,7 +100,7 @@ int main (int argc, char * const argv[]) {
 			<< "pl.plot(x, y)\n"
 			<< "pl.show()\n";
 	outFile.close();
-	std::cout << "        Wrote results to test/testResults.py\n";
+	std::cout << "        Wrote results to test/testResults.py\n";*/
 	
     return 0;
 }

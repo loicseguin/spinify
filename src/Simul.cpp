@@ -46,7 +46,7 @@ void Simul::swendsen() {
 				newSpin = 1;
 			std::vector<int> toTest;
 			toTest.push_back(i);
-			for (int j = 0; j < toTest.size(); j++) {
+			for (unsigned int j = 0; j < toTest.size(); j++) {
 				Node& next = (*pG)[toTest[j]];
 				next.setData(1);
 				next.setSpin(newSpin);
@@ -59,6 +59,8 @@ void Simul::swendsen() {
 						nEdge.setData(1);
 						toTest.push_back(otherEnd.getID());
 					}
+					else if (nEdge.getData() == 0)
+						nEdge.setData(1);
 				}
 			}
 		}
@@ -98,7 +100,7 @@ double avg(double* pV, const int nV) {
 }
 
 int Simul::findDecorrelTime(double (Simul::*measure)()) {
-	const int decorrelIter = 2000;
+	const int decorrelIter = 5000;
 	const double correlTreshold = 0.05;
 	double C_k = 1.;		// Autocorrelation function at step k
 	double X[decorrelIter], X2[decorrelIter], X_k[decorrelIter];
@@ -123,7 +125,7 @@ int Simul::findDecorrelTime(double (Simul::*measure)()) {
 		C_k = (avgX_k - avgX * avgX) / (avgX2 - avgX * avgX);
 		// std::cout << "C_" << k << " = " << C_k << std::endl;
 		// Avoid disasters...
-		if (k > 100) break;
+		if (k > 99) break;
 	}
 	
 	// Better safe than sorry: always do at least five iterations

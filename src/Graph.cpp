@@ -145,8 +145,8 @@ void Graph::randSpin() {
 }
 
 void Graph::resetData() {
-	for (int i = 0; i < edges.size(); i++)
+	for (unsigned int i = 0; i < edges.size(); i++)
 		edges[i].setData(0);
-	for (int i = 0; i < size(); i++)
+	for (unsigned int i = 0; i < size(); i++)
 		nodes[i].setData(0);
 }
