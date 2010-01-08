@@ -2,9 +2,9 @@ export CXX = g++
 export CFLAGS = -Wall -g -O2
 export CXXFLAGS = $(CFLAGS)
 
-all: spinify2 tests
+all: spinify tests
 
-spinify2:
+spinify:
 	cd src && $(MAKE) all
 
 tests:

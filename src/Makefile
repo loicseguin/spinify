@@ -1,9 +1,9 @@
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
 
-all: spinify2
+all: spinify
 
-spinify2: $(OBJ)
+spinify: $(OBJ)
 	$(CXX) -o $@ $^
 
 main.o: Graph.h Simul.h tezuka.h

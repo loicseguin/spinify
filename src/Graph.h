@@ -1,6 +1,6 @@
 /*
  * Graph.h
- * spinify2
+ * spinify
  *
  * Created by Loïc Séguin-Charbonneau on 09-12-22.
  * Copyright 2009 Loïc Séguin-Charbonneau. All rights reserved.
@@ -40,7 +40,7 @@ class Node {
 	 * 
 	 *     e.g.: G[1][3] is an integer to the fourth incident Edge to
 	 *           node G[1]. The Edge itself is accessed with
-	 *           G.edges[v[3]].
+	 *           G.edges[G[1][3]].
 	 * 
 	 * The [] operator does check for the validity of the index. If
 	 * the index is invalid an error message is printed and -1 is returned.

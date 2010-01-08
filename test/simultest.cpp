@@ -1,6 +1,6 @@
 /*
  *  simultest.cpp
- *  spinify2
+ *  spinify
  *
  *  Created by Loïc Séguin-Charbonneau on 10-01-03.
  *  Copyright 2010 Loïc Séguin-Charbonneau. All rights reserved.
@@ -69,7 +69,7 @@ int main (int argc, char * const argv[]) {
 	// Test 2
 	/*std::cout << "Test 2. 50 measures for 100 temps.\n";
 	std::string fileName;
-	fileName = "/Users/loic/Projects/spinify2/test/testResults.py";
+	fileName = "/Users/loic/Projects/spinify/test/testResults.py";
 	std::ofstream outFile(fileName.c_str());
 	outFile << "import numpy as np\n"
 			<< "import matplotlib.pylab as pl\n"
