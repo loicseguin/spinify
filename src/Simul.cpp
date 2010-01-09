@@ -34,10 +34,11 @@ void Simul::thermalize(int n) {
 }
 
 void Simul::swendsen() {
-	pG->resetData();
-	for (int i = 0; i < pG->size(); i++) {
-		if ((*pG)[i].getData() == 0) {
-			int oldSpin = (*pG)[i].getSpin();
+	Graph& G = *pG;
+	G.resetStatus();
+	for (int i = 0; i < G.size(); i++) {
+		if (G[i].getStatus() == notVisited) {
+			int oldSpin = G[i].getSpin();
 			int newSpin;
 			unsigned int rval = alea();
 			if (rval % 2 == 0)
@@ -47,20 +48,20 @@ void Simul::swendsen() {
 			std::vector<int> toTest;
 			toTest.push_back(i);
 			for (unsigned int j = 0; j < toTest.size(); j++) {
-				Node& next = (*pG)[toTest[j]];
-				next.setData(1);
+				Node& next = G[toTest[j]];
+				next.setStatus(Visited);
 				next.setSpin(newSpin);
 				for (int k = 0; k < next.degree(); k++) {
-					Edge& nEdge = pG->edges[next[k]];
-					Node& otherEnd = (*pG)[nEdge.getOtherEnd(next.getID())];
-					if (nEdge.getData() == 0
+					Edge& nEdge = G.edges[next[k]];
+					Node& otherEnd = G[nEdge.getOtherEnd(next.getID())];
+					if (nEdge.getStatus() == notVisited
 						&& otherEnd.getSpin() == oldSpin
 						&& (alea() / RANDMAX) < 1 - exp(2*getBeta()*getJ())) {
-						nEdge.setData(1);
+						nEdge.setStatus(Visited);
 						toTest.push_back(otherEnd.getID());
 					}
-					else if (nEdge.getData() == 0)
-						nEdge.setData(1);
+					else if (nEdge.getStatus() == notVisited)
+						nEdge.setStatus(Visited);
 				}
 			}
 		}
@@ -100,8 +101,6 @@ double avg(double* pV, const int nV) {
 }
 
 int Simul::findDecorrelTime(double (Simul::*measure)()) {
-	const int decorrelIter = 5000;
-	const double correlTreshold = 0.05;
 	double C_k = 1.;		// Autocorrelation function at step k
 	double X[decorrelIter], X2[decorrelIter], X_k[decorrelIter];
 	double avgX, avgX2, avgX_k;
@@ -125,13 +124,13 @@ int Simul::findDecorrelTime(double (Simul::*measure)()) {
 		C_k = (avgX_k - avgX * avgX) / (avgX2 - avgX * avgX);
 		// std::cout << "C_" << k << " = " << C_k << std::endl;
 		// Avoid disasters...
-		if (k > 99) break;
+		if (k > maxDecorrelTime) break;
 	}
 	
 	// Better safe than sorry: always do at least five iterations
 	// between every measure.
-	if (k < 5)
-		k = 5;
+	if (k < minDecorrelTime)
+		k = minDecorrelTime;
 	
 	return k;
 }

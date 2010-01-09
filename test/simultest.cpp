@@ -40,8 +40,8 @@ int main (int argc, char * const argv[]) {
 	Graph G;
 	int L = 100;
 	int W = 100;
-	int nTherm = 30000;
-	int nMeasure = 20000;
+	int nTherm = 3000;
+	int nMeasure = 6000;
 	G.initRect(L, W);
 	G.randSpin();
 	Simul S(&G);

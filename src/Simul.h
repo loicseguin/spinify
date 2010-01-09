@@ -20,6 +20,15 @@
 #include "Graph.h"
 
 
+const int decorrelIter = 5000;
+const double correlTreshold = 0.05;
+const int maxDecorrelTime = 99;
+const int minDecorrelTime = 5;
+const double squareCriticalBeta = 0.44068679350977151262;
+const int defaultJ = -1;
+
+
+
 class Simul {
 	/*
 	 * When initializing a simulation, a pointer to the Graph must be
@@ -47,8 +56,8 @@ class Simul {
 public:
 	Simul(Graph* pH = NULL);
 	void thermalize(int n = 500);
-	void setParams(double betaval = 0.44068679350977151262,
-				   int Jval = -1);
+	void setParams(double betaval = squareCriticalBeta,
+				   int Jval = defaultJ);
 	double getBeta();
 	int getJ();
 	double measureE();

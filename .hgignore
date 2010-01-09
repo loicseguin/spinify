@@ -18,5 +18,4 @@ test/swendsentest
 
 syntax: regexp
 ^build/
-^spinify.xcodeproj/
 

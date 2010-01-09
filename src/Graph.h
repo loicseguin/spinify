@@ -21,90 +21,19 @@
 #include <vector>
 
 
-class Node {
-	/* 
-	 * A node has a spin in {-1, 1}, a numerical identifier and a set
-	 * of incident Edges.
-	 * 
-	 * The Node constructor sets the spin to an invalid value of 0, the
-	 * data to 0 and admits an argument which sets the idnum. If no
-	 * argument is provided, the idnum defaults to 0. The idnum is read
-	 * by getID().
-	 *
-	 * The spin is set and read by setSpin and getSpin. setSpin
-	 * checks whether or not the argument is valid, if not, it prints
-	 * an error message.
-	 *
-	 * Indices of incident Edges are contained in a vector called
-	 * edges. These indices can be accessed with the [] operator.
-	 * 
-	 *     e.g.: G[1][3] is an integer to the fourth incident Edge to
-	 *           node G[1]. The Edge itself is accessed with
-	 *           G.edges[G[1][3]].
-	 * 
-	 * The [] operator does check for the validity of the index. If
-	 * the index is invalid an error message is printed and -1 is returned.
-	 *
-	 * degree() just returns the degree of the Node, i.e., the number
-	 * of incident Edges.
-	 *
-	 * Adding a new incident Edge is done by passing the index of an
-	 * Edge to addNghbor(). This will just push back that index onto
-	 * the edges vector.
-	 *
-	 * Integer data (default value = 0) can be stored with setData(),
-	 * read with getData().
-	 *
-	 */
-	int spin;
-	int idnum;
-	int data;
-	std::vector<int> edges;
-public:
-	Node(int idnum);
-	int getID();
-	void setSpin(int);
-	int getSpin();
-	int degree();
-	void addNghbor(int);
-	int operator[](int i);
-	void setData(int);
-	int getData();
-};
-
-
-class Edge {
+enum Status {
 	/*
-	 * An Edge has a numerical identifier, a container for some integer
-	 * data and the indices of the two endpoints.
-	 *
-	 * The constructor takes the indices of the two endpoints and an
-	 * (optional) numerical identifier which defaults to 0. The
-	 * numerical identifier is read by getID() (which might be
-	 * deprecated in the near future).
-	 *
-	 * The data is set by setData() and read by getData().
-	 *
-	 * Given the node index of one endpoint of an Edge, getOtherEnd()
-	 * returns the index of the other endpoint.
-	 *
-	 * The endpoints indices can be accessed with the [] operator. It
-	 * takes an argument which is either 0 or 1 and returns the index
-	 * of the corresponding endpoint.
+	 * Used by simulation algorithms to determine when a Node or Edge
+	 * has been visited or not.
 	 *
 	 */
-	int data;
-	int idnum;
-	int v1;
-	int v2;
-public:
-	Edge(int n, int m, int idnum = 0);
-	int getID();
-	void setData(int);
-	int getData();
-	int getOtherEnd(int);
-	int operator[](int i);
+	notVisited,
+	Visited
 };
+
+
+class Node;
+class Edge;
 
 
 class Graph {
@@ -129,7 +58,8 @@ class Graph {
 	 * randSpin() assigns a spin to each Node randomly (uniformly chosen
 	 * amongst -1 or 1).
 	 *
-	 * resetData() sets the data of every Edge and every Node to 0.
+	 * resetStatus() sets the status of every Edge and every Node to
+	 * notVisited.
 	 *
 	 */
 	std::vector<class Node> nodes;
@@ -143,7 +73,96 @@ public:
 	Node& operator[](int i);
 	void initRect(int L = 10, int W = 10);
 	void randSpin();
-	void resetData();
+	void resetStatus();
 };
+
+
+class Node {
+	/* 
+	 * A node has a spin in {-1, 1}, a status, a numerical identifier
+	 * and a set of incident Edges.
+	 * 
+	 * The Node constructor sets the spin to an invalid value of 0, the
+	 * status to notVisited and admits an argument which sets the idnum. If no
+	 * argument is provided, the idnum defaults to 0. The idnum is read
+	 * by getID().
+	 *
+	 * The spin is set and read by setSpin and getSpin. setSpin
+	 * checks whether or not the argument is valid, if not, it prints
+	 * an error message.
+	 *
+	 * Indices of incident Edges are contained in a vector called
+	 * edges. These indices can be accessed with the [] operator.
+	 * 
+	 *     e.g.: G[1][3] is an integer to the fourth incident Edge to
+	 *           node G[1]. The Edge itself is accessed with
+	 *           G.edges[G[1][3]].
+	 * 
+	 * The [] operator does check for the validity of the index. If
+	 * the index is invalid an error message is printed and -1 is returned.
+	 *
+	 * degree() just returns the degree of the Node, i.e., the number
+	 * of incident Edges.
+	 *
+	 * Adding a new incident Edge is done by passing the index of an
+	 * Edge to addNghbor(). This will just push back that index onto
+	 * the edges vector.
+	 *
+	 * Status (default value = notVisited) can be stored with setStatus(),
+	 * read with getStatus().
+	 *
+	 */
+	int spin;
+	int idnum;
+	Status status;
+	std::vector<int> edges;
+	void addNghbor(int);
+public:
+	Node(int idnum);
+	int getID();
+	void setSpin(int);
+	int getSpin();
+	int degree();
+	int operator[](int i);
+	void setStatus(Status);
+	Status getStatus();
+	
+	friend void Graph::addEdge(int n, int m);
+};
+
+
+class Edge {
+	/*
+	 * An Edge has a numerical identifier, a status
+	 * and the indices of the two endpoints.
+	 *
+	 * The constructor takes the indices of the two endpoints and an
+	 * (optional) numerical identifier which defaults to 0. The
+	 * numerical identifier is read by getID() (which might be
+	 * deprecated in the near future).
+	 *
+	 * The status is set by setStatus() and read by getStatus().
+	 *
+	 * Given the node index of one endpoint of an Edge, getOtherEnd()
+	 * returns the index of the other endpoint.
+	 *
+	 * The endpoints indices can be accessed with the [] operator. It
+	 * takes an argument which is either 0 or 1 and returns the index
+	 * of the corresponding endpoint.
+	 *
+	 */
+	Status status;
+	int idnum;
+	int v1;
+	int v2;
+public:
+	Edge(int n, int m, int idnum = 0);
+	int getID();
+	void setStatus(Status);
+	Status getStatus();
+	int getOtherEnd(int);
+	int operator[](int i);
+};
+
 
 #endif

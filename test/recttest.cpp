@@ -34,10 +34,10 @@ int main(void) {
 	}
 	
 	cout << endl << "Printing edge info:" << endl
-	<< "edge (data):  node1 node2" << endl;
+	<< "edge (status):  node1 node2" << endl;
 	for (int i = 0; i < G.edges.size(); i++) {
 		cout << setw(4)  << G.edges[i].getID() << " (" << setw(3)
-		<< G.edges[i].getData() << ") :";
+		<< G.edges[i].getStatus() << ") :";
 		for (int j = 0; j < 2; j++) {
 			cout << setw(6) << G.edges[i][j];
 		}

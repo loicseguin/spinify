@@ -13,7 +13,7 @@
 
 Node::Node(int name = 0) {
 	spin = 0;
-	data = 0;
+	status = notVisited;
 	idnum = name;
 }
 
@@ -45,13 +45,13 @@ int Node::operator[](int i) {
 	}
 }
 
-void Node::setData(int x) { data = x; }
+void Node::setStatus(Status s) { status = s; }
 
-int Node::getData() { return data; }
+Status Node::getStatus() { return status; }
 
 
 Edge::Edge(int n, int m, int name) {
-	data = 0;
+	status = notVisited;
 	idnum = name;
 	v1 = n;
 	v2 = m;
@@ -59,9 +59,9 @@ Edge::Edge(int n, int m, int name) {
 
 int Edge::getID() { return idnum; }
 
-void Edge::setData(int x) { data = x; }
+void Edge::setStatus(Status s) { status = s; }
 
-int Edge::getData() { return data; }
+Status Edge::getStatus() { return status; }
 
 int Edge::getOtherEnd(int n) {
 	if (v1 == n)
@@ -144,9 +144,9 @@ void Graph::randSpin() {
 	}
 }
 
-void Graph::resetData() {
+void Graph::resetStatus() {
 	for (unsigned int i = 0; i < edges.size(); i++)
-		edges[i].setData(0);
+		edges[i].setStatus(notVisited);
 	for (unsigned int i = 0; i < size(); i++)
-		nodes[i].setData(0);
+		nodes[i].setStatus(notVisited);
 }
