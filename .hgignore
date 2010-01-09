@@ -1,0 +1,21 @@
+syntax: glob
+.DS_Store
+*.o
+_*_
+.depend
+spinify
+*.swp
+*.BAK
+*.bak
+*.pyc
+src/spinify
+test/graphtest
+test/randtest
+test/recttest
+test/simultest
+test/swendsentest
+
+
+syntax: regexp
+^build/
+
