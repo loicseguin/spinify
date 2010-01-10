@@ -38,17 +38,18 @@ class Node;
 
 class Graph {
 	/*
-	 * A graph is composed of a vector of Nodes and a vector of Edges.
-	 * The constructor take an optional integer argument which is used
-	 * to reserve memory space for the nodes and edges.
+	 * A graph is composed of a vector of pointers to Nodes and a vector
+	 * of pointer to Edges. The constructor take an optional integer
+	 * argument which is used to reserve memory space for nodes and
+	 * edges pointers.
 	 *
 	 * size() returns the number of Nodes in the graph.
 	 * addNode() add the number of nodes specified as the argument.
-	 * Passing the indices of two Nodes to addEdge() add the
+	 * Passing references to two Nodes to addEdge() adds the
 	 * corresponding Edge.
 	 * 
 	 * The subscript [] operator takes an index i and returns a
-	 * reference to the nodes[i].
+	 * reference to the Node pointed to by nodes[i].
 	 *
 	 * initRect() creates a rectangular lattice of width W and length L
 	 * with the appropriate Edges. It does check to see whether the
@@ -58,7 +59,8 @@ class Graph {
 	 * randSpin() assigns a spin to each Node randomly (uniformly chosen
 	 * amongst -1 or 1).
 	 *
-	 * resetData() sets the data of every Edge and every Node to 0.
+	 * resetStatus() sets the Status of every Edge and every Node to
+	 * notVisited.
 	 *
 	 */
 	std::vector<Node*> nodes;
@@ -94,25 +96,26 @@ class Node {
 	 * checks whether or not the argument is valid, if not, it prints
 	 * an error message.
 	 *
-	 * Indices of incident Edges are contained in a vector called
-	 * edges. These indices can be accessed with the [] operator.
+	 * Pointers to incident Edges are contained in a vector called
+	 * edges. These pointers can be accessed with the [] operator.
 	 * 
-	 *     e.g.: G[1][3] is an integer to the fourth incident Edge to
-	 *           node G[1]. The Edge itself is accessed with
-	 *           G.edges[G[1][3]].
+	 *     e.g.: G[1][3] is a pointer to the fourth incident Edge to
+	 *           node G[1]. For instance, the Edge id is accessed with
+	 *           G[1][3]->getID().
 	 * 
 	 * The [] operator does check for the validity of the index. If
-	 * the index is invalid an error message is printed and -1 is returned.
+	 * the index is invalid an error message is printed and -1 is
+	 * returned.
 	 *
 	 * degree() just returns the degree of the Node, i.e., the number
 	 * of incident Edges.
 	 *
-	 * Adding a new incident Edge is done by passing the index of an
+	 * Adding a new incident Edge is done by passing a pointer to an
 	 * Edge to addNghbor(). This will just push back that index onto
 	 * the edges vector.
 	 *
-	 * Status (default value = notVisited) can be stored with setStatus(),
-	 * read with getStatus().
+	 * Status (default value = notVisited) can be stored with
+	 * setStatus(), read with getStatus().
 	 *
 	 */
 	int spin;
@@ -140,21 +143,19 @@ public:
 class Edge {
 	/*
 	 * An Edge has a numerical identifier, a status
-	 * and the indices of the two endpoints.
+	 * and pointers to the two endpoints.
 	 *
-	 * The constructor takes the indices of the two endpoints and an
+	 * The constructor takes references to the two endpoints and an
 	 * (optional) numerical identifier which defaults to 0. The
-	 * numerical identifier is read by getID() (which might be
-	 * deprecated in the near future).
+	 * numerical identifier is read by getID().
 	 *
 	 * The status is set by setStatus() and read by getStatus().
 	 *
-	 * Given the node index of one endpoint of an Edge, getOtherEnd()
-	 * returns the index of the other endpoint.
+	 * Given a refenrece to one of the endpoints of an Edge,
+	 * getOtherEnd() returns a reference to the other endpoint.
 	 *
-	 * The endpoints indices can be accessed with the [] operator. It
-	 * takes an argument which is either 0 or 1 and returns the index
-	 * of the corresponding endpoint.
+	 * The enpoints can be accessed with the getV1() and getV2()
+	 * functions which returns references.
 	 *
 	 */
 	Status status;

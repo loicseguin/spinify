@@ -41,7 +41,7 @@ int main (int argc, char * const argv[]) {
 	int L = 100;
 	int W = 100;
 	int nTherm = 3000;
-	int nMeasure = 6000;
+	int nMeasure = 4000;
 	G.initRect(L, W);
 	G.randSpin();
 	Simul S(&G);

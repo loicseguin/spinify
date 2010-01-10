@@ -45,20 +45,20 @@ void Simul::swendsen() {
 				newSpin = -1;
 			else
 				newSpin = 1;
-			std::vector<int> toTest;
-			toTest.push_back(i);
+			std::vector<Node*> toTest;
+			toTest.push_back(&G[i]);
 			for (unsigned int j = 0; j < toTest.size(); j++) {
-				Node& next = G[toTest[j]];
+				Node& next = *toTest[j];
 				next.setStatus(Visited);
 				next.setSpin(newSpin);
 				for (int k = 0; k < next.degree(); k++) {
-					Edge& nEdge = G.edges[next[k]];
-					Node& otherEnd = G[nEdge.getOtherEnd(next.getID())];
+					Edge& nEdge = next[k];
+					Node& otherEnd = nEdge.getOtherEnd(next);
 					if (nEdge.getStatus() == notVisited
 						&& otherEnd.getSpin() == oldSpin
 						&& (alea() / RANDMAX) < 1 - exp(2*getBeta()*getJ())) {
 						nEdge.setStatus(Visited);
-						toTest.push_back(otherEnd.getID());
+						toTest.push_back(&otherEnd);
 					}
 					else if (nEdge.getStatus() == notVisited)
 						nEdge.setStatus(Visited);
@@ -85,7 +85,7 @@ double Simul::measureE() {
 	for (int i = 0; i < pG->size(); i++) {
 		Node& v1 = (*pG)[i];
 		for (int j = 0; j < v1.degree(); j++) {
-			Node& v2 = (*pG)[ (pG->edges[v1[j]]).getOtherEnd(v1.getID()) ];
+			Node& v2 = v1[j].getOtherEnd(v1);
 			sumSpin += v1.getSpin() * v2.getSpin();
 		}
 	}

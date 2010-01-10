@@ -28,7 +28,7 @@ int main(void) {
 		cout << setw(3) << G[i].getID() << "   (" << setw(2)
 		<< G[i].getSpin() << ") : ";
 		for (int j = 0; j < G[i].degree(); j++) {
-			cout << setw(6) << G[i][j];
+			cout << setw(6) << G[i][j].getID();
 		}
 		cout << endl;
 	}
@@ -36,12 +36,10 @@ int main(void) {
 	cout << endl << "Printing edge info:" << endl
 	<< "edge (status):  node1 node2" << endl;
 	for (int i = 0; i < G.edges.size(); i++) {
-		cout << setw(4)  << G.edges[i].getID() << " (" << setw(3)
-		<< G.edges[i].getStatus() << ") :";
-		for (int j = 0; j < 2; j++) {
-			cout << setw(6) << G.edges[i][j];
-		}
-		cout << endl;
+		cout << setw(4)  << G.edges[i]->getID() << " (" << setw(3)
+		<< G.edges[i]->getStatus() << ") :"
+		<< setw(6) << G.edges[i]->getV1().getID() << setw(6)
+		<< G.edges[i]->getV2().getID() << endl;
 	}
 	cout << endl;
 	
