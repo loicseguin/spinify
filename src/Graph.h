@@ -21,15 +21,74 @@
 #include <vector>
 
 
+enum Status {
+	/*
+	 * Used by simulation algorithms to determine when a Node or Edge
+	 * has been visited or not.
+	 *
+	 */
+	notVisited,
+	Visited
+};
+
+
+class Edge;
+class Node;
+
+
+class Graph {
+	/*
+	 * A graph is composed of a vector of Nodes and a vector of Edges.
+	 * The constructor take an optional integer argument which is used
+	 * to reserve memory space for the nodes and edges.
+	 *
+	 * size() returns the number of Nodes in the graph.
+	 * addNode() add the number of nodes specified as the argument.
+	 * Passing the indices of two Nodes to addEdge() add the
+	 * corresponding Edge.
+	 * 
+	 * The subscript [] operator takes an index i and returns a
+	 * reference to the nodes[i].
+	 *
+	 * initRect() creates a rectangular lattice of width W and length L
+	 * with the appropriate Edges. It does check to see whether the
+	 * graph is empty or not and tries to empty it if it's not. However,
+	 * it is probably best to call initRect() only on an empty graph.
+	 *
+	 * randSpin() assigns a spin to each Node randomly (uniformly chosen
+	 * amongst -1 or 1).
+	 *
+	 * resetData() sets the data of every Edge and every Node to 0.
+	 *
+	 */
+	std::vector<Node*> nodes;
+	
+	
+public:
+	std::vector<Edge*> edges;
+	Graph(int N = 10);
+	~Graph();
+	
+	int size();
+	void addNode(int N = 1);
+	void addEdge(Node& n, Node& m);
+	Node& operator[](int i);
+	void initRect(int L = 10, int W = 10);
+	void randSpin();
+	void resetStatus();
+};
+
+
+
 class Node {
 	/* 
-	 * A node has a spin in {-1, 1}, a numerical identifier and a set
-	 * of incident Edges.
+	 * A node has a spin in {-1, 1}, a numerical identifier, a status
+	 * and a vector of incident Edges.
 	 * 
 	 * The Node constructor sets the spin to an invalid value of 0, the
-	 * data to 0 and admits an argument which sets the idnum. If no
-	 * argument is provided, the idnum defaults to 0. The idnum is read
-	 * by getID().
+	 * status to notVisited and admits an argument which sets the idnum.
+	 * If no argument is provided, the idnum defaults to 0. The idnum is
+	 * read by getID().
 	 *
 	 * The spin is set and read by setSpin and getSpin. setSpin
 	 * checks whether or not the argument is valid, if not, it prints
@@ -58,18 +117,23 @@ class Node {
 	 */
 	int spin;
 	int idnum;
-	int data;
-	std::vector<int> edges;
+	Status status;
+	std::vector<Edge*> edges;
+	void addNghbor(Edge*);
+
 public:
-	Node(int idnum);
+	Node(int idnum = 0);
+	~Node();
+	
 	int getID();
 	void setSpin(int);
 	int getSpin();
 	int degree();
-	void addNghbor(int);
-	int operator[](int i);
-	void setData(int);
-	int getData();
+	Edge& operator[](int i);
+	void setStatus(Status);
+	Status getStatus();
+	
+	friend void Graph::addEdge(Node& n, Node& m);
 };
 
 
@@ -93,57 +157,21 @@ class Edge {
 	 * of the corresponding endpoint.
 	 *
 	 */
-	int data;
+	Status status;
 	int idnum;
-	int v1;
-	int v2;
+	Node* v1;
+	Node* v2;
+
 public:
-	Edge(int n, int m, int idnum = 0);
+	Edge(Node& n, Node& m, int idnum = 0);
+	
 	int getID();
-	void setData(int);
-	int getData();
-	int getOtherEnd(int);
-	int operator[](int i);
+	void setStatus(Status);
+	Status getStatus();
+	Node& getOtherEnd(Node&);
+	Node& getV1() {return *v1;}
+	Node& getV2() {return *v2;}
 };
 
-
-class Graph {
-	/*
-	 * A graph is composed of a vector of Nodes and a vector of Edges.
-	 * The constructor take an optional integer argument which is used
-	 * to reserve memory space for the nodes and edges.
-	 *
-	 * size() returns the number of Nodes in the graph.
-	 * addNode() add the number of nodes specified as the argument.
-	 * Passing the indices of two Nodes to addEdge() add the
-	 * corresponding Edge.
-	 * 
-	 * The subscript [] operator takes an index i and returns a
-	 * reference to the nodes[i].
-	 *
-	 * initRect() creates a rectangular lattice of width W and length L
-	 * with the appropriate Edges. It does check to see whether the
-	 * graph is empty or not and tries to empty it if it's not. However,
-	 * it is probably best to call initRect() only on an empty graph.
-	 *
-	 * randSpin() assigns a spin to each Node randomly (uniformly chosen
-	 * amongst -1 or 1).
-	 *
-	 * resetData() sets the data of every Edge and every Node to 0.
-	 *
-	 */
-	std::vector<class Node> nodes;
-public:
-	std::vector<class Edge> edges;
-	Graph(int N = 10);
-	~Graph();
-	int size();
-	void addNode(int N = 1);
-	void addEdge(int n, int m);
-	Node& operator[](int i);
-	void initRect(int L = 10, int W = 10);
-	void randSpin();
-	void resetData();
-};
 
 #endif
