@@ -32,8 +32,8 @@ enum Status {
 };
 
 
-class Node;
 class Edge;
+class Node;
 
 
 class Graph {
@@ -58,18 +58,20 @@ class Graph {
 	 * randSpin() assigns a spin to each Node randomly (uniformly chosen
 	 * amongst -1 or 1).
 	 *
-	 * resetStatus() sets the status of every Edge and every Node to
-	 * notVisited.
+	 * resetData() sets the data of every Edge and every Node to 0.
 	 *
 	 */
-	std::vector<class Node> nodes;
+	std::vector<Node*> nodes;
+	
+	
 public:
-	std::vector<class Edge> edges;
+	std::vector<Edge*> edges;
 	Graph(int N = 10);
 	~Graph();
+	
 	int size();
 	void addNode(int N = 1);
-	void addEdge(int n, int m);
+	void addEdge(Node& n, Node& m);
 	Node& operator[](int i);
 	void initRect(int L = 10, int W = 10);
 	void randSpin();
@@ -77,15 +79,16 @@ public:
 };
 
 
+
 class Node {
 	/* 
-	 * A node has a spin in {-1, 1}, a status, a numerical identifier
-	 * and a set of incident Edges.
+	 * A node has a spin in {-1, 1}, a numerical identifier, a status
+	 * and a vector of incident Edges.
 	 * 
 	 * The Node constructor sets the spin to an invalid value of 0, the
-	 * status to notVisited and admits an argument which sets the idnum. If no
-	 * argument is provided, the idnum defaults to 0. The idnum is read
-	 * by getID().
+	 * status to notVisited and admits an argument which sets the idnum.
+	 * If no argument is provided, the idnum defaults to 0. The idnum is
+	 * read by getID().
 	 *
 	 * The spin is set and read by setSpin and getSpin. setSpin
 	 * checks whether or not the argument is valid, if not, it prints
@@ -115,19 +118,22 @@ class Node {
 	int spin;
 	int idnum;
 	Status status;
-	std::vector<int> edges;
-	void addNghbor(int);
+	std::vector<Edge*> edges;
+	void addNghbor(Edge*);
+
 public:
-	Node(int idnum);
+	Node(int idnum = 0);
+	~Node();
+	
 	int getID();
 	void setSpin(int);
 	int getSpin();
 	int degree();
-	int operator[](int i);
+	Edge& operator[](int i);
 	void setStatus(Status);
 	Status getStatus();
 	
-	friend void Graph::addEdge(int n, int m);
+	friend void Graph::addEdge(Node& n, Node& m);
 };
 
 
@@ -153,15 +159,18 @@ class Edge {
 	 */
 	Status status;
 	int idnum;
-	int v1;
-	int v2;
+	Node* v1;
+	Node* v2;
+
 public:
-	Edge(int n, int m, int idnum = 0);
+	Edge(Node& n, Node& m, int idnum = 0);
+	
 	int getID();
 	void setStatus(Status);
 	Status getStatus();
-	int getOtherEnd(int);
-	int operator[](int i);
+	Node& getOtherEnd(Node&);
+	Node& getV1() {return *v1;}
+	Node& getV2() {return *v2;}
 };
 
 
