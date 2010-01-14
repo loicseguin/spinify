@@ -100,7 +100,12 @@ int main(void) {
 		<< G.edges[i]->getStatus() << "):  " << G.edges[i]->getV1().getID()
 		<< "    " << G.edges[i]->getV2().getID() << endl;
 	}
-	cout << endl;	
+	cout << endl;
+	
+	G[0].setCoords(3.5, -12.325);
+	double* pts = G[0].getCoords();
+	cout << "Coordinates of node " << 0 << ": (" << *pts << ", "
+		 << *(pts + 1) <<")" << endl;
 	
 	
 	return 0;

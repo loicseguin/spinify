@@ -47,14 +47,14 @@ class Simul {
 	 * setParams() set the temperature and the interaction coefficient.
 	 *
 	 */
-	Graph* pG;
+	Graph& G;
 	void swendsen();
 	struct Params {
 		double beta;
 		int J;
 	} params;
 public:
-	Simul(Graph* pH = NULL);
+	Simul(Graph& H);
 	void thermalize(int n = 500);
 	void setParams(double betaval = squareCriticalBeta,
 				   int Jval = defaultJ);

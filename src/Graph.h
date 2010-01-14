@@ -20,7 +20,6 @@
 
 #include <vector>
 
-
 enum Status {
 	/*
 	 * Used by simulation algorithms to determine when a Node or Edge
@@ -62,9 +61,11 @@ class Graph {
 	 * resetStatus() sets the Status of every Edge and every Node to
 	 * notVisited.
 	 *
+	 * initRand() initializes a random metric graph on a Surface S (NOT
+	 * IMPLEMENTED YET).
+	 *
 	 */
 	std::vector<Node*> nodes;
-	
 	
 public:
 	std::vector<Edge*> edges;
@@ -122,6 +123,7 @@ class Node {
 	int idnum;
 	Status status;
 	std::vector<Edge*> edges;
+	double coords[3];
 	void addNghbor(Edge*);
 
 public:
@@ -135,6 +137,8 @@ public:
 	Edge& operator[](int i);
 	void setStatus(Status);
 	Status getStatus();
+	double* getCoords();
+	void setCoords(double x, double y, double z = 0);
 	
 	friend void Graph::addEdge(Node& n, Node& m);
 };

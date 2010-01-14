@@ -8,12 +8,14 @@ spinify
 *.BAK
 *.bak
 *.pyc
+*.orig
 src/spinify
 test/graphtest
 test/randtest
 test/recttest
 test/simultest
 test/swendsentest
+test/spheretest
 
 
 syntax: regexp

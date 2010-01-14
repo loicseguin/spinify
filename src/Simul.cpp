@@ -10,19 +10,11 @@
 #include "Simul.h"
 #include "tezuka.h"
 #include <iostream>
-#include <cstdlib>
 #include <vector>
 #include <cmath>
 
 
-Simul::Simul(Graph* pH) {
-	if (pH == NULL) {
-		std::cerr << "Error: no Graph pointer passed to Simul(), nothing to do."
-				  << std::endl;
-		exit(1);
-	}
-	else
-		pG = pH;
+Simul::Simul(Graph& H) : G(H) {
 	setParams();
 	return;
 }
@@ -34,7 +26,6 @@ void Simul::thermalize(int n) {
 }
 
 void Simul::swendsen() {
-	Graph& G = *pG;
 	G.resetStatus();
 	for (int i = 0; i < G.size(); i++) {
 		if (G[i].getStatus() == notVisited) {
@@ -82,14 +73,14 @@ int Simul::getJ() { return params.J; }
 double Simul::measureE() {
 	// u = (J*\sum_{adjacent nodes i, j} s_i s_j)/N
 	int sumSpin = 0;
-	for (int i = 0; i < pG->size(); i++) {
-		Node& v1 = (*pG)[i];
+	for (int i = 0; i < G.size(); i++) {
+		Node& v1 = G[i];
 		for (int j = 0; j < v1.degree(); j++) {
 			Node& v2 = v1[j].getOtherEnd(v1);
 			sumSpin += v1.getSpin() * v2.getSpin();
 		}
 	}
-	return getJ() * sumSpin * 0.5 / pG->size();
+	return getJ() * sumSpin * 0.5 / G.size();
 }
 
 double avg(double* pV, const int nV) {

@@ -15,6 +15,10 @@
 		EB2B714510EA94F2006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
 		EB2B71B410EC4445006C32D5 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
 		EB2B71B510EC4445006C32D5 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
+		EB34041C10FEAFFB00F16B12 /* spheretest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB34041B10FEAFFB00F16B12 /* spheretest.cpp */; };
+		EB34042710FEB7E700F16B12 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
+		EB34042810FEB7FA00F16B12 /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB81A6BB10F7CFD70056EC81 /* Surface.cpp */; };
+		EB34042910FEB80300F16B12 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
 		EB45DBB210EDAFDD002D889B /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
 		EB45DBBC10EE7CC4002D889B /* Simul.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB45DBBB10EE7CC4002D889B /* Simul.cpp */; };
 		EB45DBEA10EFC303002D889B /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
@@ -54,6 +58,8 @@
 		EB2B713110EA93B8006C32D5 /* recttest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = recttest.cpp; path = test/recttest.cpp; sourceTree = "<group>"; };
 		EB2B71B210EC4445006C32D5 /* tezuka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tezuka.cpp; path = src/tezuka.cpp; sourceTree = "<group>"; };
 		EB2B71B310EC4445006C32D5 /* tezuka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tezuka.h; path = src/tezuka.h; sourceTree = "<group>"; };
+		EB34041410FEAFBF00F16B12 /* spheretest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = spheretest; path = build/Debug/spheretest; sourceTree = "<group>"; };
+		EB34041B10FEAFFB00F16B12 /* spheretest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spheretest.cpp; path = test/spheretest.cpp; sourceTree = "<group>"; };
 		EB45DB9710EDA509002D889B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EB45DBBA10EE7CC4002D889B /* Simul.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Simul.h; path = src/Simul.h; sourceTree = "<group>"; };
 		EB45DBBB10EE7CC4002D889B /* Simul.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Simul.cpp; path = src/Simul.cpp; sourceTree = "<group>"; };
@@ -86,6 +92,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EB2B712810EA937B006C32D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB34041210FEAFBF00F16B12 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,6 +168,7 @@
 				EB45DBE610EFC2ED002D889B /* swendsentest */,
 				EB45DD1210F13C99002D889B /* simultest */,
 				EB8DBC0C10F2C45C00DE3109 /* randtest */,
+				EB34041410FEAFBF00F16B12 /* spheretest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +190,7 @@
 				EB45DBD110EFC2C2002D889B /* swendsentest.cpp */,
 				EB2B713110EA93B8006C32D5 /* recttest.cpp */,
 				EB8DBC1310F2C47E00DE3109 /* randtest.cpp */,
+				EB34041B10FEAFFB00F16B12 /* spheretest.cpp */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -231,6 +246,22 @@
 			name = recttest;
 			productName = recttest;
 			productReference = EB2B712A10EA937B006C32D5 /* recttest */;
+			productType = "com.apple.product-type.tool";
+		};
+		EB34041310FEAFBF00F16B12 /* spheretest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB34041A10FEAFDE00F16B12 /* Build configuration list for PBXNativeTarget "spheretest" */;
+			buildPhases = (
+				EB34041110FEAFBF00F16B12 /* Sources */,
+				EB34041210FEAFBF00F16B12 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = spheretest;
+			productName = spheretest;
+			productReference = EB34041410FEAFBF00F16B12 /* spheretest */;
 			productType = "com.apple.product-type.tool";
 		};
 		EB45DBE510EFC2ED002D889B /* swendsentest */ = {
@@ -299,6 +330,7 @@
 				EB45DBE510EFC2ED002D889B /* swendsentest */,
 				EB45DD1110F13C99002D889B /* simultest */,
 				EB8DBC0B10F2C45C00DE3109 /* randtest */,
+				EB34041310FEAFBF00F16B12 /* spheretest */,
 			);
 		};
 /* End PBXProject section */
@@ -333,6 +365,17 @@
 				EB2B713210EA93B8006C32D5 /* recttest.cpp in Sources */,
 				EB2B714510EA94F2006C32D5 /* Graph.cpp in Sources */,
 				EB2B71B510EC4445006C32D5 /* tezuka.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB34041110FEAFBF00F16B12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB34041C10FEAFFB00F16B12 /* spheretest.cpp in Sources */,
+				EB34042710FEB7E700F16B12 /* Graph.cpp in Sources */,
+				EB34042810FEB7FA00F16B12 /* Surface.cpp in Sources */,
+				EB34042910FEB80300F16B12 /* tezuka.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +528,36 @@
 			};
 			name = Release;
 		};
+		EB34041610FEAFC000F16B12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = spheretest;
+			};
+			name = Debug;
+		};
+		EB34041710FEAFC000F16B12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = spheretest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		EB45DBE810EFC2EE002D889B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -610,6 +683,15 @@
 			buildConfigurations = (
 				EB2B712C10EA937C006C32D5 /* Debug */,
 				EB2B712D10EA937C006C32D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB34041A10FEAFDE00F16B12 /* Build configuration list for PBXNativeTarget "spheretest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB34041610FEAFC000F16B12 /* Debug */,
+				EB34041710FEAFC000F16B12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

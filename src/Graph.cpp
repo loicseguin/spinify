@@ -53,6 +53,14 @@ void Node::setStatus(Status s) { status = s; }
 
 Status Node::getStatus() { return status; }
 
+double* Node::getCoords() { return coords; }
+
+void Node::setCoords(double x, double y, double z) {
+	coords[0] = x;
+	coords[1] = y;
+	coords[2] = z;
+}
+
 
 Edge::Edge(Node& n, Node& m, int name) {
 	status = notVisited;
@@ -159,3 +167,4 @@ void Graph::resetStatus() {
 	for (unsigned int i = 0; i < size(); i++)
 		nodes[i]->setStatus(notVisited);
 }
+
