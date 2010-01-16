@@ -23,9 +23,10 @@
  *
  */
 
-#include "../src/Graph.h"
 #include <iostream>
 #include <iomanip>
+#include "../src/Graph.h"
+#include "../src/Point3D.h"
 
 using namespace std;
 
@@ -103,9 +104,9 @@ int main(void) {
 	cout << endl;
 	
 	G[0].setCoords(3.5, -12.325);
-	double* pts = G[0].getCoords();
-	cout << "Coordinates of node " << 0 << ": (" << *pts << ", "
-		 << *(pts + 1) <<")" << endl;
+	Point3D& pts = G[0].getCoords();
+	cout << "Coordinates of node " << 0 << ": (" << pts[0] << ", "
+		 << pts[1] <<")" << endl;
 	
 	
 	return 0;

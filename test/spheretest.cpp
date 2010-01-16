@@ -13,7 +13,7 @@
 #include "../src/Surface.h"
 #include <fstream>
 #include <string>
-
+#include "../src/Point3D.h"
 
 using namespace std;
 
@@ -21,7 +21,9 @@ using namespace std;
 int main (void) {
 	Graph G;
 	Sphere S;
-	S.randNodes(G, 8000);
+	S.randNodes(G, 200);
+	
+	cout << "Minimum distance: " << S.minDistance(G) << endl;
 	
 	string fileName;
 	fileName = "/Users/loic/Projects/spinify/spinify/test/sphereNodes.py";
@@ -32,9 +34,9 @@ int main (void) {
 			<< "data = np.array([";
 	
 	for (int i = 0; i < G.size(); i++) {
-		double* pts = G[i].getCoords();
-		outFile << "[" << *pts << ", " << *(pts + 1) << ", "
-				<< *(pts + 2) << "],\n";
+		Point3D& pts = G[i].getCoords();
+		outFile << "[" << pts[0] << ", " << pts[1] << ", "
+		<< pts[2] << "],\n";
 	}
 	
 	outFile << "])\n"

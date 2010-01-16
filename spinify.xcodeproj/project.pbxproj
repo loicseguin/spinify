@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB02ADF610FFBF77007A0422 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
+		EB02ADF710FFBF77007A0422 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
+		EB02ADF810FFC0B0007A0422 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
+		EB02AE581100CF93007A0422 /* point3dtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02AE571100CF93007A0422 /* point3dtest.cpp */; };
+		EB02AE791100D756007A0422 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
 		EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */; };
 		EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
 		EB2B6E7410E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
@@ -48,6 +53,10 @@
 
 /* Begin PBXFileReference section */
 		8DD76F6C0486A84900D96B5E /* spinify */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spinify; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB02ADF410FFBF77007A0422 /* Point3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Point3D.h; path = src/Point3D.h; sourceTree = "<group>"; };
+		EB02ADF510FFBF77007A0422 /* Point3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Point3D.cpp; path = src/Point3D.cpp; sourceTree = "<group>"; };
+		EB02AE501100CF67007A0422 /* point3dtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = point3dtest; path = build/Debug/point3dtest; sourceTree = "<group>"; };
+		EB02AE571100CF93007A0422 /* point3dtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = point3dtest.cpp; path = test/point3dtest.cpp; sourceTree = "<group>"; };
 		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };
 		EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = src/Graph.cpp; sourceTree = "<group>"; };
@@ -58,7 +67,7 @@
 		EB2B713110EA93B8006C32D5 /* recttest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = recttest.cpp; path = test/recttest.cpp; sourceTree = "<group>"; };
 		EB2B71B210EC4445006C32D5 /* tezuka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tezuka.cpp; path = src/tezuka.cpp; sourceTree = "<group>"; };
 		EB2B71B310EC4445006C32D5 /* tezuka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tezuka.h; path = src/tezuka.h; sourceTree = "<group>"; };
-		EB34041410FEAFBF00F16B12 /* spheretest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = spheretest; path = build/Debug/spheretest; sourceTree = "<group>"; };
+		EB34041410FEAFBF00F16B12 /* spheretest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spheretest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB34041B10FEAFFB00F16B12 /* spheretest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = spheretest.cpp; path = test/spheretest.cpp; sourceTree = "<group>"; };
 		EB45DB9710EDA509002D889B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		EB45DBBA10EE7CC4002D889B /* Simul.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Simul.h; path = src/Simul.h; sourceTree = "<group>"; };
@@ -78,6 +87,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB02AE4E1100CF67007A0422 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -149,6 +165,8 @@
 				EB2B6EAF10E1802E006C32D5 /* main.cpp */,
 				EB2B6E7110E1770C006C32D5 /* Graph.cpp */,
 				EB2B6E7210E1770C006C32D5 /* Graph.h */,
+				EB02ADF410FFBF77007A0422 /* Point3D.h */,
+				EB02ADF510FFBF77007A0422 /* Point3D.cpp */,
 				EB45DBBB10EE7CC4002D889B /* Simul.cpp */,
 				EB45DBBA10EE7CC4002D889B /* Simul.h */,
 				EB81A6BB10F7CFD70056EC81 /* Surface.cpp */,
@@ -169,6 +187,7 @@
 				EB45DD1210F13C99002D889B /* simultest */,
 				EB8DBC0C10F2C45C00DE3109 /* randtest */,
 				EB34041410FEAFBF00F16B12 /* spheretest */,
+				EB02AE501100CF67007A0422 /* point3dtest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,11 +205,12 @@
 			children = (
 				EB8DBC7410F2F2AB00DE3109 /* Makefile */,
 				EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */,
-				EB45DD1910F13CBE002D889B /* simultest.cpp */,
-				EB45DBD110EFC2C2002D889B /* swendsentest.cpp */,
+				EB02AE571100CF93007A0422 /* point3dtest.cpp */,
 				EB2B713110EA93B8006C32D5 /* recttest.cpp */,
 				EB8DBC1310F2C47E00DE3109 /* randtest.cpp */,
+				EB45DD1910F13CBE002D889B /* simultest.cpp */,
 				EB34041B10FEAFFB00F16B12 /* spheretest.cpp */,
+				EB45DBD110EFC2C2002D889B /* swendsentest.cpp */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -214,6 +234,22 @@
 			productInstallPath = "$(HOME)/bin";
 			productName = spinify;
 			productReference = 8DD76F6C0486A84900D96B5E /* spinify */;
+			productType = "com.apple.product-type.tool";
+		};
+		EB02AE4F1100CF67007A0422 /* point3dtest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB02AE561100CF86007A0422 /* Build configuration list for PBXNativeTarget "point3dtest" */;
+			buildPhases = (
+				EB02AE4D1100CF67007A0422 /* Sources */,
+				EB02AE4E1100CF67007A0422 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = point3dtest;
+			productName = point3dtest;
+			productReference = EB02AE501100CF67007A0422 /* point3dtest */;
 			productType = "com.apple.product-type.tool";
 		};
 		EB2B6E0110E1624E006C32D5 /* graphtest */ = {
@@ -331,6 +367,7 @@
 				EB45DD1110F13C99002D889B /* simultest */,
 				EB8DBC0B10F2C45C00DE3109 /* randtest */,
 				EB34041310FEAFBF00F16B12 /* spheretest */,
+				EB02AE4F1100CF67007A0422 /* point3dtest */,
 			);
 		};
 /* End PBXProject section */
@@ -345,6 +382,16 @@
 				EB2B71B410EC4445006C32D5 /* tezuka.cpp in Sources */,
 				EB45DBBC10EE7CC4002D889B /* Simul.cpp in Sources */,
 				EB81A6BC10F7CFD70056EC81 /* Surface.cpp in Sources */,
+				EB02ADF710FFBF77007A0422 /* Point3D.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB02AE4D1100CF67007A0422 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB02AE581100CF93007A0422 /* point3dtest.cpp in Sources */,
+				EB02AE791100D756007A0422 /* Point3D.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +402,7 @@
 				EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */,
 				EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */,
 				EB45DBB210EDAFDD002D889B /* tezuka.cpp in Sources */,
+				EB02ADF810FFC0B0007A0422 /* Point3D.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +424,7 @@
 				EB34042710FEB7E700F16B12 /* Graph.cpp in Sources */,
 				EB34042810FEB7FA00F16B12 /* Surface.cpp in Sources */,
 				EB34042910FEB80300F16B12 /* tezuka.cpp in Sources */,
+				EB02ADF610FFBF77007A0422 /* Point3D.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +514,36 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		EB02AE521100CF68007A0422 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = point3dtest;
+			};
+			name = Debug;
+		};
+		EB02AE531100CF68007A0422 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = point3dtest;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -665,6 +744,15 @@
 			buildConfigurations = (
 				1DEB923608733DC60010E9CD /* Debug */,
 				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB02AE561100CF86007A0422 /* Build configuration list for PBXNativeTarget "point3dtest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB02AE521100CF68007A0422 /* Debug */,
+				EB02AE531100CF68007A0422 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

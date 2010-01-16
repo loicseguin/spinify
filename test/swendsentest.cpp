@@ -33,7 +33,7 @@ int main (int argc, char * const argv[]) {
 	int W = 40;
 	G.initRect(L, W);
 	G.randSpin();
-	Simul S(&G);
+	Simul S(G);
 	//S.setParams(0.001, -1);
 	//prGraph(&G, L, W);
 	S.thermalize(1000);

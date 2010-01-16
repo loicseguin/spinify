@@ -53,7 +53,7 @@ void Node::setStatus(Status s) { status = s; }
 
 Status Node::getStatus() { return status; }
 
-double* Node::getCoords() { return coords; }
+Point3D& Node::getCoords() { return coords; }
 
 void Node::setCoords(double x, double y, double z) {
 	coords[0] = x;

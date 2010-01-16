@@ -16,7 +16,7 @@ test/recttest
 test/simultest
 test/swendsentest
 test/spheretest
-
+test/point3dtest
 
 syntax: regexp
 ^build/
