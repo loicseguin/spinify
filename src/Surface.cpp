@@ -7,11 +7,12 @@
  *
  */
 
+#include <cmath>
 #include "Surface.h"
 #include "tezuka.h"
-#include <cmath>
+#include "Point3D.h"
 
-const int Sphere::randNodes(Graph& G, int N) {
+const int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
 	int curIndex = G.size() - 1;
 	int counter = 0;
 	
@@ -32,3 +33,46 @@ const int Sphere::randNodes(Graph& G, int N) {
 	return counter;
 }
 
+void Sphere::repulse(Graph& G) {
+	for (int i = 0; i < G.size(); i++){
+		Point3D force(0);
+		Point3D& iCoords = G[i].getCoords();
+		for(int j = 0; j < G.size(); j++) {
+			if (j == i)
+				continue;
+			Point3D& jCoords = G[j].getCoords();
+			double d = distance(iCoords, jCoords);
+			if (d > 0.5)
+				continue;
+			Point3D temp = (iCoords - jCoords).divide(d*d*d);
+			force = force + temp;
+		}
+		force.divide(10000);
+		iCoords = force + iCoords;
+		iCoords.normalize();
+	}
+	return;
+}
+
+double Sphere::distance(Point3D& a, Point3D& b) {
+	return (a - b).norm();
+}
+
+const int Sphere::randNodes(Graph& G, int N) {
+	int counter = uniform(G, N);
+	for (int i = 0; i < 1000; i++)
+		repulse(G);
+	return counter;
+}
+
+double Sphere::minDistance(Graph& G) {
+	double min = 2.;
+	for (int i = 0; i < G.size(); i++) {
+		for (int j = i + 1; j < G.size(); j++) {
+			double temp = distance(G[i].getCoords(), G[j].getCoords());
+			if (temp < min)
+				min = temp;
+		}
+	}
+	return min;
+}

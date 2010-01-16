@@ -11,9 +11,12 @@ tests:
 	cd test && $(MAKE) all
 
 
-.PHONY: clean
+.PHONY: clean cleanall
+
+cleanall:
+	cd src && $(MAKE) cleanall
+	cd test && $(MAKE) cleanall
 
 clean:
 	cd src && $(MAKE) clean
 	cd test && $(MAKE) clean
-
