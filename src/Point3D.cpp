@@ -38,6 +38,7 @@ double& Point3D::operator[](int i) {
 }
 
 double Point3D::norm() { return sqrt(x*x + y*y + z*z); }
+double Point3D::normSq() { return x*x + y*y + z*z; }
 
 void Point3D::normalize() {
 	double n = norm();

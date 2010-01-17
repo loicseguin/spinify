@@ -29,6 +29,7 @@ class Sphere/*: public Surface*/ {
 	const int uniform(Graph& G, int N);
 	void repulse(Graph& G);
 	double distance(Point3D& a, Point3D& b);
+	double distanceSq(Point3D& a, Point3D& b);
 public:
 	const int randNodes(Graph& G, int N = 1);
 	double minDistance(Graph& G);

@@ -1,5 +1,5 @@
 export CXX = g++
-export CFLAGS = -Wall -g -O2
+export CFLAGS = -Wall -O3
 export CXXFLAGS = $(CFLAGS)
 
 all: spinify tests

@@ -19,6 +19,7 @@ public:
 	Point3D(double xx = 0, double yy = 0, double zz = 0);
 	double& operator[](int i);
 	double norm();
+	double normSq();
 	void normalize();
 	double sum();
 	Point3D divide(double q);
