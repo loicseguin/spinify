@@ -8,6 +8,7 @@
  */
 
 #include <cmath>
+#include <iostream>
 #include "Surface.h"
 #include "tezuka.h"
 #include "Point3D.h"
@@ -34,23 +35,35 @@ const int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
 }
 
 void Sphere::repulse(Graph& G) {
-	for (int i = 0; i < G.size(); i++){
-		Point3D force(0);
-		Point3D& iCoords = G[i].getCoords();
-		for(int j = 0; j < G.size(); j++) {
-			if (j == i)
-				continue;
-			Point3D& jCoords = G[j].getCoords();
-			double d = distance(iCoords, jCoords);
-			if (d > 0.5)
-				continue;
-			Point3D temp = (iCoords - jCoords).divide(d*d*d);
-			force = force + temp;
+	const double expectedRadius = 2./sqrt(G.size());
+	const double range = 10 * expectedRadius;
+	const double objectiveDist = 4./sqrt(G.size());
+	double minDist = 0.;
+	int counter = 0;
+	
+	while ((objectiveDist - minDist) / objectiveDist > 0.20) {
+		for (int i = 0; i < G.size(); i++){
+			Point3D force(0);
+			Point3D& iCoords = G[i].getCoords();
+			for(int j = 0; j < G.size(); j++) {
+				if (j == i)
+					continue;
+				Point3D& jCoords = G[j].getCoords();
+				double dSq = distanceSq(iCoords, jCoords);
+				if (dSq > range)
+					continue;
+				double d = distance(iCoords, jCoords);
+				Point3D temp = (iCoords - jCoords).divide(dSq*d);
+				force = force + temp;
+			}
+			force.divide(G.size() * 10);
+			iCoords = force + iCoords;
+			iCoords.normalize();
 		}
-		force.divide(10000);
-		iCoords = force + iCoords;
-		iCoords.normalize();
+		counter++;
+		minDist = minDistance(G);
 	}
+	std::cout << "counter: " << counter << std::endl;
 	return;
 }
 
@@ -58,10 +71,13 @@ double Sphere::distance(Point3D& a, Point3D& b) {
 	return (a - b).norm();
 }
 
+double Sphere::distanceSq(Point3D& a, Point3D& b) {
+	return (a - b).normSq();
+}
+
 const int Sphere::randNodes(Graph& G, int N) {
 	int counter = uniform(G, N);
-	for (int i = 0; i < 1000; i++)
-		repulse(G);
+	repulse(G);
 	return counter;
 }
 

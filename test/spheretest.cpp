@@ -9,10 +9,11 @@
 
 
 #include <iostream>
-#include "../src/Graph.h"
-#include "../src/Surface.h"
 #include <fstream>
 #include <string>
+#include <cmath>
+#include "../src/Graph.h"
+#include "../src/Surface.h"
 #include "../src/Point3D.h"
 
 using namespace std;
@@ -21,9 +22,10 @@ using namespace std;
 int main (void) {
 	Graph G;
 	Sphere S;
-	S.randNodes(G, 200);
+	S.randNodes(G, 1000);
 	
 	cout << "Minimum distance: " << S.minDistance(G) << endl;
+	cout << "  (Objective was: " << 4./sqrt(G.size())<< ")\n";
 	
 	string fileName;
 	fileName = "/Users/loic/Projects/spinify/spinify/test/sphereNodes.py";
