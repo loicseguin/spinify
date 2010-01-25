@@ -6,6 +6,7 @@ all: spinify tests
 
 spinify:
 	cd src && $(MAKE) all
+	cd contrib/qhull-2010.1/src && $(MAKE)
 
 tests:
 	cd test && $(MAKE) all

@@ -12,6 +12,11 @@
 		EB02ADF810FFC0B0007A0422 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
 		EB02AE581100CF93007A0422 /* point3dtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02AE571100CF93007A0422 /* point3dtest.cpp */; };
 		EB02AE791100D756007A0422 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
+		EB1577FD110CD53E00BBF178 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
+		EB1577FE110CD54700BBF178 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
+		EB1577FF110CD55300BBF178 /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB81A6BB10F7CFD70056EC81 /* Surface.cpp */; };
+		EB157805110CD58300BBF178 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
+		EB157882110D1B4C00BBF178 /* planedelaunaytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */; };
 		EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */; };
 		EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
 		EB2B6E7410E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
@@ -55,8 +60,10 @@
 		8DD76F6C0486A84900D96B5E /* spinify */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spinify; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB02ADF410FFBF77007A0422 /* Point3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Point3D.h; path = src/Point3D.h; sourceTree = "<group>"; };
 		EB02ADF510FFBF77007A0422 /* Point3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Point3D.cpp; path = src/Point3D.cpp; sourceTree = "<group>"; };
-		EB02AE501100CF67007A0422 /* point3dtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = point3dtest; path = build/Debug/point3dtest; sourceTree = "<group>"; };
+		EB02AE501100CF67007A0422 /* point3dtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = point3dtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB02AE571100CF93007A0422 /* point3dtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = point3dtest.cpp; path = test/point3dtest.cpp; sourceTree = "<group>"; };
+		EB1577F4110CD34700BBF178 /* planedelaunaytest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = planedelaunaytest; path = build/Debug/planedelaunaytest; sourceTree = "<group>"; };
+		EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = planedelaunaytest.cpp; path = test/planedelaunaytest.cpp; sourceTree = "<group>"; };
 		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };
 		EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = src/Graph.cpp; sourceTree = "<group>"; };
@@ -94,6 +101,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EB02AE4E1100CF67007A0422 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB1577F2110CD34700BBF178 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -188,6 +202,7 @@
 				EB8DBC0C10F2C45C00DE3109 /* randtest */,
 				EB34041410FEAFBF00F16B12 /* spheretest */,
 				EB02AE501100CF67007A0422 /* point3dtest */,
+				EB1577F4110CD34700BBF178 /* planedelaunaytest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,6 +220,7 @@
 			children = (
 				EB8DBC7410F2F2AB00DE3109 /* Makefile */,
 				EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */,
+				EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */,
 				EB02AE571100CF93007A0422 /* point3dtest.cpp */,
 				EB2B713110EA93B8006C32D5 /* recttest.cpp */,
 				EB8DBC1310F2C47E00DE3109 /* randtest.cpp */,
@@ -250,6 +266,22 @@
 			name = point3dtest;
 			productName = point3dtest;
 			productReference = EB02AE501100CF67007A0422 /* point3dtest */;
+			productType = "com.apple.product-type.tool";
+		};
+		EB1577F3110CD34700BBF178 /* planedelaunaytest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB1577FA110CD36600BBF178 /* Build configuration list for PBXNativeTarget "planedelaunaytest" */;
+			buildPhases = (
+				EB1577F1110CD34700BBF178 /* Sources */,
+				EB1577F2110CD34700BBF178 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = planedelaunaytest;
+			productName = planedelaunaytest;
+			productReference = EB1577F4110CD34700BBF178 /* planedelaunaytest */;
 			productType = "com.apple.product-type.tool";
 		};
 		EB2B6E0110E1624E006C32D5 /* graphtest */ = {
@@ -368,6 +400,7 @@
 				EB8DBC0B10F2C45C00DE3109 /* randtest */,
 				EB34041310FEAFBF00F16B12 /* spheretest */,
 				EB02AE4F1100CF67007A0422 /* point3dtest */,
+				EB1577F3110CD34700BBF178 /* planedelaunaytest */,
 			);
 		};
 /* End PBXProject section */
@@ -392,6 +425,18 @@
 			files = (
 				EB02AE581100CF93007A0422 /* point3dtest.cpp in Sources */,
 				EB02AE791100D756007A0422 /* Point3D.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB1577F1110CD34700BBF178 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB1577FD110CD53E00BBF178 /* Graph.cpp in Sources */,
+				EB1577FE110CD54700BBF178 /* Point3D.cpp in Sources */,
+				EB1577FF110CD55300BBF178 /* Surface.cpp in Sources */,
+				EB157805110CD58300BBF178 /* tezuka.cpp in Sources */,
+				EB157882110D1B4C00BBF178 /* planedelaunaytest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +588,36 @@
 				INSTALL_PATH = /usr/local/bin;
 				PREBINDING = NO;
 				PRODUCT_NAME = point3dtest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		EB1577F6110CD34800BBF178 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = planedelaunaytest;
+			};
+			name = Debug;
+		};
+		EB1577F7110CD34800BBF178 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = planedelaunaytest;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -753,6 +828,15 @@
 			buildConfigurations = (
 				EB02AE521100CF68007A0422 /* Debug */,
 				EB02AE531100CF68007A0422 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB1577FA110CD36600BBF178 /* Build configuration list for PBXNativeTarget "planedelaunaytest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB1577F6110CD34800BBF178 /* Debug */,
+				EB1577F7110CD34800BBF178 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

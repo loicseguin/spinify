@@ -1,0 +1,5 @@
+This is a stripped down version of qhull. The documentation,
+experimental C++ and Virtual C++ stuff has been removed.
+
+You can find the complete version of qhull at the www.qhull.org
+website. See COPYING.txt for details.

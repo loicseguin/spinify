@@ -46,6 +46,14 @@ class Simul {
 	 *
 	 * setParams() set the temperature and the interaction coefficient.
 	 *
+	 * During a simulation, there are many different quantities that can
+	 * be measured. One of them is the internal energy per spin
+	 *     \[u = \frac{1}{n}\sum_{<i,j>} s_i s_j\]
+	 * where the sum runs over all edges <i,j>. This quantity is
+	 * measured by measureE(). findDecorrelTime() is used to find how
+	 * many swendsen() iterations are needed between every measure to
+	 * ensure that the measures are statistically independent.
+	 *
 	 */
 	Graph& G;
 	void swendsen();

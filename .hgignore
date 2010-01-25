@@ -17,7 +17,15 @@ test/simultest
 test/swendsentest
 test/spheretest
 test/point3dtest
+test/planedelaunaytest
+qconvex
+qdelaunay
+qhull
+qhalf
+qvoronoi
+rbox
+*.py
+*.htm
 
 syntax: regexp
 ^build/
-

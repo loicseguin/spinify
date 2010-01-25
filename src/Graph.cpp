@@ -23,6 +23,8 @@ Node::~Node() {
 
 int Node::getID() { return idnum; }
 
+void Node::setID(int n) { idnum = n; }
+
 void Node::setSpin(int sp) {
 	if(sp == -1 || sp == 1) {
 		spin = sp;
@@ -116,6 +118,11 @@ void Graph::addNode(int N) {
 
 void Graph::addEdge(Node& n, Node& m) {
 	static int j = 0;
+	for (int i = 0; i < n.degree(); i++) {
+		if (&(n[i].getOtherEnd(n)) == &m) {
+			return; // Edge is already in the graph
+		}
+	}
 	Edge* pE = new Edge(n, m, j++);
 	edges.push_back(pE);
 	n.addNghbor(pE);

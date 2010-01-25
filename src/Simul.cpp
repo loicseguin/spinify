@@ -104,8 +104,6 @@ int Simul::findDecorrelTime(double (Simul::*measure)()) {
 	
 	avgX = avg(X, decorrelIter);
 	avgX2 = avg(X2, decorrelIter);
-	// std::cout << "avgX = " << avgX << std::endl;
-	// std::cout << "avgX2 = " << avgX2 << std::endl;
 	
 	int k;
 	for (k = 0; C_k >= correlTreshold; k++) {
