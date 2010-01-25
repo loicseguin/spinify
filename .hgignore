@@ -1,6 +1,7 @@
 syntax: glob
 .DS_Store
 *.o
+*.a
 _*_
 .depend
 spinify
