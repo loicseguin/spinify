@@ -13,26 +13,22 @@
 
 #include "Graph.h"
 
-/*
- * Template for Surface:
- *
- *	class Surface {
- *		double rangeU[2];
- *		double rangeV[2];
- *	public:
- *		const in randNodes(Graph& G, int N = 1)
- *	};
- *
- */
 
-class Sphere/*: public Surface*/ {
+class Sphere {
 	const int uniform(Graph& G, int N);
 	void repulse(Graph& G);
 	double distance(Point3D& a, Point3D& b);
 	double distanceSq(Point3D& a, Point3D& b);
 public:
 	const int randNodes(Graph& G, int N = 1);
+	void delaunay(Graph& G);
 	double minDistance(Graph& G);
 };
+
+class Plane {
+public:
+	void delaunay(Graph& G);
+};
+
 
 #endif

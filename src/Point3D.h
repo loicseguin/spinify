@@ -11,6 +11,28 @@
 #define POINT3D_H
 
 class Point3D {
+	/*
+	 * A Point3D is just a three dimensional vector. Coordinates are
+	 * accessed by the subscript operator.
+	 *
+	 * Basic methods are implemented such as norm(), which returns the
+	 * norm of the vector and normSq() which returns the square of the norm
+	 * (this function exists because the sqrt() operation in norm() is
+	 * time consumming, and there are many occasions where we are
+	 * actually looking for the square of the norm). sum() returns the
+	 * sum of the elements in the vector.
+	 *
+	 * Addition and subtraction work as usual, i.e., adds and subtract
+	 * component by component. Multiplication also works component by
+	 * component. To multiply or divide the vector by a scalar, divide()
+	 * is the function to use. Of course, it divides by the amount given
+	 * as an argument. Thus, to multiply a vector v by 3, you should
+	 * call:
+	 *     v.divide(1./3.);
+	 *
+	 * normalize() just normalizes the vector.
+	 *
+	 */
 	double x;
 	double y;
 	double z;
@@ -28,5 +50,27 @@ public:
 	Point3D operator*(Point3D pt);
 	Point3D operator=(Point3D pt);
 };
+
+// The following two function take the dot product and the vector
+// product of two Point3D, respectively.
+double dot(Point3D& v1, Point3D& v2);
+Point3D vectorProd(Point3D& v1, Point3D& v2);
+
+
+class Basis {
+	/*
+	 * A basis is a set of three linearly independent vectors of R^3.
+	 * Given a unit vector, GramSchmidt() uses the Gram-Schmidt
+	 * algorithm to find an orthonormal basis containing that vector.
+	 *
+	 */
+	Point3D B[3];
+public:
+	Basis();
+	void GramSchmidt(const Point3D& v1);
+	Point3D& operator[](int i);
+};
+
+
 
 #endif

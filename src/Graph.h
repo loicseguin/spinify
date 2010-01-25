@@ -43,6 +43,10 @@ class Graph {
 	 * argument which is used to reserve memory space for nodes and
 	 * edges pointers.
 	 *
+	 * Note that this class does not work for multigraph. Indeed,
+	 * addEdge() verifies whether the Edge is already present, and if
+	 * it is, it does not add the Edge again.
+	 *
 	 * size() returns the number of Nodes in the graph.
 	 * addNode() add the number of nodes specified as the argument.
 	 * Passing references to two Nodes to addEdge() adds the
@@ -85,12 +89,15 @@ public:
 class Node {
 	/* 
 	 * A node has a spin in {-1, 1}, a numerical identifier, a status
-	 * and a vector of incident Edges.
+	 * and a vector of incident Edges. It also has coordinates which
+	 * are used for nodes on surfaces where the metric is non trivial.
 	 * 
 	 * The Node constructor sets the spin to an invalid value of 0, the
 	 * status to notVisited and admits an argument which sets the idnum.
-	 * If no argument is provided, the idnum defaults to 0. The idnum is
-	 * read by getID().
+	 * If no argument is provided, the idnum defaults to 0. The
+	 * coordinates default to (0,0,0).
+	 *
+	 * The idnum is read by getID().
 	 *
 	 * The spin is set and read by setSpin and getSpin. setSpin
 	 * checks whether or not the argument is valid, if not, it prints
@@ -117,6 +124,8 @@ class Node {
 	 * Status (default value = notVisited) can be stored with
 	 * setStatus(), read with getStatus().
 	 *
+	 * The coordinates are accessed with getCoords() and setCoords().
+	 *
 	 */
 	int spin;
 	int idnum;
@@ -130,6 +139,7 @@ public:
 	~Node();
 	
 	int getID();
+	void setID(int);
 	void setSpin(int);
 	int getSpin();
 	int degree();

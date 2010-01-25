@@ -9,6 +9,9 @@
 
 #include <cmath>
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <list>
 #include "Surface.h"
 #include "tezuka.h"
 #include "Point3D.h"
@@ -38,10 +41,11 @@ void Sphere::repulse(Graph& G) {
 	const double expectedRadius = 2./sqrt(G.size());
 	const double range = 10 * expectedRadius;
 	const double objectiveDist = 4./sqrt(G.size());
+	const double dampingCoeff = G.size() * 4;
 	double minDist = 0.;
 	int counter = 0;
 	
-	while ((objectiveDist - minDist) / objectiveDist > 0.20) {
+	while ((objectiveDist - minDist) / objectiveDist > 0.21) {
 		for (int i = 0; i < G.size(); i++){
 			Point3D force(0);
 			Point3D& iCoords = G[i].getCoords();
@@ -56,7 +60,7 @@ void Sphere::repulse(Graph& G) {
 				Point3D temp = (iCoords - jCoords).divide(dSq*d);
 				force = force + temp;
 			}
-			force.divide(G.size() * 10);
+			force.divide(dampingCoeff);
 			iCoords = force + iCoords;
 			iCoords.normalize();
 		}
@@ -81,6 +85,45 @@ const int Sphere::randNodes(Graph& G, int N) {
 	return counter;
 }
 
+void Sphere::delaunay(Graph& G) {
+	const double expectedRadius = 2./sqrt(G.size());
+	const double range = 10 * expectedRadius;
+	Basis B;
+	for (int i = 0; i < G.size(); i++) {
+		Graph H;
+		int nH = 0;
+		H.addNode();
+		nH++;
+		H[nH - 1].setID(i);
+		H[nH - 1].setCoords(0, 0);
+		Point3D& r = G[i].getCoords();
+		B.GramSchmidt(r);
+		for (int j = 0; j < G.size(); j++) {
+			if (j == i)
+				continue;
+			Point3D& pj = G[j].getCoords();
+			if (distanceSq(r, pj) < range*range) {
+				H.addNode();
+				nH++;
+				H[nH - 1].setID(j);
+				H[nH - 1].setCoords(dot(pj, B[1]), dot(pj, B[2]));
+			}
+		}
+		Plane P;
+		P.delaunay(H);
+		
+		// Add edges in G depending on which edge is present in H
+		for (int j = 0; j < H.size(); j++) {
+			int jID = H[j].getID();
+			for (int k = 0; k < H[j].degree(); k++) {
+				Node& neigh = H[j][k].getOtherEnd(H[j]);
+				int neighID = neigh.getID();
+				G.addEdge(G[jID], G[neighID]);
+			}
+		}
+	}
+}
+
 double Sphere::minDistance(Graph& G) {
 	double min = 2.;
 	for (int i = 0; i < G.size(); i++) {
@@ -91,4 +134,65 @@ double Sphere::minDistance(Graph& G) {
 		}
 	}
 	return min;
+}
+
+void Plane::delaunay(Graph& G) {
+	// Start by writing node coordinates in qhull_data.tmp
+	std::ofstream outFile("qhull_data.tmp");
+	outFile << "2\n" << G.size() << std::endl;
+	for (int i = 0; i < G.size(); i++) {
+		Point3D& iCoords = G[i].getCoords();
+		outFile.precision(14);
+		outFile << iCoords[0] << " " << iCoords[1] << std::endl;
+	}
+	outFile.close();
+	
+	// Call qdelaunay
+	system("~/Projects/spinify/spinify/contrib/qhull-2010.1/src/qdelaunay Qt FN i TO qhull.out < qhull_data.tmp");
+	
+	// Read and process info from qhull.out
+	int n;
+	int facet;
+	std::list<int> facets;
+	std::ifstream inFile("qhull.out");
+	inFile >> n; // n contains number of nodes
+	inFile >> n; // n contains number of facets in which node 0 is
+	for (int i = 0; i < n; i++) {
+		inFile >> facet; // num id of facet
+		facets.push_back(facet);
+	}
+	facets.sort(); //facets ordered from lowest to highest
+	
+	// This does nothing except move the file pointer to the description
+	// of facets.
+	for (int i = 0; i < G.size() - 1; i++) {
+		inFile >> n;
+		for (int j = 0; j < n; j++) {
+			inFile >> facet;
+		}
+	}
+	
+	inFile >> n; // n now contains number of facets
+	//std::cout << "Number of facets: " << n << std::endl;
+	
+	std::list<int>::iterator it;
+	int counter = 0;
+	for (it = facets.begin(); it != facets.end(); it++) {
+		int lineNb = *it;
+		int diff = lineNb - counter;
+		if (diff != 0) {
+			for (int i = 0; i < diff*3; i++) {
+				inFile >> n;
+			}
+		}
+		for (int j = 0; j < 3; j++) {
+			int candidate;
+			inFile >> candidate;
+			if (candidate != 0)
+				G.addEdge(G[0], G[candidate]);
+		}
+		counter = lineNb + 1;
+	}
+	
+	return;
 }

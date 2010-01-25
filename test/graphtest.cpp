@@ -42,6 +42,7 @@ int main(void) {
 	G.addEdge(G[1], G[5]);
 	G.addEdge(G[2], G[4]);
 	G.addEdge(G[4], G[5]);
+	G.addEdge(G[5], G[4]);
 	
 	// Assign some spins and statuses.
 	G[0].setSpin(-1);

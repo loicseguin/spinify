@@ -8,6 +8,7 @@
  */
 
 #include <iostream>
+#include <cmath>
 #include "../src/Point3D.h"
 
 using namespace std;
@@ -40,4 +41,12 @@ int main() {
 	cout << "Point 2 * Point 3 sum: " << (pt2 * pt3).sum() << endl;
 	
 	cout << "Distance between pt1 and pt2: " << (pt1 - pt2).norm() << endl;
+	
+	Basis B;
+	Point3D a(1/sqrt(2),0,1/sqrt(2));
+	B.GramSchmidt(a);
+	cout << "Basis: " << endl;
+	prPoint(B[0]);
+	prPoint(B[1]);
+	prPoint(B[2]);
 }

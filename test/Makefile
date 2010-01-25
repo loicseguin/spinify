@@ -1,6 +1,6 @@
 SRC_DIR = ../src
 
-all: graphtest simultest swendsentest recttest randtest spheretest point3dtest
+all: graphtest simultest swendsentest recttest randtest spheretest point3dtest planedelaunaytest
 
 graphtest: graphtest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^
@@ -21,6 +21,9 @@ spheretest: spheretest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/Surf
 	$(CXX) -o $@ $^
 
 point3dtest: point3dtest.o $(SRC_DIR)/Point3D.o
+	$(CXX) -o $@ $^
+
+planedelaunaytest: planedelaunaytest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/Surface.o $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^
 
 %.o: %.c

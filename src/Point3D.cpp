@@ -10,9 +10,6 @@
 #include <cmath>
 #include "Point3D.h"
 
-//Point3D::Point3D() {
-//	x = y = z = 0.;
-//}
 
 Point3D::Point3D(double xx, double yy, double zz) {
 	x = xx;
@@ -74,3 +71,30 @@ Point3D Point3D::operator=(Point3D pt) {
 	z = pt[2];
 	return *this;
 }
+
+
+double dot(Point3D& v1, Point3D& v2) { return (v1*v2).sum(); }
+
+Point3D vectorProd(Point3D& v1, Point3D& v2) {
+	return Point3D(v1[1]*v2[2] - v1[2]*v2[1],
+				   v1[2]*v2[0] - v1[0]*v2[2],
+				   v1[0]*v2[1] - v1[1]*v2[0]);
+}
+
+
+Basis::Basis() {
+	B[0] = Point3D(1,0,0);
+	B[1] = Point3D(0,1,0);
+	B[2] = Point3D(0,0,1);
+}
+
+void Basis::GramSchmidt(const Point3D& v1) {
+	B[0] = v1;
+	Point3D e1(1,0,0);
+	B[1] = e1 - B[0].divide(1./dot(B[0], e1));
+	B[1].normalize();
+	B[2] = vectorProd(B[0], B[1]);
+	return;
+}
+
+Point3D& Basis::operator[](int i) { return B[i]; }
