@@ -38,17 +38,18 @@ class Point3D {
 	double z;
 public:
 	//Point3D();
-	Point3D(double xx = 0, double yy = 0, double zz = 0);
-	double& operator[](int i);
+	Point3D(const double xx = 0, const double yy = 0, const double zz = 0);
+	double& operator[](const int i);
+	const double& operator[](const int i) const;
 	double norm();
 	double normSq();
 	void normalize();
 	double sum();
-	Point3D divide(double q);
-	Point3D operator+(Point3D pt);
-	Point3D operator-(Point3D pt);
-	Point3D operator*(Point3D pt);
-	Point3D operator=(Point3D pt);
+	Point3D divide(const double q);
+	Point3D operator+(const Point3D& pt) const;
+	Point3D operator-(const Point3D& pt) const;
+	Point3D operator*(const Point3D& pt) const;
+	Point3D& operator=(const Point3D& pt);
 };
 
 // The following two function take the dot product and the vector
@@ -60,14 +61,14 @@ Point3D vectorProd(Point3D& v1, Point3D& v2);
 class Basis {
 	/*
 	 * A basis is a set of three linearly independent vectors of R^3.
-	 * Given a unit vector, GramSchmidt() uses the Gram-Schmidt
-	 * algorithm to find an orthonormal basis containing that vector.
+	 * Given a unit vector, genOrthonormal() uses simple linear algebra
+	 * to find an orthonormal basis containing that vector.
 	 *
 	 */
 	Point3D B[3];
 public:
 	Basis();
-	void GramSchmidt(const Point3D& v1);
+	void genOrthonormal(const Point3D& v1);
 	Point3D& operator[](int i);
 };
 

@@ -2,11 +2,11 @@ export CXX = g++
 export CFLAGS = -Wall -O3
 export CXXFLAGS = $(CFLAGS)
 
-all: spinify tests
-
 spinify:
 	cd src && $(MAKE) all
 	cd contrib/qhull-2010.1/src && $(MAKE)
+
+all: spinify tests
 
 tests:
 	cd test && $(MAKE) all
@@ -15,6 +15,7 @@ tests:
 .PHONY: clean cleanall
 
 cleanall:
+	rm spinify
 	cd src && $(MAKE) cleanall
 	cd test && $(MAKE) cleanall
 

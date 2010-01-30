@@ -11,12 +11,13 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 #include <list>
 #include "Surface.h"
 #include "tezuka.h"
 #include "Point3D.h"
 
-const int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
+int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
 	int curIndex = G.size() - 1;
 	int counter = 0;
 	
@@ -41,7 +42,12 @@ void Sphere::repulse(Graph& G) {
 	const double expectedRadius = 2./sqrt(G.size());
 	const double range = 10 * expectedRadius;
 	const double objectiveDist = 4./sqrt(G.size());
-	const double dampingCoeff = G.size() * 4;
+	
+	// The following damping coefficient is a crude guess based on
+	// a couple of experiments. More thoughts should be put into this.
+	const double dampingCoeff =
+		std::max(pow(G.size(), 1.2915), pow(G.size(), 1.2915) - 10000);
+	
 	double minDist = 0.;
 	int counter = 0;
 	
@@ -71,15 +77,15 @@ void Sphere::repulse(Graph& G) {
 	return;
 }
 
-double Sphere::distance(Point3D& a, Point3D& b) {
+double Sphere::distance(const Point3D& a, const Point3D& b) const {
 	return (a - b).norm();
 }
 
-double Sphere::distanceSq(Point3D& a, Point3D& b) {
+double Sphere::distanceSq(const Point3D& a, const Point3D& b) const {
 	return (a - b).normSq();
 }
 
-const int Sphere::randNodes(Graph& G, int N) {
+int Sphere::randNodes(Graph& G, int N) {
 	int counter = uniform(G, N);
 	repulse(G);
 	return counter;
@@ -97,7 +103,7 @@ void Sphere::delaunay(Graph& G) {
 		H[nH - 1].setID(i);
 		H[nH - 1].setCoords(0, 0);
 		Point3D& r = G[i].getCoords();
-		B.GramSchmidt(r);
+		B.genOrthonormal(r);
 		for (int j = 0; j < G.size(); j++) {
 			if (j == i)
 				continue;
@@ -124,7 +130,7 @@ void Sphere::delaunay(Graph& G) {
 	}
 }
 
-double Sphere::minDistance(Graph& G) {
+double Sphere::minDistance(const Graph& G) const {
 	double min = 2.;
 	for (int i = 0; i < G.size(); i++) {
 		for (int j = i + 1; j < G.size(); j++) {

@@ -7,41 +7,76 @@
 .Dt spinify 1      \" Program name and manual section number 
 .Os Darwin
 .Sh NAME                 \" Section Header - required - don't modify 
-.Nm spinify,
+.Nm spinify
 .\" The following lines are read in generating the apropos(man -k) database. Use only key
 .\" words here as the database is built based on the words here and in the .ND line. 
-.Nm Other_name_for_same_program(),
-.Nm Yet another name for the same program.
+.\".Nm Yet another name for the same program.
 .\" Use .Nm macro to designate other names for the documented program.
-.Nd This line parsed for whatis database.
+.Nd Modelling the Ising model on curved surfaces.
 .Sh SYNOPSIS             \" Section Header - required - don't modify
 .Nm
-.Op Fl abcd              \" [-abcd]
-.Op Fl a Ar path         \" [-a path] 
-.Op Ar file              \" [file]
-.Op Ar                   \" [file ...]
-.Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
-arg2 ...                 \" Arguments
+.\".Op Fl a Ar path         \" [-a path] 
+.\".Op Ar file              \" [file]
+.\".Op Ar                   \" [file ...]
+.\".Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
+.\"arg2 ...                 \" Arguments
+.Op Fl s Ar N
+.Op Fl r Ar N M
+.Op Fl T Ar n m i
+.Op Fl RP
 .Sh DESCRIPTION          \" Section Header - required - don't modify
-Use the .Nm macro to refer to your program throughout the man page like such:
 .Nm
-Underlining is accomplished with the .Ar macro like this:
-.Ar underlined text .
-.Pp                      \" Inserts a space
-A list of items with descriptions:
-.Bl -tag -width -indent  \" Begins a tagged list 
-.It item a               \" Each item preceded by .It macro
-Description of item a
-.It item b
-Description of item b
-.El                      \" Ends the list
+is a simulator for the Ising model on different surfaces. It is able
+to perform simulations on the plane torus as well as on the sphere. 
+When running the program, you must specify exactly one of
+.Fl s
+or
+.Fl r .
+This will make the program run a simulation on the sphere or on the
+plane torus respectively.
 .Pp
-A list of flags and their descriptions:
+Results from the simulation are written to standard output and can be
+redirected to a file of your choice for further analysis of the data.
+Note that this program does no analysis. Only the simulation is
+performed. It it up to the user to analyze the data.
+.Pp
+The following options are available:
 .Bl -tag -width -indent  \" Differs from above in tag removed 
-.It Fl a                 \"-a flag as a list item
-Description of -a flag
-.It Fl b
-Description of -b flag
+.It Fl s Ar N                \"-a flag as a list item
+Specifies that the simulation is done on a spherical lattice with
+.Ar N
+nodes. Only one of
+.Fl s
+and
+.Fl r
+can be specified.
+.It Fl r Ar N M
+Specifies that the simulation is done on a rectangular lattice on a
+plane torus. The rectangular lattice has width
+.Ar N
+and height
+.Ar M .
+Only one of
+.Fl s
+and
+.Fl r
+can be specified.
+.It Fl T Ar n m i
+The simulation will be done at temperatures ranging from
+.Ar n
+to
+.Ar m
+with increments by
+.Ar i
+Kelvin. If
+.Ar i
+is not given, the simulation is done at 50 temperatures. If only
+.Ar n
+is given, the simulation is done for this temperature only.
+.It Fl R
+Raw output of the data
+.It Fl P
+Output data in a Python-friendly way.
 .El                      \" Ends the list
 .Pp
 .\" .Sh ENVIRONMENT      \" May not be needed
@@ -51,13 +86,13 @@ Description of -b flag
 .\" .It Ev ENV_VAR_2
 .\" Description of ENV_VAR_2
 .\" .El                      
-.Sh FILES                \" File used or created by the topic of the man page
-.Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
-.It Pa /usr/share/file_name
-FILE_1 description
-.It Pa /Users/joeuser/Library/really_long_file_name
-FILE_2 description
-.El                      \" Ends the list
+.\".Sh FILES                \" File used or created by the topic of the man page
+.\".Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
+.\".It Pa /usr/share/file_name
+.\"FILE_1 description
+.\".It Pa /Users/joeuser/Library/really_long_file_name
+.\"FILE_2 description
+.\".El                      \" Ends the list
 .\" .Sh DIAGNOSTICS       \" May not be needed
 .\" .Bl -diag
 .\" .It Diagnostic Tag
@@ -68,12 +103,13 @@ FILE_2 description
 .Sh SEE ALSO 
 .\" List links in ascending order by section, alphabetically within a section.
 .\" Please do not reference files that do not exist without filing a bug report
-.Xr a 1 , 
-.Xr b 1 ,
-.Xr c 1 ,
-.Xr a 2 ,
-.Xr b 2 ,
-.Xr a 3 ,
-.Xr b 3 
+.Xr qdelaunay 1
 .\" .Sh BUGS              \" Document known, unremedied bugs 
 .\" .Sh HISTORY           \" Document history if command behaves in a unique manner 
+.Sh Author
+Written by Loic Seguin-C. <loicseguin@gmail.com>
+.Sh Resources
+Main website: http://bitbucket.org/loicseguin/spinify
+.Sh Copying
+Copyright (C) 2009-2010 Loic Seguin-C. Free use of this software is
+granted under the terms of the BSD license.

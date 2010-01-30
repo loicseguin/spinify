@@ -15,14 +15,14 @@
 
 
 class Sphere {
-	const int uniform(Graph& G, int N);
+	int uniform(Graph& G, const int N);
 	void repulse(Graph& G);
-	double distance(Point3D& a, Point3D& b);
-	double distanceSq(Point3D& a, Point3D& b);
+	double distance(const Point3D& a, const Point3D& b) const;
+	double distanceSq(const Point3D& a, const Point3D& b) const;
 public:
-	const int randNodes(Graph& G, int N = 1);
+	int randNodes(Graph& G, const int N = 1);
 	void delaunay(Graph& G);
-	double minDistance(Graph& G);
+	double minDistance(const Graph& G) const;
 };
 
 class Plane {

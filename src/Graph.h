@@ -75,11 +75,12 @@ public:
 	Graph(int N = 10);
 	~Graph();
 	
-	int size();
-	void addNode(int N = 1);
+	int size() const;
+	void addNode(const int N = 1);
 	void addEdge(Node& n, Node& m);
-	Node& operator[](int i);
-	void initRect(int L = 10, int W = 10);
+	Node& operator[](const int i);
+	Node& operator[](const int i) const;
+	void initRect(const int L = 10, const int W = 10);
 	void randSpin();
 	void resetStatus();
 };
@@ -139,15 +140,15 @@ public:
 	~Node();
 	
 	int getID();
-	void setID(int);
-	void setSpin(int);
+	void setID(const int);
+	void setSpin(const int);
 	int getSpin();
 	int degree();
-	Edge& operator[](int i);
-	void setStatus(Status);
+	Edge& operator[](const int i);
+	void setStatus(const Status);
 	Status getStatus();
 	Point3D& getCoords();
-	void setCoords(double x, double y, double z = 0);
+	void setCoords(const double x, const double y, const double z = 0);
 	
 	friend void Graph::addEdge(Node& n, Node& m);
 };
@@ -180,9 +181,9 @@ public:
 	Edge(Node& n, Node& m, int idnum = 0);
 	
 	int getID();
-	void setStatus(Status);
+	void setStatus(const Status);
 	Status getStatus();
-	Node& getOtherEnd(Node&);
+	Node& getOtherEnd(const Node&);
 	Node& getV1() {return *v1;}
 	Node& getV2() {return *v2;}
 };
