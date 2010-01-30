@@ -86,7 +86,7 @@ int main (void) {
 			for (int k = 0; k < 3; k++) {
 				outFile << "[" << iCoords[k] << ", " << jCoords[k] << "],";
 			}
-			outFile << ")\n";
+			outFile << "'b' )\n";
 		}
 	}
 	

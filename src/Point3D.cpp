@@ -11,13 +11,27 @@
 #include "Point3D.h"
 
 
-Point3D::Point3D(double xx, double yy, double zz) {
-	x = xx;
-	y = yy;
-	z = zz;
+Point3D::Point3D(const double xx, const double yy, const double zz) :
+	x(xx), y(yy), z(zz) {}
+
+double& Point3D::operator[](const int i) {
+	switch (i) {
+		case 0:
+			return x;
+			break;
+		case 1:
+			return y;
+			break;
+		case 2:
+			return z;
+			break;
+		default:
+			return x;
+			break;
+	}
 }
 
-double& Point3D::operator[](int i) {
+const double& Point3D::operator[](const int i) const {
 	switch (i) {
 		case 0:
 			return x;
@@ -46,29 +60,29 @@ void Point3D::normalize() {
 
 double Point3D::sum() { return x + y + z; }
 
-Point3D Point3D::divide(double q) {
+Point3D Point3D::divide(const double q) {
 	x /= q;
 	y /= q;
 	z /= q;
 	return *this;
 }
 
-Point3D Point3D::operator+(Point3D pt) {
-	return Point3D(x + pt[0], y + pt[1], z + pt[2]);
+Point3D Point3D::operator+(const Point3D& pt) const {
+	return Point3D(x + pt.x, y + pt.y, z + pt.z);
 }
 
-Point3D Point3D::operator-(Point3D pt) {
-	return Point3D(x - pt[0], y - pt[1], z - pt[2]);
+Point3D Point3D::operator-(const Point3D& pt) const {
+	return Point3D(x - pt.x, y - pt.y, z - pt.z);
 }
 
-Point3D Point3D::operator*(Point3D pt) {
-	return Point3D(x * pt[0], y * pt[1], z * pt[2]);
+Point3D Point3D::operator*(const Point3D& pt) const {
+	return Point3D(x * pt.x, y * pt.y, z * pt.z);
 }
 
-Point3D Point3D::operator=(Point3D pt) {
-	x = pt[0];
-	y = pt[1];
-	z = pt[2];
+Point3D& Point3D::operator=(const Point3D& pt) {
+	x = pt.x;
+	y = pt.y;
+	z = pt.z;
 	return *this;
 }
 
@@ -88,10 +102,9 @@ Basis::Basis() {
 	B[2] = Point3D(0,0,1);
 }
 
-void Basis::GramSchmidt(const Point3D& v1) {
+void Basis::genOrthonormal(const Point3D& v1) {
 	B[0] = v1;
-	Point3D e1(1,0,0);
-	B[1] = e1 - B[0].divide(1./dot(B[0], e1));
+	B[1] = Point3D(2*v1[1]*v1[2], -v1[0]*v1[2], -v1[0]*v1[1]);
 	B[1].normalize();
 	B[2] = vectorProd(B[0], B[1]);
 	return;

@@ -23,9 +23,9 @@ Node::~Node() {
 
 int Node::getID() { return idnum; }
 
-void Node::setID(int n) { idnum = n; }
+void Node::setID(const int n) { idnum = n; }
 
-void Node::setSpin(int sp) {
+void Node::setSpin(const int sp) {
 	if(sp == -1 || sp == 1) {
 		spin = sp;
 		return;
@@ -42,7 +42,7 @@ int Node::degree() { return edges.size(); }
 
 void Node::addNghbor(Edge* pE) { edges.push_back(pE); }
 
-Edge& Node::operator[](int i) {
+Edge& Node::operator[](const int i) {
 	if (i >= 0 && i < degree())
 		return *(edges[i]);
 	else {
@@ -51,13 +51,13 @@ Edge& Node::operator[](int i) {
 	}
 }
 
-void Node::setStatus(Status s) { status = s; }
+void Node::setStatus(const Status s) { status = s; }
 
 Status Node::getStatus() { return status; }
 
 Point3D& Node::getCoords() { return coords; }
 
-void Node::setCoords(double x, double y, double z) {
+void Node::setCoords(const double x, const double y, const double z) {
 	coords[0] = x;
 	coords[1] = y;
 	coords[2] = z;
@@ -73,11 +73,11 @@ Edge::Edge(Node& n, Node& m, int name) {
 
 int Edge::getID() { return idnum; }
 
-void Edge::setStatus(Status s) { status = s; }
+void Edge::setStatus(const Status s) { status = s; }
 
 Status Edge::getStatus() { return status; }
 
-Node& Edge::getOtherEnd(Node& n) {
+Node& Edge::getOtherEnd(const Node& n) {
 	if (v1 == &n)
 		return *v2;
 	else if (v2 == &n)
@@ -96,19 +96,19 @@ Graph::Graph(int N) {
 }
 
 Graph::~Graph() {
-	for (int i = 0; i < nodes.size(); i++) {
+	for (unsigned int i = 0; i < nodes.size(); i++) {
 		delete nodes[i];
 	}
-	for (int i = 0; i < edges.size(); i++) {
+	for (unsigned int i = 0; i < edges.size(); i++) {
 		delete edges[i];
 	}
 	edges.clear();
 	nodes.clear();
 }
 
-int Graph::size() { return nodes.size(); }
+int Graph::size() const { return nodes.size(); }
 
-void Graph::addNode(int N) {
+void Graph::addNode(const int N) {
 	static int j = 0;
 	for (int i = 0; i < N; i++) {
 		Node* pN = new Node(j++);
@@ -129,7 +129,7 @@ void Graph::addEdge(Node& n, Node& m) {
 	m.addNghbor(pE);
 }
 
-Node& Graph::operator[](int i) {
+Node& Graph::operator[](const int i) {
 	if (i >= 0 && i < size()) {
 		return *(nodes[i]);
 	}
@@ -139,12 +139,22 @@ Node& Graph::operator[](int i) {
 	}
 }
 
-void Graph::initRect(int L, int W) {
+Node& Graph::operator[](const int i) const {
+	if (i >= 0 && i < size()) {
+		return *(nodes[i]);
+	}
+	else {
+		std::cerr << "Error: "<<i<< " is an invalid node index." << std::endl;
+		return *(Node*) 0;
+	}
+}
+
+void Graph::initRect(const int L, const int W) {
 	if (size() != 0) {
-		for (int i = 0; i < nodes.size(); i++) {
+		for (unsigned int i = 0; i < nodes.size(); i++) {
 			delete nodes[i];
 		}
-		for (int i = 0; i < edges.size(); i++) {
+		for (unsigned int i = 0; i < edges.size(); i++) {
 			delete edges[i];
 		}
 		edges.clear();
@@ -171,7 +181,7 @@ void Graph::randSpin() {
 void Graph::resetStatus() {
 	for (unsigned int i = 0; i < edges.size(); i++)
 		edges[i]->setStatus(notVisited);
-	for (unsigned int i = 0; i < size(); i++)
+	for (int i = 0; i < size(); i++)
 		nodes[i]->setStatus(notVisited);
 }
 

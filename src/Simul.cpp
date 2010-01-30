@@ -19,7 +19,7 @@ Simul::Simul(Graph& H) : G(H) {
 	return;
 }
 
-void Simul::thermalize(int n) {
+void Simul::thermalize(const int n) {
 	for (int i = 0; i < n; i++)
 		swendsen();
 	return;
@@ -60,7 +60,7 @@ void Simul::swendsen() {
 	return;
 }
 
-void Simul::setParams(double betaval, int Jval) {
+void Simul::setParams(const double betaval, const int Jval) {
 	params.beta = betaval;
 	params.J = Jval;
 	return;
@@ -83,7 +83,7 @@ double Simul::measureE() {
 	return getJ() * sumSpin * 0.5 / G.size();
 }
 
-double avg(double* pV, const int nV) {
+double avg(const double* pV, const int nV) {
 	double sum = 0;
 	for (int i = 0; i < nV; i++) {
 		sum += pV[i];

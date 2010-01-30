@@ -43,8 +43,12 @@ int main() {
 	cout << "Distance between pt1 and pt2: " << (pt1 - pt2).norm() << endl;
 	
 	Basis B;
+	cout << "Basis: " << endl;
+	prPoint(B[0]);
+	prPoint(B[1]);
+	prPoint(B[2]);
 	Point3D a(1/sqrt(2),0,1/sqrt(2));
-	B.GramSchmidt(a);
+	B.genOrthonormal(a);
 	cout << "Basis: " << endl;
 	prPoint(B[0]);
 	prPoint(B[1]);

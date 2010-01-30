@@ -17,6 +17,7 @@
 		EB1577FF110CD55300BBF178 /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB81A6BB10F7CFD70056EC81 /* Surface.cpp */; };
 		EB157805110CD58300BBF178 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
 		EB157882110D1B4C00BBF178 /* planedelaunaytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */; };
+		EB28CBD81113448000B7C820 /* Output.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB28CBD71113448000B7C820 /* Output.cpp */; };
 		EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */; };
 		EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
 		EB2B6E7410E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
@@ -62,8 +63,10 @@
 		EB02ADF510FFBF77007A0422 /* Point3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Point3D.cpp; path = src/Point3D.cpp; sourceTree = "<group>"; };
 		EB02AE501100CF67007A0422 /* point3dtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = point3dtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB02AE571100CF93007A0422 /* point3dtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = point3dtest.cpp; path = test/point3dtest.cpp; sourceTree = "<group>"; };
-		EB1577F4110CD34700BBF178 /* planedelaunaytest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = planedelaunaytest; path = build/Debug/planedelaunaytest; sourceTree = "<group>"; };
+		EB1577F4110CD34700BBF178 /* planedelaunaytest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = planedelaunaytest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = planedelaunaytest.cpp; path = test/planedelaunaytest.cpp; sourceTree = "<group>"; };
+		EB28CBD61113448000B7C820 /* Output.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Output.h; path = src/Output.h; sourceTree = "<group>"; };
+		EB28CBD71113448000B7C820 /* Output.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Output.cpp; path = src/Output.cpp; sourceTree = "<group>"; };
 		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };
 		EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = src/Graph.cpp; sourceTree = "<group>"; };
@@ -177,16 +180,18 @@
 			children = (
 				EB8DBC7110F2E1CE00DE3109 /* Makefile */,
 				EB2B6EAF10E1802E006C32D5 /* main.cpp */,
-				EB2B6E7110E1770C006C32D5 /* Graph.cpp */,
 				EB2B6E7210E1770C006C32D5 /* Graph.h */,
+				EB2B6E7110E1770C006C32D5 /* Graph.cpp */,
+				EB28CBD61113448000B7C820 /* Output.h */,
+				EB28CBD71113448000B7C820 /* Output.cpp */,
 				EB02ADF410FFBF77007A0422 /* Point3D.h */,
 				EB02ADF510FFBF77007A0422 /* Point3D.cpp */,
-				EB45DBBB10EE7CC4002D889B /* Simul.cpp */,
 				EB45DBBA10EE7CC4002D889B /* Simul.h */,
-				EB81A6BB10F7CFD70056EC81 /* Surface.cpp */,
+				EB45DBBB10EE7CC4002D889B /* Simul.cpp */,
 				EB81A6BA10F7CFD70056EC81 /* Surface.h */,
-				EB2B71B210EC4445006C32D5 /* tezuka.cpp */,
+				EB81A6BB10F7CFD70056EC81 /* Surface.cpp */,
 				EB2B71B310EC4445006C32D5 /* tezuka.h */,
+				EB2B71B210EC4445006C32D5 /* tezuka.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				EB45DBBC10EE7CC4002D889B /* Simul.cpp in Sources */,
 				EB81A6BC10F7CFD70056EC81 /* Surface.cpp in Sources */,
 				EB02ADF710FFBF77007A0422 /* Point3D.cpp in Sources */,
+				EB28CBD81113448000B7C820 /* Output.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

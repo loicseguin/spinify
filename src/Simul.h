@@ -63,9 +63,9 @@ class Simul {
 	} params;
 public:
 	Simul(Graph& H);
-	void thermalize(int n = 500);
-	void setParams(double betaval = squareCriticalBeta,
-				   int Jval = defaultJ);
+	void thermalize(const int n = 500);
+	void setParams(const double betaval = squareCriticalBeta,
+				   const int Jval = defaultJ);
 	double getBeta();
 	int getJ();
 	double measureE();

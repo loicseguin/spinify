@@ -35,7 +35,7 @@ int main(void) {
 	
 	cout << endl << "Printing edge info:" << endl
 	<< "edge (status):  node1 node2" << endl;
-	for (int i = 0; i < G.edges.size(); i++) {
+	for (unsigned int i = 0; i < G.edges.size(); i++) {
 		cout << setw(4)  << G.edges[i]->getID() << " (" << setw(3)
 		<< G.edges[i]->getStatus() << ") :"
 		<< setw(6) << G.edges[i]->getV1().getID() << setw(6)
