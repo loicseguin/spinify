@@ -44,6 +44,7 @@ Surface.o: Surface.h
 .PHONY: cleanall clean
 
 cleanall: clean
+	@rm -rf spinify
 
 clean:
 	@rm -rf *.o

@@ -2,6 +2,7 @@
 #include "Surface.h"
 #include "Simul.h"
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <cmath>
 #include <cstdlib>
@@ -191,6 +192,72 @@ int main (int argc, char * const argv[]) {
 			Sphere S;
 			S.randNodes(G, nNodes);
 			S.delaunay(G);
+			if (output == raw) {
+				string fileName = "lattice.dat";
+				ofstream outFile(fileName.c_str());
+				outFile << G.size() << endl;
+				int nEdge = 0;
+				for (int i = 0; i < G.size(); i++) {
+					nEdge += G[i].degree();
+					
+				}
+				nEdge /= 2;
+				outFile << nEdge << endl;
+				for (int i = 0; i < G.size(); i++) {
+					for (int j = 0; j < G[i].degree(); j++) {
+						if (G[i][j].getStatus() == Visited) {
+							continue;
+						}
+						G[i][j].setStatus(Visited);
+						Node& neigh = G[i][j].getOtherEnd(G[i]);
+						outFile << G[i].getID() << " " << neigh.getID() << endl;
+					}
+				}
+				outFile.close();
+			}
+			if (output == python) {
+				string fileName = "lattice.py";
+				ofstream outFile(fileName.c_str());
+				outFile << "import numpy as np\n"
+				<< "from mpl_toolkits.mplot3d import Axes3D\n"
+				<< "import matplotlib.pyplot as plt\n"
+				<< "data = np.array([";
+				
+				for (int i = 0; i < G.size(); i++) {
+					Point3D& pts = G[i].getCoords();
+					outFile.precision(14);
+					outFile << "[" << pts[0] << ", " << pts[1] << ", "
+					<< pts[2] << "],\n";
+				}
+				
+				outFile << "])\n"
+				<< "fig = plt.figure()" << endl
+				<< "ax = Axes3D(fig)" << endl;
+				
+				for (int i = 0; i < G.size(); i++) {
+					for (int j = 0; j < G[i].degree(); j++) {
+						if (G[i][j].getStatus() == Visited) {
+							continue;
+						}
+						G[i][j].setStatus(Visited);
+						Point3D& iCoords = G[i].getCoords();
+						Point3D& jCoords = (G[i][j].getOtherEnd(G[i])).getCoords();
+						outFile << "ax.plot(";
+						for (int k = 0; k < 3; k++) {
+							outFile << "[" << iCoords[k] << ", " << jCoords[k] << "],";
+						}
+						outFile << "'b' )\n";
+					}
+				}
+				
+				outFile
+				<< "xs = data[:,0]" << endl
+				<< "ys = data[:,1]" << endl
+				<< "zs = data[:,2]" << endl
+				<< "ax.scatter(xs, ys, zs)" << endl
+				<< "plt.show()" << endl;
+				outFile.close();
+			}
 			break;
 		case rectangle:
 			G.initRect(N, M);
@@ -222,9 +289,11 @@ int main (int argc, char * const argv[]) {
 		}
 		double avgData = avg2(Data, nMeasure);
 		if (output == python) {
+			cout.precision(14);
 			cout << "[" << Sim.getBeta() << ", " << avgData << "]," << endl;
 		}
 		else {
+			cout.precision(14);
 			cout << Sim.getBeta() << " " << avgData << endl;
 		}
 	}

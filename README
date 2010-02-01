@@ -1,0 +1,8 @@
+Spinify 2.0
+
+To install run
+    $ make
+and then, as root
+    $ make install
+
+
