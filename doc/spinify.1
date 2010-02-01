@@ -79,6 +79,11 @@ Raw output of the data
 Output data in a Python-friendly way.
 .El                      \" Ends the list
 .Pp
+When the program generates a random lattice on a sphere, it writes the
+graph data in the file lattice.dat or lattice.py depending on the choice
+of output. In the lattice.dat file, the first line is the number of
+nodes in the graph, the second line is the number of edges in the graph.
+All subsequent lines are edges given by their endpoints.
 .\" .Sh ENVIRONMENT      \" May not be needed
 .\" .Bl -tag -width "ENV_VAR_1" -indent \" ENV_VAR_1 is width of the string ENV_VAR_1
 .\" .It Ev ENV_VAR_1
@@ -86,10 +91,12 @@ Output data in a Python-friendly way.
 .\" .It Ev ENV_VAR_2
 .\" Description of ENV_VAR_2
 .\" .El                      
-.\".Sh FILES                \" File used or created by the topic of the man page
-.\".Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
-.\".It Pa /usr/share/file_name
-.\"FILE_1 description
+.Sh FILES                \" File used or created by the topic of the man page
+.Bl -tag -width "/Users/joeuser" -compact
+.It Pa lattice.dat
+Output file for the lattice data in raw format
+.It Pa lattice.py
+Output file for the lattice data in Python format
 .\".It Pa /Users/joeuser/Library/really_long_file_name
 .\"FILE_2 description
 .\".El                      \" Ends the list
@@ -100,10 +107,10 @@ Output data in a Python-friendly way.
 .\" .It Diagnostic Tag
 .\" Diagnostic informtion here.
 .\" .El
-.Sh SEE ALSO 
+.\".Sh SEE ALSO 
 .\" List links in ascending order by section, alphabetically within a section.
 .\" Please do not reference files that do not exist without filing a bug report
-.Xr qdelaunay 1
+.\".Xr qhull 1
 .\" .Sh BUGS              \" Document known, unremedied bugs 
 .\" .Sh HISTORY           \" Document history if command behaves in a unique manner 
 .Sh Author
