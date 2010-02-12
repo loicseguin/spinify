@@ -118,7 +118,7 @@ void Sphere::delaunay(Graph& G) {
 		Plane P;
 		P.delaunay(H);
 		
-		// Add edges in G depending on which edge is present in H
+		// Add edges in G according to which edge is present in H
 		for (int j = 0; j < H.size(); j++) {
 			int jID = H[j].getID();
 			for (int k = 0; k < H[j].degree(); k++) {
@@ -153,7 +153,7 @@ void Plane::delaunay(Graph& G) {
 	}
 	outFile.close();
 	
-	// Call qdelaunay
+	// Call qdelaunay and tell it to write output to qhull.out
 	system("qdelaunay Qt FN i TO qhull.out < qhull_data.tmp");
 	
 	// Read and process info from qhull.out
@@ -179,8 +179,8 @@ void Plane::delaunay(Graph& G) {
 	}
 	
 	inFile >> n; // n now contains number of facets
-	//std::cout << "Number of facets: " << n << std::endl;
-	
+		
+	// Iterate through the facets and add edges accordingly.
 	std::list<int>::iterator it;
 	int counter = 0;
 	for (it = facets.begin(); it != facets.end(); it++) {
@@ -200,6 +200,8 @@ void Plane::delaunay(Graph& G) {
 		counter = lineNb + 1;
 	}
 	inFile.close();
+	
+	// Remove temporary files.
 	system("rm qhull_data.tmp qhull.out");
 	
 	return;
