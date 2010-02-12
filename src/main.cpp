@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <vector>
 
-#define VERSION "2.0"
+#define VERSION "2.1"
 
 
 using namespace std;
