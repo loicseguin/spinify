@@ -63,7 +63,7 @@ void qh_fprintf(FILE *fp, int msgcode, const char *fmt, ... ) {
 
 } /* qh_fprintf */
 
-void qh_fprintf_rbox(FILE *fp, int msgcode, const char *fmt, ... ) {
+/*void qh_fprintf_rbox(FILE *fp, int msgcode, const char *fmt, ... ) {
     va_list args;
 
     if (!fp) {
@@ -75,5 +75,5 @@ void qh_fprintf_rbox(FILE *fp, int msgcode, const char *fmt, ... ) {
     va_start(args, fmt);
     vfprintf(fp, fmt, args);
     va_end(args);
-} /* qh_fprintf_rbox */
+}*/ /* qh_fprintf_rbox */
 
