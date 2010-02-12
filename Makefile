@@ -7,19 +7,14 @@ export CXXFLAGS = $(CFLAGS)
 
 spinify:
 	cd src && $(MAKE) all
-	cd contrib/qhull-2010.1/src && $(MAKE)
+	cd contrib/qhull-2010.1/src && $(MAKE) qdelaunay
 
 all: spinify tests
 
 tests:
 	cd test && $(MAKE) all
 
-install:
-	cp src/spinify $(BINDIR)/spinify
-	cp doc/spinify.1 $(MANDIR)/spinify.1
-	cp contrib/qhull-2010.1/qdelaunay $(BINDIR)/qdelaunay
-
-.PHONY: clean cleanall
+.PHONY: clean cleanall install uninstall
 
 cleanall:
 	cd src && $(MAKE) cleanall
@@ -29,3 +24,17 @@ cleanall:
 clean:
 	cd src && $(MAKE) clean
 	cd test && $(MAKE) clean
+
+install:
+	install -v src/spinify $(BINDIR)/spinify
+	install -v doc/spinify.1 $(MANDIR)/spinify.1
+	install -v contrib/qhull-2010.1/src/qdelaunay $(BINDIR)/qdelaunay
+	install -v contrib/qhull-2010.1/qhull.man $(MANDIR)/qhull.1
+
+uninstall:
+	rm $(BINDIR)/spinify
+	rm $(MANDIR)/spinify.1
+	rm $(BINDIR)/qdelaunay
+	rm $(MANDIR)/qhull.1
+
+

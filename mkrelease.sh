@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=2.0
+VERSION=2.1
 TMPDIR="spinify-$VERSION"
 FOLDERS="src doc contrib"
 FILES="LICENSE Makefile README"
@@ -20,4 +20,7 @@ for f in test/*.cpp; do
 done
 
 cp test/Makefile $TMPDIR/test/
+
+tar cjvf spinify-$VERSION.tar.bz2 $TMPDIR
+rm -rf $TMPDIR
 
