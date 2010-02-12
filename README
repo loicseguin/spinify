@@ -1,8 +1,22 @@
-Spinify 2.0
+Spinify 2.1
 
-To install run
+http://bitbucket.org/loicseguin/spinify/
+Copyright (C) 2009-2010 Loïc Séguin-C. <loicseguin@gmail.com>
+
+Spinify is a Markov chain Monte Carlo simulation for the 2D Ising model
+of ferromagnetism on curved surfaces. It is written in C++ and
+distributed under a BSD license (see LICENSE for more information).
+
+
+INSTALL
+
+This program has only been tested on Mac OS X 10.6. However, it should
+work on any Unix machine. To install run
     $ make
-and then, as root
     $ make install
+(the second command probably should be run as root). This will install
+spinify, qdelaunay and related man pages.
 
+Note that in order to use the Python code output, you need to have
+Python as well as matplotlib and NumPy.
 
