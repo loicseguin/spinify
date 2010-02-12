@@ -26,10 +26,10 @@ clean:
 	cd test && $(MAKE) clean
 
 install:
-	install -v src/spinify $(BINDIR)/spinify
-	install -v doc/spinify.1 $(MANDIR)/spinify.1
-	install -v contrib/qhull-2010.1/src/qdelaunay $(BINDIR)/qdelaunay
-	install -v contrib/qhull-2010.1/qhull.man $(MANDIR)/qhull.1
+	@install -v src/spinify $(BINDIR)/spinify
+	@install -v doc/spinify.1 $(MANDIR)/spinify.1
+	@install -v contrib/qhull-2010.1/src/qdelaunay $(BINDIR)/qdelaunay
+	@install -v contrib/qhull-2010.1/qhull.man $(MANDIR)/qhull.1
 
 uninstall:
 	rm $(BINDIR)/spinify

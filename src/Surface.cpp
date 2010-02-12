@@ -73,7 +73,7 @@ void Sphere::repulse(Graph& G) {
 		counter++;
 		minDist = minDistance(G);
 	}
-	std::cout << "counter: " << counter << std::endl;
+	std::cerr << "counter: " << counter << std::endl;
 	return;
 }
 
@@ -154,7 +154,7 @@ void Plane::delaunay(Graph& G) {
 	outFile.close();
 	
 	// Call qdelaunay
-	system("~/Projects/spinify/spinify/contrib/qhull-2010.1/src/qdelaunay Qt FN i TO qhull.out < qhull_data.tmp");
+	system("qdelaunay Qt FN i TO qhull.out < qhull_data.tmp");
 	
 	// Read and process info from qhull.out
 	int n;
