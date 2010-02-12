@@ -5,6 +5,8 @@ TMPDIR="spinify-$VERSION"
 FOLDERS="src doc contrib"
 FILES="LICENSE Makefile README"
 
+make cleanall
+
 mkdir -p $TMPDIR/test
 
 for f in $FOLDERS; do
