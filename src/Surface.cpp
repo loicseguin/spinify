@@ -73,7 +73,7 @@ void Sphere::repulse(Graph& G) {
 		counter++;
 		minDist = minDistance(G);
 	}
-	std::cerr << "counter: " << counter << std::endl;
+	std::cerr << "Number of repulsions: " << counter << std::endl;
 	return;
 }
 
@@ -199,6 +199,8 @@ void Plane::delaunay(Graph& G) {
 		}
 		counter = lineNb + 1;
 	}
+	inFile.close();
+	system("rm qhull_data.tmp qhull.out");
 	
 	return;
 }

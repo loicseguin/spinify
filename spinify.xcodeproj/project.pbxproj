@@ -90,6 +90,7 @@
 		EB8DBC6C10F2D45A00DE3109 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		EB8DBC7110F2E1CE00DE3109 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/Makefile; sourceTree = "<group>"; };
 		EB8DBC7410F2F2AB00DE3109 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = test/Makefile; sourceTree = "<group>"; };
+		EBFDAEC511250D75004C4973 /* mkrelease.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = mkrelease.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +165,7 @@
 			children = (
 				EB45DB9710EDA509002D889B /* LICENSE */,
 				EB8DBC6C10F2D45A00DE3109 /* Makefile */,
+				EBFDAEC511250D75004C4973 /* mkrelease.sh */,
 				EB2B6E0C10E1628A006C32D5 /* Tests */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
