@@ -302,8 +302,8 @@ int main (int argc, char * const argv[]) {
 		cout << "])\n"
 		<< "x = 1/data[:,0]\n"
 		<< "y = data[:,1]\n"
-		<< "pl.plot(x, y)\n"
-		<< "pl.show()" << endl;
+		<< "plt.plot(x, y)\n"
+		<< "plt.show()" << endl;
 	}
 	cerr << "Done!" << endl;
 	

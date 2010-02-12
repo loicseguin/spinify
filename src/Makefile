@@ -12,9 +12,6 @@ Graph: Graph.o Point3D.o
 Point3D: Point3D.o
 	$(CXX) -o $@ $^
 
-Output: Output.o
-	$(CXX) -o $@ $^
-
 Simul: Simul.o
 	$(CXX) -o $@ $^
 
@@ -24,11 +21,9 @@ Surface: Surface.o
 tezuka: tezuka.o
 	$(CXX) -o $@ $^
 
-main.o: Graph.h Output.h Simul.h tezuka.h
+main.o: Graph.h Simul.h tezuka.h
 
 Graph.o: Graph.h
-
-Output.o: Output.h
 
 Point3D.o: Point3D.h
 
