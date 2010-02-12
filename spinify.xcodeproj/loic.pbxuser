@@ -5,6 +5,7 @@
 		activeExecutable = EB2B6DF410E155EA006C32D5 /* spinify */;
 		activeTarget = 8DD76F620486A84900D96B5E /* spinify */;
 		addToTargets = (
+			8DD76F620486A84900D96B5E /* spinify */,
 		);
 		breakpoints = (
 			EB02B18C1106931E007A0422 /* Surface.cpp:74 */,
@@ -832,7 +833,7 @@
 	};
 	EB45DB9710EDA509002D889B /* LICENSE */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {693, 427}}";
+			sepNavIntBoundsRect = "{{0, 0}, {638, 530}}";
 			sepNavSelRange = "{139, 0}";
 			sepNavVisRange = "{0, 1526}";
 		};
@@ -1326,5 +1327,12 @@
 		rType = 0;
 		vrLen = 1199;
 		vrLoc = 814;
+	};
+	EBFDAEC511250D75004C4973 /* mkrelease.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {638, 530}}";
+			sepNavSelRange = "{121, 0}";
+			sepNavVisRange = "{0, 385}";
+		};
 	};
 }
