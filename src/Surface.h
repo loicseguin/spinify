@@ -14,6 +14,9 @@
 #include "Graph.h"
 
 
+const double Pi = 3.14159265;
+
+
 class Sphere {
 	/*
 	 * Sphere is an implementation of S^2 embedded in R^3.
@@ -83,6 +86,12 @@ class Plane {
 public:
 	void delaunay(Graph& G);
 };
+
+struct Angle {
+	double angle;
+	Node& node;
+};
+
 
 
 #endif
