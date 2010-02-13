@@ -6,7 +6,7 @@ all: spinify
 spinify: $(OBJ)
 	$(CXX) -o $@ $^
 
-Graph: Graph.o Point3D.o
+Graph: Graph.o Point3D.o tezuka.o
 	$(CXX) -o $@ $^
 
 Point3D: Point3D.o
@@ -33,7 +33,7 @@ tezuka.o: tezuka.h
 
 Surface.o: Surface.h
 
-%.o: %.c
+%.o: %.cpp
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 .PHONY: cleanall clean

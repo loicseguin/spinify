@@ -142,67 +142,102 @@ double Sphere::minDistance(const Graph& G) const {
 	return min;
 }
 
+bool compare_angles(Angle a, Angle b) {
+	if (a.angle <= b.angle)
+		return true;
+	return false;
+}
+
 void Plane::delaunay(Graph& G) {
-	// Start by writing node coordinates in qhull_data.tmp
-	std::ofstream outFile("qhull_data.tmp");
-	outFile << "2\n" << G.size() << std::endl;
-	for (int i = 0; i < G.size(); i++) {
+	// We use a flip algorithm to find the Delaunay triangulation
+	// of node (0,0).
+	Point3D v(1, 0, 0);
+	bool removed = true;
+	G.resetStatus();
+	
+	std::list<Angle> allAngles;
+	std::list<Node*> nodeList;
+	
+	for (int i = 1; i < G.size(); i++) {
+		// This for loop fills allAngles with the list of angles between
+		// the position vector of each Node and the x axis. It also
+		// fills nodeList with all the nodes in Graph G.
 		Point3D& iCoords = G[i].getCoords();
-		outFile.precision(14);
-		outFile << iCoords[0] << " " << iCoords[1] << std::endl;
+		double theta = acos(dot(iCoords, v)/iCoords.norm());
+		if (iCoords[1] < 0)
+			theta = 2*Pi - theta;
+		Angle a = {theta, G[i]};
+		allAngles.push_back(a);
+		nodeList.push_back(&(G[i]));
 	}
-	outFile.close();
+	// Sort angles from smallest to largest.
+	allAngles.sort(compare_angles);
 	
-	// Call qdelaunay and tell it to write output to qhull.out
-	system("qdelaunay Qt FN i TO qhull.out < qhull_data.tmp");
-	
-	// Read and process info from qhull.out
-	int n;
-	int facet;
-	std::list<int> facets;
-	std::ifstream inFile("qhull.out");
-	inFile >> n; // n contains number of nodes
-	inFile >> n; // n contains number of facets in which node 0 is
-	for (int i = 0; i < n; i++) {
-		inFile >> facet; // num id of facet
-		facets.push_back(facet);
-	}
-	facets.sort(); //facets ordered from lowest to highest
-	
-	// This does nothing except move the file pointer to the description
-	// of facets.
-	for (int i = 0; i < G.size() - 1; i++) {
-		inFile >> n;
-		for (int j = 0; j < n; j++) {
-			inFile >> facet;
-		}
-	}
-	
-	inFile >> n; // n now contains number of facets
+	// Move on to do the flipping.
+	while (removed) {
+		removed = false;
+		std::list<Angle> anglesList;
+		std::list<Angle>::iterator it;
 		
-	// Iterate through the facets and add edges accordingly.
-	std::list<int>::iterator it;
-	int counter = 0;
-	for (it = facets.begin(); it != facets.end(); it++) {
-		int lineNb = *it;
-		int diff = lineNb - counter;
-		if (diff != 0) {
-			for (int i = 0; i < diff*3; i++) {
-				inFile >> n;
+		// angleList contains a sublist of allAngles corresponding to
+		// Angles of the Nodes that have not been removed (i.e., whose
+		// status is notVisited).
+		for (it = allAngles.begin(); it != allAngles.end(); it++) {
+			if (it->node.getStatus() == notVisited) {
+				anglesList.push_back(*it);
 			}
 		}
-		for (int j = 0; j < 3; j++) {
-			int candidate;
-			inFile >> candidate;
-			if (candidate != 0)
-				G.addEdge(G[0], G[candidate]);
+		
+		// Say two adjacent triangles A and B have a common edge e. Let
+		// a1 be the angle in A opposite to e, and a2 the angle in B
+		// opposite to e. If a1 + a2 > Pi, then e is not part of the
+		// Delaunay triangulation and should be replaced by the edge going
+		// from a1 to a2.
+		for (it = anglesList.begin(); it != anglesList.end(); it++) {
+			if (it->node.getStatus() == Visited)
+				continue;
+			double p1 = (it->node.getCoords()).norm();
+			double a1, a2;
+			a1 = a2 = Pi;
+			std::list<Angle>::iterator jt = it;
+			std::list<Angle>::iterator kt;
+			
+			while (a1 + a2 > Pi) {
+				jt++;
+				kt = jt;
+				if (jt == anglesList.end()) {
+					jt = anglesList.begin();
+					kt = jt;
+					kt++;
+				}
+				else if (++kt == anglesList.end()) {
+					kt = anglesList.begin();
+				}			
+				double p2 = (jt->node.getCoords()).norm();
+				double p3 = (kt->node.getCoords()).norm();
+				double theta1 = jt->angle - it->angle;
+				double theta2 = kt->angle - jt->angle;
+				double L1 = sqrt(p1*p1 + p2*p2
+								 - 2*p1*p2*cos(theta1));
+				double L2 = sqrt(p2*p2 + p3*p3
+								 - 2*p2*p3*cos(theta2));
+				a1 = acos((-p2*p2 + p1*p1 + L1*L1)/(2*p1*L1));
+				a2 = acos((-p2*p2 + p3*p3 + L2*L2)/(2*p3*L2));
+				if (a1 + a2 > Pi) {
+					// Then p2 is not a neighbour of the origin.
+					nodeList.remove(&(jt->node));
+					jt->node.setStatus(Visited);
+					removed = true;
+				}
+			}
 		}
-		counter = lineNb + 1;
 	}
-	inFile.close();
 	
-	// Remove temporary files.
-	system("rm qhull_data.tmp qhull.out");
+	// Add edges between the origin and all Nodes still in nodeList.
+	std::list<Node*>::iterator ot;
+	for (ot = nodeList.begin(); ot != nodeList.end(); ot++) {
+		G.addEdge(G[0], **ot);
+	}
 	
 	return;
 }
