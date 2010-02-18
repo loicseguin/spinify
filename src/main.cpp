@@ -167,7 +167,7 @@ int main (int argc, char * const argv[]) {
 		output = raw;
 	}
 	
-	Graph G(nNodes);
+	Simul G(nNodes);
 	
 	switch (lattice) {
 		case sphere:
@@ -250,7 +250,6 @@ int main (int argc, char * const argv[]) {
 	}
 	
 	G.randSpin();
-	Simul Sim(G);
 	
 	if (output == python) {
 		cout << "import numpy as np\n"
@@ -261,24 +260,24 @@ int main (int argc, char * const argv[]) {
 	int nMeasure = 100;
 	
 	for (int i = 0; i < nTemps; i++) {
-		Sim.setParams(1./temps[i], -1);
-		Sim.thermalize(500);
+		G.setParams(1./temps[i], -1);
+		G.thermalize(500);
 		//std::cerr << "Thermalized at temperature beta = " << Sim.getBeta() << std::endl;
 		//std::cerr.flush();
-		int K = Sim.findDecorrelTime(&Simul::measureE);
+		int K = G.findDecorrelTime(&Simul::measureE);
 		double Data[nMeasure];
 		for (int j = 0; j < nMeasure; j++) {
-			Sim.thermalize(K);
-			Data[j] = Sim.measureE();
+			G.thermalize(K);
+			Data[j] = G.measureE();
 		}
 		double avgData = avg(Data, nMeasure);
 		if (output == python) {
 			cout.precision(14);
-			cout << "[" << Sim.getBeta() << ", " << avgData << "]," << endl;
+			cout << "[" << G.getBeta() << ", " << avgData << "]," << endl;
 		}
 		else {
 			cout.precision(14);
-			cout << Sim.getBeta() << " " << avgData << endl;
+			cout << G.getBeta() << " " << avgData << endl;
 		}
 	}
 	
