@@ -159,7 +159,7 @@ int main (int argc, char * const argv[]) {
 	}
 	
 	if (nTemps == 0) {
-		temps.push_back(1./squareCriticalBeta);
+		temps.push_back(1./squareCritBeta);
 		nTemps = 1;
 	}
 	
@@ -171,6 +171,7 @@ int main (int argc, char * const argv[]) {
 	
 	switch (lattice) {
 		case sphere:
+		{
 			Sphere S;
 			S.randNodes(G, nNodes);
 			S.delaunay(G);
@@ -241,6 +242,7 @@ int main (int argc, char * const argv[]) {
 				outFile.close();
 			}
 			break;
+		}
 		case rectangle:
 			G.initRect(N, M);
 		default:

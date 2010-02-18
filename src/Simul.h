@@ -24,7 +24,8 @@ const int decorrelIter = 5000;
 const double correlTreshold = 0.05;
 const int maxDecorrelTime = 99;
 const int minDecorrelTime = 5;
-const double squareCriticalBeta = 0.44068679350977151262;
+const double squareCritBeta = 0.44068679350977151262;
+const double triCritBeta = 0.27465307216702742285;
 const int defaultJ = -1;
 
 
@@ -64,7 +65,7 @@ class Simul {
 public:
 	Simul(Graph& H);
 	void thermalize(const int n = 500);
-	void setParams(const double betaval = squareCriticalBeta,
+	void setParams(const double betaval = squareCritBeta,
 				   const int Jval = defaultJ);
 	double getBeta();
 	int getJ();

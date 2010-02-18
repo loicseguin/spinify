@@ -14,8 +14,20 @@
 #include "Graph.h"
 
 
-const double Pi = 3.14159265;
+const double Pi = 3.141592653589793;
 
+
+class SphereConf {
+public:
+	unsigned int rangeMultiplier;
+	double dampingExp;
+	unsigned int dampingSub;
+	double objectiveRatio;
+	SphereConf(unsigned int rMult = 10,
+			   double dExp = 1.2915,
+			   unsigned int dSub = 10000,
+			   double oRatio = 0.21);
+};
 
 class Sphere {
 	/*
@@ -58,6 +70,7 @@ class Sphere {
 	 * Nodes on the sphere.
 	 *
 	 */
+	SphereConf cfg;
 	int uniform(Graph& G, const int N);
 	void repulse(Graph& G);
 	double distance(const Point3D& a, const Point3D& b) const;

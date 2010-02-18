@@ -16,6 +16,16 @@
 #include "tezuka.h"
 #include "Point3D.h"
 
+
+SphereConf::SphereConf(unsigned int rMult, double dExp,
+					   unsigned int dSub, double oRatio) {
+	rangeMultiplier = rMult;
+	dampingExp = dExp;
+	dampingSub = dSub;
+	objectiveRatio = oRatio;
+	return;
+}
+
 int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
 	int curIndex = G.size() - 1;
 	int counter = 0;
@@ -39,18 +49,19 @@ int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
 
 void Sphere::repulse(Graph& G) {
 	const double expectedRadius = 2./sqrt(G.size());
-	const double range = 10 * expectedRadius;
+	const double range = cfg.rangeMultiplier * expectedRadius;
 	const double objectiveDist = 4./sqrt(G.size());
 	
 	// The following damping coefficient is a crude guess based on
 	// a couple of experiments. More thoughts should be put into this.
 	const double dampingCoeff =
-		std::max(pow(G.size(), 1.2915), pow(G.size(), 1.2915) - 10000);
+		std::max(pow(G.size(), cfg.dampingExp),
+				 pow(G.size(), cfg.dampingExp) - cfg.dampingSub);
 	
 	double minDist = 0.;
 	int counter = 0;
 	
-	while ((objectiveDist - minDist) / objectiveDist > 0.21) {
+	while ((objectiveDist - minDist) / objectiveDist > cfg.objectiveRatio) {
 		for (int i = 0; i < G.size(); i++){
 			Point3D force(0);
 			Point3D& iCoords = G[i].getCoords();
@@ -92,7 +103,7 @@ int Sphere::randNodes(Graph& G, int N) {
 
 void Sphere::delaunay(Graph& G) {
 	const double expectedRadius = 2./sqrt(G.size());
-	const double range = 10 * expectedRadius;
+	const double range = cfg.rangeMultiplier * expectedRadius;
 	Basis B;
 	for (int i = 0; i < G.size(); i++) {
 		Graph H;
