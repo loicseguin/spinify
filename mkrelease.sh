@@ -1,8 +1,8 @@
 #!/bin/sh
 
-VERSION=2.1
+VERSION=2.2
 TMPDIR="spinify-$VERSION"
-FOLDERS="src doc contrib"
+FOLDERS="src doc"
 FILES="LICENSE Makefile README"
 
 make cleanall

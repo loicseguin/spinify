@@ -70,17 +70,10 @@ public:
 
 class Plane {
 	/*
-	 * delaunay() writes Graph data to a file that can be read by
-	 * qdelaunay. It then calls the external program qdelaunay and the
-	 * output of that program is written to another file which
-	 * delaunay() then reads. The file is processed to extract the
-	 * neighbours of the origin.
-	 *
-	 * qdelaunay is part of the Qhull software suite
-	 *
-	 *   Barber, C.B., Dobkin, D.P., and Huhdanpaa, H.T.. The Quickhull 
-	 *   algorithm for convex hulls. ACM Trans. on Mathematical
-	 *   Software, 22(4):469-483, Dec 1996, http://www.qhull.org.
+	 * delaunay() takes a Graph with a node at the origin and finds the
+	 * nearest neighbours of the origin. A Node is a nearest neighbour
+	 * of the origin if it has an edge to the origin in the Delaunay
+	 * triangulation of the Graph.
 	 *
 	 */
 public:

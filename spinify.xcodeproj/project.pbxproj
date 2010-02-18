@@ -17,6 +17,7 @@
 		EB1577FF110CD55300BBF178 /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB81A6BB10F7CFD70056EC81 /* Surface.cpp */; };
 		EB157805110CD58300BBF178 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
 		EB157882110D1B4C00BBF178 /* planedelaunaytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */; };
+		EB17BB91112DD3DD005B6660 /* Maths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB17BB90112DD3DD005B6660 /* Maths.cpp */; };
 		EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */; };
 		EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
 		EB2B6E7410E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
@@ -42,11 +43,6 @@
 		EB81A6BC10F7CFD70056EC81 /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB81A6BB10F7CFD70056EC81 /* Surface.cpp */; };
 		EB8DBC1410F2C47E00DE3109 /* randtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB8DBC1310F2C47E00DE3109 /* randtest.cpp */; };
 		EB8DBC1510F2C49900DE3109 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
-		EBE598141125E611008288E7 /* comparedelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBE598131125E611008288E7 /* comparedelaunay.cpp */; };
-		EBE5981B1125E83C008288E7 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
-		EBE5981C1125E844008288E7 /* Point3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB02ADF510FFBF77007A0422 /* Point3D.cpp */; };
-		EBE5981D1125E84C008288E7 /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB81A6BB10F7CFD70056EC81 /* Surface.cpp */; };
-		EBE5981E1125E851008288E7 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +65,9 @@
 		EB02AE571100CF93007A0422 /* point3dtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = point3dtest.cpp; path = test/point3dtest.cpp; sourceTree = "<group>"; };
 		EB1577F4110CD34700BBF178 /* planedelaunaytest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = planedelaunaytest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = planedelaunaytest.cpp; path = test/planedelaunaytest.cpp; sourceTree = "<group>"; };
+		EB17BB8A112C9602005B6660 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = src/Parameters.h; sourceTree = "<group>"; };
+		EB17BB8F112DD3DD005B6660 /* Maths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Maths.h; path = src/Maths.h; sourceTree = "<group>"; };
+		EB17BB90112DD3DD005B6660 /* Maths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Maths.cpp; path = src/Maths.cpp; sourceTree = "<group>"; };
 		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };
 		EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = src/Graph.cpp; sourceTree = "<group>"; };
@@ -95,8 +94,6 @@
 		EB8DBC6C10F2D45A00DE3109 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		EB8DBC7110F2E1CE00DE3109 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/Makefile; sourceTree = "<group>"; };
 		EB8DBC7410F2F2AB00DE3109 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = test/Makefile; sourceTree = "<group>"; };
-		EBE5980E1125E5C2008288E7 /* comparedelaunay */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = comparedelaunay; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBE598131125E611008288E7 /* comparedelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = comparedelaunay.cpp; path = test/comparedelaunay.cpp; sourceTree = "<group>"; };
 		EBFDAEC511250D75004C4973 /* mkrelease.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = mkrelease.sh; sourceTree = "<group>"; };
 		EBFDAEC611250EE8004C4973 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,13 +162,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EBE5980C1125E5C1008288E7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -193,8 +183,11 @@
 			children = (
 				EB8DBC7110F2E1CE00DE3109 /* Makefile */,
 				EB2B6EAF10E1802E006C32D5 /* main.cpp */,
+				EB17BB8F112DD3DD005B6660 /* Maths.h */,
+				EB17BB90112DD3DD005B6660 /* Maths.cpp */,
 				EB2B6E7210E1770C006C32D5 /* Graph.h */,
 				EB2B6E7110E1770C006C32D5 /* Graph.cpp */,
+				EB17BB8A112C9602005B6660 /* Parameters.h */,
 				EB02ADF410FFBF77007A0422 /* Point3D.h */,
 				EB02ADF510FFBF77007A0422 /* Point3D.cpp */,
 				EB45DBBA10EE7CC4002D889B /* Simul.h */,
@@ -219,7 +212,6 @@
 				EB34041410FEAFBF00F16B12 /* spheretest */,
 				EB02AE501100CF67007A0422 /* point3dtest */,
 				EB1577F4110CD34700BBF178 /* planedelaunaytest */,
-				EBE5980E1125E5C2008288E7 /* comparedelaunay */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				EB8DBC7410F2F2AB00DE3109 /* Makefile */,
-				EBE598131125E611008288E7 /* comparedelaunay.cpp */,
 				EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */,
 				EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */,
 				EB02AE571100CF93007A0422 /* point3dtest.cpp */,
@@ -400,22 +391,6 @@
 			productReference = EB8DBC0C10F2C45C00DE3109 /* randtest */;
 			productType = "com.apple.product-type.tool";
 		};
-		EBE5980D1125E5C1008288E7 /* comparedelaunay */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EBE598121125E5E0008288E7 /* Build configuration list for PBXNativeTarget "comparedelaunay" */;
-			buildPhases = (
-				EBE5980B1125E5C1008288E7 /* Sources */,
-				EBE5980C1125E5C1008288E7 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = comparedelaunay;
-			productName = comparedelaunay;
-			productReference = EBE5980E1125E5C2008288E7 /* comparedelaunay */;
-			productType = "com.apple.product-type.tool";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -437,7 +412,6 @@
 				EB34041310FEAFBF00F16B12 /* spheretest */,
 				EB02AE4F1100CF67007A0422 /* point3dtest */,
 				EB1577F3110CD34700BBF178 /* planedelaunaytest */,
-				EBE5980D1125E5C1008288E7 /* comparedelaunay */,
 			);
 		};
 /* End PBXProject section */
@@ -453,6 +427,7 @@
 				EB45DBBC10EE7CC4002D889B /* Simul.cpp in Sources */,
 				EB81A6BC10F7CFD70056EC81 /* Surface.cpp in Sources */,
 				EB02ADF710FFBF77007A0422 /* Point3D.cpp in Sources */,
+				EB17BB91112DD3DD005B6660 /* Maths.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,18 +513,6 @@
 			files = (
 				EB8DBC1410F2C47E00DE3109 /* randtest.cpp in Sources */,
 				EB8DBC1510F2C49900DE3109 /* tezuka.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EBE5980B1125E5C1008288E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EBE598141125E611008288E7 /* comparedelaunay.cpp in Sources */,
-				EBE5981B1125E83C008288E7 /* Graph.cpp in Sources */,
-				EBE5981C1125E844008288E7 /* Point3D.cpp in Sources */,
-				EBE5981D1125E84C008288E7 /* Surface.cpp in Sources */,
-				EBE5981E1125E851008288E7 /* tezuka.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,36 +811,6 @@
 			};
 			name = Release;
 		};
-		EBE598101125E5C2008288E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = comparedelaunay;
-			};
-			name = Debug;
-		};
-		EBE598111125E5C2008288E7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/bin;
-				PREBINDING = NO;
-				PRODUCT_NAME = comparedelaunay;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -967,15 +900,6 @@
 			buildConfigurations = (
 				EB8DBC0E10F2C45D00DE3109 /* Debug */,
 				EB8DBC0F10F2C45D00DE3109 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EBE598121125E5E0008288E7 /* Build configuration list for PBXNativeTarget "comparedelaunay" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EBE598101125E5C2008288E7 /* Debug */,
-				EBE598111125E5C2008288E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

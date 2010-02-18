@@ -1,6 +1,7 @@
 #include "Graph.h"
 #include "Surface.h"
 #include "Simul.h"
+#include "Maths.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -8,7 +9,7 @@
 #include <cstdlib>
 #include <vector>
 
-#define VERSION "2.1"
+#define VERSION "2.2"
 
 
 using namespace std;
@@ -27,23 +28,6 @@ enum OutputType {
 	python,
 	raw
 };
-
-double avg2(double* pV, const int nV) {
-	double sum = 0;
-	for (int i = 0; i < nV; i++) {
-		sum += pV[i];
-	}
-	return sum / nV;
-}
-
-double stdDev(double *pV, const int nV) {
-	double avgV = avg2(pV, nV);
-	double sum = 0;
-	for (int i = 0; i < nV; i++) {
-		sum += (pV[i] - avgV)*(pV[i] - avgV);
-	}
-	return sqrt(sum / nV);
-}
 
 void usage(void) {
 	cerr
@@ -287,7 +271,7 @@ int main (int argc, char * const argv[]) {
 			Sim.thermalize(K);
 			Data[j] = Sim.measureE();
 		}
-		double avgData = avg2(Data, nMeasure);
+		double avgData = avg(Data, nMeasure);
 		if (output == python) {
 			cout.precision(14);
 			cout << "[" << Sim.getBeta() << ", " << avgData << "]," << endl;

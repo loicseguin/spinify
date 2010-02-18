@@ -9,6 +9,7 @@
 
 #include "Simul.h"
 #include "tezuka.h"
+#include "Maths.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -81,14 +82,6 @@ double Simul::measureE() {
 		}
 	}
 	return getJ() * sumSpin * 0.5 / G.size();
-}
-
-double avg(const double* pV, const int nV) {
-	double sum = 0;
-	for (int i = 0; i < nV; i++) {
-		sum += pV[i];
-	}
-	return sum / nV;
 }
 
 int Simul::findDecorrelTime(double (Simul::*measure)()) {
