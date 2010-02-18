@@ -29,17 +29,17 @@ const double triCritBeta = 0.27465307216702742285;
 const int defaultJ = -1;
 
 
-
-class Simul {
+class Simul : public Graph {
 	/*
-	 * When initializing a simulation, a pointer to the Graph must be
-	 * passed to the Simul constructor. The Graph contains all the
-	 * information about nodes and edges which are then used to run the
-	 * Swendsen-Wang-Wolff algorithm. The constructor also takes care of
-	 * setting the parameters of the simulation (temperature and
-	 * interaction coefficient) to some default values (the temperature
-	 * is set to the critical temperature for the rectangular lattice
-	 * and the interaction coefficient is set to -1 for ferromagnetism).
+	 * When initializing a simulation, passing an integer argument N
+	 * reserves enough memory space for N Nodes. Simul inherits from
+	 * Graph. The Graph contains all the information about nodes and
+	 * edges which are then used to run the Swendsen-Wang-Wolff
+	 * algorithm. The constructor also takes care of setting the
+	 * parameters of the simulation (temperature and interaction
+	 * coefficient) to some default values (the temperature is set to
+	 * the critical temperature for the rectangular lattice and the
+	 * interaction coefficient is set to -1 for ferromagnetism).
 	 *
 	 * swendsen() runs one step of the SWW algorithm.
 	 *
@@ -56,14 +56,13 @@ class Simul {
 	 * ensure that the measures are statistically independent.
 	 *
 	 */
-	Graph& G;
 	void swendsen();
 	struct Params {
 		double beta;
 		int J;
 	} params;
 public:
-	Simul(Graph& H);
+	Simul(int N = 10);
 	void thermalize(const int n = 500);
 	void setParams(const double betaval = squareCritBeta,
 				   const int Jval = defaultJ);

@@ -15,7 +15,7 @@
 #include <cmath>
 
 
-Simul::Simul(Graph& H) : G(H) {
+Simul::Simul(int N) : Graph(N) {
 	setParams();
 	return;
 }
@@ -27,10 +27,10 @@ void Simul::thermalize(const int n) {
 }
 
 void Simul::swendsen() {
-	G.resetStatus();
-	for (int i = 0; i < G.size(); i++) {
-		if (G[i].getStatus() == notVisited) {
-			int oldSpin = G[i].getSpin();
+	resetStatus();
+	for (int i = 0; i < size(); i++) {
+		if ((*this)[i].getStatus() == notVisited) {
+			int oldSpin = (*this)[i].getSpin();
 			int newSpin;
 			unsigned int rval = alea();
 			if (rval % 2 == 0)
@@ -38,7 +38,7 @@ void Simul::swendsen() {
 			else
 				newSpin = 1;
 			std::vector<Node*> toTest;
-			toTest.push_back(&G[i]);
+			toTest.push_back(&((*this)[i]));
 			for (unsigned int j = 0; j < toTest.size(); j++) {
 				Node& next = *toTest[j];
 				next.setStatus(Visited);
@@ -74,14 +74,14 @@ int Simul::getJ() { return params.J; }
 double Simul::measureE() {
 	// u = (J*\sum_{adjacent nodes i, j} s_i s_j)/N
 	int sumSpin = 0;
-	for (int i = 0; i < G.size(); i++) {
-		Node& v1 = G[i];
+	for (int i = 0; i < size(); i++) {
+		Node& v1 = (*this)[i];
 		for (int j = 0; j < v1.degree(); j++) {
 			Node& v2 = v1[j].getOtherEnd(v1);
 			sumSpin += v1.getSpin() * v2.getSpin();
 		}
 	}
-	return getJ() * sumSpin * 0.5 / G.size();
+	return getJ() * sumSpin * 0.5 / size();
 }
 
 int Simul::findDecorrelTime(double (Simul::*measure)()) {

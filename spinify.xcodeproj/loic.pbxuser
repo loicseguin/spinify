@@ -137,6 +137,10 @@
 			EB17BBDD112DDC53005B6660 /* PBXTextBookmark */ = EB17BBDD112DDC53005B6660 /* PBXTextBookmark */;
 			EB17BBDE112DDC53005B6660 /* PBXTextBookmark */ = EB17BBDE112DDC53005B6660 /* PBXTextBookmark */;
 			EB17BBDF112DDC53005B6660 /* PBXTextBookmark */ = EB17BBDF112DDC53005B6660 /* PBXTextBookmark */;
+			EB17BBFA112DE84F005B6660 /* PBXTextBookmark */ = EB17BBFA112DE84F005B6660 /* PBXTextBookmark */;
+			EB17BBFB112DE84F005B6660 /* PBXTextBookmark */ = EB17BBFB112DE84F005B6660 /* PBXTextBookmark */;
+			EB17BBFC112DE84F005B6660 /* XCBuildMessageTextBookmark */ = EB17BBFC112DE84F005B6660 /* XCBuildMessageTextBookmark */;
+			EB17BBFD112DE84F005B6660 /* PBXTextBookmark */ = EB17BBFD112DE84F005B6660 /* PBXTextBookmark */;
 			EB28CBE411134B5C00B7C820 = EB28CBE411134B5C00B7C820 /* PBXTextBookmark */;
 			EB28CBE711134B5C00B7C820 = EB28CBE711134B5C00B7C820 /* PBXTextBookmark */;
 			EB28CC2211137DC500B7C820 = EB28CC2211137DC500B7C820 /* PBXTextBookmark */;
@@ -426,7 +430,7 @@
 		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
 		name = "main.cpp: 274";
 		rLen = 0;
-		rLoc = 5923;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 472;
 		vrLoc = 59;
@@ -605,7 +609,7 @@
 		fRef = EB45DBBA10EE7CC4002D889B /* Simul.h */;
 		name = "Simul.h: 34";
 		rLen = 0;
-		rLoc = 604;
+		rLoc = 618;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 679;
@@ -646,7 +650,7 @@
 		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 273;
+		rLoc = 272;
 		rType = 1;
 	};
 	EB17BBB1112DD59B005B6660 /* PBXTextBookmark */ = {
@@ -654,7 +658,7 @@
 		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
 		name = "main.cpp: 274";
 		rLen = 0;
-		rLoc = 5923;
+		rLoc = 5898;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 5456;
@@ -683,7 +687,7 @@
 		fRef = EB45DBBB10EE7CC4002D889B /* Simul.cpp */;
 		name = "Simul.cpp: 50";
 		rLen = 0;
-		rLoc = 1087;
+		rLoc = 1104;
 		rType = 0;
 		vrLen = 824;
 		vrLoc = 655;
@@ -693,7 +697,7 @@
 		fRef = EB45DBBB10EE7CC4002D889B /* Simul.cpp */;
 		name = "Simul.cpp: 51";
 		rLen = 0;
-		rLoc = 1087;
+		rLoc = 1104;
 		rType = 0;
 		vrLen = 782;
 		vrLoc = 664;
@@ -863,7 +867,7 @@
 		fRef = EB45DBBA10EE7CC4002D889B /* Simul.h */;
 		name = "Simul.h: 32";
 		rLen = 0;
-		rLoc = 588;
+		rLoc = 603;
 		rType = 0;
 		vrLen = 1476;
 		vrLoc = 314;
@@ -877,6 +881,45 @@
 		rType = 0;
 		vrLen = 1063;
 		vrLoc = 0;
+	};
+	EB17BBFA112DE84F005B6660 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB45DBBB10EE7CC4002D889B /* Simul.cpp */;
+		name = "Simul.cpp: 51";
+		rLen = 0;
+		rLoc = 1104;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 664;
+	};
+	EB17BBFB112DE84F005B6660 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB81A6BA10F7CFD70056EC81 /* Surface.h */;
+		name = "Surface.h: 26";
+		rLen = 0;
+		rLoc = 412;
+		rType = 0;
+		vrLen = 702;
+		vrLoc = 84;
+	};
+	EB17BBFC112DE84F005B6660 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "No matching function for call to 'Simul::Simul(int&)'";
+		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 169;
+		rType = 1;
+	};
+	EB17BBFD112DE84F005B6660 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
+		name = "main.cpp: 170";
+		rLen = 0;
+		rLoc = 3296;
+		rType = 0;
+		vrLen = 392;
+		vrLoc = 2959;
 	};
 	EB28CBE411134B5C00B7C820 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1036,17 +1079,17 @@
 	};
 	EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {638, 2444}}";
-			sepNavSelRange = "{1483, 0}";
-			sepNavVisRange = "{0, 667}";
+			sepNavIntBoundsRect = "{{0, 0}, {638, 2522}}";
+			sepNavSelRange = "{1639, 37}";
+			sepNavVisRange = "{1525, 765}";
 			sepNavWindowFrame = "{{398, 137}, {599, 760}}";
 		};
 	};
 	EB2B6E7210E1770C006C32D5 /* Graph.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {638, 2457}}";
-			sepNavSelRange = "{2103, 0}";
-			sepNavVisRange = "{0, 736}";
+			sepNavSelRange = "{1478, 0}";
+			sepNavVisRange = "{1733, 1099}";
 			sepNavWindowFrame = "{{2, 18}, {599, 760}}";
 		};
 	};
@@ -1059,9 +1102,9 @@
 	};
 	EB2B6EAF10E1802E006C32D5 /* main.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {670, 3588}}";
-			sepNavSelRange = "{97, 0}";
-			sepNavVisRange = "{5396, 965}";
+			sepNavIntBoundsRect = "{{0, 0}, {642, 4017}}";
+			sepNavSelRange = "{3296, 0}";
+			sepNavVisRange = "{2959, 392}";
 		};
 	};
 	EB2B712910EA937B006C32D5 /* recttest */ = {
@@ -1176,16 +1219,16 @@
 	};
 	EB45DBBA10EE7CC4002D889B /* Simul.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {638, 1014}}";
-			sepNavSelRange = "{547, 0}";
-			sepNavVisRange = "{795, 1310}";
+			sepNavIntBoundsRect = "{{0, 0}, {638, 988}}";
+			sepNavSelRange = "{1860, 0}";
+			sepNavVisRange = "{809, 1301}";
 		};
 	};
 	EB45DBBB10EE7CC4002D889B /* Simul.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {638, 1547}}";
-			sepNavSelRange = "{271, 0}";
-			sepNavVisRange = "{0, 747}";
+			sepNavIntBoundsRect = "{{0, 0}, {638, 1599}}";
+			sepNavSelRange = "{1703, 0}";
+			sepNavVisRange = "{0, 698}";
 			sepNavWindowFrame = "{{94, 18}, {599, 760}}";
 		};
 	};
@@ -1281,14 +1324,14 @@
 	};
 	EB81A6BA10F7CFD70056EC81 /* Surface.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {564, 1430}}";
-			sepNavSelRange = "{412, 0}";
-			sepNavVisRange = "{84, 702}";
+			sepNavIntBoundsRect = "{{0, 0}, {638, 1339}}";
+			sepNavSelRange = "{532, 0}";
+			sepNavVisRange = "{254, 1391}";
 		};
 	};
 	EB81A6BB10F7CFD70056EC81 /* Surface.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {638, 3328}}";
+			sepNavIntBoundsRect = "{{0, 0}, {638, 3315}}";
 			sepNavSelRange = "{6555, 0}";
 			sepNavVisRange = "{0, 832}";
 		};
@@ -1512,7 +1555,7 @@
 		fRef = EB45DBBA10EE7CC4002D889B /* Simul.h */;
 		name = "Simul.h: 68";
 		rLen = 0;
-		rLoc = 1968;
+		rLoc = 2012;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 0;
@@ -1522,7 +1565,7 @@
 		fRef = EB45DBBB10EE7CC4002D889B /* Simul.cpp */;
 		name = "Simul.cpp: 86";
 		rLen = 0;
-		rLoc = 1860;
+		rLoc = 1879;
 		rType = 0;
 		vrLen = 850;
 		vrLoc = 17;
