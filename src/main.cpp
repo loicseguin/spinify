@@ -3,9 +3,7 @@
 #include "Simul.h"
 #include "Maths.h"
 #include <iostream>
-#include <string>
 #include <fstream>
-#include <cmath>
 #include <cstdlib>
 #include <vector>
 

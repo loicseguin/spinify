@@ -9,10 +9,13 @@ spinify: $(OBJ)
 Graph: Graph.o Point3D.o tezuka.o
 	$(CXX) -o $@ $^
 
+Maths: Maths.o
+	$(CXX) -o $@ $^
+
 Point3D: Point3D.o
 	$(CXX) -o $@ $^
 
-Simul: Simul.o
+Simul: Simul.o Maths.o
 	$(CXX) -o $@ $^
 
 Surface: Surface.o
@@ -21,11 +24,13 @@ Surface: Surface.o
 tezuka: tezuka.o
 	$(CXX) -o $@ $^
 
-main.o: Graph.h Simul.h tezuka.h
+main.o: Graph.h Maths.h Simul.h tezuka.h
 
 Graph.o: Graph.h
 
 Point3D.o: Point3D.h
+
+Maths.o: Maths.h
 
 Simul.o: Simul.h
 

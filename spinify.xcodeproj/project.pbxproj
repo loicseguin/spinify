@@ -65,7 +65,6 @@
 		EB02AE571100CF93007A0422 /* point3dtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = point3dtest.cpp; path = test/point3dtest.cpp; sourceTree = "<group>"; };
 		EB1577F4110CD34700BBF178 /* planedelaunaytest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = planedelaunaytest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = planedelaunaytest.cpp; path = test/planedelaunaytest.cpp; sourceTree = "<group>"; };
-		EB17BB8A112C9602005B6660 /* Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parameters.h; path = src/Parameters.h; sourceTree = "<group>"; };
 		EB17BB8F112DD3DD005B6660 /* Maths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Maths.h; path = src/Maths.h; sourceTree = "<group>"; };
 		EB17BB90112DD3DD005B6660 /* Maths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Maths.cpp; path = src/Maths.cpp; sourceTree = "<group>"; };
 		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,7 +186,6 @@
 				EB17BB90112DD3DD005B6660 /* Maths.cpp */,
 				EB2B6E7210E1770C006C32D5 /* Graph.h */,
 				EB2B6E7110E1770C006C32D5 /* Graph.cpp */,
-				EB17BB8A112C9602005B6660 /* Parameters.h */,
 				EB02ADF410FFBF77007A0422 /* Point3D.h */,
 				EB02ADF510FFBF77007A0422 /* Point3D.cpp */,
 				EB45DBBA10EE7CC4002D889B /* Simul.h */,
