@@ -1,4 +1,4 @@
-Spinify 2.1
+== Spinify 2.2 ==
 
 http://bitbucket.org/loicseguin/spinify/
 Copyright (C) 2009-2010 Loïc Séguin-C. <loicseguin@gmail.com>
@@ -8,15 +8,30 @@ of ferromagnetism on curved surfaces. It is written in C++ and
 distributed under a BSD license (see LICENSE for more information).
 
 
-INSTALL
+== Install ==
 
-This program has only been tested on Mac OS X 10.6. However, it should
-work on any Unix machine. To install run
+This program has only been tested on Mac OS X 10.6 and Ubuntu 9.10.
+However, it should work on any Unix machine. To install run
     $ make
     $ make install
 (the second command probably should be run as root). This will install
-spinify, qdelaunay and related man pages.
+spinify and the man page. Note that man page installation fails on Ubuntu
+because the directory /usr/local/share/man/man1 does not exist. Creating
+this directory before running make install is the temporary fix for this
+bug.
 
 Note that in order to use the Python code output, you need to have
 Python as well as matplotlib and NumPy.
 
+
+== Bug reporting ==
+
+Please report any bug to the issue tracker at
+http://bitbucket.org/loicseguin/spinify/issues/
+
+
+== Feedback ==
+
+If you use this software and find it useful, I would like to hear from
+you. Please send me an email at <loicseguin@gmail.com> and tell me how
+you use the software.
