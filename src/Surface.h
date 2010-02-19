@@ -71,11 +71,11 @@ class Sphere {
 	 *
 	 */
 	SphereConf cfg;
-	int uniform(Graph& G, const int N);
 	void repulse(Graph& G);
 	double distance(const Point3D& a, const Point3D& b) const;
 	double distanceSq(const Point3D& a, const Point3D& b) const;
 public:
+	int uniform(Graph& G, const int N);
 	int randNodes(Graph& G, const int N = 1);
 	void delaunay(Graph& G);
 	double minDistance(const Graph& G) const;

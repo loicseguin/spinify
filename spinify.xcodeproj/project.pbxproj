@@ -18,6 +18,9 @@
 		EB157805110CD58300BBF178 /* tezuka.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B71B210EC4445006C32D5 /* tezuka.cpp */; };
 		EB157882110D1B4C00BBF178 /* planedelaunaytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */; };
 		EB17BB91112DD3DD005B6660 /* Maths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB17BB90112DD3DD005B6660 /* Maths.cpp */; };
+		EB17BC05112DF0E0005B6660 /* ConfParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */; };
+		EB17BC10112F1FB1005B6660 /* parsertest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB17BC0F112F1FB1005B6660 /* parsertest.cpp */; };
+		EB17BC1E112F2399005B6660 /* ConfParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */; };
 		EB2B6E7010E176FC006C32D5 /* graphtest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */; };
 		EB2B6E7310E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
 		EB2B6E7410E1770C006C32D5 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB2B6E7110E1770C006C32D5 /* Graph.cpp */; };
@@ -67,6 +70,11 @@
 		EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = planedelaunaytest.cpp; path = test/planedelaunaytest.cpp; sourceTree = "<group>"; };
 		EB17BB8F112DD3DD005B6660 /* Maths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Maths.h; path = src/Maths.h; sourceTree = "<group>"; };
 		EB17BB90112DD3DD005B6660 /* Maths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Maths.cpp; path = src/Maths.cpp; sourceTree = "<group>"; };
+		EB17BC00112DEA0F005B6660 /* CONFIG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CONFIG; path = doc/CONFIG; sourceTree = "<group>"; };
+		EB17BC03112DF0E0005B6660 /* ConfParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfParser.h; path = src/ConfParser.h; sourceTree = "<group>"; };
+		EB17BC04112DF0E0005B6660 /* ConfParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConfParser.cpp; path = src/ConfParser.cpp; sourceTree = "<group>"; };
+		EB17BC0A112F1F8C005B6660 /* parsertest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = parsertest; path = build/Debug/parsertest; sourceTree = "<group>"; };
+		EB17BC0F112F1FB1005B6660 /* parsertest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = parsertest.cpp; path = test/parsertest.cpp; sourceTree = "<group>"; };
 		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };
 		EB2B6E7110E1770C006C32D5 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = src/Graph.cpp; sourceTree = "<group>"; };
@@ -113,6 +121,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EB1577F2110CD34700BBF178 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB17BC08112F1F8C005B6660 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -182,6 +197,8 @@
 			children = (
 				EB8DBC7110F2E1CE00DE3109 /* Makefile */,
 				EB2B6EAF10E1802E006C32D5 /* main.cpp */,
+				EB17BC03112DF0E0005B6660 /* ConfParser.h */,
+				EB17BC04112DF0E0005B6660 /* ConfParser.cpp */,
 				EB17BB8F112DD3DD005B6660 /* Maths.h */,
 				EB17BB90112DD3DD005B6660 /* Maths.cpp */,
 				EB2B6E7210E1770C006C32D5 /* Graph.h */,
@@ -210,6 +227,7 @@
 				EB34041410FEAFBF00F16B12 /* spheretest */,
 				EB02AE501100CF67007A0422 /* point3dtest */,
 				EB1577F4110CD34700BBF178 /* planedelaunaytest */,
+				EB17BC0A112F1F8C005B6660 /* parsertest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -217,8 +235,9 @@
 		C6859E8C029090F304C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
-				EBFDAEC611250EE8004C4973 /* README */,
+				EB17BC00112DEA0F005B6660 /* CONFIG */,
 				EB45DB9710EDA509002D889B /* LICENSE */,
+				EBFDAEC611250EE8004C4973 /* README */,
 				EB2B6EAE10E18018006C32D5 /* spinify.1 */,
 			);
 			name = Documentation;
@@ -229,6 +248,7 @@
 			children = (
 				EB8DBC7410F2F2AB00DE3109 /* Makefile */,
 				EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */,
+				EB17BC0F112F1FB1005B6660 /* parsertest.cpp */,
 				EB157881110D1B4C00BBF178 /* planedelaunaytest.cpp */,
 				EB02AE571100CF93007A0422 /* point3dtest.cpp */,
 				EB2B713110EA93B8006C32D5 /* recttest.cpp */,
@@ -291,6 +311,22 @@
 			name = planedelaunaytest;
 			productName = planedelaunaytest;
 			productReference = EB1577F4110CD34700BBF178 /* planedelaunaytest */;
+			productType = "com.apple.product-type.tool";
+		};
+		EB17BC09112F1F8C005B6660 /* parsertest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB17BC0E112F1FAB005B6660 /* Build configuration list for PBXNativeTarget "parsertest" */;
+			buildPhases = (
+				EB17BC07112F1F8C005B6660 /* Sources */,
+				EB17BC08112F1F8C005B6660 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = parsertest;
+			productName = parsertest;
+			productReference = EB17BC0A112F1F8C005B6660 /* parsertest */;
 			productType = "com.apple.product-type.tool";
 		};
 		EB2B6E0110E1624E006C32D5 /* graphtest */ = {
@@ -410,6 +446,7 @@
 				EB34041310FEAFBF00F16B12 /* spheretest */,
 				EB02AE4F1100CF67007A0422 /* point3dtest */,
 				EB1577F3110CD34700BBF178 /* planedelaunaytest */,
+				EB17BC09112F1F8C005B6660 /* parsertest */,
 			);
 		};
 /* End PBXProject section */
@@ -426,6 +463,7 @@
 				EB81A6BC10F7CFD70056EC81 /* Surface.cpp in Sources */,
 				EB02ADF710FFBF77007A0422 /* Point3D.cpp in Sources */,
 				EB17BB91112DD3DD005B6660 /* Maths.cpp in Sources */,
+				EB17BC05112DF0E0005B6660 /* ConfParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +485,15 @@
 				EB1577FF110CD55300BBF178 /* Surface.cpp in Sources */,
 				EB157805110CD58300BBF178 /* tezuka.cpp in Sources */,
 				EB157882110D1B4C00BBF178 /* planedelaunaytest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB17BC07112F1F8C005B6660 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB17BC10112F1FB1005B6660 /* parsertest.cpp in Sources */,
+				EB17BC1E112F2399005B6660 /* ConfParser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +672,36 @@
 				INSTALL_PATH = /usr/local/bin;
 				PREBINDING = NO;
 				PRODUCT_NAME = planedelaunaytest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		EB17BC0C112F1F8D005B6660 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = parsertest;
+			};
+			name = Debug;
+		};
+		EB17BC0D112F1F8D005B6660 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PREBINDING = NO;
+				PRODUCT_NAME = parsertest;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -844,6 +921,15 @@
 			buildConfigurations = (
 				EB1577F6110CD34800BBF178 /* Debug */,
 				EB1577F7110CD34800BBF178 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB17BC0E112F1FAB005B6660 /* Build configuration list for PBXNativeTarget "parsertest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB17BC0C112F1F8D005B6660 /* Debug */,
+				EB17BC0D112F1F8D005B6660 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

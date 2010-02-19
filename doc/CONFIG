@@ -1,0 +1,49 @@
+This file lists configuration options that should be available for the
+user. These options should either be set on the command line or in a
+configuration file (.spinifyrc).
+
+== Mandatory arguments ==
+
+The user _must_ specify the lattice type and number of nodes. This can
+be done either on the command line or in the config file.
+
+
+== Main args ==
+
+/---------------------------------------------\
+|        Option        |    Default value     |
+|---------------------------------------------|
+| lattice              |                 none |
+| measure              |                    u |
+| output               |                  raw |
+| nNodes               |                 none |
+| rectN                |                 none |
+| rectM                |                 none |
+| temps, nTemps        |  1/squareCritBeta, 1 |
+| cfgFile              |         ~/.spinifyrc |
+\---------------------------------------------/
+
+
+== Class Simul ==
+
+/---------------------------------------------\
+|        Option        |    Default value     |
+|---------------------------------------------|
+| decorrelIter         |                 5000 |
+| correlTreshold       |                 0.05 |
+| maxDecorrelTime      |                   99 |
+| minDecorrelTime      |                    5 |
+| Jval                 |                   -1 |
+\---------------------------------------------/
+
+
+== Class Surface ==
+
+/---------------------------------------------\
+|        Option        |    Default value     |
+|---------------------------------------------|
+| rangeMultiplier      |                   10 |
+| dampingExp           |               1.2915 |
+| dampingSub           |                10000 |
+| objectiveRatio       |                 0.21 |
+\---------------------------------------------/
