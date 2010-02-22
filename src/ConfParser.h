@@ -19,6 +19,13 @@ const unsigned int minArgs = 2;
 const unsigned int defaultNbTemps = 50;
 
 
+#ifndef CRIT_TEMPS
+#define CRIT_TEMPS
+const double squareCritBeta = 0.44068679350977151262;
+const double triCritBeta = 0.27465307216702742285;
+#endif
+
+
 enum LatticeType {
 	none,
 	sphere_unif,
@@ -55,6 +62,8 @@ public:
 	// What and where to output
 	OutputType output;
 	std::string graphOutFile;
+	bool outToFile;
+	std::string simulOutFile;
 	
 	// For class Simul
 	unsigned int decorrelIter;
@@ -62,6 +71,8 @@ public:
 	unsigned int maxDecorrelTime;
 	unsigned int minDecorrelTime;
 	int Jval;
+	unsigned int nMeasures;
+	unsigned int nInitTherm;
 	
 	// For class Surface
 	unsigned int rangeMultiplier;

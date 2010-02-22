@@ -11,6 +11,7 @@
 #include "tezuka.h"
 #include "Maths.h"
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <cmath>
 
@@ -22,6 +23,8 @@ Simul::Simul(int N) : Graph(N) {
 	minDecorrelTime = 5;
 	Jval = -1;
 	currentBeta = squareCritBeta;
+	nMeasures = 100;
+	nInitTherm = 500;
 	return;
 }
 
@@ -71,7 +74,9 @@ void Simul::setParams(unsigned int dIter,
 					  unsigned int maxDTime,
 					  unsigned int minDTime,
 					  int J,
-					  std::vector<double>& temps) {
+					  std::vector<double>& temps,
+					  unsigned int nM,
+					  unsigned int nITherm) {
 	decorrelIter = dIter;
 	correlTreshold = cTreshold;
 	maxDecorrelTime = maxDTime;
@@ -80,6 +85,8 @@ void Simul::setParams(unsigned int dIter,
 	for (int i = 0; i < temps.size(); i++) {
 		beta.push_back(1./temps[i]);
 	}
+	nMeasures = nM;
+	nInitTherm = nITherm;
 	return;
 }
 
@@ -131,4 +138,42 @@ int Simul::findDecorrelTime(double (Simul::*measure)()) {
 		k = minDecorrelTime;
 	
 	return k;
+}
+
+void Simul::runSimul(OutputType type, std::ostream & output) {
+	if (type == python) {
+		output << "import numpy as np\n"
+		<< "import matplotlib.pyplot as plt\n"
+		<< "data = np.array([";
+	}
+	
+	for (int i = 0; i < beta.size(); i++) {
+		currentBeta = beta[i];
+		thermalize(nInitTherm);
+		//std::cerr << "Thermalized at temperature beta = " << Sim.getBeta() << std::endl;
+		int K = findDecorrelTime(&Simul::measureE);
+		double Data[nMeasures];
+		for (int j = 0; j < nMeasures; j++) {
+			thermalize(K);
+			Data[j] = measureE();
+		}
+		double avgData = avg(Data, nMeasures);
+		if (type == python) {
+			output.precision(14);
+			output << "[" << getBeta() << ", " << avgData << "]," << std::endl;
+		}
+		else {
+			output.precision(14);
+			output << getBeta() << " " << avgData << std::endl;
+		}
+	}
+	
+	if (type == python) {
+		output << "])\n"
+		<< "x = 1/data[:,0]\n"
+		<< "y = data[:,1]\n"
+		<< "plt.plot(x, y)\n"
+		<< "plt.show()" << std::endl;
+	}
+	return;
 }
