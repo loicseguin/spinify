@@ -25,6 +25,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include "../src/Graph.h"
 #include "../src/Point3D.h"
 
@@ -109,6 +110,13 @@ int main(void) {
 	cout << "Coordinates of node " << 0 << ": (" << pts[0] << ", "
 		 << pts[1] <<")" << endl;
 	
+	
+	// Print Graph using builtin print() function.
+	bool outFileRequested = true;
+	
+	std::ofstream realOutFile;
+	std::ostream & output = outFileRequested ? realOutFile.open("foo.txt", std::ios::out), realOutFile : std::cout;
+	G.print(raw, output);
 	
 	return 0;
 }

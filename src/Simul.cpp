@@ -16,7 +16,12 @@
 
 
 Simul::Simul(int N) : Graph(N) {
-	setParams();
+	decorrelIter = 5000;
+	correlTreshold = 0.05;
+	maxDecorrelTime = 99;
+	minDecorrelTime = 5;
+	Jval = -1;
+	currentBeta = squareCritBeta;
 	return;
 }
 
@@ -61,15 +66,26 @@ void Simul::swendsen() {
 	return;
 }
 
-void Simul::setParams(const double betaval, const int Jval) {
-	params.beta = betaval;
-	params.J = Jval;
+void Simul::setParams(unsigned int dIter,
+					  double cTreshold,
+					  unsigned int maxDTime,
+					  unsigned int minDTime,
+					  int J,
+					  std::vector<double>& temps) {
+	decorrelIter = dIter;
+	correlTreshold = cTreshold;
+	maxDecorrelTime = maxDTime;
+	minDecorrelTime = minDTime;
+	Jval = J;
+	for (int i = 0; i < temps.size(); i++) {
+		beta.push_back(1./temps[i]);
+	}
 	return;
 }
 
-double Simul::getBeta() { return params.beta; }
+double Simul::getBeta() { return currentBeta; }
 
-int Simul::getJ() { return params.J; }
+int Simul::getJ() { return Jval; }
 
 double Simul::measureE() {
 	// u = (J*\sum_{adjacent nodes i, j} s_i s_j)/N

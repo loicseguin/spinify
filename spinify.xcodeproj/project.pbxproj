@@ -73,7 +73,7 @@
 		EB17BC00112DEA0F005B6660 /* CONFIG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CONFIG; path = doc/CONFIG; sourceTree = "<group>"; };
 		EB17BC03112DF0E0005B6660 /* ConfParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfParser.h; path = src/ConfParser.h; sourceTree = "<group>"; };
 		EB17BC04112DF0E0005B6660 /* ConfParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConfParser.cpp; path = src/ConfParser.cpp; sourceTree = "<group>"; };
-		EB17BC0A112F1F8C005B6660 /* parsertest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = parsertest; path = build/Debug/parsertest; sourceTree = "<group>"; };
+		EB17BC0A112F1F8C005B6660 /* parsertest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = parsertest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB17BC0F112F1FB1005B6660 /* parsertest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = parsertest.cpp; path = test/parsertest.cpp; sourceTree = "<group>"; };
 		EB2B6E0210E1624E006C32D5 /* graphtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = graphtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2B6E6F10E176FC006C32D5 /* graphtest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = graphtest.cpp; path = test/graphtest.cpp; sourceTree = "<group>"; };

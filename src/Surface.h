@@ -17,18 +17,6 @@
 const double Pi = 3.141592653589793;
 
 
-class SphereConf {
-public:
-	unsigned int rangeMultiplier;
-	double dampingExp;
-	unsigned int dampingSub;
-	double objectiveRatio;
-	SphereConf(unsigned int rMult = 10,
-			   double dExp = 1.2915,
-			   unsigned int dSub = 10000,
-			   double oRatio = 0.21);
-};
-
 class Sphere {
 	/*
 	 * Sphere is an implementation of S^2 embedded in R^3.
@@ -55,7 +43,7 @@ class Sphere {
 	 * of the distance (respectively) between any two Nodes on the
 	 * Sphere.
 	 *
-	 * randNodes() adds N Nodes to Graph G and ensures that they are
+	 * evenNodes() adds N Nodes to Graph G and ensures that they are
 	 * (approximately) evenly distributed. It proceeds by first
 	 * generating Nodes uniformly and then calling repulse().
 	 *
@@ -70,15 +58,23 @@ class Sphere {
 	 * Nodes on the sphere.
 	 *
 	 */
-	SphereConf cfg;
+	unsigned int rangeMultiplier;
+	double dampingExp;
+	unsigned int dampingSub;
+	double objectiveRatio;	
 	void repulse(Graph& G);
 	double distance(const Point3D& a, const Point3D& b) const;
 	double distanceSq(const Point3D& a, const Point3D& b) const;
 public:
+	Sphere();
 	int uniform(Graph& G, const int N);
-	int randNodes(Graph& G, const int N = 1);
+	int evenNodes(Graph& G, const int N = 1);
 	void delaunay(Graph& G);
 	double minDistance(const Graph& G) const;
+	void setParams(unsigned int rMultiplier,
+				   double dExp,
+				   unsigned int dSub,
+				   double oRatio);
 };
 
 class Plane {

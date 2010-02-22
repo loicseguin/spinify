@@ -185,3 +185,83 @@ void Graph::resetStatus() {
 		nodes[i]->setStatus(notVisited);
 }
 
+void Graph::print(OutputType type, std::ostream & output) {
+	switch (type) {
+		case python:
+			prPython(output);
+			break;
+		case raw:
+			prRaw(output);
+			break;
+		default:
+			break;
+	}
+	return;
+}
+
+void Graph::prPython(std::ostream & output) {
+	output << "import numpy as np\n"
+	<< "from mpl_toolkits.mplot3d import Axes3D\n"
+	<< "import matplotlib.pyplot as plt\n"
+	<< "data = np.array([";
+	
+	for (int i = 0; i < size(); i++) {
+		Point3D& pts = (*this)[i].getCoords();
+		output.precision(14);
+		output << "[" << pts[0] << ", " << pts[1] << ", "
+		<< pts[2] << "],\n";
+	}
+	
+	output << "])\n"
+	<< "fig = plt.figure()" << std::endl
+	<< "ax = Axes3D(fig)" << std::endl;
+	
+	resetStatus();
+	
+	for (int i = 0; i < size(); i++) {
+		for (int j = 0; j < (*this)[i].degree(); j++) {
+			if ((*this)[i][j].getStatus() == Visited) {
+				continue;
+			}
+			(*this)[i][j].setStatus(Visited);
+			Point3D& iCoords = (*this)[i].getCoords();
+			Point3D& jCoords = ((*this)[i][j].getOtherEnd((*this)[i])).getCoords();
+			output << "ax.plot(";
+			for (int k = 0; k < 3; k++) {
+				output << "[" << iCoords[k] << ", " << jCoords[k] << "],";
+			}
+			output << "'b' )\n";
+		}
+	}
+	
+	output
+	<< "xs = data[:,0]" << std::endl
+	<< "ys = data[:,1]" << std::endl
+	<< "zs = data[:,2]" << std::endl
+	<< "ax.scatter(xs, ys, zs)" << std::endl
+	<< "plt.show()" << std::endl;
+	resetStatus();
+	return;
+}
+
+void Graph::prRaw(std::ostream & output) {
+	resetStatus();
+	output << size() << std::endl;
+	int nEdge = 0;
+	for (int i = 0; i < size(); i++) {
+		nEdge += (*this)[i].degree();
+	}
+	nEdge /= 2;
+	output << nEdge << std::endl;
+	for (int i = 0; i < size(); i++) {
+		for (int j = 0; j < (*this)[i].degree(); j++) {
+			if ((*this)[i][j].getStatus() == Visited) {
+				continue;
+			}
+			(*this)[i][j].setStatus(Visited);
+			Node& neigh = (*this)[i][j].getOtherEnd((*this)[i]);
+			output << (*this)[i].getID() << " " << neigh.getID() << std::endl;
+		}
+	}
+	return;
+}

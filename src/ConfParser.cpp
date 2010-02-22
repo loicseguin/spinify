@@ -49,9 +49,12 @@ ConfParser::ConfParser () {
 	rectM = 0;
 	cfgFile = "~/.spinifyrc";
 	measure = energy;
-	output = raw;
 	temps.push_back(1./squareCritBeta);
 	nTemps = 1;
+	
+	// What and where to output
+	output = raw;
+	graphOutFile = "";
 	
 	// For class Simul
 	decorrelIter = 5000;
@@ -69,7 +72,7 @@ ConfParser::ConfParser () {
 	return;
 }
 
-void ConfParser::parseArgs(int argc, char* argv[]) {
+void ConfParser::parseArgs(int argc, char* const argv[]) {
 	unsigned int tmpi;
 	int tmpsi;
 	double tmpd;

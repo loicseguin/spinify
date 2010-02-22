@@ -17,12 +17,11 @@
 #include "Point3D.h"
 
 
-SphereConf::SphereConf(unsigned int rMult, double dExp,
-					   unsigned int dSub, double oRatio) {
-	rangeMultiplier = rMult;
-	dampingExp = dExp;
-	dampingSub = dSub;
-	objectiveRatio = oRatio;
+Sphere::Sphere() {
+	rangeMultiplier = 10;
+	dampingExp = 1.2915;
+	dampingSub = 10000;
+	objectiveRatio = 0.21;
 	return;
 }
 
@@ -49,19 +48,19 @@ int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
 
 void Sphere::repulse(Graph& G) {
 	const double expectedRadius = 2./sqrt(G.size());
-	const double range = cfg.rangeMultiplier * expectedRadius;
+	const double range = rangeMultiplier * expectedRadius;
 	const double objectiveDist = 4./sqrt(G.size());
 	
 	// The following damping coefficient is a crude guess based on
 	// a couple of experiments. More thoughts should be put into this.
 	const double dampingCoeff =
-		std::max(pow(G.size(), cfg.dampingExp),
-				 pow(G.size(), cfg.dampingExp) - cfg.dampingSub);
+		std::max(pow(G.size(), dampingExp),
+				 pow(G.size(), dampingExp) - dampingSub);
 	
 	double minDist = 0.;
 	int counter = 0;
 	
-	while ((objectiveDist - minDist) / objectiveDist > cfg.objectiveRatio) {
+	while ((objectiveDist - minDist) / objectiveDist > objectiveRatio) {
 		for (int i = 0; i < G.size(); i++){
 			Point3D force(0);
 			Point3D& iCoords = G[i].getCoords();
@@ -95,7 +94,7 @@ double Sphere::distanceSq(const Point3D& a, const Point3D& b) const {
 	return (a - b).normSq();
 }
 
-int Sphere::randNodes(Graph& G, int N) {
+int Sphere::evenNodes(Graph& G, int N) {
 	int counter = uniform(G, N);
 	repulse(G);
 	return counter;
@@ -103,7 +102,7 @@ int Sphere::randNodes(Graph& G, int N) {
 
 void Sphere::delaunay(Graph& G) {
 	const double expectedRadius = 2./sqrt(G.size());
-	const double range = cfg.rangeMultiplier * expectedRadius;
+	const double range = rangeMultiplier * expectedRadius;
 	Basis B;
 	for (int i = 0; i < G.size(); i++) {
 		Graph H;
@@ -151,6 +150,18 @@ double Sphere::minDistance(const Graph& G) const {
 	}
 	return min;
 }
+
+void Sphere::setParams(unsigned int rMultiplier,
+			   double dExp,
+			   unsigned int dSub,
+			   double oRatio) {
+	rangeMultiplier = rMultiplier;
+	dampingExp = dExp;
+	dampingSub = dSub;
+	objectiveRatio = oRatio;
+	return;
+}
+
 
 bool compare_angles(Angle a, Angle b) {
 	if (a.angle <= b.angle)

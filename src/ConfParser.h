@@ -30,10 +30,13 @@ enum MeasureType {
 	energy
 };
 
+#ifndef OUTPUT_ENUM
+#define OUTPUT_ENUM
 enum OutputType {
 	python,
 	raw
 };
+#endif
 
 
 class ConfParser {
@@ -43,12 +46,15 @@ public:
 	std::string cfgFile;
 	LatticeType lattice;
 	MeasureType measure;
-	OutputType output;
 	unsigned int nNodes;
 	unsigned int rectN;
 	unsigned int rectM;
 	std::vector<double> temps;
 	unsigned int nTemps;
+	
+	// What and where to output
+	OutputType output;
+	std::string graphOutFile;
 	
 	// For class Simul
 	unsigned int decorrelIter;
@@ -64,7 +70,7 @@ public:
 	double objectiveRatio;
 	
 	// Parsers
-	void parseArgs(int argc, char* argv[]);
+	void parseArgs(int argc, char* const argv[]);
 	
 	// Constructor sets default values
 	ConfParser();
