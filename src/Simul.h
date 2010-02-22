@@ -20,8 +20,11 @@
 #include "Graph.h"
 
 
+#ifndef CRIT_TEMPS
+#define CRIT_TEMPS
 const double squareCritBeta = 0.44068679350977151262;
 const double triCritBeta = 0.27465307216702742285;
+#endif
 
 
 class Simul : public Graph {
@@ -59,6 +62,8 @@ class Simul : public Graph {
 	int Jval;
 	double currentBeta;
 	std::vector<double> beta;
+	unsigned int nMeasures;
+	unsigned int nInitTherm;
 public:
 	Simul(int N = 10);
 	void thermalize(const int n = 500);
@@ -67,11 +72,15 @@ public:
 				   unsigned int maxDTime,
 				   unsigned int minDTime,
 				   int J,
-				   std::vector<double>& temps);
+				   std::vector<double>& temps,
+				   unsigned	int nMeasures,
+				   unsigned int nInitTherm);
 	double getBeta();
 	int getJ();
 	double measureE();
 	int findDecorrelTime(double (Simul::*measure)());
+	void runSimul(OutputType type = raw,
+				  std::ostream & output = std::cout);
 };
 
 

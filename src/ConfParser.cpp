@@ -8,7 +8,6 @@
  */
 
 #include "ConfParser.h"
-#include "Simul.h"
 #include <cstdlib>
 #include <iostream>
 
@@ -25,19 +24,18 @@ void usage(void) {
 	<< "USAGE: spinify [lattice] [measure] [temperature options] [output options]\n" << endl
 	<< "Lattice:" << endl
 	<< "  -s N         random lattice on a sphere with N nodes" << endl
-	<< "  -r N M       rectangular lattice on a plane torus of width N and height M\n" << endl
+	<< "  -r N M       rectangular lattice on a plane torus of width N and height M" << endl
 	//<< "  -l FILE      reads lattice from file" << endl
+	<< "  -w FILE      write lattice to FILE\n" << endl
 	//<< "Measure:" << endl
 	//<< "  -u           measure internal energy per spin\n" << endl
 	<< "Temperature:" << endl
 	<< "  -T n m i     does measurements from temperature n to m, incrementing by" << endl
 	<< "               i Kelvin every time\n" << endl
-	//<< "  -b n m i     does measurements from beta n to m, incrementing by" << endl
-	//<< "               i every time\n" << endl
 	<< "Output:" << endl
 	<< "  -R           raw output" << endl
-	<< "  -P           Python output" << endl;
-	//<< "  -f file      outputs to file" << endl;
+	<< "  -P           Python output" << endl
+	<< "  -f FILE      write simulation output to FILE" << endl;
 }
 
 
@@ -55,6 +53,8 @@ ConfParser::ConfParser () {
 	// What and where to output
 	output = raw;
 	graphOutFile = "";
+	bool outToFile = false;
+	simulOutFile = "";
 	
 	// For class Simul
 	decorrelIter = 5000;
@@ -62,6 +62,8 @@ ConfParser::ConfParser () {
 	maxDecorrelTime = 99;
 	minDecorrelTime = 5;
 	Jval = -1;
+	nMeasures = 100;
+	nInitTherm = 500;
 	
 	// For class Surface
 	rangeMultiplier = 10;
@@ -215,6 +217,15 @@ void ConfParser::parseArgs(int argc, char* const argv[]) {
 			output_set = true;
 		}
 		
+		// Output files
+		else if (arg == "-w") {
+			graphOutFile = argv[++i];
+		}
+		else if (arg == "-f") {
+			outToFile = true;
+			simulOutFile = argv[++i];
+		}
+		
 		// Class Simul options
 		else if (arg == "--decorrelIter" &&
 				 (tmpi = strtol(argv[++i], NULL, 0))) {
@@ -235,6 +246,14 @@ void ConfParser::parseArgs(int argc, char* const argv[]) {
 		else if (arg == "--Jval" &&
 				 (tmpsi = strtol(argv[++i], NULL, 0))) {
 			Jval = tmpsi;
+		}
+		else if (arg == "--nMeasures" &&
+				 (tmpi = strtol(argv[++i], NULL, 0))) {
+			nMeasures = tmpi;
+		}
+		else if (arg == "--nInitTherm" &&
+				 (tmpi = strtol(argv[++i], NULL, 0))) {
+			nInitTherm = tmpi;
 		}
 		
 		// Class Surface options

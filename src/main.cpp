@@ -22,7 +22,9 @@ int main (int argc, char * const argv[]) {
 				cfg.maxDecorrelTime,
 				cfg.minDecorrelTime,
 				cfg.Jval,
-				cfg.temps);
+				cfg.temps,
+				cfg.nMeasures,
+				cfg.nInitTherm);
 	
 	switch (cfg.lattice) {
 		case sphere_even:
@@ -50,56 +52,25 @@ int main (int argc, char * const argv[]) {
 			break;
 	}
 	
-	// The following (rather cryptic) trick comes from
-	// http://stackoverflow.com/questions/428630/assigning-cout-to-a-variable-name/428821#428821
-	
 	std::ofstream outFile;
-	std::ostream & graphOutput = (cfg.graphOutFile != "")
+	if (cfg.graphOutFile != "") {
+		std::ostream & graphOutput = true
 		? outFile.open(cfg.graphOutFile.c_str(), std::ios::out), outFile
 		: std::cout;
-	
-	G.print(cfg.output, graphOutput);
-	
-	if (cfg.graphOutFile != "")
+		G.print(cfg.output, graphOutput);
 		outFile.close();
+	}
 	
 	G.randSpin();
 	
-	if (cfg.output == python) {
-		cout << "import numpy as np\n"
-		<< "import matplotlib.pyplot as plt\n"
-		<< "data = np.array([";
-	}
+	// The following (rather cryptic) trick comes from
+	// http://stackoverflow.com/questions/428630/assigning-cout-to-a-variable-name/428821#428821
 	
-	int nMeasure = 100;
+	std::ostream & simulOutput = cfg.outToFile
+		? outFile.open(cfg.simulOutFile.c_str(), std::ios::out), outFile
+		: std::cout;
 	
-	for (int i = 0; i < cfg.nTemps; i++) {
-		G.thermalize(500);
-		//std::cerr << "Thermalized at temperature beta = " << Sim.getBeta() << std::endl;
-		int K = G.findDecorrelTime(&Simul::measureE);
-		double Data[nMeasure];
-		for (int j = 0; j < nMeasure; j++) {
-			G.thermalize(K);
-			Data[j] = G.measureE();
-		}
-		double avgData = avg(Data, nMeasure);
-		if (cfg.output == python) {
-			cout.precision(14);
-			cout << "[" << G.getBeta() << ", " << avgData << "]," << endl;
-		}
-		else {
-			cout.precision(14);
-			cout << G.getBeta() << " " << avgData << endl;
-		}
-	}
-	
-	if (cfg.output == python) {
-		cout << "])\n"
-		<< "x = 1/data[:,0]\n"
-		<< "y = data[:,1]\n"
-		<< "plt.plot(x, y)\n"
-		<< "plt.show()" << endl;
-	}
+	G.runSimul(cfg.output, simulOutput);
 	cerr << "Done!" << endl;
 	
     return 0;
