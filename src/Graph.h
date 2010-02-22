@@ -20,6 +20,8 @@
 
 #include <vector>
 #include "Point3D.h"
+#include <ostream>
+#include <iostream>
 
 enum Status {
 	/*
@@ -30,6 +32,14 @@ enum Status {
 	notVisited,
 	Visited
 };
+
+#ifndef OUTPUT_ENUM
+#define OUTPUT_ENUM
+enum OutputType {
+	python,
+	raw
+};
+#endif
 
 
 class Edge;
@@ -69,6 +79,8 @@ class Graph {
 	 *
 	 */
 	std::vector<Node*> nodes;
+	void prPython(std::ostream & output);
+	void prRaw(std::ostream & output);
 	
 public:
 	std::vector<Edge*> edges;
@@ -83,6 +95,8 @@ public:
 	void initRect(const int L = 10, const int W = 10);
 	void randSpin();
 	void resetStatus();
+	void print(OutputType type = raw,
+			   std::ostream & output = std::cout);
 };
 
 

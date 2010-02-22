@@ -24,13 +24,6 @@ const double squareCritBeta = 0.44068679350977151262;
 const double triCritBeta = 0.27465307216702742285;
 
 
-const int decorrelIter = 5000;
-const double correlTreshold = 0.05;
-const int maxDecorrelTime = 99;
-const int minDecorrelTime = 5;
-const int defaultJ = -1;
-
-
 class Simul : public Graph {
 	/*
 	 * When initializing a simulation, passing an integer argument N
@@ -59,15 +52,22 @@ class Simul : public Graph {
 	 *
 	 */
 	void swendsen();
-	struct Params {
-		double beta;
-		int J;
-	} params;
+	unsigned int decorrelIter;
+	double correlTreshold;
+	unsigned int maxDecorrelTime;
+	unsigned int minDecorrelTime;
+	int Jval;
+	double currentBeta;
+	std::vector<double> beta;
 public:
 	Simul(int N = 10);
 	void thermalize(const int n = 500);
-	void setParams(const double betaval = squareCritBeta,
-				   const int Jval = defaultJ);
+	void setParams(unsigned int dIter,
+				   double cTreshold,
+				   unsigned int maxDTime,
+				   unsigned int minDTime,
+				   int J,
+				   std::vector<double>& temps);
 	double getBeta();
 	int getJ();
 	double measureE();
