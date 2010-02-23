@@ -94,6 +94,8 @@
 		EB45DBE610EFC2ED002D889B /* swendsentest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = swendsentest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB45DD1210F13C99002D889B /* simultest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = simultest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB45DD1910F13CBE002D889B /* simultest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simultest.cpp; path = test/simultest.cpp; sourceTree = "<group>"; };
+		EB4ADF841133808000BD3936 /* tezuka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tezuka.h; path = src/win32/tezuka.h; sourceTree = "<group>"; };
+		EB4ADF851133808100BD3936 /* tezuka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tezuka.cpp; path = src/win32/tezuka.cpp; sourceTree = "<group>"; };
 		EB81A6BA10F7CFD70056EC81 /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Surface.h; path = src/Surface.h; sourceTree = "<group>"; };
 		EB81A6BB10F7CFD70056EC81 /* Surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Surface.cpp; path = src/Surface.cpp; sourceTree = "<group>"; };
 		EB8DBC0C10F2C45C00DE3109 /* randtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = randtest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -211,6 +213,7 @@
 				EB81A6BB10F7CFD70056EC81 /* Surface.cpp */,
 				EB2B71B310EC4445006C32D5 /* tezuka.h */,
 				EB2B71B210EC4445006C32D5 /* tezuka.cpp */,
+				EB4ADF861133809500BD3936 /* win32 */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -258,6 +261,15 @@
 				EB45DBD110EFC2C2002D889B /* swendsentest.cpp */,
 			);
 			name = Tests;
+			sourceTree = "<group>";
+		};
+		EB4ADF861133809500BD3936 /* win32 */ = {
+			isa = PBXGroup;
+			children = (
+				EB4ADF841133808000BD3936 /* tezuka.h */,
+				EB4ADF851133808100BD3936 /* tezuka.cpp */,
+			);
+			name = win32;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
