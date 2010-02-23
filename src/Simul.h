@@ -34,16 +34,16 @@ class Simul : public Graph {
 	 * Graph. The Graph contains all the information about nodes and
 	 * edges which are then used to run the Swendsen-Wang-Wolff
 	 * algorithm. The constructor also takes care of setting the
-	 * parameters of the simulation (temperature and interaction
-	 * coefficient) to some default values (the temperature is set to
-	 * the critical temperature for the rectangular lattice and the
-	 * interaction coefficient is set to -1 for ferromagnetism).
+	 * parameters of the simulation to decent default values (the
+	 * temperature is set to the critical temperature for the
+	 * rectangular lattice and the interaction coefficient is set to -1
+	 * for ferromagnetism).
 	 *
 	 * swendsen() runs one step of the SWW algorithm.
 	 *
 	 * thermalize() calls swendsen() n times.
 	 *
-	 * setParams() set the temperature and the interaction coefficient.
+	 * setParams() sets all the parameters.
 	 *
 	 * During a simulation, there are many different quantities that can
 	 * be measured. One of them is the internal energy per spin

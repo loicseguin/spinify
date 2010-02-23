@@ -1,5 +1,9 @@
 #include "tezuka.h"
 
+#ifdef _WIN32
+#include <cstdlib>
+#endif
+
 unsigned int s1, s2, b;
 
 void set_seed (void)
@@ -9,6 +13,10 @@ void set_seed (void)
 	
 	// Initialization of seeds.
 	
+#ifdef _WIN32
+	s1 = random();
+	s2 = random();
+#else
 	for (s1 = Mask1; s1 >= Mask1 || s1 == 0;) {
 		gettimeofday (&tp, &tpz);
 		s1 = tp.tv_usec;
@@ -18,6 +26,7 @@ void set_seed (void)
 		gettimeofday (&tp, &tpz);
 		s2 = tp.tv_usec;
 	}
+#endif
 	return;
 }
 
