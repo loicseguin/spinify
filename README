@@ -1,27 +1,49 @@
-== Spinify 2.2 ==
+== Spinify ==
+
+Version: 2.2
 
 http://bitbucket.org/loicseguin/spinify/
-Copyright (C) 2009-2010 Loïc Séguin-C. <loicseguin@gmail.com>
+Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>
 
 Spinify is a Markov chain Monte Carlo simulation for the 2D Ising model
 of ferromagnetism on curved surfaces. It is written in C++ and
 distributed under a BSD license (see LICENSE for more information).
 
+See INSTALL for detailed installation instructions.
 
-== Install ==
 
-This program has only been tested on Mac OS X 10.6 and Ubuntu 9.10.
-However, it should work on any Unix machine. To install run
-    $ make
-    $ make install
-(the second command probably should be run as root). This will install
-spinify and the man page. Note that man page installation fails on Ubuntu
-because the directory /usr/local/share/man/man1 does not exist. Creating
-this directory before running make install is the temporary fix for this
-bug.
+== Description ==
 
-Note that in order to use the Python code output, you need to have
-Python as well as matplotlib and NumPy.
+The Spinify project aims at producing an efficient simulation algorithm
+for the Ising model on surfaces with non trivial metric tensor.
+
+The idea behind the project is that conformal field theories make
+interesting predictions on the behaviour of the Ising model on
+different surfaces in the limit where the number of atoms on the
+lattice tends to infinity. However, there are no proofs that the
+discrete model tends to the continuous model considered by CFT.
+
+The problem with surfaces with non trivial metrics is that they often
+do not admit regular lattices. To circumvent this difficulty, it has
+been proposed to make simulations on random lattices.
+
+More details available in the document
+http://www.math.mcgill.ca/lseguin/documents/Ising2006.pdf.
+Please note that this document refers to an older version of Spinify.
+I will try to write a complete and more up to date explanation of the
+background as well as the program as soon as possible.
+
+
+== Mailing list ==
+
+If you have questions, comments or just want to discuss about the
+development of Spinify, you can do so on the mailing list:
+
+[[mailto:spinify-discuss@googlegroups.com|spinify-discuss@googlegroups.com]]
+
+You can subscribe to the mailing list here:
+
+http://groups.google.ca:80/group/spinify-discuss?pli=1
 
 
 == Bug reporting ==
@@ -35,3 +57,17 @@ http://bitbucket.org/loicseguin/spinify/issues/
 If you use this software and find it useful, I would like to hear from
 you. Please send me an email at <loicseguin@gmail.com> and tell me how
 you use the software.
+
+
+== Help needed ==
+
+The founder of the Spinify project is a mathematician and a physicist
+who happens to know a little bit of programming. However, there are
+probably tons of improvements that any well trained programmer could
+suggest for the project. These improvements are more than welcome!
+
+Keep in mind that the objective is to make simulations on lattices with
+a huge number of nodes (> 10^6). Previous experiments have shown that
+the most computationnally expensive part of the simulation is actually
+the generation of the random lattice. Hence, this is probably the part
+of the code that should be worked on the most.

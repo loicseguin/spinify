@@ -3,28 +3,28 @@ SRC_DIR = ../src
 all: graphtest simultest swendsentest recttest randtest spheretest point3dtest planedelaunaytest
 
 graphtest: graphtest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 simultest: simultest.o $(SRC_DIR)/Simul.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 swendsentest: swendsentest.o $(SRC_DIR)/Simul.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 recttest: recttest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 randtest: randtest.o $(SRC_DIR)/tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 spheretest: spheretest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/Surface.o $(SRC_DIR)/tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 point3dtest: point3dtest.o $(SRC_DIR)/Point3D.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 planedelaunaytest: planedelaunaytest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/Surface.o $(SRC_DIR)/tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 %.o: %.c
 	$(CXX) -o $@ -c $< $(CXXFLAGS)

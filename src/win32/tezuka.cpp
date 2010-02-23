@@ -7,12 +7,14 @@
  *
  */
 
-#include "tezuka.h"
 #include <cstdlib>
+
+#include "tezuka.h"
 
 unsigned int s1, s2, b;
 
-void set_seed (void)
+void
+set_seed (void)
 {
 	// Initialization of seeds.
 	srand(time(NULL));
@@ -22,7 +24,8 @@ void set_seed (void)
 	return;
 }
 
-unsigned int alea (void)
+unsigned int
+alea (void)
 {
 	static int flag = 0;
 	if (flag == 0) {

@@ -7,9 +7,10 @@
  *
  */
 
-#include "ConfParser.h"
 #include <cstdlib>
 #include <iostream>
+
+#include "ConfParser.h"
 
 #define VERSION "2.2"
 
@@ -17,10 +18,12 @@
 using namespace std;
 
 
-void usage(void) {
-	cerr
+void
+usage(void)
+{
+	cout
 	<< "Spinify " << VERSION << " http://bitbucket.org/loicseguin/spinify/" << endl
-	<< "Copyright (C) 2009-2010 Loïc Séguin-C. <loicseguin@gmail.com>\n" << endl
+	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>\n" << endl
 	<< "USAGE: spinify [lattice] [measure] [temperature options] [output options]\n" << endl
 	<< "Lattice:" << endl
 	<< "  -s N         random lattice on a sphere with N nodes" << endl
@@ -38,8 +41,20 @@ void usage(void) {
 	<< "  -f FILE      write simulation output to FILE" << endl;
 }
 
+void
+version(void)
+{
+	cout
+	<< "Spinify " << VERSION << endl
+	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
+	<< "Distributed under a BSD license." << endl
+	<< "This is free software: you are free to change and redistribute it." << endl
+	<< "There is NO WARRANTY, to the extent permitted by law." << endl;
+}
 
-ConfParser::ConfParser () {
+
+ConfParser::ConfParser ()
+{
 	// Main args
 	lattice = none;
 	nNodes = 0;
@@ -74,7 +89,9 @@ ConfParser::ConfParser () {
 	return;
 }
 
-void ConfParser::parseArgs(int argc, char* const argv[]) {
+void
+ConfParser::parseArgs(int argc, char* const argv[])
+{
 	unsigned int tmpi;
 	int tmpsi;
 	double tmpd;
@@ -293,5 +310,7 @@ void ConfParser::parseArgs(int argc, char* const argv[]) {
 	return;
 }
 
-void ConfParser::parseCfgFile() {
+void
+ConfParser::parseCfgFile()
+{
 }

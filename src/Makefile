@@ -4,25 +4,25 @@ OBJ = $(SRC:.cpp=.o)
 all: spinify
 
 spinify: $(OBJ)
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 Graph: Graph.o Point3D.o tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 Maths: Maths.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 Point3D: Point3D.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 Simul: Simul.o Maths.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 Surface: Surface.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 tezuka: tezuka.o
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 main.o: Graph.h Maths.h Simul.h tezuka.h
 

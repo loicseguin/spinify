@@ -72,6 +72,4 @@ public:
 	Point3D& operator[](int i);
 };
 
-
-
-#endif
+#endif // !POINT3D_H

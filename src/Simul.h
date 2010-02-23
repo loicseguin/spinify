@@ -84,4 +84,4 @@ public:
 };
 
 
-#endif
+#endif // !SIMUL_H

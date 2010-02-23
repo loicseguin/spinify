@@ -7,16 +7,18 @@
  *
  */
 
+
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <vector>
+
+#include "Maths.h"
 #include "Simul.h"
 #include "tezuka.h"
-#include "Maths.h"
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <cmath>
 
-
-Simul::Simul(int N) : Graph(N) {
+Simul::Simul(int N) : Graph(N)
+{
 	decorrelIter = 5000;
 	correlTreshold = 0.05;
 	maxDecorrelTime = 99;
@@ -25,16 +27,18 @@ Simul::Simul(int N) : Graph(N) {
 	currentBeta = squareCritBeta;
 	nMeasures = 100;
 	nInitTherm = 500;
-	return;
 }
 
-void Simul::thermalize(const int n) {
+void
+Simul::thermalize(const int n)
+{
 	for (int i = 0; i < n; i++)
 		swendsen();
-	return;
 }
 
-void Simul::swendsen() {
+void
+Simul::swendsen()
+{
 	resetStatus();
 	for (int i = 0; i < size(); i++) {
 		if ((*this)[i].getStatus() == notVisited) {
@@ -66,17 +70,18 @@ void Simul::swendsen() {
 			}
 		}
 	}
-	return;
 }
 
-void Simul::setParams(unsigned int dIter,
-					  double cTreshold,
-					  unsigned int maxDTime,
-					  unsigned int minDTime,
-					  int J,
-					  std::vector<double>& temps,
-					  unsigned int nM,
-					  unsigned int nITherm) {
+void
+Simul::setParams(unsigned int dIter,
+				 double cTreshold,
+				 unsigned int maxDTime,
+				 unsigned int minDTime,
+				 int J,
+				 std::vector<double>& temps,
+				 unsigned int nM,
+				 unsigned int nITherm)
+{
 	decorrelIter = dIter;
 	correlTreshold = cTreshold;
 	maxDecorrelTime = maxDTime;
@@ -87,14 +92,23 @@ void Simul::setParams(unsigned int dIter,
 	}
 	nMeasures = nM;
 	nInitTherm = nITherm;
-	return;
 }
 
-double Simul::getBeta() { return currentBeta; }
+double
+Simul::getBeta()
+{
+	return currentBeta;
+}
 
-int Simul::getJ() { return Jval; }
+int
+Simul::getJ()
+{
+	return Jval;
+}
 
-double Simul::measureE() {
+double
+Simul::measureE()
+{
 	// u = (J*\sum_{adjacent nodes i, j} s_i s_j)/N
 	int sumSpin = 0;
 	for (int i = 0; i < size(); i++) {
@@ -107,7 +121,9 @@ double Simul::measureE() {
 	return getJ() * sumSpin * 0.5 / size();
 }
 
-int Simul::findDecorrelTime(double (Simul::*measure)()) {
+int
+Simul::findDecorrelTime(double (Simul::*measure)())
+{
 	double C_k = 1.;		// Autocorrelation function at step k
 	double X[decorrelIter], X2[decorrelIter], X_k[decorrelIter];
 	double avgX, avgX2, avgX_k;
@@ -140,7 +156,9 @@ int Simul::findDecorrelTime(double (Simul::*measure)()) {
 	return k;
 }
 
-void Simul::runSimul(OutputType type, std::ostream & output) {
+void
+Simul::runSimul(OutputType type, std::ostream & output)
+{
 	if (type == python) {
 		output << "import numpy as np\n"
 		<< "import matplotlib.pyplot as plt\n"
@@ -175,5 +193,4 @@ void Simul::runSimul(OutputType type, std::ostream & output) {
 		<< "plt.plot(x, y)\n"
 		<< "plt.show()" << std::endl;
 	}
-	return;
 }

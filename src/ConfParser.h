@@ -10,8 +10,8 @@
 #ifndef CONFPARSER_H
 #define CONFPARSER_H
 
-#include <vector>
 #include <string>
+#include <vector>
 
 
 const int maxArgs = 25;
@@ -109,4 +109,4 @@ public:
 	ConfParser();
 };
 
-#endif
+#endif // !CONFPARSER_H

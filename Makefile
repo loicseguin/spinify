@@ -1,15 +1,25 @@
-PREFIX = /usr/local
-BINDIR = $(PREFIX)/bin
-MANDIR = $(PREFIX)/share/man/man1
+SHELL = /bin/sh
+prefix = /usr/local
+exec_prefix = $(prefix)
+bindir = $(exec_prefix)/bin
+datarootdir = $(prefix)/share
+mandir = $(datarootdir)/man
+man1dir = $(mandir)/man1
+INSTALL = install -v
+INSTALL_PROGRAM = $(INSTALL)
+INSTALL_DATA = $(INSTALL) -m 644
 
 export CXX = g++
-export CFLAGS = -Wall -O3
+export CFLAGS = -Wall -g -O3
 export CXXFLAGS = $(CFLAGS)
+
+.SUFFIXES:
+.SUFFIXES: .cpp .o
+
+all: spinify
 
 spinify:
 	cd src && $(MAKE) all
-
-all: spinify tests
 
 tests:
 	cd test && $(MAKE) all
@@ -25,10 +35,10 @@ clean:
 	cd test && $(MAKE) clean
 
 install:
-	@install -v src/spinify $(BINDIR)/spinify
-	@install -v doc/spinify.1 $(MANDIR)/spinify.1
+	@$(INSTALL_PROGRAM) src/spinify $(DESTDIR)$(bindir)/spinify
+	@$(INSTALL_DATA) doc/spinify.1 $(DESTDIR)$(man1dir)/spinify.1
 
 uninstall:
-	rm $(BINDIR)/spinify
-	rm $(MANDIR)/spinify.1
+	rm $(DESTDIR)$(bindir)/spinify
+	rm $(DESTDIR)$(mandir)/spinify.1
 

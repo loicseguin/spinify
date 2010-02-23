@@ -1,0 +1,68 @@
+== System requirements ==
+
+This software has been tested on Mac OS X 10.6 and Ubuntu 9.10
+(however see issue #8). It should work on almost any Unix or Linux
+operating system.  For Windows, see below.
+
+Spinify can produce files that allow to visualize the lattice and to
+do some basic data visualization. In order
+to use these files, you need to have Python (http://www.python.org/),
+NumPy (http://numpy.scipy.org/) and matplotlib
+(http://matplotlib.sourceforge.net/) installed.
+
+
+== Installation ==
+
+The most recent release version of Spinify is available here:
+http://bitbucket.org/loicseguin/spinify/downloads/spinify-2.1.tar.bz2.
+You can install it by decompressing the archive
+
+    $ tar xjvf spinify-2.1.tar.bz2
+
+and then build and install the program
+
+    $ make
+    $ sudo make install
+
+That is it! You can start using Spinify right away. If you don't know
+where to start, read the man page
+
+    $ man 1 spinify
+
+
+== Development version ==
+
+If you want to try out the current development version of Spinify, you
+first need to install Mercurial (http://mercurial.selenic.com/). Then,
+just grab the source:
+
+    $ hg clone http://bitbucket.org/loicseguin/spinify/
+
+You then need to build and install the software with
+
+    $ make
+    $ sudo make install
+
+This will build all the classes and the main program. To build the
+various tests, run
+
+    $ make tests
+
+These tests are quite rudimentary but can prove very useful for
+debugging.
+
+
+== Windows ==
+
+Very little testing has been done on Windows OSes. The software may or
+may not work correctly. If you want to try it out, the simplest is to
+grab the executable directly from:
+
+http://bitbucket.org/loicseguin/spinify/downloads/spinify-2.2.exe
+
+This executable was built on Windows XP SP3. It runs fine on this
+platform, but it has not been tested on Vista or Windows 7.
+
+There is a Dev-C++ project file in src/win32 which can be used to build
+the software on Windows (compiles with MinGW). The source does not
+compile with MS Virtual C++.

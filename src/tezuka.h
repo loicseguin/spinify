@@ -35,4 +35,4 @@
 unsigned int alea (void);
 void set_seed (void);
 
-#endif
+#endif // !TEZUKA_H

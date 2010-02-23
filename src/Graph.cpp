@@ -7,25 +7,38 @@
  *
  */
 
-#include "Graph.h"
-#include "tezuka.h"
 #include <iostream>
 
-Node::Node(int name) {
+#include "Graph.h"
+#include "tezuka.h"
+
+Node::Node(int name)
+{
 	spin = 0;
 	status = notVisited;
 	idnum = name;
 }
 
-Node::~Node() {
+Node::~Node()
+{
 	edges.clear();
 }
 
-int Node::getID() { return idnum; }
+int
+Node::getID()
+{
+	return idnum;
+}
 
-void Node::setID(const int n) { idnum = n; }
+void
+Node::setID(const int n)
+{
+	idnum = n;
+}
 
-void Node::setSpin(const int sp) {
+void
+Node::setSpin(const int sp)
+{
 	if(sp == -1 || sp == 1) {
 		spin = sp;
 		return;
@@ -36,13 +49,27 @@ void Node::setSpin(const int sp) {
 	}
 }
 
-int Node::getSpin() { return spin; }
+int
+Node::getSpin()
+{
+	return spin;
+}
 
-int Node::degree() { return edges.size(); }
+int
+Node::degree()
+{ 
+	return edges.size();
+}
 
-void Node::addNghbor(Edge* pE) { edges.push_back(pE); }
+void
+Node::addNghbor(Edge* pE)
+{
+	edges.push_back(pE);
+}
 
-Edge& Node::operator[](const int i) {
+Edge&
+Node::operator[](const int i)
+{
 	if (i >= 0 && i < degree())
 		return *(edges[i]);
 	else {
@@ -51,33 +78,62 @@ Edge& Node::operator[](const int i) {
 	}
 }
 
-void Node::setStatus(const Status s) { status = s; }
+void
+Node::setStatus(const Status s)
+{
+	status = s;
+}
 
-Status Node::getStatus() { return status; }
+Status
+Node::getStatus()
+{
+	return status;
+}
 
-Point3D& Node::getCoords() { return coords; }
+Point3D&
+Node::getCoords()
+{
+	return coords;
+}
 
-void Node::setCoords(const double x, const double y, const double z) {
+void
+Node::setCoords(const double x, const double y, const double z)
+{
 	coords[0] = x;
 	coords[1] = y;
 	coords[2] = z;
 }
 
 
-Edge::Edge(Node& n, Node& m, int name) {
+Edge::Edge(Node& n, Node& m, int name)
+{
 	status = notVisited;
 	idnum = name;
 	v1 = &n;
 	v2 = &m;
 }
 
-int Edge::getID() { return idnum; }
+int
+Edge::getID()
+{
+	return idnum;
+}
 
-void Edge::setStatus(const Status s) { status = s; }
+void
+Edge::setStatus(const Status s)
+{
+	status = s;
+}
 
-Status Edge::getStatus() { return status; }
+Status
+Edge::getStatus()
+{
+	return status;
+}
 
-Node& Edge::getOtherEnd(const Node& n) {
+Node&
+Edge::getOtherEnd(const Node& n)
+{
 	if (v1 == &n)
 		return *v2;
 	else if (v2 == &n)
@@ -86,16 +142,17 @@ Node& Edge::getOtherEnd(const Node& n) {
 		std::cerr << "Error: vertex not an endpoint." << std::endl;
 		return *(Node*) 0;
 	}
-
 }
 
 
-Graph::Graph(int N) {
+Graph::Graph(int N)
+{
 	edges.reserve(N);
 	nodes.reserve(N);
 }
 
-Graph::~Graph() {
+Graph::~Graph()
+{
 	for (unsigned int i = 0; i < nodes.size(); i++) {
 		delete nodes[i];
 	}
@@ -106,9 +163,15 @@ Graph::~Graph() {
 	nodes.clear();
 }
 
-int Graph::size() const { return nodes.size(); }
+int
+Graph::size() const
+{
+	return nodes.size();
+}
 
-void Graph::addNode(const int N) {
+void
+Graph::addNode(const int N)
+{
 	static int j = 0;
 	for (int i = 0; i < N; i++) {
 		Node* pN = new Node(j++);
@@ -116,7 +179,9 @@ void Graph::addNode(const int N) {
 	}
 }
 
-void Graph::addEdge(Node& n, Node& m) {
+void
+Graph::addEdge(Node& n, Node& m)
+{
 	static int j = 0;
 	for (int i = 0; i < n.degree(); i++) {
 		if (&(n[i].getOtherEnd(n)) == &m) {
@@ -129,7 +194,9 @@ void Graph::addEdge(Node& n, Node& m) {
 	m.addNghbor(pE);
 }
 
-Node& Graph::operator[](const int i) {
+Node&
+Graph::operator[](const int i)
+{
 	if (i >= 0 && i < size()) {
 		return *(nodes[i]);
 	}
@@ -139,7 +206,9 @@ Node& Graph::operator[](const int i) {
 	}
 }
 
-Node& Graph::operator[](const int i) const {
+Node&
+Graph::operator[](const int i) const
+{
 	if (i >= 0 && i < size()) {
 		return *(nodes[i]);
 	}
@@ -149,7 +218,9 @@ Node& Graph::operator[](const int i) const {
 	}
 }
 
-void Graph::initRect(const int L, const int W) {
+void
+Graph::initRect(const int L, const int W)
+{
 	if (size() != 0) {
 		for (unsigned int i = 0; i < nodes.size(); i++) {
 			delete nodes[i];
@@ -168,7 +239,9 @@ void Graph::initRect(const int L, const int W) {
 	}
 }
 
-void Graph::randSpin() {
+void
+Graph::randSpin()
+{
 	for (int i = 0; i < size(); i++) {
 		unsigned int rval = alea();
 		if (rval % 2 == 0)
@@ -178,14 +251,18 @@ void Graph::randSpin() {
 	}
 }
 
-void Graph::resetStatus() {
+void
+Graph::resetStatus()
+{
 	for (unsigned int i = 0; i < edges.size(); i++)
 		edges[i]->setStatus(notVisited);
 	for (int i = 0; i < size(); i++)
 		nodes[i]->setStatus(notVisited);
 }
 
-void Graph::print(OutputType type, std::ostream & output) {
+void
+Graph::print(OutputType type, std::ostream & output)
+{
 	switch (type) {
 		case python:
 			prPython(output);
@@ -196,10 +273,11 @@ void Graph::print(OutputType type, std::ostream & output) {
 		default:
 			break;
 	}
-	return;
 }
 
-void Graph::prPython(std::ostream & output) {
+void
+Graph::prPython(std::ostream & output)
+{
 	output << "import numpy as np\n"
 	<< "from mpl_toolkits.mplot3d import Axes3D\n"
 	<< "import matplotlib.pyplot as plt\n"
@@ -241,10 +319,11 @@ void Graph::prPython(std::ostream & output) {
 	<< "ax.scatter(xs, ys, zs)" << std::endl
 	<< "plt.show()" << std::endl;
 	resetStatus();
-	return;
 }
 
-void Graph::prRaw(std::ostream & output) {
+void
+Graph::prRaw(std::ostream & output)
+{
 	resetStatus();
 	output << size() << std::endl;
 	int nEdge = 0;
@@ -263,5 +342,4 @@ void Graph::prRaw(std::ostream & output) {
 			output << (*this)[i].getID() << " " << neigh.getID() << std::endl;
 		}
 	}
-	return;
 }
