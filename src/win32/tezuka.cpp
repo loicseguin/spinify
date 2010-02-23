@@ -1,24 +1,24 @@
+/*
+ *  tezuka.cpp
+ *  spinify
+ *
+ *  Created by Loïc Séguin-Charbonneau on 10-02-22.
+ *  Copyright 2010 Loïc Séguin-Charbonneau. All rights reserved.
+ *
+ */
+
 #include "tezuka.h"
+#include <cstdlib>
 
 unsigned int s1, s2, b;
 
 void set_seed (void)
 {
-	struct timeval tp;		// Variables to access the  
-	struct timezone tpz;		// computer's internal clock.
-	
 	// Initialization of seeds.
+	srand(time(NULL));
+	s1 = rand();
+	s2 = rand();
 	
-	for (s1 = Mask1; s1 >= Mask1 || s1 == 0;) {
-		gettimeofday (&tp, &tpz);
-		s1 = tp.tv_usec;
-	}
-	
-	for (s2 = Mask2 + 1; s2 > Mask2 || s2 == 0;) {
-		gettimeofday (&tp, &tpz);
-		s2 = tp.tv_usec;
-	}
-
 	return;
 }
 
