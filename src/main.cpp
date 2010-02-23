@@ -1,18 +1,21 @@
-#include "Graph.h"
-#include "Surface.h"
-#include "Simul.h"
-#include "Maths.h"
-#include "ConfParser.h"
-#include <iostream>
-#include <fstream>
 #include <cstdlib>
+#include <fstream>
+#include <iostream>
 #include <vector>
+
+#include "ConfParser.h"
+#include "Graph.h"
+#include "Maths.h"
+#include "Simul.h"
+#include "Surface.h"
 
 
 using namespace std;
 
 
-int main (int argc, char * const argv[]) {
+int
+main (int argc, char * const argv[])
+{
 	ConfParser cfg;
 	cfg.parseArgs(argc, argv);
 	

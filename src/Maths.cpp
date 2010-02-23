@@ -7,10 +7,13 @@
  *
  */
 
-#include "Maths.h"
 #include <cmath>
 
-double avg(double* pV, const int nV) {
+#include "Maths.h"
+
+double
+avg(double* pV, const int nV)
+{
 	double sum = 0;
 	for (int i = 0; i < nV; i++) {
 		sum += pV[i];
@@ -18,7 +21,9 @@ double avg(double* pV, const int nV) {
 	return sum / nV;
 }
 
-double stdDev(double *pV, const int nV) {
+double
+stdDev(double *pV, const int nV)
+{
 	double avgV = avg(pV, nV);
 	double sum = 0;
 	for (int i = 0; i < nV; i++) {

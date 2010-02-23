@@ -7,25 +7,29 @@
  *
  */
 
+#include <algorithm>
 #include <cmath>
 #include <iostream>
-#include <vector>
-#include <algorithm>
 #include <list>
+#include <vector>
+
+#include "Point3D.h"
 #include "Surface.h"
 #include "tezuka.h"
-#include "Point3D.h"
 
 
-Sphere::Sphere() {
+Sphere::Sphere()
+{
 	rangeMultiplier = 10;
 	dampingExp = 1.2915;
 	dampingSub = 10000;
 	objectiveRatio = 0.21;
-	return;
 }
 
-int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
+int
+Sphere::uniform(Graph& G, int N)
+{
+	// Marsaglia 1972
 	int curIndex = G.size() - 1;
 	int counter = 0;
 	
@@ -46,7 +50,9 @@ int Sphere::uniform(Graph& G, int N) { // Marsaglia 1972
 	return counter;
 }
 
-void Sphere::repulse(Graph& G) {
+void
+Sphere::repulse(Graph& G)
+{
 	const double expectedRadius = 2./sqrt(G.size());
 	const double range = rangeMultiplier * expectedRadius;
 	const double objectiveDist = 4./sqrt(G.size());
@@ -83,24 +89,31 @@ void Sphere::repulse(Graph& G) {
 		minDist = minDistance(G);
 	}
 	std::cerr << "Number of repulsions: " << counter << std::endl;
-	return;
 }
 
-double Sphere::distance(const Point3D& a, const Point3D& b) const {
+double
+Sphere::distance(const Point3D& a, const Point3D& b) const
+{
 	return (a - b).norm();
 }
 
-double Sphere::distanceSq(const Point3D& a, const Point3D& b) const {
+double
+Sphere::distanceSq(const Point3D& a, const Point3D& b) const
+{
 	return (a - b).normSq();
 }
 
-int Sphere::evenNodes(Graph& G, int N) {
+int
+Sphere::evenNodes(Graph& G, int N)
+{
 	int counter = uniform(G, N);
 	repulse(G);
 	return counter;
 }
 
-void Sphere::delaunay(Graph& G) {
+void
+Sphere::delaunay(Graph& G)
+{
 	const double expectedRadius = 2./sqrt(G.size());
 	const double range = rangeMultiplier * expectedRadius;
 	Basis B;
@@ -139,7 +152,9 @@ void Sphere::delaunay(Graph& G) {
 	}
 }
 
-double Sphere::minDistance(const Graph& G) const {
+double
+Sphere::minDistance(const Graph& G) const
+{
 	double min = 2.;
 	for (int i = 0; i < G.size(); i++) {
 		for (int j = i + 1; j < G.size(); j++) {
@@ -151,10 +166,12 @@ double Sphere::minDistance(const Graph& G) const {
 	return min;
 }
 
-void Sphere::setParams(unsigned int rMultiplier,
-			   double dExp,
-			   unsigned int dSub,
-			   double oRatio) {
+void
+Sphere::setParams(unsigned int rMultiplier,
+				  double dExp,
+				  unsigned int dSub,
+				  double oRatio)
+{
 	rangeMultiplier = rMultiplier;
 	dampingExp = dExp;
 	dampingSub = dSub;
@@ -163,13 +180,17 @@ void Sphere::setParams(unsigned int rMultiplier,
 }
 
 
-bool compare_angles(Angle a, Angle b) {
+bool
+compare_angles(Angle a, Angle b)
+{
 	if (a.angle <= b.angle)
 		return true;
 	return false;
 }
 
-void Plane::delaunay(Graph& G) {
+void
+Plane::delaunay(Graph& G)
+{
 	// We use a flip algorithm to find the Delaunay triangulation
 	// of node (0,0).
 	Point3D v(1, 0, 0);
@@ -259,6 +280,4 @@ void Plane::delaunay(Graph& G) {
 	for (ot = nodeList.begin(); ot != nodeList.end(); ot++) {
 		G.addEdge(G[0], **ot);
 	}
-	
-	return;
 }

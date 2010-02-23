@@ -96,6 +96,7 @@
 		EB45DD1910F13CBE002D889B /* simultest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simultest.cpp; path = test/simultest.cpp; sourceTree = "<group>"; };
 		EB4ADF841133808000BD3936 /* tezuka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tezuka.h; path = src/win32/tezuka.h; sourceTree = "<group>"; };
 		EB4ADF851133808100BD3936 /* tezuka.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tezuka.cpp; path = src/win32/tezuka.cpp; sourceTree = "<group>"; };
+		EB59B6D91134641000A209BC /* INSTALL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INSTALL; sourceTree = "<group>"; };
 		EB81A6BA10F7CFD70056EC81 /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Surface.h; path = src/Surface.h; sourceTree = "<group>"; };
 		EB81A6BB10F7CFD70056EC81 /* Surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Surface.cpp; path = src/Surface.cpp; sourceTree = "<group>"; };
 		EB8DBC0C10F2C45C00DE3109 /* randtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = randtest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				EB17BC00112DEA0F005B6660 /* CONFIG */,
+				EB59B6D91134641000A209BC /* INSTALL */,
 				EB45DB9710EDA509002D889B /* LICENSE */,
 				EBFDAEC611250EE8004C4973 /* README */,
 				EB2B6EAE10E18018006C32D5 /* spinify.1 */,

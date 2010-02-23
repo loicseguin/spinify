@@ -2,7 +2,8 @@
 
 unsigned int s1, s2, b;
 
-void set_seed (void)
+void
+set_seed (void)
 {
 	struct timeval tp;		// Variables to access the  
 	struct timezone tpz;		// computer's internal clock.
@@ -18,11 +19,10 @@ void set_seed (void)
 		gettimeofday (&tp, &tpz);
 		s2 = tp.tv_usec;
 	}
-
-	return;
 }
 
-unsigned int alea (void)
+unsigned int
+alea (void)
 {
 	static int flag = 0;
 	if (flag == 0) {

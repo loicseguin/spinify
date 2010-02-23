@@ -18,10 +18,11 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <vector>
-#include "Point3D.h"
-#include <ostream>
 #include <iostream>
+#include <ostream>
+#include <vector>
+
+#include "Point3D.h"
 
 enum Status {
 	/*
@@ -203,4 +204,4 @@ public:
 };
 
 
-#endif
+#endif // !GRAPH_H

@@ -94,6 +94,4 @@ struct Angle {
 	Node& node;
 };
 
-
-
-#endif
+#endif // !SURFACE_H
