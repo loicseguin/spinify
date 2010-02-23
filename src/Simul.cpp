@@ -82,7 +82,7 @@ void Simul::setParams(unsigned int dIter,
 	maxDecorrelTime = maxDTime;
 	minDecorrelTime = minDTime;
 	Jval = J;
-	for (int i = 0; i < temps.size(); i++) {
+	for (unsigned int i = 0; i < temps.size(); i++) {
 		beta.push_back(1./temps[i]);
 	}
 	nMeasures = nM;
@@ -112,7 +112,7 @@ int Simul::findDecorrelTime(double (Simul::*measure)()) {
 	double X[decorrelIter], X2[decorrelIter], X_k[decorrelIter];
 	double avgX, avgX2, avgX_k;
 	
-	for (int i = 0; i < decorrelIter; i++) {
+	for (unsigned int i = 0; i < decorrelIter; i++) {
 		swendsen();
 		X[i] = (this->*measure)();
 		X2[i] = X[i] * X[i];
@@ -121,9 +121,9 @@ int Simul::findDecorrelTime(double (Simul::*measure)()) {
 	avgX = avg(X, decorrelIter);
 	avgX2 = avg(X2, decorrelIter);
 	
-	int k;
+	unsigned int k;
 	for (k = 0; C_k >= correlTreshold; k++) {
-		for (int i = 0; i < decorrelIter - k; i++)
+		for (unsigned int i = 0; i < decorrelIter - k; i++)
 			X_k[i] = X[i] * X[i + k];
 		avgX_k = avg(X_k, decorrelIter - k);
 		C_k = (avgX_k - avgX * avgX) / (avgX2 - avgX * avgX);
@@ -147,13 +147,13 @@ void Simul::runSimul(OutputType type, std::ostream & output) {
 		<< "data = np.array([";
 	}
 	
-	for (int i = 0; i < beta.size(); i++) {
+	for (unsigned int i = 0; i < beta.size(); i++) {
 		currentBeta = beta[i];
 		thermalize(nInitTherm);
 		//std::cerr << "Thermalized at temperature beta = " << Sim.getBeta() << std::endl;
 		int K = findDecorrelTime(&Simul::measureE);
 		double Data[nMeasures];
-		for (int j = 0; j < nMeasures; j++) {
+		for (unsigned int j = 0; j < nMeasures; j++) {
 			thermalize(K);
 			Data[j] = measureE();
 		}

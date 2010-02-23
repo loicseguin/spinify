@@ -14,8 +14,8 @@
 #include <string>
 
 
-const unsigned int maxArgs = 25;
-const unsigned int minArgs = 2;
+const int maxArgs = 25;
+const int minArgs = 2;
 const unsigned int defaultNbTemps = 50;
 
 
@@ -27,6 +27,7 @@ const double triCritBeta = 0.27465307216702742285;
 
 
 enum LatticeType {
+	// Available lattice types for the simulation.
 	none,
 	sphere_unif,
 	sphere_even,
@@ -34,12 +35,14 @@ enum LatticeType {
 };
 
 enum MeasureType {
+	// Available quantities to measure.
 	energy
 };
 
 #ifndef OUTPUT_ENUM
 #define OUTPUT_ENUM
 enum OutputType {
+	// Output Python friendly content or raw data.
 	python,
 	raw
 };
@@ -47,6 +50,25 @@ enum OutputType {
 
 
 class ConfParser {
+	/*
+	 * The ConfParser's job is to read the command line arguments as
+	 * well as the configuration file and to set the various parameters
+	 * accordingly.
+	 *
+	 * The constructor sets default values for most parameters that
+	 * should be fine for most uses. By providing the necessary
+	 * arguments, the user has the freedom to try and tweak these
+	 * values.
+	 *
+	 * The user has to provide at least a lattice type and corresponding
+	 * size. Failure to do so results in the program exiting.
+	 *
+	 * The parseArgs() function calls parseCfgFile().
+	 *
+	 * The list of all available options is in file doc/CONFIG as well
+	 * as in the man page.
+	 *
+	 */
 	void parseCfgFile();
 public:
 	// Main args
