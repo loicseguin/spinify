@@ -7,17 +7,22 @@
  *
  */
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
+
 #include "../src/Point3D.h"
 
 using namespace std;
 
-void prPoint(Point3D pt) {
+void
+prPoint(Point3D pt)
+{
 	cout << "(" << pt[0] << ", " << pt[1] << ", " << pt[2] << ")\n";
 }
 
-int main() {
+int
+main()
+{
 	Point3D pt1(1.,2.,3.);
 	Point3D pt2(-1.,0.,2.);
 	cout << "Point 1: ";
@@ -53,4 +58,6 @@ int main() {
 	prPoint(B[0]);
 	prPoint(B[1]);
 	prPoint(B[2]);
+	
+	return 0;
 }

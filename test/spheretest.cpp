@@ -8,18 +8,22 @@
  */
 
 
-#include <iostream>
-#include <fstream>
-#include <string>
 #include <cmath>
+#include <fstream>
+#include <iostream>
+#include <string>
+
 #include "../src/Graph.h"
-#include "../src/Surface.h"
 #include "../src/Point3D.h"
+#include "../src/Surface.h"
+
 
 using namespace std;
 
 
-int main (void) {
+int
+main (void)
+{
 	Graph G;
 	Sphere S;
 	S.randNodes(G, 400);

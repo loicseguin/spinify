@@ -7,13 +7,16 @@
  *
  */
 
-#include "../src/ConfParser.h"
-#include <iostream>
 #include <iomanip>
+#include <iostream>
+
+#include "../src/ConfParser.h"
 
 using namespace std;
 
-int main (int argc, char* argv[]){
+int
+main (int argc, char* argv[])
+{
 	ConfParser cfg;
 	cfg.parseArgs(argc, argv);
 	

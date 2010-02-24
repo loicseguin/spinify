@@ -8,14 +8,17 @@
  */
 
 
+#include <iomanip>
+#include <iostream>
+
 #include "../src/Graph.h"
 #include "../src/tezuka.h"
-#include <iostream>
-#include <iomanip>
 
 using namespace std;
 
-int main(void) {
+int
+main(void)
+{
 	//Create a rectangle toroidal graph.
 	Graph G;
 	G.initRect(10, 10);
