@@ -32,19 +32,18 @@ int
 main (int argc, char * const argv[])
 {
 	std::cout << "SPINIFY\nThe Ising model simulator\n\n";
-	Graph G;
+	Simul G;
 	int L = 40;
 	int W = 40;
 	G.initRect(L, W);
 	G.randSpin();
-	Simul S(G);
 	//S.setParams(0.001, -1);
 	//prGraph(&G, L, W);
-	S.thermalize(1000);
+	G.thermalize(1000);
 	//prGraph(&G, L, W);
-	std::cout << "Internal energy per spin: " << S.measureE() << std::endl;
+	std::cout << "Internal energy per spin: " << G.measureE() << std::endl;
 	std::cout << "Decorrelation time: "
-		<< S.findDecorrelTime(&Simul::measureE) << std::endl;
+		<< G.findDecorrelTime(&Simul::measureE) << std::endl;
 	
     return 0;
 }

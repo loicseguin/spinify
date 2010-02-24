@@ -42,7 +42,7 @@ usage(void)
 	<< "Output:" << endl
 	<< "  -R           raw output" << endl
 	<< "  -P           Python output" << endl
-	<< "  -f FILE      write simulation output to FILE" << endl;
+	<< "  -f FILE      write simulation output to FILE" << endl
 	<< endl
 	<< "Report bugs to: <http://bitbucket.org/loicseguin/spinify/issues/>" << endl
 	<< "Spinify home page: <http://bitbucket.org/loicseguin/spinify/>" << endl;

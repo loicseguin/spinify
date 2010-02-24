@@ -26,7 +26,7 @@ main (void)
 {
 	Graph G;
 	Sphere S;
-	S.randNodes(G, 400);
+	S.evenNodes(G, 400);
 	
 	cout << "Minimum distance: " << S.minDistance(G) << endl;
 	cout << "  (Objective was: " << 4./sqrt(G.size())<< ")\n";

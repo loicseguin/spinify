@@ -13,29 +13,9 @@
 #include <string>
 
 #include "../src/Graph.h"
+#include "../src/Maths.h"
 #include "../src/Simul.h"
 #include "../src/tezuka.h"
-
-double
-avg2(double* pV, const int nV)
-{
-	double sum = 0;
-	for (int i = 0; i < nV; i++) {
-		sum += pV[i];
-	}
-	return sum / nV;
-}
-
-double
-stdDev(double *pV, const int nV)
-{
-	double avgV = avg2(pV, nV);
-	double sum = 0;
-	for (int i = 0; i < nV; i++) {
-		sum += (pV[i] - avgV)*(pV[i] - avgV);
-	}
-	return sqrt(sum / nV);
-}
 
 
 int
@@ -56,26 +36,25 @@ main (int argc, char * const argv[])
 	const int nTemps = 100;
 	const int nMeasure2 = 50;
 	
-	Graph G;
+	Simul G;
 	G.initRect(L, W);
 	G.randSpin();
-	Simul S(G);
 	
 	if (testNb == 1) {
 		// Test 1
 		std::cout << "Test 1. Thermalized " << nTherm <<" times, " << nMeasure << " measures.\n";
-		S.thermalize(nTherm);
-		int K = S.findDecorrelTime(&Simul::measureE);
-		std::cout << "        Beta: " << S.getBeta() << std::endl;
+		G.thermalize(nTherm);
+		int K = G.findDecorrelTime(&Simul::measureE);
+		std::cout << "        Beta: " << G.getBeta() << std::endl;
 		std::cout << "        Decorrelation time: " << K << std::endl;
 		
 		double Data[nMeasure];
 		for (int i = 0; i < nMeasure; i++) {
-			S.thermalize(K);
-			Data[i] = S.measureE();
+			G.thermalize(K);
+			Data[i] = G.measureE();
 		}
 		
-		double avgData = avg2(Data, nMeasure);
+		double avgData = avg(Data, nMeasure);
 		double sdData = stdDev(Data, nMeasure);
 		std::cout.precision(10);
 		std::cout << "        Average Internal energy per spin: " << avgData << std::endl;
@@ -95,19 +74,19 @@ main (int argc, char * const argv[])
 		outFile.close();
 		
 		for (int i = 0; i < nTemps; i++) {
-			S.setParams(0.2 + 0.01 * i, -1);
-			S.thermalize(100);
-			std::cout << "Thermalized at temperature beta = " << S.getBeta() << std::endl;
+			G.setParams(0.2 + 0.01 * i, -1);
+			G.thermalize(100);
+			std::cout << "Thermalized at temperature beta = " << G.getBeta() << std::endl;
 			std::cout.flush();
-			int K = S.findDecorrelTime(&Simul::measureE);
+			int K = G.findDecorrelTime(&Simul::measureE);
 			double Data[nMeasure2];
 			for (int j = 0; j < nMeasure2; j++) {
-				S.thermalize(K);
-				Data[j] = S.measureE();
+				G.thermalize(K);
+				Data[j] = G.measureE();
 			}
-			double avgData = avg2(Data, nMeasure2);
+			double avgData = avg(Data, nMeasure2);
 			outFile.open(fileName.c_str(), std::ofstream::app);
-			outFile << "[" << S.getBeta() << ", " << avgData << "],\n";
+			outFile << "[" << G.getBeta() << ", " << avgData << "],\n";
 			outFile.close();
 		}
 		
