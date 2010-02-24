@@ -7,16 +7,18 @@
  *
  */
 
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <string>
+
 #include "../src/Graph.h"
 #include "../src/Simul.h"
 #include "../src/tezuka.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cmath>
 
-
-double avg2(double* pV, const int nV) {
+double
+avg2(double* pV, const int nV)
+{
 	double sum = 0;
 	for (int i = 0; i < nV; i++) {
 		sum += pV[i];
@@ -24,7 +26,9 @@ double avg2(double* pV, const int nV) {
 	return sum / nV;
 }
 
-double stdDev(double *pV, const int nV) {
+double
+stdDev(double *pV, const int nV)
+{
 	double avgV = avg2(pV, nV);
 	double sum = 0;
 	for (int i = 0; i < nV; i++) {
@@ -34,7 +38,9 @@ double stdDev(double *pV, const int nV) {
 }
 
 
-int main (int argc, char * const argv[]) {
+int
+main (int argc, char * const argv[])
+{
 	int testNb = 1;
 	if (argc > 1) {
 		testNb = strtol(argv[1], NULL, 10);
@@ -117,7 +123,6 @@ int main (int argc, char * const argv[]) {
 	else {
 		std::cout << "Abort: No such test.\n";
 	}
-
 	
     return 0;
 }

@@ -8,13 +8,16 @@
  */
 
 
+#include <iomanip>
+#include <iostream>
+
 #include "../src/Graph.h"
 #include "../src/Simul.h"
 #include "../src/tezuka.h"
-#include <iostream>
-#include <iomanip>
 
-void prGraph(Graph *pG, int L, int W) {
+void
+prGraph(Graph *pG, int L, int W)
+{
 	for (int i = 0; i < L; i++) {
 		for (int j = 0; j < W; j++) {
 			std::cout << std::setw(3) << (*pG)[i+j*W].getSpin();
@@ -22,11 +25,12 @@ void prGraph(Graph *pG, int L, int W) {
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-	return;
 }
 
 
-int main (int argc, char * const argv[]) {
+int
+main (int argc, char * const argv[])
+{
 	std::cout << "SPINIFY\nThe Ising model simulator\n\n";
 	Graph G;
 	int L = 40;
@@ -39,7 +43,8 @@ int main (int argc, char * const argv[]) {
 	S.thermalize(1000);
 	//prGraph(&G, L, W);
 	std::cout << "Internal energy per spin: " << S.measureE() << std::endl;
-	std::cout << "Decorrelation time: " << S.findDecorrelTime(&Simul::measureE) << std::endl;
+	std::cout << "Decorrelation time: "
+		<< S.findDecorrelTime(&Simul::measureE) << std::endl;
 	
     return 0;
 }

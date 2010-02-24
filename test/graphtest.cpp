@@ -23,15 +23,18 @@
  *
  */
 
-#include <iostream>
-#include <iomanip>
 #include <fstream>
+#include <iomanip>
+#include <iostream>
+
 #include "../src/Graph.h"
 #include "../src/Point3D.h"
 
 using namespace std;
 
-int main(void) {
+int
+main(void)
+{
 	// Create the test graph.
 	Graph G;
 	G.addNode(6);
@@ -115,7 +118,9 @@ int main(void) {
 	bool outFileRequested = true;
 	
 	std::ofstream realOutFile;
-	std::ostream & output = outFileRequested ? realOutFile.open("foo.txt", std::ios::out), realOutFile : std::cout;
+	std::ostream & output = outFileRequested
+		? realOutFile.open("foo.txt", std::ios::out), realOutFile
+		: std::cout;
 	G.print(raw, output);
 	
 	return 0;
