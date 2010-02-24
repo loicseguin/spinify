@@ -19,20 +19,20 @@ export CXXFLAGS = $(CFLAGS)
 all: spinify
 
 spinify:
-	cd src && $(MAKE) all
+	cd src && $(MAKE) -f Makefile.unix all
 
 tests:
-	cd test && $(MAKE) all
+	cd tests && $(MAKE) -f Makefile.unix all
 
 .PHONY: clean cleanall install uninstall
 
 cleanall:
-	cd src && $(MAKE) cleanall
-	cd test && $(MAKE) cleanall
+	cd src && $(MAKE) -f Makefile.unix cleanall
+	cd tests && $(MAKE) -f Makefile.unix cleanall
 
 clean:
-	cd src && $(MAKE) clean
-	cd test && $(MAKE) clean
+	cd src && $(MAKE) -f Makefile.unix clean
+	cd tests && $(MAKE) -f Makefile.unix clean
 
 install:
 	@$(INSTALL_PROGRAM) src/spinify $(DESTDIR)$(bindir)/spinify
@@ -40,5 +40,5 @@ install:
 
 uninstall:
 	rm $(DESTDIR)$(bindir)/spinify
-	rm $(DESTDIR)$(mandir)/spinify.1
+	rm $(DESTDIR)$(man1dir)/spinify.1
 

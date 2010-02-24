@@ -38,7 +38,7 @@ $(SRC_DIR)/Simul.o: $(SRC_DIR)/Simul.h
 $(SRC_DIR)/tezuka.o: $(SRC_DIR)/tezuka.h
 
 $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
-	cd $(SRC_DIR)/ && $(MAKE) $@
+	cd $(SRC_DIR)/ && $(MAKE) -f Makefile.unix $@
 
 .PHONY: cleanall clean
 
