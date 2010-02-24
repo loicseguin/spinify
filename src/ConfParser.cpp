@@ -22,23 +22,30 @@ void
 usage(void)
 {
 	cout
-	<< "Spinify " << VERSION << " http://bitbucket.org/loicseguin/spinify/" << endl
-	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>\n" << endl
-	<< "USAGE: spinify [lattice] [measure] [temperature options] [output options]\n" << endl
+	<< "Spinify " << VERSION << endl
+	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
+	<< endl
+	<< "USAGE: spinify [lattice] [measure] [temperature options] [output options]" << endl
+	<< endl
 	<< "Lattice:" << endl
 	<< "  -s N         random lattice on a sphere with N nodes" << endl
 	<< "  -r N M       rectangular lattice on a plane torus of width N and height M" << endl
 	//<< "  -l FILE      reads lattice from file" << endl
-	<< "  -w FILE      write lattice to FILE\n" << endl
+	<< "  -w FILE      write lattice to FILE" << endl
+	<< endl
 	//<< "Measure:" << endl
 	//<< "  -u           measure internal energy per spin\n" << endl
 	<< "Temperature:" << endl
 	<< "  -T n m i     does measurements from temperature n to m, incrementing by" << endl
-	<< "               i Kelvin every time\n" << endl
+	<< "               i Kelvin every time" << endl
+	<< endl
 	<< "Output:" << endl
 	<< "  -R           raw output" << endl
 	<< "  -P           Python output" << endl
 	<< "  -f FILE      write simulation output to FILE" << endl;
+	<< endl
+	<< "Report bugs to: <http://bitbucket.org/loicseguin/spinify/issues/>" << endl
+	<< "Spinify home page: <http://bitbucket.org/loicseguin/spinify/>" << endl;
 }
 
 void
