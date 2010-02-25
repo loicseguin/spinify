@@ -51,6 +51,9 @@ main (int argc, char * const argv[])
 		case rectangle:
 			G.initRect(cfg.rectN, cfg.rectM);
 			break;
+		case file:
+			G.readFile(cfg.graphInFile);
+			break;
 		default:
 			break;
 	}

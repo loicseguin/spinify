@@ -21,7 +21,7 @@ main (int argc, char* argv[])
 	cfg.parseArgs(argc, argv);
 	
 	cout
-	<< setw(17) << "cfgFile" << setw(15) << cfg.cfgFile << endl
+	<< setw(17) << "cfgFile" << setw(15) << cfg.cfgFile[0] << endl
 	<< setw(17) << "lattice" << setw(15) << cfg.lattice << endl
 	<< setw(17) << "measure" << setw(15) << cfg.measure << endl
 	<< setw(17) << "output" << setw(15) << cfg.output << endl

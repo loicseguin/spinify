@@ -8,4 +8,4 @@ spinify_SOURCES = main.cpp \
 				  Surface.cpp Surface.h \
 				  tezuka.cpp tezuka.h
 
-
+dist_noinst_DATA = Makefile.unix

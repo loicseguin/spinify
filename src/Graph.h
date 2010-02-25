@@ -20,6 +20,7 @@
 
 #include <iostream>
 #include <ostream>
+#include <string>
 #include <vector>
 
 #include "Point3D.h"
@@ -98,6 +99,7 @@ public:
 	void resetStatus();
 	void print(OutputType type = raw,
 			   std::ostream & output = std::cout);
+	void readFile(std::string graphInFile);
 };
 
 
