@@ -10,6 +10,8 @@ tezuka_sources = ../src/tezuka.cpp ../src/tezuka.h
 noinst_PROGRAMS = graphtest parsertest planedelaunaytest point3dtest \
 			   randtest recttest spheretest swendsentest
 
+dist_noinst_DATA = Makefile.unix
+
 graphtest_SOURCES = graphtest.cpp \
 					$(graph_sources) \
 					$(point3d_sources) \

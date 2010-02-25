@@ -15,7 +15,7 @@
 
 
 const int maxArgs = 25;
-const int minArgs = 2;
+const int minArgs = 1;
 const unsigned int defaultNbTemps = 50;
 
 
@@ -31,7 +31,8 @@ enum LatticeType {
 	none,
 	sphere_unif,
 	sphere_even,
-	rectangle
+	rectangle,
+	file
 };
 
 enum MeasureType {
@@ -69,10 +70,10 @@ class ConfParser {
 	 * as in the man page.
 	 *
 	 */
-	void parseCfgFile();
+	bool parseCfgFile();
 public:
 	// Main args
-	std::string cfgFile;
+	std::string cfgFile[2];
 	LatticeType lattice;
 	MeasureType measure;
 	unsigned int nNodes;
@@ -80,6 +81,7 @@ public:
 	unsigned int rectM;
 	std::vector<double> temps;
 	unsigned int nTemps;
+	std::string graphInFile;
 	
 	// What and where to output
 	OutputType output;

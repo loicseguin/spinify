@@ -343,3 +343,8 @@ Graph::prRaw(std::ostream & output)
 		}
 	}
 }
+
+void
+Graph::readFile(std::string graphInFile)
+{
+}
