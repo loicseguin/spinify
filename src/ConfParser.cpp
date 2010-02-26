@@ -147,6 +147,15 @@ err_bounded(string& option, double a, double b)
 	exit(1);
 }
 
+void
+err_argument_file(string& option)
+{
+	cerr << "Error: in configuration file, option " << option
+	<< " requires an argument which is either True of False." << endl;
+	usage();
+	exit(1);
+}
+
 
 ConfParser::ConfParser ()
 {
@@ -353,12 +362,54 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		}
 		
 		// Measures
-		else if (arg == "-e" || arg == "--internalEnergy")
-            internalEnergy = true;
-		else if (arg == "-k" || arg == "--susceptibility")
-            susceptibility = true;
-		else if (arg == "-m" || arg == "--magnetization")
-			magnetization = true;
+		else if (arg == "-e" || arg == "--internalEnergy") {
+			if (parsingFile) {
+				if ( ++i < argc) {
+					string argvi = argv[i];
+					if (argvi == "true" || argvi == "True"
+						|| argvi == "yes" ||argvi == "Yes")
+						internalEnergy = true;
+					else
+						internalEnergy = false;
+				}
+				else
+					err_argument_file(arg);
+			}
+			else
+				internalEnergy = true;
+		}
+		else if (arg == "-k" || arg == "--susceptibility") {
+			if (parsingFile) {
+				if ( ++i < argc) {
+					string argvi = argv[i];
+					if (argvi == "true" || argvi == "True"
+						|| argvi == "yes" ||argvi == "Yes")
+						susceptibility = true;
+					else
+						susceptibility = false;
+				}
+				else
+					err_argument_file(arg);
+			}
+			else
+				susceptibility = true;
+		}
+		else if (arg == "-m" || arg == "--magnetization") {
+			if (parsingFile) {
+				if ( ++i < argc) {
+					string argvi = argv[i];
+					if (argvi == "true" || argvi == "True"
+						|| argvi == "yes" ||argvi == "Yes")
+						magnetization = true;
+					else
+						magnetization = false;
+				}
+				else
+					err_argument_file(arg);
+			}
+			else
+				magnetization = true;
+		}
 		
 		// Raw output
 		else if (arg == "-r" || arg == "--raw") {
@@ -545,8 +596,23 @@ ConfParser::parseCfgFile()
 			blank = option.find_first_of(" \t");
 			if (blank != string::npos)
 				option = option.substr(0, blank);
-			argument = line.substr(equal + 1);
 			cmdLine.push_back("--" + option);
+			
+			argument = line.substr(equal + 1);
+			blank = argument.find_first_not_of(" \t");
+			if (blank != string::npos)
+				argument = argument.substr(blank);
+			string remainder;
+			while ((blank = argument.find_first_of(" \t"))
+				   != string::npos) {
+				remainder = argument.substr(blank);
+				argument = argument.substr(0, blank);
+				cmdLine.push_back(argument);
+				argument = remainder;
+				blank = argument.find_first_not_of(" \t");
+				if (blank != string::npos)
+					argument = argument.substr(blank);
+			}
 			cmdLine.push_back(argument);
 		}
 		
@@ -554,6 +620,7 @@ ConfParser::parseCfgFile()
 		for (int i = 0; i < cmdLine.size(); i++) {
 			//cout << cmdLine[i] << endl;
 			argv[i] = (char*)cmdLine[i].c_str();
+			cout << cmdLine[i] << endl;
 		}
 		parsingFile = true;
 		parseArgs(cmdLine.size(), argv);

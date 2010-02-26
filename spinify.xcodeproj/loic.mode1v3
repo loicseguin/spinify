@@ -281,7 +281,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {209, 660}}</string>
+							<string>{{0, 137}, {209, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -330,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EB880718113822AB0002EEFE</string>
+										<string>EB880778113870E90002EEFE</string>
 										<key>history</key>
 										<array>
 											<string>EBBD0ADE10F9A17E00C616C4</string>
@@ -338,8 +338,6 @@
 											<string>EB28CC2211137DC500B7C820</string>
 											<string>EB59B7021134C14200A209BC</string>
 											<string>EB59B7041134C14200A209BC</string>
-											<string>EB59B7051134C14200A209BC</string>
-											<string>EB59B7081134C14200A209BC</string>
 											<string>EB59B7091134C14200A209BC</string>
 											<string>EB59B70A1134C14200A209BC</string>
 											<string>EB59B70D1134C14200A209BC</string>
@@ -347,13 +345,11 @@
 											<string>EB59B70F1134C14200A209BC</string>
 											<string>EB59B7101134C14200A209BC</string>
 											<string>EB59B7111134C14200A209BC</string>
-											<string>EB59B7121134C14200A209BC</string>
 											<string>EB59B7141134C14200A209BC</string>
 											<string>EB59B7171134C14200A209BC</string>
 											<string>EB59B7771134D4C100A209BC</string>
 											<string>EB59B77A1134D4C100A209BC</string>
 											<string>EB59B7801134D4C100A209BC</string>
-											<string>EB59B7811134D4C100A209BC</string>
 											<string>EB59B7821134D4C100A209BC</string>
 											<string>EB59B7961134D90700A209BC</string>
 											<string>EB59B7971134D90700A209BC</string>
@@ -370,14 +366,18 @@
 											<string>EB59B7C81135705A00A209BC</string>
 											<string>EB59B7C91135705A00A209BC</string>
 											<string>EB59B7D6113595F200A209BC</string>
-											<string>EB59B7D8113595F200A209BC</string>
-											<string>EB59B7D9113595F200A209BC</string>
 											<string>EB59B7E71135BFE500A209BC</string>
 											<string>EB87ED251136253C001539C7</string>
-											<string>EB880699113727C90002EEFE</string>
-											<string>EB8806DE11372C880002EEFE</string>
 											<string>EB880705113821B00002EEFE</string>
-											<string>EB880706113821B00002EEFE</string>
+											<string>EB88074C113862360002EEFE</string>
+											<string>EB88074D113862360002EEFE</string>
+											<string>EB88074E113862360002EEFE</string>
+											<string>EB88074F113862360002EEFE</string>
+											<string>EB880750113862360002EEFE</string>
+											<string>EB880751113862360002EEFE</string>
+											<string>EB88076811386D8C0002EEFE</string>
+											<string>EB88076911386D8C0002EEFE</string>
+											<string>EB88076A11386D8C0002EEFE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -577,9 +577,9 @@
 	<array>
 		<string>EB8806A8113727C90002EEFE</string>
 		<string>EB8806A9113727C90002EEFE</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>EB2B6E6710E176D4006C32D5</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/loic/Projects/spinify/spinify/spinify.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -604,7 +604,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ConfParser.cpp</string>
+								<string>Graph.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -956,7 +956,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

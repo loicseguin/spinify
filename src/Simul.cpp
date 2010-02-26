@@ -148,7 +148,7 @@ Simul::thermalMagnetization()
 	double Data[nMeasures];
 	for (unsigned int j = 0; j < nMeasures; j++) {
 		thermalize(decorrelTime);
-		Data[j] = measureMagnetization();
+		Data[j] = fabs(measureMagnetization());
 	}
 	return avg(Data, nMeasures);
 }
@@ -254,10 +254,8 @@ Simul::runSimul(OutputType type, std::ostream & output)
 			else
 				output << " ";
 		}
-		if (susceptibility) {
+		if (susceptibility)
 			output << thermalSusceptibility();
-			output << thermalInternalEnergy();
-		}
 		
 		if (type == python)
 			output << "]," << std::endl;
@@ -265,7 +263,7 @@ Simul::runSimul(OutputType type, std::ostream & output)
 			output << std::endl;
 	}
 	
-	int nCols = 1;
+	int nCols = 0;
 	if (internalEnergy)
 		nCols++;
 	if (magnetization)
