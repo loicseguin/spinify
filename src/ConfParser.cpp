@@ -41,7 +41,7 @@ help()
 	<< "Spinify " << VERSION << endl
 	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
 	<< endl
-	<< "USAGE: spinify [-s N | -r N M | -g FILE] [options]" << endl
+	<< "USAGE: spinify [-s N | -r N M | -g FILE] [-ekm] [options]" << endl
 	<< endl
 	<< "General options:" << endl
 	<< "  -c FILE,  --config-file FILE     Read configuration from FILE." << endl
@@ -61,6 +61,11 @@ help()
 	<< "Temperature options:" << endl
 	<< "  -T n m i,  --temperatures n m i  Do measurements from temperature n to m," << endl
 	<< "                                   incrementing by i Kelvin every time." << endl
+	<< endl
+	<< "Measure flags:" << endl
+	<< "  -e,  --internalEnergy            Measure internal energy per spin." << endl
+	<< "  -k,  --susceptibility            Measure magnetic susceptinility." << endl
+	<< "  -m,  --magnetization             Measure magnetization." << endl
 	<< endl
 	<< "Output options:" << endl
 	<< "  -o FILE,  --output FILE          Write simulation output to FILE." << endl
@@ -152,7 +157,6 @@ ConfParser::ConfParser ()
 	rectM = 0;
 	cfgFile[0] = ".spinifyrc";
 	cfgFile[1] = "~/.spinifyrc";
-	measure = energy;
 	temps.push_back(1./squareCritBeta);
 	nTemps = 1;
 	graphInFile = "";
@@ -184,6 +188,10 @@ ConfParser::ConfParser ()
 void
 ConfParser::parseArgs(int argc, char* const argv[])
 {
+	extern bool internalEnergy;
+	extern bool magnetization;
+	extern bool susceptibility;	
+	
 	unsigned int tmpi;
 	int tmpsi;
 	double tmpd;
@@ -343,6 +351,14 @@ ConfParser::parseArgs(int argc, char* const argv[])
 					break;
 			}
 		}
+		
+		// Measures
+		else if (arg == "-e" || arg == "--internalEnergy")
+            internalEnergy = true;
+		else if (arg == "-k" || arg == "--susceptibility")
+            susceptibility = true;
+		else if (arg == "-m" || arg == "--magnetization")
+			magnetization = true;
 		
 		// Raw output
 		else if (arg == "-r" || arg == "--raw") {

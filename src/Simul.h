@@ -70,7 +70,7 @@ class Simul : public Graph {
 	double thermalInternalEnergy();
 	double thermalMagnetization();
 	double thermalSusceptibility();
-	void findDecorrelTime(double (Simul::*measure)());
+	unsigned int findDecorrelTime(double (Simul::*measure)());
 	double getBeta();
 	int getJ();
 public:
