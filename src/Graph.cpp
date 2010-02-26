@@ -7,6 +7,8 @@
  *
  */
 
+#include <cstdlib>
+#include <fstream>
 #include <iostream>
 
 #include "Graph.h"
@@ -347,4 +349,23 @@ Graph::prRaw(std::ostream & output)
 void
 Graph::readFile(std::string graphInFile)
 {
+	std::ifstream graphInPtr;
+	graphInPtr.open(graphInFile.c_str(), std::ifstream::in);
+	if (!(graphInPtr.is_open())) {
+		std::cerr << "Error: Can't open graph input file." << std::endl;
+		exit(1);
+	}
+	
+	int nNodes = 0;
+	unsigned int nEdges = 0;
+	graphInPtr >> nNodes;
+	graphInPtr >> nEdges;
+	addNode(nNodes);
+	for (int i = 0; i < nEdges; i++) {
+		int index1;
+		int index2;
+		graphInPtr >> index1;
+		graphInPtr >> index2;
+		addEdge((*this)[index1], (*this)[index2]);
+	}
 }
