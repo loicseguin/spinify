@@ -107,9 +107,9 @@ Simul::getJ()
 }
 
 double
-Simul::measureE()
+Simul::measureInternalEnergy()
 {
-	// u = (J*\sum_{adjacent nodes i, j} s_i s_j)/N
+	// u = (J / N) \sum_{adjacent nodes i, j} s_i s_j
 	int sumSpin = 0;
 	for (int i = 0; i < size(); i++) {
 		Node& v1 = (*this)[i];
@@ -121,7 +121,56 @@ Simul::measureE()
 	return getJ() * sumSpin * 0.5 / size();
 }
 
-int
+double
+Simul::measureMagnetization()
+{
+	// M = (1/N) \sum_{i = 1}^N s_i
+	double sumSpin = 0;
+	for (int i = 0; i < size(); i++)
+		sumSpin += (*this)[i].getSpin();
+	return sumSpin / size();
+}
+
+double
+Simul::thermalInternalEnergy()
+{
+	double Data[nMeasures];
+	for (unsigned int j = 0; j < nMeasures; j++) {
+		thermalize(decorrelTime);
+		Data[j] = measureInternalEnergy();
+	}
+	return avg(Data, nMeasures);
+}
+
+double
+Simul::thermalMagnetization()
+{
+	double Data[nMeasures];
+	for (unsigned int j = 0; j < nMeasures; j++) {
+		thermalize(decorrelTime);
+		Data[j] = measureMagnetization();
+	}
+	return avg(Data, nMeasures);
+}
+
+double
+Simul::thermalSusceptibility()
+{
+	double Data[nMeasures];
+	double DataSq[nMeasures];
+	for (unsigned int j = 0; j < nMeasures; j++) {
+		thermalize(decorrelTime);
+		Data[j] = measureMagnetization();
+		DataSq[j] = Data[j] * Data[j];
+	}
+	double avgSq = avg(Data, nMeasures);
+	avgSq *= avgSq;
+	return getBeta() * size()
+		   * (avg(DataSq, nMeasures) - avgSq);
+}
+
+
+void
 Simul::findDecorrelTime(double (Simul::*measure)())
 {
 	double C_k = 1.;		// Autocorrelation function at step k
@@ -153,7 +202,7 @@ Simul::findDecorrelTime(double (Simul::*measure)())
 	if (k < minDecorrelTime)
 		k = minDecorrelTime;
 	
-	return k;
+	decorrelTime = k;
 }
 
 void
@@ -169,13 +218,8 @@ Simul::runSimul(OutputType type, std::ostream & output)
 		currentBeta = beta[i];
 		thermalize(nInitTherm);
 		//std::cerr << "Thermalized at temperature beta = " << Sim.getBeta() << std::endl;
-		int K = findDecorrelTime(&Simul::measureE);
-		double Data[nMeasures];
-		for (unsigned int j = 0; j < nMeasures; j++) {
-			thermalize(K);
-			Data[j] = measureE();
-		}
-		double avgData = avg(Data, nMeasures);
+		findDecorrelTime(&Simul::measureInternalEnergy);
+		double avgData = thermalInternalEnergy();
 		if (type == python) {
 			output.precision(14);
 			output << "[" << getBeta() << ", " << avgData << "]," << std::endl;

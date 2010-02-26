@@ -54,7 +54,6 @@ class Simul : public Graph {
 	 * ensure that the measures are statistically independent.
 	 *
 	 */
-	void swendsen();
 	unsigned int decorrelIter;
 	double correlTreshold;
 	unsigned int maxDecorrelTime;
@@ -64,6 +63,16 @@ class Simul : public Graph {
 	std::vector<double> beta;
 	unsigned int nMeasures;
 	unsigned int nInitTherm;
+	unsigned int decorrelTime;
+	void swendsen();
+	double measureInternalEnergy();
+	double measureMagnetization();
+	double thermalInternalEnergy();
+	double thermalMagnetization();
+	double thermalSusceptibility();
+	void findDecorrelTime(double (Simul::*measure)());
+	double getBeta();
+	int getJ();
 public:
 	Simul(int N = 10);
 	void thermalize(const int n = 500);
@@ -75,10 +84,6 @@ public:
 				   std::vector<double>& temps,
 				   unsigned	int nMeasures,
 				   unsigned int nInitTherm);
-	double getBeta();
-	int getJ();
-	double measureE();
-	int findDecorrelTime(double (Simul::*measure)());
 	void runSimul(OutputType type = raw,
 				  std::ostream & output = std::cout);
 };
