@@ -252,7 +252,7 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		}
 		
 		// Spherical lattice with even node distribution
-		if (arg == "-s" || arg == "--sphere-even") {
+		else if (arg == "-s" || arg == "--sphere-even") {
 			if (cmdlineGraph)
 				err_lattice_defined(arg);
 			else if (++i < argc && (nNodes = strtol(argv[i], NULL, 0))) {

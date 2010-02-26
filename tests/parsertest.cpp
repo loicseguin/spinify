@@ -21,7 +21,8 @@ main (int argc, char* argv[])
 	cfg.parseArgs(argc, argv);
 	
 	cout
-	<< setw(17) << "cfgFile" << setw(15) << cfg.cfgFile[0] << endl
+	<< setw(17) << "cfgFile[0]" << setw(15) << cfg.cfgFile[0] << endl
+	<< setw(17) << "cfgFile[1]" << setw(15) << cfg.cfgFile[1] << endl
 	<< setw(17) << "lattice" << setw(15) << cfg.lattice << endl
 	<< setw(17) << "measure" << setw(15) << cfg.measure << endl
 	<< setw(17) << "output" << setw(15) << cfg.output << endl
@@ -35,11 +36,17 @@ main (int argc, char* argv[])
 	}
 	
 	cout
+	<< setw(17) << "graphInFile" << setw(15) << cfg.graphInFile << endl
+	<< setw(17) << "graphOutFile" << setw(15) << cfg.graphOutFile << endl
+	<< setw(17) << "outToFile" << setw(15) << cfg.outToFile << endl
+	<< setw(17) << "simulOutFile" << setw(15) << cfg.simulOutFile << endl
 	<< setw(17) << "decorrelIter" << setw(15) << cfg.decorrelIter << endl
 	<< setw(17) << "correlTreshold" << setw(15) << cfg.correlTreshold << endl
 	<< setw(17) << "maxDecorrelTime" << setw(15) << cfg.maxDecorrelTime << endl
 	<< setw(17) << "minDecorrelTime" << setw(15) << cfg.minDecorrelTime << endl
 	<< setw(17) << "Jval" << setw(15) << cfg.Jval << endl
+	<< setw(17) << "nMeasures" << setw(15) << cfg.nMeasures << endl
+	<< setw(17) << "nInitTherm" << setw(15) << cfg.nInitTherm << endl
 	<< setw(17) << "rangeMultiplier" << setw(15) << cfg.rangeMultiplier << endl
 	<< setw(17) << "dampingExp" << setw(15) << cfg.dampingExp << endl
 	<< setw(17) << "dampingSub" << setw(15) << cfg.dampingSub << endl
