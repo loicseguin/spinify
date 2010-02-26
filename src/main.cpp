@@ -10,6 +10,11 @@
 #include "Surface.h"
 
 
+bool internalEnergy = false;
+bool magnetization = false;
+bool susceptibility = false;
+
+
 using namespace std;
 
 

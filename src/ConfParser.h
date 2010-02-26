@@ -35,11 +35,6 @@ enum LatticeType {
 	file
 };
 
-enum MeasureType {
-	// Available quantities to measure.
-	energy
-};
-
 #ifndef OUTPUT_ENUM
 #define OUTPUT_ENUM
 enum OutputType {
@@ -75,7 +70,6 @@ public:
 	// Main args
 	std::string cfgFile[2];
 	LatticeType lattice;
-	MeasureType measure;
 	unsigned int nNodes;
 	unsigned int rectN;
 	unsigned int rectM;

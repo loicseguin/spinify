@@ -402,17 +402,17 @@
 	};
 	EB17BC03112DF0E0005B6660 /* ConfParser.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1625}}";
-			sepNavSelRange = "{286, 0}";
-			sepNavVisRange = "{0, 670}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1417}}";
+			sepNavSelRange = "{1503, 0}";
+			sepNavVisRange = "{1441, 788}";
 			sepNavWindowFrame = "{{101, 8}, {565, 766}}";
 		};
 	};
 	EB17BC04112DF0E0005B6660 /* ConfParser.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 7449}}";
-			sepNavSelRange = "{12378, 0}";
-			sepNavVisRange = "{12071, 953}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 7579}}";
+			sepNavSelRange = "{9500, 0}";
+			sepNavVisRange = "{9048, 854}";
 		};
 	};
 	EB17BC09112F1F8C005B6660 /* parsertest */ = {
@@ -609,9 +609,9 @@
 	};
 	EB2B6EAF10E1802E006C32D5 /* main.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {684, 1092}}";
-			sepNavSelRange = "{930, 0}";
-			sepNavVisRange = "{719, 854}";
+			sepNavIntBoundsRect = "{{0, 0}, {684, 1157}}";
+			sepNavSelRange = "{266, 0}";
+			sepNavVisRange = "{0, 641}";
 		};
 	};
 	EB2B712910EA937B006C32D5 /* recttest */ = {
@@ -712,16 +712,16 @@
 	};
 	EB45DBBA10EE7CC4002D889B /* Simul.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 1144}}";
-			sepNavSelRange = "{2378, 0}";
-			sepNavVisRange = "{1138, 1220}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 1209}}";
+			sepNavSelRange = "{2077, 0}";
+			sepNavVisRange = "{1257, 1281}";
 		};
 	};
 	EB45DBBB10EE7CC4002D889B /* Simul.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {671, 2704}}";
-			sepNavSelRange = "{3249, 0}";
-			sepNavVisRange = "{3271, 972}";
+			sepNavIntBoundsRect = "{{0, 0}, {671, 3718}}";
+			sepNavSelRange = "{4398, 85}";
+			sepNavVisRange = "{4276, 974}";
 			sepNavWindowFrame = "{{351, 104}, {599, 760}}";
 		};
 	};
@@ -962,7 +962,7 @@
 		fRef = EB45DBBA10EE7CC4002D889B /* Simul.h */;
 		name = "Simul.h: 87";
 		rLen = 0;
-		rLoc = 2378;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 1036;
 		vrLoc = 0;
@@ -1116,7 +1116,7 @@
 		fRef = EB45DBBB10EE7CC4002D889B /* Simul.cpp */;
 		name = "Simul.cpp: 154";
 		rLen = 0;
-		rLoc = 3249;
+		rLoc = 4277;
 		rType = 0;
 		vrLen = 1243;
 		vrLoc = 2681;
@@ -1296,7 +1296,7 @@
 		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
 		name = "main.cpp: 55";
 		rLen = 0;
-		rLoc = 930;
+		rLoc = 1018;
 		rType = 0;
 		vrLen = 825;
 		vrLoc = 540;
@@ -1343,7 +1343,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 102";
 		rLen = 0;
-		rLoc = 5333;
+		rLoc = 5596;
 		rType = 0;
 		vrLen = 769;
 		vrLoc = 2117;
@@ -1421,7 +1421,7 @@
 		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
 		name = "main.cpp: 55";
 		rLen = 0;
-		rLoc = 930;
+		rLoc = 1018;
 		rType = 0;
 		vrLen = 825;
 		vrLoc = 540;
@@ -1441,7 +1441,7 @@
 		comments = "Missing terminating \" character";
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		rLen = 1;
-		rLoc = 330;
+		rLoc = 338;
 		rType = 1;
 	};
 	EB87ED291136253C001539C7 /* PBXTextBookmark */ = {
@@ -1449,7 +1449,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 279";
 		rLen = 0;
-		rLoc = 8672;
+		rLoc = 9024;
 		rType = 0;
 		vrLen = 1249;
 		vrLoc = 162;
@@ -1459,7 +1459,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 182";
 		rLen = 0;
-		rLoc = 5706;
+		rLoc = 6058;
 		rType = 0;
 		vrLen = 384;
 		vrLoc = 6365;
@@ -1469,7 +1469,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 64";
 		rLen = 0;
-		rLoc = 1999;
+		rLoc = 2281;
 		rType = 0;
 		vrLen = 1001;
 		vrLoc = 1097;
@@ -1479,7 +1479,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 428";
 		rLen = 0;
-		rLoc = 11087;
+		rLoc = 11709;
 		rType = 0;
 		vrLen = 405;
 		vrLoc = 9827;
@@ -1489,7 +1489,7 @@
 		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
 		name = "main.cpp: 55";
 		rLen = 0;
-		rLoc = 930;
+		rLoc = 1018;
 		rType = 0;
 		vrLen = 435;
 		vrLoc = 1140;
@@ -1509,7 +1509,7 @@
 		fRef = EB45DBBA10EE7CC4002D889B /* Simul.h */;
 		name = "Simul.h: 87";
 		rLen = 0;
-		rLoc = 2378;
+		rLoc = 2558;
 		rType = 0;
 		vrLen = 511;
 		vrLoc = 1847;
@@ -1519,7 +1519,7 @@
 		fRef = EB45DBBB10EE7CC4002D889B /* Simul.cpp */;
 		name = "Simul.cpp: 154";
 		rLen = 0;
-		rLoc = 3249;
+		rLoc = 4277;
 		rType = 0;
 		vrLen = 265;
 		vrLoc = 323;
@@ -1539,7 +1539,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 77";
 		rLen = 0;
-		rLoc = 3127;
+		rLoc = 3409;
 		rType = 0;
 		vrLen = 726;
 		vrLoc = 2761;
@@ -1549,7 +1549,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 80";
 		rLen = 0;
-		rLoc = 3373;
+		rLoc = 3655;
 		rType = 0;
 		vrLen = 1328;
 		vrLoc = 2132;
@@ -1559,7 +1559,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 462";
 		rLen = 0;
-		rLoc = 11772;
+		rLoc = 12394;
 		rType = 0;
 		vrLen = 417;
 		vrLoc = 11339;
@@ -1569,7 +1569,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 80";
 		rLen = 0;
-		rLoc = 3373;
+		rLoc = 3655;
 		rType = 0;
 		vrLen = 1328;
 		vrLoc = 2132;
@@ -1579,7 +1579,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 462";
 		rLen = 0;
-		rLoc = 11772;
+		rLoc = 12394;
 		rType = 0;
 		vrLen = 418;
 		vrLoc = 11319;
@@ -1589,7 +1589,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 39";
 		rLen = 0;
-		rLoc = 753;
+		rLoc = 760;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 507;
@@ -1599,7 +1599,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 462";
 		rLen = 0;
-		rLoc = 11772;
+		rLoc = 12394;
 		rType = 0;
 		vrLen = 418;
 		vrLoc = 11329;
@@ -1629,7 +1629,7 @@
 		comments = "Expected `;' before 'measure'";
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		rLen = 1;
-		rLoc = 154;
+		rLoc = 158;
 		rType = 1;
 	};
 	EB87ED5B11371295001539C7 /* PBXTextBookmark */ = {
@@ -1637,7 +1637,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 149";
 		rLen = 0;
-		rLoc = 4785;
+		rLoc = 5067;
 		rType = 0;
 		vrLen = 558;
 		vrLoc = 4353;
@@ -1647,7 +1647,7 @@
 		fRef = EB2B6EAF10E1802E006C32D5 /* main.cpp */;
 		name = "main.cpp: 55";
 		rLen = 0;
-		rLoc = 930;
+		rLoc = 1018;
 		rType = 0;
 		vrLen = 854;
 		vrLoc = 719;
@@ -1657,7 +1657,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 489";
 		rLen = 0;
-		rLoc = 12264;
+		rLoc = 12886;
 		rType = 0;
 		vrLen = 701;
 		vrLoc = 4576;
@@ -1697,7 +1697,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 505";
 		rLen = 0;
-		rLoc = 12705;
+		rLoc = 13327;
 		rType = 0;
 		vrLen = 935;
 		vrLoc = 11790;
@@ -1717,7 +1717,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 505";
 		rLen = 0;
-		rLoc = 12705;
+		rLoc = 13327;
 		rType = 0;
 		vrLen = 635;
 		vrLoc = 0;
@@ -1727,7 +1727,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 500";
 		rLen = 0;
-		rLoc = 12551;
+		rLoc = 13173;
 		rType = 0;
 		vrLen = 962;
 		vrLoc = 11796;
@@ -1747,7 +1747,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 518";
 		rLen = 0;
-		rLoc = 13120;
+		rLoc = 13742;
 		rType = 0;
 		vrLen = 878;
 		vrLoc = 12027;
@@ -1757,7 +1757,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 518";
 		rLen = 0;
-		rLoc = 13108;
+		rLoc = 13730;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 11989;
@@ -1767,7 +1767,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 523";
 		rLen = 0;
-		rLoc = 13266;
+		rLoc = 13888;
 		rType = 0;
 		vrLen = 913;
 		vrLoc = 12017;
@@ -1777,7 +1777,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 525";
 		rLen = 0;
-		rLoc = 13173;
+		rLoc = 13795;
 		rType = 0;
 		vrLen = 996;
 		vrLoc = 12105;
@@ -1787,7 +1787,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 289";
 		rLen = 0;
-		rLoc = 7758;
+		rLoc = 8110;
 		rType = 0;
 		vrLen = 1005;
 		vrLoc = 6856;
@@ -1797,7 +1797,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 289";
 		rLen = 0;
-		rLoc = 7758;
+		rLoc = 8110;
 		rType = 0;
 		vrLen = 713;
 		vrLoc = 4503;
@@ -1837,7 +1837,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 289";
 		rLen = 0;
-		rLoc = 7758;
+		rLoc = 8110;
 		rType = 0;
 		vrLen = 342;
 		vrLoc = 4874;
@@ -1847,7 +1847,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 289";
 		rLen = 0;
-		rLoc = 7758;
+		rLoc = 8110;
 		rType = 0;
 		vrLen = 313;
 		vrLoc = 5053;
@@ -1877,7 +1877,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 241";
 		rLen = 0;
-		rLoc = 6733;
+		rLoc = 7085;
 		rType = 0;
 		vrLen = 922;
 		vrLoc = 5964;
@@ -1887,7 +1887,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 241";
 		rLen = 0;
-		rLoc = 6733;
+		rLoc = 7085;
 		rType = 0;
 		vrLen = 924;
 		vrLoc = 5964;
@@ -1897,7 +1897,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 241";
 		rLen = 0;
-		rLoc = 6733;
+		rLoc = 7085;
 		rType = 0;
 		vrLen = 998;
 		vrLoc = 6297;
@@ -1907,7 +1907,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 240";
 		rLen = 0;
-		rLoc = 6733;
+		rLoc = 7085;
 		rType = 0;
 		vrLen = 954;
 		vrLoc = 6297;
@@ -1917,7 +1917,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 489";
 		rLen = 0;
-		rLoc = 12228;
+		rLoc = 12850;
 		rType = 0;
 		vrLen = 715;
 		vrLoc = 11788;
@@ -1964,7 +1964,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 255";
 		rLen = 0;
-		rLoc = 6795;
+		rLoc = 7147;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 6278;
@@ -1974,7 +1974,7 @@
 		fRef = EB17BC04112DF0E0005B6660 /* ConfParser.cpp */;
 		name = "ConfParser.cpp: 504";
 		rLen = 0;
-		rLoc = 12228;
+		rLoc = 12850;
 		rType = 0;
 		vrLen = 902;
 		vrLoc = 12423;

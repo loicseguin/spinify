@@ -7,7 +7,7 @@
  *
  */
 
-
+#include <algorithm>
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -170,7 +170,7 @@ Simul::thermalSusceptibility()
 }
 
 
-void
+unsigned int
 Simul::findDecorrelTime(double (Simul::*measure)())
 {
 	double C_k = 1.;		// Autocorrelation function at step k
@@ -203,11 +203,16 @@ Simul::findDecorrelTime(double (Simul::*measure)())
 		k = minDecorrelTime;
 	
 	decorrelTime = k;
+	return k;
 }
 
 void
 Simul::runSimul(OutputType type, std::ostream & output)
 {
+	extern bool internalEnergy;
+	extern bool magnetization;
+	extern bool susceptibility;
+	
 	if (type == python) {
 		output << "import numpy as np\n"
 		<< "import matplotlib.pyplot as plt\n"
@@ -216,25 +221,64 @@ Simul::runSimul(OutputType type, std::ostream & output)
 	
 	for (unsigned int i = 0; i < beta.size(); i++) {
 		currentBeta = beta[i];
+		
+		if (type == python)
+			output << "[" << getBeta() << ", ";
+		else
+			output << getBeta() << " ";
+		
 		thermalize(nInitTherm);
 		//std::cerr << "Thermalized at temperature beta = " << Sim.getBeta() << std::endl;
-		findDecorrelTime(&Simul::measureInternalEnergy);
-		double avgData = thermalInternalEnergy();
-		if (type == python) {
-			output.precision(14);
-			output << "[" << getBeta() << ", " << avgData << "]," << std::endl;
+		
+		unsigned int dTimeEnergy = 0;
+		unsigned int dTimeMagnetization = 0;
+		if (internalEnergy)
+			dTimeEnergy =
+				findDecorrelTime(&Simul::measureInternalEnergy);
+		if (magnetization || susceptibility)
+			dTimeMagnetization =
+				findDecorrelTime(&Simul::measureMagnetization);
+		decorrelTime = std::max(dTimeEnergy, dTimeMagnetization);
+		
+		if (internalEnergy) {
+			output << thermalInternalEnergy();
+			if (type == python)
+				output << ", ";
+			else
+				output << " ";
 		}
-		else {
-			output.precision(14);
-			output << getBeta() << " " << avgData << std::endl;
+		if (magnetization) {
+			output << thermalMagnetization();
+			if (type == python)
+				output << ", ";
+			else
+				output << " ";
 		}
+		if (susceptibility) {
+			output << thermalSusceptibility();
+			output << thermalInternalEnergy();
+		}
+		
+		if (type == python)
+			output << "]," << std::endl;
+		else
+			output << std::endl;
 	}
 	
+	int nCols = 1;
+	if (internalEnergy)
+		nCols++;
+	if (magnetization)
+		nCols++;
+	if (susceptibility)
+		nCols++;
 	if (type == python) {
 		output << "])\n"
-		<< "x = 1/data[:,0]\n"
-		<< "y = data[:,1]\n"
-		<< "plt.plot(x, y)\n"
-		<< "plt.show()" << std::endl;
+		<< "x = 1/data[:,0]\n";
+		for (int i = 0; i < nCols; i++) {
+			output << "y" << i+1 << " = data[:," << i+1 << "]\n"
+			<< "plt.plot(x, y" << i+1 << ")\n"
+			<< "plt.show()" << std::endl;
+		}
 	}
 }
