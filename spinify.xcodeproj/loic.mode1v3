@@ -330,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EB8806F9113733290002EEFE</string>
+										<string>EB880718113822AB0002EEFE</string>
 										<key>history</key>
 										<array>
 											<string>EBBD0ADE10F9A17E00C616C4</string>
@@ -375,9 +375,9 @@
 											<string>EB59B7E71135BFE500A209BC</string>
 											<string>EB87ED251136253C001539C7</string>
 											<string>EB880699113727C90002EEFE</string>
-											<string>EB8806B0113728790002EEFE</string>
 											<string>EB8806DE11372C880002EEFE</string>
-											<string>EB8806DF11372C880002EEFE</string>
+											<string>EB880705113821B00002EEFE</string>
+											<string>EB880706113821B00002EEFE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -579,8 +579,8 @@
 		<string>EB8806A9113727C90002EEFE</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>EB2B6E6710E176D4006C32D5</string>
-		<string>/Users/loic/Projects/spinify/spinify/spinify.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/loic/Projects/spinify/spinify/spinify.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>314 59 963 719 0 0 1280 778 </string>
@@ -604,7 +604,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>fstream</string>
+								<string>ConfParser.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -613,7 +613,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {625, 441}}</string>
 								<key>RubberWindowFrame</key>
-								<string>78 60 625 718 0 0 1280 778 </string>
+								<string>52 60 625 718 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -639,7 +639,7 @@
 								<key>Frame</key>
 								<string>{{0, 446}, {625, 231}}</string>
 								<key>RubberWindowFrame</key>
-								<string>78 60 625 718 0 0 1280 778 </string>
+								<string>52 60 625 718 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -671,11 +671,11 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>78 60 625 718 0 0 1280 778 </string>
+			<string>52 60 625 718 0 0 1280 778 </string>
 			<key>WindowToolGUID</key>
 			<string>EB2B6E6710E176D4006C32D5</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -923,7 +923,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {659, 358}}</string>
 								<key>RubberWindowFrame</key>
-								<string>9 70 659 399 0 0 1280 778 </string>
+								<string>9 72 659 399 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -952,7 +952,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>9 70 659 399 0 0 1280 778 </string>
+			<string>9 72 659 399 0 0 1280 778 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
