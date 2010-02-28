@@ -41,6 +41,7 @@ Node::setID(const int n)
 void
 Node::setSpin(const int sp)
 {
+	// In the Ising model, the spin can be only + or -. 
 	if(sp == -1 || sp == 1) {
 		spin = sp;
 		return;
@@ -59,7 +60,9 @@ Node::getSpin()
 
 int
 Node::degree()
-{ 
+{
+	// The degree of a node is the number of edges that are incident to
+	// that node.
 	return edges.size();
 }
 
@@ -136,6 +139,8 @@ Edge::getStatus()
 Node&
 Edge::getOtherEnd(const Node& n)
 {
+	// Given an node n which is an endpoint of edge e, this function
+	// returns the other endpoint of edge e.
 	if (v1 == &n)
 		return *v2;
 	else if (v2 == &n)
@@ -185,9 +190,11 @@ void
 Graph::addEdge(Node& n, Node& m)
 {
 	static int j = 0;
+	
+	// Check if edge is already in the graph.
 	for (int i = 0; i < n.degree(); i++) {
 		if (&(n[i].getOtherEnd(n)) == &m) {
-			return; // Edge is already in the graph
+			return; 
 		}
 	}
 	Edge* pE = new Edge(n, m, j++);
@@ -203,7 +210,7 @@ Graph::operator[](const int i)
 		return *(nodes[i]);
 	}
 	else {
-		std::cerr << "Error: "<<i<< " is an invalid node index." << std::endl;
+		std::cerr << "Error: "<< i << " is an invalid node index." << std::endl;
 		return *(Node*) 0;
 	}
 }
@@ -215,7 +222,7 @@ Graph::operator[](const int i) const
 		return *(nodes[i]);
 	}
 	else {
-		std::cerr << "Error: "<<i<< " is an invalid node index." << std::endl;
+		std::cerr << "Error: "<< i << " is an invalid node index." << std::endl;
 		return *(Node*) 0;
 	}
 }
@@ -223,6 +230,14 @@ Graph::operator[](const int i) const
 void
 Graph::initRect(const int L, const int W)
 {
+	// This function initializes a rectangular graph on the plane torus.
+	// A rectangular graph of length L and width W is simply a lattice
+	// isomorphic to the subset of the Z^2 lattice going from (x, y) =
+	// (0, 0) to (x, y) = (L, W). To this lattice we add edges so that
+	// the left most nodes are adjacent to the rightmost nodes, and the
+	// topmost nodes are adjacent to the bottommost nodes.
+	
+	// If the graph is not empty, try to empty it.
 	if (size() != 0) {
 		for (unsigned int i = 0; i < nodes.size(); i++) {
 			delete nodes[i];
@@ -233,6 +248,8 @@ Graph::initRect(const int L, const int W)
 		edges.clear();
 		nodes.clear();
 	}
+	
+	// Add nodes and edges.
 	int N = L * W;
 	addNode(N);
 	for (int i = 0; i < N; i++) {
@@ -244,6 +261,8 @@ Graph::initRect(const int L, const int W)
 void
 Graph::randSpin()
 {
+	// Give every node a random spin. Note that this corresponds to a
+	// high temperature configuration.
 	for (int i = 0; i < size(); i++) {
 		unsigned int rval = alea();
 		if (rval % 2 == 0)
@@ -256,6 +275,7 @@ Graph::randSpin()
 void
 Graph::resetStatus()
 {
+	// Reset every node and every edge to notVisited.
 	for (unsigned int i = 0; i < edges.size(); i++)
 		edges[i]->setStatus(notVisited);
 	for (int i = 0; i < size(); i++)
@@ -265,6 +285,9 @@ Graph::resetStatus()
 void
 Graph::print(OutputType type, std::ostream & output)
 {
+	// Print graph data to output using either Python syntax or raw
+	// syntax. The latter is just a list of edges (more details in the
+	// description of the prRaw function).
 	switch (type) {
 		case python:
 			prPython(output);
@@ -280,11 +303,17 @@ Graph::print(OutputType type, std::ostream & output)
 void
 Graph::prPython(std::ostream & output)
 {
+	// This prints the graph information in a file that can be called
+	// from the Python interpreter. It uses NumPy and matplotlib to plot
+	// the graph on a three dimensional sphere.
+	
+	// Start with the header.
 	output << "import numpy as np\n"
 	<< "from mpl_toolkits.mplot3d import Axes3D\n"
 	<< "import matplotlib.pyplot as plt\n"
 	<< "data = np.array([";
 	
+	// Print the coordinate of every node.
 	for (int i = 0; i < size(); i++) {
 		Point3D& pts = (*this)[i].getCoords();
 		output.precision(14);
@@ -298,6 +327,8 @@ Graph::prPython(std::ostream & output)
 	
 	resetStatus();
 	
+	// Print every edge as a line whose endpoints are the coordinates of
+	// the endpoints of the edge.
 	for (int i = 0; i < size(); i++) {
 		for (int j = 0; j < (*this)[i].degree(); j++) {
 			if ((*this)[i][j].getStatus() == Visited) {
@@ -314,6 +345,7 @@ Graph::prPython(std::ostream & output)
 		}
 	}
 	
+	// Actually plot the points.
 	output
 	<< "xs = data[:,0]" << std::endl
 	<< "ys = data[:,1]" << std::endl
@@ -326,14 +358,34 @@ Graph::prPython(std::ostream & output)
 void
 Graph::prRaw(std::ostream & output)
 {
+	// The raw format is very simple. The first line is the number of
+	// nodes, the second line is the number of edges. Then, every
+	// subsequent line is an edge specified by the id of its two
+	// endpoints. The ouput looks as follows:
+	//   12
+	//   8
+	//   0 3
+	//   0 9
+	//   2 6
+	//   4 5
+	//   ... (8 more lines of edges)
+	
 	resetStatus();
+	// Print number of nodes.
 	output << size() << std::endl;
+	
+	// This is a routine to compute the number of edges based on the
+	// fact that nEdge = (1/2) \sum_{v \in V} deg(v)
 	int nEdge = 0;
 	for (int i = 0; i < size(); i++) {
 		nEdge += (*this)[i].degree();
 	}
 	nEdge /= 2;
+	
+	// Print the number of edges.
 	output << nEdge << std::endl;
+	
+	// Print each edge on a separate line.
 	for (int i = 0; i < size(); i++) {
 		for (int j = 0; j < (*this)[i].degree(); j++) {
 			if ((*this)[i][j].getStatus() == Visited) {
@@ -349,6 +401,9 @@ Graph::prRaw(std::ostream & output)
 void
 Graph::readFile(std::string graphInFile)
 {
+	// Reads the graph information from a file. The file has to be in
+	// raw format.
+	
 	std::ifstream graphInPtr;
 	graphInPtr.open(graphInFile.c_str(), std::ifstream::in);
 	if (!(graphInPtr.is_open())) {

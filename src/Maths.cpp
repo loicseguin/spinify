@@ -14,6 +14,7 @@
 double
 avg(double* pV, const int nV)
 {
+	// Compute the average of an array of nV doubles.
 	double sum = 0;
 	for (int i = 0; i < nV; i++) {
 		sum += pV[i];
@@ -24,6 +25,7 @@ avg(double* pV, const int nV)
 double
 stdDev(double *pV, const int nV)
 {
+	// Compute the standard deviation of an array of nV doubles.
 	double avgV = avg(pV, nV);
 	double sum = 0;
 	for (int i = 0; i < nV; i++) {

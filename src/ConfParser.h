@@ -14,8 +14,12 @@
 #include <vector>
 
 
-const int maxArgs = 25;
+// This is the maximum number of command line arguments.
+const int maxArgs = 50;
+// This is the minimum number of command line arguments.
 const int minArgs = 1;
+// When only a minimum and a maximum temperatures are given, divide the
+// interval in defaultNbTemps values.
 const unsigned int defaultNbTemps = 50;
 
 
@@ -59,7 +63,8 @@ class ConfParser {
 	 * The user has to provide at least a lattice type and corresponding
 	 * size. Failure to do so results in the program exiting.
 	 *
-	 * The parseArgs() function calls parseCfgFile().
+	 * The parseArgs() parses the command line arguments and also the
+	 * configuration file via a function call to parseCfgFile().
 	 *
 	 * The list of all available options is in file doc/CONFIG as well
 	 * as in the man page.

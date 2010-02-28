@@ -1,3 +1,13 @@
+/*
+ *  main.cpp
+ *  spinify
+ *
+ *  Created by Loïc Séguin-Charbonneau on 09-12-22.
+ *  Copyright 2010 Loïc Séguin-Charbonneau. All rights reserved.
+ *
+ */
+
+
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -10,6 +20,7 @@
 #include "Surface.h"
 
 
+// The global flags indicate what measurements are made.
 bool internalEnergy = false;
 bool magnetization = false;
 bool susceptibility = false;
@@ -21,9 +32,19 @@ using namespace std;
 int
 main (int argc, char * const argv[])
 {
+	/*
+	 * This is the main routine for the program Spinify. It is
+	 * responsible for handling the command line arguments to the
+	 * parser, creating the necessary graph and calling the simulation
+	 * routine for this graph.
+	 *
+	 */
+	
+	// Start by parsing the commandline arguments.
 	ConfParser cfg;
 	cfg.parseArgs(argc, argv);
 	
+	// Then, create a graph with the appropriate parameters.
 	Simul G(cfg.nNodes);
 	G.setParams(cfg.decorrelIter,
 				cfg.correlTreshold,
@@ -34,6 +55,8 @@ main (int argc, char * const argv[])
 				cfg.nMeasures,
 				cfg.nInitTherm);
 	
+	// Fill that graph with the appropriate nodes and edges depending on
+	// the lattice type.
 	switch (cfg.lattice) {
 		case sphere_even:
 		{
@@ -63,6 +86,7 @@ main (int argc, char * const argv[])
 			break;
 	}
 	
+	// If required by the user, print the graph data to file.
 	std::ofstream outFile;
 	if (cfg.graphOutFile != "") {
 		std::ostream & graphOutput = true
@@ -72,6 +96,7 @@ main (int argc, char * const argv[])
 		outFile.close();
 	}
 	
+	// Set the temperature to infinity.
 	G.randSpin();
 	
 	// The following (rather cryptic) trick comes from
@@ -81,6 +106,7 @@ main (int argc, char * const argv[])
 		? outFile.open(cfg.simulOutFile.c_str(), std::ios::out), outFile
 		: std::cout;
 	
+	// Finally, run the simulation and exit.
 	G.runSimul(cfg.output, simulOutput);
 	cerr << "Done!" << endl;
 	

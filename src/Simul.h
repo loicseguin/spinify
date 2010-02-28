@@ -46,12 +46,21 @@ class Simul : public Graph {
 	 * setParams() sets all the parameters.
 	 *
 	 * During a simulation, there are many different quantities that can
-	 * be measured. One of them is the internal energy per spin
-	 *     \[u = \frac{1}{n}\sum_{<i,j>} s_i s_j\]
-	 * where the sum runs over all edges <i,j>. This quantity is
-	 * measured by measureE(). findDecorrelTime() is used to find how
-	 * many swendsen() iterations are needed between every measure to
-	 * ensure that the measures are statistically independent.
+	 * be measured. Implemented here are functions to measure the
+	 * internal energy per site, the magnetization and the magnetic
+	 * susceptibility. Functions measureInternalEnergy and
+	 * measureMagnetization make one measurement at temperature
+	 * currentBeta. The thermalInternalEnergy, thermalMagnetization and
+	 * thermalSuceptibility take the thermal average over nMeasures.
+	 *
+	 * findDecorrelTime is used to find how many swendsen iterations are
+	 * needed between every measure to ensure that the measures are
+	 * statistically independent. This time is dependant on the quantity
+	 * being measured.
+	 *
+	 * runSimul is the function that takes care of running the
+	 * simulation. It computes the decorrelation time when required,
+	 * makes measurements, and outputs the results.
 	 *
 	 */
 	unsigned int decorrelIter;

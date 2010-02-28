@@ -19,13 +19,18 @@
 using namespace std;
 
 
+// When the file parser calls the command line parser with the argv
+// vector it built from the file, it sets parsingFile to true.
 bool parsingFile = false;
+// Indicate whether or not a lattice type has been specified on the
+// command line.
 bool cmdlineGraph = false;
 
 
 void
 usage(void)
 {
+	// Print a short usage message.
 	cout
 	<< "Spinify " << VERSION << endl
 	<< "USAGE: spinify [-s N | -r N M | -g FILE] [options]" << endl
@@ -37,6 +42,7 @@ usage(void)
 void
 help()
 {
+	// Print a message detailing the various options for the program.
 	cout
 	<< "Spinify " << VERSION << endl
 	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
@@ -79,7 +85,7 @@ help()
 	<< "  --maxDecorrelTime N              Decorrelation time is at most N." << endl
 	<< "  --minDecorrelTime N              Decorrelation time is at least N." << endl
 	<< "  --nInitTherm N                   Do N iterations of Swedsen-Wang-Wolff" << endl
-	<< "                                   before starting the simulation." << endl
+	<< "                                   before starting measures." << endl
 	<< "  --nMeasures N                    Take N measures at every temperature." << endl
 	<< endl
 	<< "Surface options:" << endl
@@ -96,6 +102,7 @@ help()
 void
 version(void)
 {
+	// Print version information, author and short license notice.
 	cout
 	<< "Spinify " << VERSION << endl
 	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
@@ -107,6 +114,7 @@ version(void)
 void
 err_argument(string& option)
 {
+	// Print an error message when there is a missing argument and exit.
 	cerr << "Error: option " << option
 		 << " requires an argument." << endl;
 	usage();
@@ -116,6 +124,9 @@ err_argument(string& option)
 void
 err_lattice_defined(string& option)
 {
+	// Print an error message when no lattice type is specified. It is
+	// mandatory that the user provide a lattice type for the program to
+	// run.
 	cerr << "Error: you must specify only one graph type." << endl;
 	usage();
 	exit(1);
@@ -124,6 +135,8 @@ err_lattice_defined(string& option)
 void
 err_positive(string& option)
 {
+	// Print an error message when a positive argument is expected but
+	// a negative argument is given.
 	cerr << "Error: option " << option
 		 << " requires positive arguments." << endl;
 	usage();
@@ -133,6 +146,9 @@ err_positive(string& option)
 void
 err_output_set(string& option)
 {
+	// Print an error message when more than one output type is
+	// specified.
+	// ATTENTION: this function might be deprecated soon.
 	cerr << "Error: you must specify only one of -r or -p." << endl;
 	usage();
 	exit(1);
@@ -141,6 +157,8 @@ err_output_set(string& option)
 void
 err_bounded(string& option, double a, double b)
 {
+	// Print an error message when the supplied argument does not lie
+	// within the allowed interval.
 	cerr << "Error: option " << option
 	<< " requires an argument between " << a << " and " << b << endl;
 	usage();
@@ -150,6 +168,8 @@ err_bounded(string& option, double a, double b)
 void
 err_argument_file(string& option)
 {
+	// Print an error message when a boolean option in the configuration
+	// does not have a valid argument.
 	cerr << "Error: in configuration file, option " << option
 	<< " requires an argument which is either True of False." << endl;
 	usage();
@@ -159,6 +179,8 @@ err_argument_file(string& option)
 
 ConfParser::ConfParser ()
 {
+	// The constructor sets default values for the parameters.
+	
 	// Main args
 	lattice = none;
 	nNodes = 0;
@@ -197,10 +219,17 @@ ConfParser::ConfParser ()
 void
 ConfParser::parseArgs(int argc, char* const argv[])
 {
+	// This function does all the processing of command line arguments.
+	// It also takes care of calling the configuration file parser.
+	
+	// The following global flags, which are declared in main.cpp,
+	// indicate what measures should be taken.
 	extern bool internalEnergy;
 	extern bool magnetization;
 	extern bool susceptibility;	
 	
+	// These three variables are used as temporary storage when
+	// processing certain arguments.
 	unsigned int tmpi;
 	int tmpsi;
 	double tmpd;
@@ -211,8 +240,8 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		exit(1);
 	}
 	
-	// If the user gives the -h or --help argument, print usage message
-	// and exit program.
+	// If the user gives the -h or --help argument, print help message
+	// and exit successfully.
 	for (int i = 1; i < argc; i++) {
 		string arg = argv[i];
 		if (arg == "-h" || arg == "--help" ) {
@@ -222,7 +251,7 @@ ConfParser::parseArgs(int argc, char* const argv[])
 	}
 	
 	// If the user gives the -v or --version argument, print version
-	// message and exit program.
+	// message and exit successfully.
 	for (int i = 1; i < argc; i++) {
 		string arg = argv[i];
 		if (arg == "-v" || arg == "--version" ) {
@@ -232,7 +261,7 @@ ConfParser::parseArgs(int argc, char* const argv[])
 	}
 	
 	// If the -c FILE option is passed, use the provided filename as the
-	// configuration file.
+	// configuration file. Otherwise, keep default values.
 	for (int i = 1; i < argc; i++) {
 		string arg = argv[i];
 		if (arg == "-c" || arg == "--config-file") {
@@ -244,19 +273,22 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		}
 	}
 	
-	// Parse config file.
+	// Parse configuration file if parseArgs is not called from
+	// parseCfgFile.
 	if (!parsingFile)
 		parseCfgFile();
 	
-	// Parse the rest of the arguments.
+	// Flag to specify if the output type has been fixed.
 	bool output_set = false;
 	
+	// Parse the rest of the arguments.
 	for (int i = 1; i < argc; i++) {
 		string arg = argv[i];
 		
-		// Read graph info from file
+		// Read graph information from file.
 		if(arg == "-g" || arg == "--graph-infile") {
 			if (cmdlineGraph)
+				// The lattice type can't be specified twice.
 				err_lattice_defined(arg);
 			else if (++i < argc) {
 				graphInFile = argv[i];
@@ -264,7 +296,7 @@ ConfParser::parseArgs(int argc, char* const argv[])
 				if (!parsingFile)
 					cmdlineGraph = true;
 			}
-			else 
+			else
 				err_argument(arg);
 		}
 		
@@ -311,10 +343,13 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		
 		// Beta
 		else if (arg == "-T" || arg == "--temperatures") {
+			// Start by removing the default value.
 			temps.pop_back();
 			nTemps = 0;
 			double get[4];
 			int nget = 0;
+			// Start reading arguments. There can be at most three
+			// arguments.
 			while (++i < argc && (get[nget] = strtod(argv[i], NULL))) {
 				if (nget > 3) {
 					cerr << "Error: too many arguments for option "
@@ -327,12 +362,17 @@ ConfParser::parseArgs(int argc, char* const argv[])
 			i--;
 			switch (nget) {
 				case 1:
+					// Only one temperature is given, use it for the
+					// simulation.
 					nTemps = 1;
 					if (get[0] <= 0)
 						err_positive(arg);
 					temps.push_back(get[0]);
 					break;
 				case 2:
+					// The user gave two temperatures T1 and T2. Define
+					// a vector of temperature from T1 to T2 with
+					// (T2 - T1) / defaultNbTemps increments.
 					nTemps = defaultNbTemps;
 					if (get[0] < 0 || get[1] < 0)
 						err_positive(arg);
@@ -341,6 +381,8 @@ ConfParser::parseArgs(int argc, char* const argv[])
 					}
 					break;
 				case 3:
+					// The user gave two temperatures and an increment.
+					// Use these values to fill the temps vector.
 					for (int j = 0;; j++) {
 						if ((get[1] - get[0]) * get[2] < 0
 							|| get[2] == 0) {
@@ -356,7 +398,10 @@ ConfParser::parseArgs(int argc, char* const argv[])
 							break;
 						}
 					}
+					break;
 				default:
+					// This options requires at least one argument.
+					err_argument(arg);
 					break;
 			}
 		}
@@ -539,6 +584,8 @@ ConfParser::parseArgs(int argc, char* const argv[])
 				err_argument(arg);
 		}
 		
+		// Skip the configuration file name, it has already been
+		// processed.
 		else if (arg == "-c" || arg == "--config-file")
 			++i;
 		
@@ -563,8 +610,23 @@ ConfParser::parseArgs(int argc, char* const argv[])
 bool
 ConfParser::parseCfgFile()
 {
+	/* 
+	 * The configuration file parser tries to open the file cfgFile[0]
+	 * which is set to .spinifyrc by default or to a user supplied name
+	 * if the -c option was given on the command line. If this operation
+	 * fails it tries file cfgFile[1] which is set to ~/.spinifyrc. If
+	 * this fails as well, the function silently returns control to the
+	 * command line parser.
+	 */
+	
+	// This is used to store an argv vector that is gradually built
+	// while reading the configuration file.
 	vector<string> cmdLine;
+	
+	// The first element is the program name.
 	cmdLine.push_back("spinify");
+	
+	// Which file are we trying to open.
 	ifstream cfgFilePtr;
 	
 	for (int i = 0; i < 2; i++) {
@@ -573,24 +635,38 @@ ConfParser::parseCfgFile()
 			break;
 	}
 	
+	// If a file has been successfully opened, process it line by line,
+	// ignoring lines that start with a pound sign '#'.
 	if (cfgFilePtr.is_open()) {
 		string line;
 		while (getline(cfgFilePtr, line)) {
+			// Use this to strip whitespaces before the option.
 			size_t found;
 			found = line.find_first_not_of(" \n\t\v");
+			
+			// Ignore comment lines.
 			if((found != string::npos && line[found] == '#')
 			   || found == string::npos)
 				continue;
+			
+			// Where is the equal sign.
 			size_t equal;
 			equal = line.find('=');
+			
 			if (equal == string::npos) {
+				// Every line should have the format
+				//   option = argument
+				// If no equal sign '=' is found, the configuration file
+				// is malformed.
 				cerr << "While reading line:" << endl
 				<< line << endl;
 				cerr << "Error: malformed configuration file." << endl;
 				exit(1);
 			}
+			
+			// Strip the option from leading and trailing whitespaces
+			// and add it to the command line.
 			string option;
-			string argument;
 			option = line.substr(found, equal);
 			size_t blank;
 			blank = option.find_first_of(" \t");
@@ -598,6 +674,9 @@ ConfParser::parseCfgFile()
 				option = option.substr(0, blank);
 			cmdLine.push_back("--" + option);
 			
+			// Process the argument by breaking it into strings based on
+			// space delimiters.
+			string argument;
 			argument = line.substr(equal + 1);
 			blank = argument.find_first_not_of(" \t");
 			if (blank != string::npos)
@@ -616,17 +695,23 @@ ConfParser::parseCfgFile()
 			cmdLine.push_back(argument);
 		}
 		
+		// Translate the fake command line vector into a char* argv[].
 		char* argv[maxArgs];
 		for (int i = 0; i < cmdLine.size(); i++) {
 			//cout << cmdLine[i] << endl;
 			argv[i] = (char*)cmdLine[i].c_str();
-			cout << cmdLine[i] << endl;
 		}
+		
+		// Indicate that the configuration file is now being processed
+		// and ask parseArgs to parse the fake command line.
 		parsingFile = true;
 		parseArgs(cmdLine.size(), argv);
 		parsingFile = false;
+		
+		// Return true when a file has been processed.
 		return true;
 	}
 	
+	// Return false when no file was processed.
 	return false;
 }
