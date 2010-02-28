@@ -78,6 +78,13 @@ class Graph {
 	 * resetStatus() sets the Status of every Edge and every Node to
 	 * notVisited.
 	 *
+	 * print prints the content of the graph (number of nodes, number of
+	 * edges, list of edges) to file. Depending on the output type, it
+	 * calls either prPython or prRaw.
+	 *
+	 * The readFile function process the content of a given file and
+	 * stores it in the graph. Note that this function only works for
+	 * raw files not Python files.
 	 *
 	 */
 	std::vector<Node*> nodes;

@@ -32,6 +32,8 @@ Simul::Simul(int N) : Graph(N)
 void
 Simul::thermalize(const int n)
 {
+	// This function is useful for quickly reaching the right
+	// temperature.
 	for (int i = 0; i < n; i++)
 		swendsen();
 }
@@ -39,9 +41,36 @@ Simul::thermalize(const int n)
 void
 Simul::swendsen()
 {
+	// This is an implementation of a mixture of the Swendsen-Wang
+	// algorithm and the Wolff algorithm:
+	//
+	//   Swendsen, R. H. and Wang, J.-S. Nonuniversal critical dynamics
+	//   in Monte Carlo simulations. Physical Review Letters, 58 (2) :
+	//   86-88, 1987.
+	//
+	//   Wolff, U. Collective Monte Carlo updating for spin systems.
+	//   Physical Review Letters, 62 (4) : 361-364, 1989.
+	//
+	// A state is a given configuration of spin values on the graph. To
+	// go from one state to the pther, the idea is to grow sets of nodes
+	// that have the same spin and to change the spin of all nodes in
+	// that set randomly. This is done in such a way that the
+	// probability of finding a given state is very close to the
+	// probability predicted by the Gibbs distribution.
+	
+	// Set all statuses to not visited.
 	resetStatus();
+	
+	// Repeat the procedure for all nodes.
 	for (int i = 0; i < size(); i++) {
+		
+		// If the node is not visited, run the algorithm. Otherwise, the
+		// node was part of a previous set and there is nothing to do.
 		if ((*this)[i].getStatus() == notVisited) {
+			
+			// Start by keeping the value of the node's spin in a
+			// variable called oldSpin. Then, randomly choose a new spin
+			// value that will be assigned to every node in the set.
 			int oldSpin = (*this)[i].getSpin();
 			int newSpin;
 			unsigned int rval = alea();
@@ -49,12 +78,23 @@ Simul::swendsen()
 				newSpin = -1;
 			else
 				newSpin = 1;
+			
+			// We build a list of nodes that will be in the set.
 			std::vector<Node*> toTest;
 			toTest.push_back(&((*this)[i]));
 			for (unsigned int j = 0; j < toTest.size(); j++) {
+				// Test the first untested node.
 				Node& next = *toTest[j];
 				next.setStatus(Visited);
 				next.setSpin(newSpin);
+				
+				// Check its neighbour one by one. If the edge is
+				// already visited, skip it. Otherwise, mark the edge as
+				// visited and check if the other end of the edge has
+				// already been visited. If not, check if the neighbour
+				// node has the same spin. If it does, then add this
+				// node to the set with probability
+				//   1 - e^{2 \beta J}
 				for (int k = 0; k < next.degree(); k++) {
 					Edge& nEdge = next[k];
 					Node& otherEnd = nEdge.getOtherEnd(next);
@@ -134,6 +174,9 @@ Simul::measureMagnetization()
 double
 Simul::thermalInternalEnergy()
 {
+	// Repeat the measure of internal energy per spin nMeasures times
+	// and return the average value (this is called the thermal
+	// average).
 	double Data[nMeasures];
 	for (unsigned int j = 0; j < nMeasures; j++) {
 		thermalize(decorrelTime);
@@ -145,6 +188,9 @@ Simul::thermalInternalEnergy()
 double
 Simul::thermalMagnetization()
 {
+	// Repeat the measure of magnetization nMeasures times
+	// and return the average value (this is called the thermal
+	// average).
 	double Data[nMeasures];
 	for (unsigned int j = 0; j < nMeasures; j++) {
 		thermalize(decorrelTime);
@@ -156,6 +202,9 @@ Simul::thermalMagnetization()
 double
 Simul::thermalSusceptibility()
 {
+	// Magnetic susceptibility is defined to be
+	//   \chi = \beta N (<M^2> - <M>^2)
+	// where M is the magnetization and <> represent thermal average.
 	double Data[nMeasures];
 	double DataSq[nMeasures];
 	for (unsigned int j = 0; j < nMeasures; j++) {
@@ -173,6 +222,13 @@ Simul::thermalSusceptibility()
 unsigned int
 Simul::findDecorrelTime(double (Simul::*measure)())
 {
+	// To determine whether two measures are statistically independant,
+	// we evaluate the correlation function function between measures
+	// taken at a given number of Swendsen-Wang-Wolff iterations away.
+	// As soon as the correlation function drops below a user chosen
+	// threshold, we say the measures are decorrelated and we call that
+	// number of iterations the decorrelation time.
+	
 	double C_k = 1.;		// Autocorrelation function at step k
 	double X[decorrelIter], X2[decorrelIter], X_k[decorrelIter];
 	double avgX, avgX2, avgX_k;
@@ -192,13 +248,12 @@ Simul::findDecorrelTime(double (Simul::*measure)())
 			X_k[i] = X[i] * X[i + k];
 		avgX_k = avg(X_k, decorrelIter - k);
 		C_k = (avgX_k - avgX * avgX) / (avgX2 - avgX * avgX);
-		// std::cout << "C_" << k << " = " << C_k << std::endl;
-		// Avoid disasters...
+		// We keep the decorrelation time to at most maxDecorrelTime.
 		if (k > maxDecorrelTime) break;
 	}
 	
-	// Better safe than sorry: always do at least five iterations
-	// between every measure.
+	// Better safe than sorry: always do at least minDecorrelTime
+	// iterations between every measure.
 	if (k < minDecorrelTime)
 		k = minDecorrelTime;
 	
@@ -209,6 +264,10 @@ Simul::findDecorrelTime(double (Simul::*measure)())
 void
 Simul::runSimul(OutputType type, std::ostream & output)
 {
+	// Run the simulation.
+	
+	// The following are boolean flags that are declared in main.cpp and
+	// whose value depends on the user's choices.
 	extern bool internalEnergy;
 	extern bool magnetization;
 	extern bool susceptibility;
@@ -220,6 +279,8 @@ Simul::runSimul(OutputType type, std::ostream & output)
 	}
 	
 	for (unsigned int i = 0; i < beta.size(); i++) {
+		// We start by setting the Simul variable currentBeta to the
+		// next beta value from the user's temperature vector.
 		currentBeta = beta[i];
 		
 		if (type == python)
@@ -227,9 +288,16 @@ Simul::runSimul(OutputType type, std::ostream & output)
 		else
 			output << getBeta() << " ";
 		
+		// We run a couple of iterations of SWW in order to ensure that
+		// we are at the proper temperature.
 		thermalize(nInitTherm);
 		//std::cerr << "Thermalized at temperature beta = " << Sim.getBeta() << std::endl;
 		
+		// Find the decorrelation time for the given measure. If the
+		// user want to measure more than one quantity, take the
+		// decorrelation time to be the maximum of the time for each
+		// measure. Then, we are assured that the measures are all
+		// independant.
 		unsigned int dTimeEnergy = 0;
 		unsigned int dTimeMagnetization = 0;
 		if (internalEnergy)
@@ -240,6 +308,7 @@ Simul::runSimul(OutputType type, std::ostream & output)
 				findDecorrelTime(&Simul::measureMagnetization);
 		decorrelTime = std::max(dTimeEnergy, dTimeMagnetization);
 		
+		// Make the measurements and output them to the output stream.
 		if (internalEnergy) {
 			output << thermalInternalEnergy();
 			if (type == python)
@@ -263,14 +332,16 @@ Simul::runSimul(OutputType type, std::ostream & output)
 			output << std::endl;
 	}
 	
-	int nCols = 0;
-	if (internalEnergy)
-		nCols++;
-	if (magnetization)
-		nCols++;
-	if (susceptibility)
-		nCols++;
+	// This is a couple of Pythonic goodies.
 	if (type == python) {
+		int nCols = 0;
+		if (internalEnergy)
+			nCols++;
+		if (magnetization)
+			nCols++;
+		if (susceptibility)
+			nCols++;
+		
 		output << "])\n"
 		<< "x = 1/data[:,0]\n";
 		for (int i = 0; i < nCols; i++) {

@@ -29,7 +29,13 @@ Sphere::Sphere()
 int
 Sphere::uniform(Graph& G, int N)
 {
-	// Marsaglia 1972
+	// This generates points that are uniformly distributed on the
+	// unit sphere. The method for generating these points comes from
+	// Marsaglia, 1972 (see Surface.h for complete refenrence).
+	//
+	// The function returns the number of points that were added to the
+	// sphere.
+	
 	int curIndex = G.size() - 1;
 	int counter = 0;
 	
@@ -53,10 +59,40 @@ Sphere::uniform(Graph& G, int N)
 void
 Sphere::repulse(Graph& G)
 {
+	// An even node distribution is defined to be a node distribution
+	// for which the minimum distance between any two nodes is
+	// maximized. In order to achieve this, we start with a uniform
+	// distribution and we perform a serie of repulsions. Repulsions are
+	// based on an electric repulsion between electrons on the sphere.
+	//
+	// Imagine every node has the same electric charge. Then, they will
+	// repel each other with a force proportional to the inverse of the
+	// square of the distance between them. If we let the nodes repel
+	// for sufficiently long time while constraining them to stay on the
+	// sphere, they will eventually find a very good approximation for
+	// optimal solution.
+	
+	// If every node is the center of a circle, that no circle
+	// overlap, and that we want all N nodes to lie on the unit sphere,
+	// then the radius r of the small circles can be approximated by
+	//   4 \pi / (\pi r^2) = N
+	//   r = 2 / \sqrt{N}
+	// Of course, this is an over estimation.
 	const double expectedRadius = 2./sqrt(G.size());
+	
+	// Computing the force on a node becomes long if the number of nodes
+	// is large. However, since the force decreases with the square of
+	// the distance, it is reasonable to compute only the force due to
+	// nodes that are nearby, i.e, the force we use has a finite range.
 	const double range = rangeMultiplier * expectedRadius;
+	
+	// The minimum distance between two nodes should be close to twice
+	// radius of the disks.
 	const double objectiveDist = 4./sqrt(G.size());
 	
+	// If the force is not dampened, it quickly become so big that the
+	// nodes just move randomly on the sphere. To avoid this problem, we
+	// dampen the forces by a factor dependent on the size of the graph.
 	// The following damping coefficient is a crude guess based on
 	// a couple of experiments. More thoughts should be put into this.
 	const double dampingCoeff =
@@ -66,7 +102,15 @@ Sphere::repulse(Graph& G)
 	double minDist = 0.;
 	int counter = 0;
 	
+	// While the minimum distance is not sufficiently close to the
+	// expectedRadius, repeat the repulsion process.
 	while ((objectiveDist - minDist) / objectiveDist > objectiveRatio) {
+		
+		// We process each node in turn. We compute the force on a node
+		// by summing the force due to each node within a distance of
+		// range and we move the node along the direction of the force.
+		// Then, the node position is normalized so that it lies on the
+		// sphere.
 		for (int i = 0; i < G.size(); i++){
 			Point3D force(0);
 			Point3D& iCoords = G[i].getCoords();
@@ -88,6 +132,9 @@ Sphere::repulse(Graph& G)
 		counter++;
 		minDist = minDistance(G);
 	}
+	// Print the number of repulsion. While this is useful for
+	// debugging, it should probably be removed or be controlled by a
+	// user flag.
 	std::cerr << "Number of repulsions: " << counter << std::endl;
 }
 
@@ -106,6 +153,7 @@ Sphere::distanceSq(const Point3D& a, const Point3D& b) const
 int
 Sphere::evenNodes(Graph& G, int N)
 {
+	// Generate a graph on the sphere with even node distribution.
 	int counter = uniform(G, N);
 	repulse(G);
 	return counter;
@@ -114,6 +162,12 @@ Sphere::evenNodes(Graph& G, int N)
 void
 Sphere::delaunay(Graph& G)
 {
+	// To compute the Delaunay triangulation of nodes on the sphere, we
+	// process each node in turn. We build an auxiliary graph H where
+	// the node being processed lies at the origin and every node in a
+	// neighbourhood of this node is projected on the tangent plane.
+	// Then, we perform a Delaunay triangulation on this plane graph.
+	
 	const double expectedRadius = 2./sqrt(G.size());
 	const double range = rangeMultiplier * expectedRadius;
 	Basis B;
@@ -125,6 +179,10 @@ Sphere::delaunay(Graph& G)
 		H[nH - 1].setID(i);
 		H[nH - 1].setCoords(0, 0);
 		Point3D& r = G[i].getCoords();
+		
+		// To find the tangent plane, create an orthonormal basis
+		// containing the position of the node. The two other basis
+		// vectors will generate the tangent plane. 
 		B.genOrthonormal(r);
 		for (int j = 0; j < G.size(); j++) {
 			if (j == i)
@@ -134,6 +192,7 @@ Sphere::delaunay(Graph& G)
 				H.addNode();
 				nH++;
 				H[nH - 1].setID(j);
+				// Project neighbouring nodes on the tangent plane.
 				H[nH - 1].setCoords(dot(pj, B[1]), dot(pj, B[2]));
 			}
 		}

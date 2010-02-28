@@ -134,6 +134,7 @@ vectorProd(Point3D& v1, Point3D& v2)
 
 Basis::Basis()
 {
+	// By the default, a basis initializes to the canonical basis.
 	B[0] = Point3D(1,0,0);
 	B[1] = Point3D(0,1,0);
 	B[2] = Point3D(0,0,1);
@@ -142,7 +143,21 @@ Basis::Basis()
 void
 Basis::genOrthonormal(const Point3D& v1)
 {
+	// From v1, we can generate an orthonormal basis by first generating
+	// a vector that is orthogonal to v1, then normalizing this vector,
+	// and finally generating a third vector which is the vector product
+	// of the first two.
+	
 	B[0] = v1;
+	
+	// Here
+	//   dot(B[0], B[1]) = v1[0] (2*v1[1]*v1[2])
+	//					   + v1[1] (-v1[0]*v1[2])
+	//					   + v1[2] (-v1[0]*v1[1])
+	//					 = 2*v1[0]*v1[1]*v1[2]
+	//					   - v1[0]*v1[1]*v1[2]
+	//					   - v1[0]*v1[1]*v1[2]
+	//					 = 0
 	B[1] = Point3D(2*v1[1]*v1[2], -v1[0]*v1[2], -v1[0]*v1[1]);
 	B[1].normalize();
 	B[2] = vectorProd(B[0], B[1]);
