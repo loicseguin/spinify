@@ -25,7 +25,7 @@ Simul::Simul(int N) : Graph(N)
 	minDecorrelTime = 5;
 	Jval = -1;
 	currentBeta = squareCritBeta;
-	nMeasures = 100;
+	nMeasures = 200;
 	nInitTherm = 500;
 }
 

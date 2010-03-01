@@ -114,6 +114,7 @@
 		EB59B73D1134CAA000A209BC /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makefile.am; path = doc/Makefile.am; sourceTree = "<group>"; };
 		EB81A6BA10F7CFD70056EC81 /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Surface.h; path = src/Surface.h; sourceTree = "<group>"; };
 		EB81A6BB10F7CFD70056EC81 /* Surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Surface.cpp; path = src/Surface.cpp; sourceTree = "<group>"; };
+		EB880846113B73B50002EEFE /* spinifyrc.sample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = spinifyrc.sample; path = doc/spinifyrc.sample; sourceTree = "<group>"; };
 		EB8DBC0C10F2C45C00DE3109 /* randtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = randtest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBFDAEC511250D75004C4973 /* mkrelease.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = mkrelease.sh; sourceTree = "<group>"; };
 		EBFDAEC611250EE8004C4973 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		C6859E8C029090F304C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				EB880846113B73B50002EEFE /* spinifyrc.sample */,
 				EB59B73D1134CAA000A209BC /* Makefile.am */,
 				EB17BC00112DEA0F005B6660 /* CONFIG */,
 				EB59B6D91134641000A209BC /* INSTALL */,

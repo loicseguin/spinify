@@ -3,8 +3,8 @@
 .\"man mdoc.samples for a complete listing of options
 .\"man mdoc for the short list of editing options
 .\"/usr/share/misc/mdoc.template
-.Dd 09-12-22               \" DATE 
-.Dt spinify 1      \" Program name and manual section number 
+.Dd February 28, 2010    \" DATE 
+.Dt SPINIFY	1      \" Program name and manual section number 
 .Os Darwin
 .Sh NAME                 \" Section Header - required - don't modify 
 .Nm spinify
@@ -13,55 +13,159 @@
 .\".Nm Yet another name for the same program.
 .\" Use .Nm macro to designate other names for the documented program.
 .Nd Modelling the Ising model on curved surfaces.
+
 .Sh SYNOPSIS             \" Section Header - required - don't modify
 .Nm
-.\".Op Fl a Ar path         \" [-a path] 
-.\".Op Ar file              \" [file]
-.\".Op Ar                   \" [file ...]
-.\".Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
-.\"arg2 ...                 \" Arguments
-.Op Fl s Ar N
-.Op Fl r Ar N M
-.Op Fl T Ar n m i
-.Op Fl RP
+.Op Fl g Ar file | Fl r Ar N M | Fl s Ar N | Fl u Ar N
+.Op Fl ekm
+.Op options
+
 .Sh DESCRIPTION          \" Section Header - required - don't modify
+The two dimensional Ising model tries to explain magnetic phenomena in
+thin layers of matter. The atoms are represented as nodes of a
+graph and their interactions as edges of that same graph. In the mean
+field model, nodes interact only with their closest neighbours. The
+interaction depends on the
+.Ar spin
+of the atoms (which can be either +1 or
+-1 in the Ising model) and on an interaction coefficient
+.Ar J .
+.Pp
 .Nm
-is a simulator for the Ising model on different surfaces. It is able
-to perform simulations on the plane torus as well as on the sphere. 
+is a simulator for the Ising model on different surfaces. It uses Markov
+chain Monte Carlo methods to sample the spin configuration space of a
+given graph. It is able to generate graphs on the plane torus and on
+the sphere and then to run simulations on these graphs. It can measure
+internal energy, magnetization and magnetic susceptibility.
+.Pp
 When running the program, you must specify exactly one of
-.Fl s
+.Fl g , Fl r , Fl s
 or
-.Fl r .
-This will make the program run a simulation on the sphere or on the
-plane torus respectively.
+.Fl u .
+This specifies whether the graph to be used is read from a file or not
+and, in the latter case, if the graph to be generated is rectangular,
+spherical with even node distribution or spherical with uniform node
+distribution.
 .Pp
-Results from the simulation are written to standard output and can be
-redirected to a file of your choice for further analysis of the data.
-Note that this program does no analysis. Only the simulation is
-performed. It it up to the user to analyze the data.
+A
+.Ar rectangular graph
+is a graph in which the nodes are arranged in a grid isomorphic to a
+subset of the two dimensional integer lattice. The length of the graph
+is the number of nodes along an horizontal line and its height is the
+number of nodes along a vertical line. In order to avoid difficulties
+with boundary conditions, the graph is wrapped around a plane torus.
+Every node has degree four, its neighbours being the nodes right above,
+below, to the right and to the left of it.
 .Pp
-The following options are available:
-.Bl -tag -width -indent  \" Differs from above in tag removed 
-.It Fl s Ar N                \"-a flag as a list item
-Specifies that the simulation is done on a spherical lattice with
-.Ar N
-nodes. Only one of
-.Fl s
+A
+.Ar spherical graph
+is a graph whose nodes lie on the surface of a sphere. The nodes are
+distributed randomly according to either a uniform distribution or to
+an even distribution. A uniform distribution is one in which the
+probability that any disk of fixed radius on the sphere contains a node
+is the same. An even distribution is one for which the minimum distance
+between any two nodes is minimized.
+.Pp
+To create an even
+node distribution on the sphere,
+.Nm
+starts with a uniform distribution and then implements an electric
+repulsion between the nodes. The force that a node v feels is the sum of
+all forces due to nodes whose distance to v is less than a certain
+.Ar range .
+The force is then dampened by a factor that depends on the size of the
+graph. Electric repulsion is continued as long as the minimum distance
+is below a certain fraction of the optimal value.
+.Pp
+The user can ask
+.Nm
+to write the graph data into a file by providing the
+.Fl o Ar file
+option. Depending on the choice of ouput (
+.Fl -raw
+or
+.Fl -python )
+the output file does not have the same syntax. If the raw ouput is
+chosen (this is the default), in the output file, the first line is the
+number of nodes in the graph, the second line is the number of edges in
+the graph. All subsequent lines are edges given by their endpoints. If
+the python format is chosen, the output file can be executed directly by
+the Python interpreter to produce a three dimensional view of the graph.
+.Pp
+Once the graph is loaded into memory, the simulation starts. The Monte
+Carlo algorithm is a mixture of the Swendsen-Wang algorithm and the
+Wolff algorithm. A state is a given configuration of spin values on the
+graph. The algorithm ensures that probability of finding a given state
+is very close to the probability predicted by the Gibbs distribution.
+Thus, measurements that are made can be averaged to obtain the thermal
+average. Note that by default, no measurements are made. The user must
+tell the program which measurements to make using the
+.Fl e ,
+.Fl k ,
 and
-.Fl r
-can be specified.
-.It Fl r Ar N M
-Specifies that the simulation is done on a rectangular lattice on a
-plane torus. The rectangular lattice has width
+.Fl m
+options.
+.Pp
+By default, results from the simulation are written to standard output
+and can be redirected to a file of your choice for further analysis of
+the data. You can tell
+.Nm
+to output the data directly into a file using the
+.Fl o Ar file
+option.
+.Pp
+Again, depending on the choice of ouput (
+.Fl -raw
+or
+.Fl -python )
+the output will not be formatted in the same way. For the raw output, a
+line contains the beta value (i.e., the inverse of the temperature) and
+the measurements separated by spaces. The python output is very similar
+except that it comes preformatted so that the Python interpreter can
+execute the file to produce graphs of the measurements versus
+temperature.
+
+.Sh OPTIONS
+.Bl -tag -width
+.It General options:
+.Bl -tag -width -indent  \" Differs from above in tag removed 
+.It Fl c Ar file , Fl -config-file Ar file
+Read configuration options from
+.Ar file .
+.It Fl h , Fl -help
+Print a help message detailing all the available options.
+.It Fl v , Fl -version
+Print version information.
+.El
+.It Graph options
+(these options are mutually exclusive):
+.Bl -tag -width -ident
+.It Fl g Ar file , Fl -graph-infile Ar file
+Read graph data from
+.Ar file .
+The input file has to have the raw format described above otherwise the
+file parser will fail to read the graph data correctly and may produce
+unpredictable results.
+.It Fl r Ar N M , Fl -rectangle Ar N M
+Use a rectangular graph with length
 .Ar N
 and height
 .Ar M .
-Only one of
-.Fl s
-and
-.Fl r
-can be specified.
-.It Fl T Ar n m i
+Both arguments must be positive integers.
+.It Fl s Ar N , Fl -sphere-even Ar N
+Use a spherical graph with
+.Ar N
+nodes and an even node distribution. The argument must be a positive
+integer.
+.It Fl u Ar N , Fl -sphere-uniform Ar N
+Use a spherical graph with
+.Ar N
+nodes and a uniform node distribution. The argument must be a positive
+integer.
+.El
+.It Temperature options:
+.Bl -tag -width -ident
+.It Fl T Ar n m i , Fl -temperatures Ar n m i
 The simulation will be done at temperatures ranging from
 .Ar n
 to
@@ -70,20 +174,133 @@ with increments by
 .Ar i
 Kelvin. If
 .Ar i
-is not given, the simulation is done at 50 temperatures. If only
+is not given, the simulation is done at 50 temperatures evenly spread
+between
 .Ar n
-is given, the simulation is done for this temperature only.
-.It Fl R
-Raw output of the data
-.It Fl P
+and
+.Ar m .
+If only
+.Ar n
+is given, the simulation is done for this temperature only. The first
+two arguments must be striclty positive real numbers. If
+.Ar n
+is less than
+.Ar m ,
+then
+.Ar i
+has to be positive.  Otherwise, it has to be negative.
+.El
+.It Measurements options:
+.Bl -tag -width -ident
+.It Fl e , Fl -internalEnergy
+Measure internal energy per spin. Internal energy per spin is defined to
+be u = (J / N) \\sum_{adjacent nodes i, j} s_i s_j where s_i is the spin
+of node i, N is the number of nodes in the graph and J is the
+interaction coefficient.
+.It Fl k , Fl -susceptibility
+Measure magnetic susceptibility. It is defined as
+\\chi = \\beta N (<M^2> - <M>^2) where M is the magnetization and <> are
+used to indicate thermal average.
+.It Fl m , Fl -magnetization
+Measure magnetization. Magnetization is defined as
+M = (1/N) |\\sum_{i = 1}^N s_i|. It corresponds to the average spin
+value.
+.El
+.It Output options:
+.Bl -tag -width -ident
+.It Fl o Ar file , Fl -output Ar file
+Write simulation data to
+.Ar file .
+Details about the content of the file are given in the description
+section above.
+.It Fl p , Fl -python
 Output data in a Python-friendly way.
+.It Fl r , Fl -raw
+Output the data in raw format, i.e., outputs only the data without any
+kind of decorations. This is the preferred format for data analysis
+using anything else than Python.
+.It Fl w Ar file , Fl -write-graph Ar file
+Write the graph data to
+.Ar file .
+Details about the content of the file are given in the description
+section above.
 .El                      \" Ends the list
-.Pp
-When the program generates a random lattice on a sphere, it writes the
-graph data in the file lattice.dat or lattice.py depending on the choice
-of output. In the lattice.dat file, the first line is the number of
-nodes in the graph, the second line is the number of edges in the graph.
-All subsequent lines are edges given by their endpoints.
+.It Simulation options:
+.Bl -tag -width -ident
+.It Fl -correlThreshold Ar X
+The decorrelation time is the number of iterations required before the
+correlation between measurements drops below correlThreshold. This
+option sets the correlThreshold to
+.Ar X .
+It has to be a real number between
+-1 and 1.
+.It Fl -decorrelIter Ar N
+Sets the number of measurements for the calculation of the decorrelation
+time to
+.Ar N .
+The higher this value, the more accurate the decorrelation time.
+However, setting this value too high slows the execution of the
+algorithm. This argument must be a strictly positive integer.
+.It Fl -Jval Ar N
+Set the value ot the interation coefficient
+.Ar J
+to
+.Ar N .
+Set this value to -1 for ferromagnetism and to 1 for antiferromagnetism.
+This argument has to be an integer.
+.It Fl -maxDecorrelTime Ar N
+This is an upper bound on the decorrelation time. If the calculated
+value is above
+.Ar N
+it is discarded and
+.Ar N
+is used instead. This argument must be a strictly positive integer.
+.It Fl -minDecorrelTime Ar N
+This is a lower bound on the decorrelation time. If the calculated
+value is below
+.Ar N
+it is discarded and
+.Ar N
+is used instead. This argument must be a strictly positive integer.
+.It Fl -nInitTherm Ar N
+Every time the temperature is changed, the program performs
+.Ar N
+iterations of the Swendsen-Wang-Wolff algorithm before starting
+measurements. It is very important to set this value high enough because
+otherwise the graph spin configuration will not be distributed according
+to the Gibbs distribution. This argument must be a strictly positive
+integer.
+.It Fl -nMeasures Ar N
+For each measurement, take
+.Ar N
+measurements to compute the thermal average. The higher this number, the
+more accurate the measurement. This argument must be a strictly positive
+integer.
+.El
+.It Surface options
+(used only for even node distribution on the sphere):
+.Bl -tag -width -ident
+.It Fl -dampingExp Ar X
+The dampening factor for the electric repulsion has the form |G|^X - N
+where |G| is the number of nodes in the graph.
+.It Fl -dampingSub Ar N
+The dampening factor for the electric repulsion has the form |G|^X - N
+where |G| is the number of nodes in the graph.
+.It Fl -objectiveRatio Ar X
+The electric repulsion is continued as long as the minimum distance is
+not at least (1 - 
+.Ar X )
+times the optimal solution. The larger this value, the closer the
+distribution will be to uniform. The smaller the value, the more even
+the distribution. However, the ratio should not be below 0.15 since it
+might be impossible to reach the stopping condition then.
+.Ar X
+must be between 0 and 1.
+.It Fl -rangeMultiplier Ar N
+This modifies the range of the electric force. It must be a striclty
+positive real number.
+.El
+.El
 .\" .Sh ENVIRONMENT      \" May not be needed
 .\" .Bl -tag -width "ENV_VAR_1" -indent \" ENV_VAR_1 is width of the string ENV_VAR_1
 .\" .It Ev ENV_VAR_1
@@ -93,10 +310,18 @@ All subsequent lines are edges given by their endpoints.
 .\" .El                      
 .Sh FILES                \" File used or created by the topic of the man page
 .Bl -tag -width "/Users/joeuser" -compact
-.It Pa lattice.dat
-Output file for the lattice data in raw format
-.It Pa lattice.py
-Output file for the lattice data in Python format
+.It Pa ~/.spinifyrc
+User configuration file. If the user does not specify a configuration
+file with the
+.Fl c Ar file
+option, this file is searched for second.
+.It Pa .spinifyrc
+Folder configuration data. If the user does not specify a configuration
+file with the
+.Fl c Ar file
+option, this file is searched for first.
+.It Pa $(docdir)/spinifyrc.sample
+A sample configuration file containing all possible options.
 .\".It Pa /Users/joeuser/Library/really_long_file_name
 .\"FILE_2 description
 .\".El                      \" Ends the list
@@ -110,13 +335,14 @@ Output file for the lattice data in Python format
 .\".Sh SEE ALSO 
 .\" List links in ascending order by section, alphabetically within a section.
 .\" Please do not reference files that do not exist without filing a bug report
-.\".Xr qhull 1
-.\" .Sh BUGS              \" Document known, unremedied bugs 
+.\".Xr spinifyrc 5
 .\" .Sh HISTORY           \" Document history if command behaves in a unique manner 
-.Sh Author
+.Sh AUTHORS
 Written by Loic Seguin-C. <loicseguin@gmail.com>
-.Sh Resources
-Main website: http://bitbucket.org/loicseguin/spinify
-.Sh Copying
+.Pp
+Main website: <http://bitbucket.org/loicseguin/spinify>
+.Pp
 Copyright (C) 2009, 2010 Loic Seguin-C. Free use of this software is
 granted under the terms of the BSD license.
+.Sh BUGS
+Please report bugs to <http://bitbucket.org/loicseguin/spinify/issues/>

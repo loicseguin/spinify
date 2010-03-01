@@ -1,0 +1,42 @@
+# spinifyrc.sample
+#
+# This is a sample file for Spinify. To use it, put the file in
+# ~/.spinifyrc. If you want the file to be read only for the folder you
+# are currently working in, put it in this folder as .spinifyrc.
+#
+# This file contains all the options and their default values.
+
+# Graph options (choose only one)
+#graph-infile		=		""
+#rectangle			=		200 200
+sphere-even			=		1000
+#sphere-uniform		=		1000
+
+# Temperature options
+temperatures		=		0.5 5.5 0.5
+
+# Measurements options
+internalEnergy		=		true
+susceptibility		=		true
+magnetization		=		true
+
+# Output options
+output				=		simuresults.dat
+#python
+#raw
+write-graph			=		evensphere.dat
+
+# Simulation options
+correlTreshold		=		0.05
+decorrelIter		=		5000
+Jval				=		-1
+maxDecorrelTime		=		99
+minDecorrelTime		=		5
+nInitTherm			=		500
+nMeasures			=		200
+
+# Surface options
+dampingExp			=		1.2915
+dampingSub			=		10000
+objectiveRatio		=		0.21
+rangeMultiplier		=		10
