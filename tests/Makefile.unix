@@ -1,29 +1,38 @@
 SRC_DIR = ../src
 
-all: graphtest simultest swendsentest recttest randtest spheretest point3dtest planedelaunaytest
+all: graphtest swendsentest recttest randtest spheretest \
+	 point3dtest planedelaunaytest
 
-graphtest: graphtest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
+graphtest: graphtest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o \
+		   $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
-simultest: simultest.o $(SRC_DIR)/Simul.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
+simultest: simultest.o $(SRC_DIR)/Simul.o $(SRC_DIR)/Graph.o \
+		   $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
-swendsentest: swendsentest.o $(SRC_DIR)/Simul.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
+swendsentest: swendsentest.o $(SRC_DIR)/Simul.o $(SRC_DIR)/Graph.o \
+			  $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o \
+			  $(SRC_DIR)/Maths.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
-recttest: recttest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/tezuka.o
+recttest: recttest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o \
+		  $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 randtest: randtest.o $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
-spheretest: spheretest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/Surface.o $(SRC_DIR)/tezuka.o
+spheretest: spheretest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o \
+			$(SRC_DIR)/Surface.o $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 point3dtest: point3dtest.o $(SRC_DIR)/Point3D.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
-planedelaunaytest: planedelaunaytest.o $(SRC_DIR)/Graph.o $(SRC_DIR)/Point3D.o $(SRC_DIR)/Surface.o $(SRC_DIR)/tezuka.o
+planedelaunaytest: planedelaunaytest.o $(SRC_DIR)/Graph.o \
+				   $(SRC_DIR)/Point3D.o $(SRC_DIR)/Surface.o \
+				   $(SRC_DIR)/tezuka.o
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 %.o: %.c
@@ -43,7 +52,8 @@ $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 .PHONY: cleanall clean
 
 cleanall: clean
-	@rm -rf graphtest simultest swendsentest recttest randtest spheretest point3dtest
+	@rm -rf graphtest simultest swendsentest recttest randtest \
+	spheretest point3dtest planedelaunaytest
 
 clean:
 	@rm -rf *.o

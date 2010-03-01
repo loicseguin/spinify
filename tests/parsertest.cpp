@@ -12,6 +12,12 @@
 
 #include "../src/ConfParser.h"
 
+// The global flags indicate what measurements are made.
+bool internalEnergy = false;
+bool magnetization = false;
+bool susceptibility = false;
+
+
 using namespace std;
 
 int
@@ -24,7 +30,6 @@ main (int argc, char* argv[])
 	<< setw(17) << "cfgFile[0]" << setw(15) << cfg.cfgFile[0] << endl
 	<< setw(17) << "cfgFile[1]" << setw(15) << cfg.cfgFile[1] << endl
 	<< setw(17) << "lattice" << setw(15) << cfg.lattice << endl
-	<< setw(17) << "measure" << setw(15) << cfg.measure << endl
 	<< setw(17) << "output" << setw(15) << cfg.output << endl
 	<< setw(17) << "nNodes" << setw(15) << cfg.nNodes << endl
 	<< setw(17) << "rectN" << setw(15) << cfg.rectN << endl

@@ -15,6 +15,12 @@
 #include "../src/Simul.h"
 #include "../src/tezuka.h"
 
+// The global flags indicate what measurements are made.
+bool internalEnergy = false;
+bool magnetization = false;
+bool susceptibility = false;
+
+
 void
 prGraph(Graph *pG, int L, int W)
 {
@@ -41,9 +47,11 @@ main (int argc, char * const argv[])
 	//prGraph(&G, L, W);
 	G.thermalize(1000);
 	//prGraph(&G, L, W);
-	std::cout << "Internal energy per spin: " << G.measureE() << std::endl;
+	/*std::cout << "Internal energy per spin: "
+		<< G.measureInternalEnergy() << std::endl;
 	std::cout << "Decorrelation time: "
-		<< G.findDecorrelTime(&Simul::measureE) << std::endl;
-	
+		<< G.findDecorrelTime(&Simul::measureInternalEnergy)
+		<< std::endl;
+	*/
     return 0;
 }

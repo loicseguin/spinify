@@ -21,7 +21,7 @@ all: spinify
 spinify:
 	cd src && $(MAKE) -f Makefile.unix all
 
-tests:
+test:
 	cd tests && $(MAKE) -f Makefile.unix all
 
 .PHONY: clean cleanall install uninstall

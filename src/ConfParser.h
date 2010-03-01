@@ -71,6 +71,7 @@ class ConfParser {
 	 *
 	 */
 	bool parseCfgFile();
+	void expandTildes();
 public:
 	// Main args
 	std::string cfgFile[2];
@@ -109,5 +110,7 @@ public:
 	// Constructor sets default values
 	ConfParser();
 };
+
+std::string expandTilde(std::string& path);
 
 #endif // !CONFPARSER_H
