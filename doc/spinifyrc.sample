@@ -21,7 +21,7 @@ susceptibility		=		true
 magnetization		=		true
 
 # Output options
-output				=		simuresults.dat
+output				=		simulresults.dat
 #python
 #raw
 write-graph			=		evensphere.dat

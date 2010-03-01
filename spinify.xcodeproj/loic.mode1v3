@@ -265,24 +265,20 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>08FB7794FE84155DC02AAC07</string>
-								<string>EB2B6E0C10E1628A006C32D5</string>
 								<string>08FB7795FE84155DC02AAC07</string>
 								<string>C6859E8C029090F304C91782</string>
-								<string>1AB674ADFE9D54B511CA2CBB</string>
-								<string>1C37FBAC04509CD000000102</string>
-								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
 									<integer>26</integer>
-									<integer>17</integer>
+									<integer>25</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 5}, {209, 660}}</string>
+							<string>{{0, 54}, {209, 660}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -319,7 +315,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Graph.cpp</string>
+								<string>spinifyrc.sample</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,23 +323,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Graph.cpp</string>
+										<string>spinifyrc.sample</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EB8808F1113C44F30002EEFE</string>
+										<string>EB880915113C6F610002EEFE</string>
 										<key>history</key>
 										<array>
 											<string>EBBD0ADE10F9A17E00C616C4</string>
 											<string>EB15788E110D1C8F00BBF178</string>
 											<string>EB28CC2211137DC500B7C820</string>
-											<string>EB59B7801134D4C100A209BC</string>
 											<string>EB59B79C1134D90700A209BC</string>
 											<string>EB59B79D1134D90700A209BC</string>
 											<string>EB59B7A21134D9DA00A209BC</string>
 											<string>EB59B7B71135521E00A209BC</string>
-											<string>EB59B7C71135705A00A209BC</string>
-											<string>EB59B7C91135705A00A209BC</string>
 											<string>EB59B7E71135BFE500A209BC</string>
 											<string>EB87ED251136253C001539C7</string>
 											<string>EB880788113B253F0002EEFE</string>
@@ -354,33 +347,37 @@
 											<string>EB8807A7113B36490002EEFE</string>
 											<string>EB8807A8113B36490002EEFE</string>
 											<string>EB8807CF113B40250002EEFE</string>
-											<string>EB88081C113B671C0002EEFE</string>
 											<string>EB880825113B6EC50002EEFE</string>
 											<string>EB880828113B6EC50002EEFE</string>
 											<string>EB88084C113B78350002EEFE</string>
 											<string>EB88084D113B78350002EEFE</string>
 											<string>EB88084E113B78350002EEFE</string>
-											<string>EB88084F113B78350002EEFE</string>
 											<string>EB880850113B78350002EEFE</string>
 											<string>EB880851113B78350002EEFE</string>
 											<string>EB880852113B78350002EEFE</string>
 											<string>EB880853113B78350002EEFE</string>
-											<string>EB880855113B78350002EEFE</string>
-											<string>EB88085F113B7A940002EEFE</string>
 											<string>EB880862113B7A940002EEFE</string>
 											<string>EB880866113B7AD60002EEFE</string>
 											<string>EB88086E113B7DC10002EEFE</string>
-											<string>EB88086F113B7DC10002EEFE</string>
-											<string>EB880870113B7DC10002EEFE</string>
 											<string>EB880871113B7DC10002EEFE</string>
 											<string>EB880872113B7DC10002EEFE</string>
-											<string>EB88087A113B7EC60002EEFE</string>
-											<string>EB8808E8113C447D0002EEFE</string>
-											<string>EB8808E9113C447D0002EEFE</string>
-											<string>EB8808EA113C447D0002EEFE</string>
-											<string>EB8808EF113C44F30002EEFE</string>
 											<string>EB8808F0113C44F30002EEFE</string>
-											<string>EB8808C1113C40C30002EEFE</string>
+											<string>EB8808F2113C49070002EEFE</string>
+											<string>EB8808F3113C49070002EEFE</string>
+											<string>EB8808F4113C49070002EEFE</string>
+											<string>EB8808F5113C49070002EEFE</string>
+											<string>EB8808F7113C49070002EEFE</string>
+											<string>EB8808FA113C4AC30002EEFE</string>
+											<string>EB8808FB113C4AC30002EEFE</string>
+											<string>EB88090C113C6F610002EEFE</string>
+											<string>EB88090D113C6F610002EEFE</string>
+											<string>EB88090F113C6F610002EEFE</string>
+											<string>EB880910113C6F610002EEFE</string>
+											<string>EB880911113C6F610002EEFE</string>
+											<string>EB880912113C6F610002EEFE</string>
+											<string>EB880913113C6F610002EEFE</string>
+											<string>EB880914113C6F610002EEFE</string>
+											<string>EB8808F6113C49070002EEFE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
