@@ -283,10 +283,14 @@ Simul::runSimul(OutputType type, std::ostream & output)
 		// next beta value from the user's temperature vector.
 		currentBeta = beta[i];
 		
-		if (type == python)
+		if (type == python) {
+			output.precision(14);
 			output << "[" << getBeta() << ", ";
-		else
+		}
+		else {
+			output.precision(14);
 			output << getBeta() << " ";
+		}
 		
 		// We run a couple of iterations of SWW in order to ensure that
 		// we are at the proper temperature.
@@ -323,8 +327,10 @@ Simul::runSimul(OutputType type, std::ostream & output)
 			else
 				output << " ";
 		}
-		if (susceptibility)
+		if (susceptibility) {
+			output.precision(14);
 			output << thermalSusceptibility();
+		}
 		
 		if (type == python)
 			output << "]," << std::endl;
