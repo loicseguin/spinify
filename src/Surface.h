@@ -37,7 +37,7 @@ class Sphere {
 	 * to approximate an even distribution by making the Nodes behave
 	 * as electrons subject to electric repulsion. This is taken care
 	 * of by the repulse(). Repulsion is performed as long as the
-	 * minimum distance is above a given lower bound.
+	 * minimum distance is below a given lower bound.
 	 *
 	 * distance() and distanceSq() return the distance and the square
 	 * of the distance (respectively) between any two Nodes on the

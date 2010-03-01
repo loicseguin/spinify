@@ -47,7 +47,7 @@ help()
 	<< "Spinify " << VERSION << endl
 	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
 	<< endl
-	<< "USAGE: spinify [-s N | -r N M | -g FILE] [-ekm] [options]" << endl
+	<< "USAGE: spinify [ -g FILE | -r N M | -s N | -u N] [-ekm] [options]" << endl
 	<< endl
 	<< "General options:" << endl
 	<< "  -c FILE,  --config-file FILE     Read configuration from FILE." << endl
@@ -62,13 +62,12 @@ help()
 	<< "                                   a sphere with N nodes." << endl
 	<< "  -u N,  --sphere-uniform N        Random graph with uniform node distribution" << endl
 	<< "                                   on a sphere with N nodes." << endl
-	<< "  -w FILE,  --write-graph FILE     Write graph information to FILE." << endl
 	<< endl
 	<< "Temperature options:" << endl
 	<< "  -T n m i,  --temperatures n m i  Do measurements from temperature n to m," << endl
 	<< "                                   incrementing by i Kelvin every time." << endl
 	<< endl
-	<< "Measure flags:" << endl
+	<< "Measurements options:" << endl
 	<< "  -e,  --internalEnergy            Measure internal energy per spin." << endl
 	<< "  -k,  --susceptibility            Measure magnetic susceptinility." << endl
 	<< "  -m,  --magnetization             Measure magnetization." << endl
@@ -77,6 +76,7 @@ help()
 	<< "  -o FILE,  --output FILE          Write simulation output to FILE." << endl
 	<< "  -p,  --python                    Output Python formatted data." << endl
 	<< "  -r,  --raw                       Output raw data." << endl
+	<< "  -w FILE,  --write-graph FILE     Write graph information to FILE." << endl
 	<< endl
 	<< "Simulation options:" << endl
 	<< "  --correlTreshold X               Correlation coefficient must be below X." << endl
@@ -204,7 +204,7 @@ ConfParser::ConfParser ()
 	maxDecorrelTime = 99;
 	minDecorrelTime = 5;
 	Jval = -1;
-	nMeasures = 100;
+	nMeasures = 200;
 	nInitTherm = 500;
 	
 	// For class Surface

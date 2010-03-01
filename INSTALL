@@ -1,3 +1,7 @@
+Spinify 2.2
+Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>
+
+
 == System requirements ==
 
 This software has been tested on Mac OS X 10.6 and Ubuntu 9.10
@@ -14,13 +18,14 @@ NumPy (http://numpy.scipy.org/) and matplotlib
 == Installation ==
 
 The most recent release version of Spinify is available here:
-http://bitbucket.org/loicseguin/spinify/downloads/spinify-2.1.tar.bz2.
+http://bitbucket.org/loicseguin/spinify/downloads/spinify-2.2.tar.gz.
 You can install it by decompressing the archive
 
-    $ tar xjvf spinify-2.1.tar.bz2
+    $ tar xjvf spinify-2.2.tar.gz
 
 and then build and install the program
 
+    $ ./configure
     $ make
     $ sudo make install
 
@@ -28,6 +33,15 @@ That is it! You can start using Spinify right away. If you don't know
 where to start, read the man page
 
     $ man 1 spinify
+
+If you prefer not to use the Autotools, you can build with the provided
+Makefile.unix. Just do
+
+    $ make -f Makefile.unix
+	$ make -f Makefile.unix install
+
+Note that these files might be deprecated very soon. Use at your own
+risks.
 
 
 == Development version ==
@@ -40,6 +54,7 @@ just grab the source:
 
 You then need to build and install the software with
 
+    $ ./configure
     $ make
     $ sudo make install
 

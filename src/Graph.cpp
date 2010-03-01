@@ -231,7 +231,7 @@ void
 Graph::initRect(const int L, const int W)
 {
 	// This function initializes a rectangular graph on the plane torus.
-	// A rectangular graph of length L and width W is simply a lattice
+	// A rectangular graph of length L and height W is simply a lattice
 	// isomorphic to the subset of the Z^2 lattice going from (x, y) =
 	// (0, 0) to (x, y) = (L, W). To this lattice we add edges so that
 	// the left most nodes are adjacent to the rightmost nodes, and the
