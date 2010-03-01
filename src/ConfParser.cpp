@@ -275,6 +275,7 @@ ConfParser::parseArgs(int argc, char* const argv[])
 	
 	// Parse configuration file if parseArgs is not called from
 	// parseCfgFile.
+	expandTildes();
 	if (!parsingFile)
 		parseCfgFile();
 	
@@ -604,8 +605,34 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		exit(1);
 	}
 	
-	return;
+	expandTildes();
 }
+
+string
+expandTilde(string& path)
+{
+	string home = getenv("HOME");
+	string expPath = home + path.substr(1);
+	return expPath;
+}
+
+
+void
+ConfParser::expandTildes()
+{
+	vector<string*> fileList;
+	fileList.push_back(cfgFile);
+	fileList.push_back(cfgFile + 1);
+	fileList.push_back(&graphInFile);
+	fileList.push_back(&graphOutFile);
+	fileList.push_back(&simulOutFile);
+	
+	for (unsigned int i = 0; i < fileList.size(); i++) {
+		if ((*fileList[i])[0] == '~')
+			*fileList[i] = expandTilde(*fileList[i]);
+	}
+}
+
 
 bool
 ConfParser::parseCfgFile()
@@ -630,9 +657,10 @@ ConfParser::parseCfgFile()
 	ifstream cfgFilePtr;
 	
 	for (int i = 0; i < 2; i++) {
-		cfgFilePtr.open(cfgFile[0].c_str(), ifstream::in);
-		if (cfgFilePtr.is_open())
+		cfgFilePtr.open(cfgFile[i].c_str(), ifstream::in);
+		if (cfgFilePtr.is_open()) {
 			break;
+		}
 	}
 	
 	// If a file has been successfully opened, process it line by line,
@@ -697,7 +725,7 @@ ConfParser::parseCfgFile()
 		
 		// Translate the fake command line vector into a char* argv[].
 		char* argv[maxArgs];
-		for (int i = 0; i < cmdLine.size(); i++) {
+		for (unsigned int i = 0; i < cmdLine.size(); i++) {
 			//cout << cmdLine[i] << endl;
 			argv[i] = (char*)cmdLine[i].c_str();
 		}

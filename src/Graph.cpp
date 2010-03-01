@@ -416,7 +416,7 @@ Graph::readFile(std::string graphInFile)
 	graphInPtr >> nNodes;
 	graphInPtr >> nEdges;
 	addNode(nNodes);
-	for (int i = 0; i < nEdges; i++) {
+	for (unsigned int i = 0; i < nEdges; i++) {
 		int index1;
 		int index2;
 		graphInPtr >> index1;
