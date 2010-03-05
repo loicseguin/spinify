@@ -80,8 +80,6 @@ class Simul : public Graph {
 	double thermalMagnetization();
 	double thermalSusceptibility();
 	unsigned int findDecorrelTime(double (Simul::*measure)());
-	double getBeta();
-	int getJ();
 public:
 	Simul(int N = 10);
 	void thermalize(const int n = 500);
@@ -95,7 +93,22 @@ public:
 				   unsigned int nInitTherm);
 	void runSimul(OutputType type = raw,
 				  std::ostream & output = std::cout);
+    double getBeta();
+	int getJ();
 };
+
+inline double
+Simul::getBeta()
+{
+	return currentBeta;
+}
+
+inline int
+Simul::getJ()
+{
+	return Jval;
+}
+
 
 
 #endif // !SIMUL_H
