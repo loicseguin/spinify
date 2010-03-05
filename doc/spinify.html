@@ -1,0 +1,424 @@
+<!-- Creator     : groff version 1.19.2 -->
+<!-- CreationDate: Mon Mar  1 18:00:02 2010 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p     { margin-top: 0; margin-bottom: 0; }
+       pre   { margin-top: 0; margin-bottom: 0; }
+       table { margin-top: 0; margin-bottom: 0; }
+</style>
+<title></title>
+</head>
+<body>
+
+<hr>
+
+
+<p valign="top">SPINIFY 1 LOCAL SPINIFY 1</p>
+
+<p style="margin-top: 1em" valign="top"><b>NAME</b></p>
+
+<p style="margin-left:8%;"><b>spinify</b> &mdash; Modelling
+the Ising model on curved surfaces.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>SYNOPSIS</b></p>
+
+<p style="margin-left:20%;"><b>spinify</b>
+[<b>&minus;g&nbsp;</b><i>file&nbsp;</i>|&nbsp;<b>&minus;r&nbsp;</b><i>N&nbsp;M&nbsp;</i>|&nbsp;<b>&minus;s&nbsp;</b><i>N&nbsp;</i>|&nbsp;<b>&minus;u&nbsp;</b><i>N</i>]
+[<b>&minus;ekm</b>] [options]</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>DESCRIPTION</b></p>
+
+<p style="margin-left:8%;">The two dimensional Ising model
+tries to explain magnetic phenomena in thin layers of
+matter. The atoms are represented as nodes of a graph and
+their interactions as edges of that same graph. In the mean
+field model, nodes interact only with their closest
+neighbours. The interaction depends on the <i>spin</i> of
+the atoms (which can be either +1 or -1 in the Ising model)
+and on an interaction coefficient <i>J</i>.</p>
+
+<p style="margin-left:8%; margin-top: 1em"><b>spinify</b>
+is a simulator for the Ising model on different surfaces. It
+uses Markov chain Monte Carlo methods to sample the spin
+configuration space of a given graph. It is able to generate
+graphs on the plane torus and on the sphere and then to run
+simulations on these graphs. It can measure internal energy,
+magnetization and magnetic susceptibility.</p>
+
+<p style="margin-left:8%; margin-top: 1em">When running the
+program, you must specify exactly one of <b>&minus;g</b>,
+<b>&minus;r</b>, <b>&minus;s</b> or <b>&minus;u</b>. This
+specifies whether the graph to be used is read from a file
+or not and, in the latter case, if the graph to be generated
+is rectangular, spherical with even node distribution or
+spherical with uniform node distribution.</p>
+
+<p style="margin-left:8%; margin-top: 1em">A <i>rectangular
+graph</i> is a graph in which the nodes are arranged in a
+grid isomorphic to a subset of the two dimensional integer
+lattice. The length of the graph is the number of nodes
+along an horizontal line and its height is the number of
+nodes along a vertical line. In order to avoid difficulties
+with boundary conditions, the graph is wrapped around a
+plane torus. Every node has degree four, its neighbours
+being the nodes right above, below, to the right and to the
+left of it.</p>
+
+<p style="margin-left:8%; margin-top: 1em">A <i>spherical
+graph</i> is a graph whose nodes lie on the surface of a
+sphere. The nodes are distributed randomly according to
+either a uniform distribution or to an even distribution. A
+uniform distribution is one in which the probability that
+any disk of fixed radius on the sphere contains a node is
+the same. An even distribution is one for which the minimum
+distance between any two nodes is minimized.</p>
+
+<p style="margin-left:8%; margin-top: 1em">To create an
+even node distribution on the sphere, <b>spinify</b> starts
+with a uniform distribution and then implements an electric
+repulsion between the nodes. The force that a node v feels
+is the sum of all forces due to nodes whose distance to v is
+less than a certain <i>range</i>. The force is then dampened
+by a factor that depends on the size of the graph. Electric
+repulsion is continued as long as the minimum distance is
+below a certain fraction of the optimal value.</p>
+
+<p style="margin-left:8%; margin-top: 1em">The user can ask
+<b>spinify</b> to write the graph data into a file by
+providing the <b>&minus;o</b> <i>file</i> option. Depending
+on the choice of ouput ( <b>&minus;&minus;raw</b> or
+<b>&minus;&minus;python</b>) the output file does not have
+the same syntax. If the raw ouput is chosen (this is the
+default), in the output file, the first line is the number
+of nodes in the graph, the second line is the number of
+edges in the graph. All subsequent lines are edges given by
+their endpoints. If the python format is chosen, the output
+file can be executed directly by the Python interpreter to
+produce a three dimensional view of the graph.</p>
+
+<p style="margin-left:8%; margin-top: 1em">Once the graph
+is loaded into memory, the simulation starts. The Monte
+Carlo algorithm is a mixture of the Swendsen-Wang algorithm
+and the Wolff algorithm. A state is a given configuration of
+spin values on the graph. The algorithm ensures that
+probability of finding a given state is very close to the
+probability predicted by the Gibbs distribution. Thus,
+measurements that are made can be averaged to obtain the
+thermal average. Note that by default, no measurements are
+made. The user must tell the program which measurements to
+make using the <b>&minus;e</b>, <b>&minus;k</b>, and
+<b>&minus;m</b> options.</p>
+
+<p style="margin-left:8%; margin-top: 1em">By default,
+results from the simulation are written to standard output
+and can be redirected to a file of your choice for further
+analysis of the data. You can tell <b>spinify</b> to output
+the data directly into a file using the <b>&minus;o</b>
+<i>file</i> option.</p>
+
+<p style="margin-left:8%; margin-top: 1em">Again, depending
+on the choice of ouput ( <b>&minus;&minus;raw</b> or
+<b>&minus;&minus;python</b>) the output will not be
+formatted in the same way. For the raw output, a line
+contains the beta value (i.e., the inverse of the
+temperature) and the measurements separated by spaces. The
+python output is very similar except that it comes
+preformatted so that the Python interpreter can execute the
+file to produce graphs of the measurements versus
+temperature.</p>
+
+<p style="margin-top: 1em" valign="top"><b>OPTIONS</b> <br>
+General options:</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;c</b>
+<i>file</i>, <b>&minus;&minus;config-file</b>
+<i>file</i></p>
+
+<p style="margin-left:34%;">Read configuration options from
+<i>file</i>.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;h</b>,
+<b>&minus;&minus;help</b></p>
+
+<p style="margin-left:34%;">Print a help message detailing
+all the available options.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;v</b>,
+<b>&minus;&minus;version</b></p>
+
+<p style="margin-left:34%;">Print version information.</p>
+
+<p style="margin-top: 1em" valign="top">Graph options</p>
+
+<p style="margin-left:20%;">(these options are mutually
+exclusive):</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;g</b>
+<i>file</i>, <b>&minus;&minus;graph-infile</b>
+<i>file</i></p>
+
+<p style="margin-left:32%;">Read graph data from
+<i>file</i>. The input file has to have the raw format
+described above otherwise the file parser will fail to read
+the graph data correctly and may produce unpredictable
+results.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;r</b>
+<i>N M</i>, <b>&minus;&minus;rectangle</b> <i>N M</i></p>
+
+<p style="margin-left:32%;">Use a rectangular graph with
+length <i>N</i> and height <i>M</i>. Both arguments must be
+positive integers.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;s</b>
+<i>N</i>, <b>&minus;&minus;sphere-even</b> <i>N</i></p>
+
+<p style="margin-left:32%;">Use a spherical graph with
+<i>N</i> nodes and an even node distribution. The argument
+must be a positive integer.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;u</b>
+<i>N</i>, <b>&minus;&minus;sphere-uniform</b> <i>N</i></p>
+
+<p style="margin-left:32%;">Use a spherical graph with
+<i>N</i> nodes and a uniform node distribution. The argument
+must be a positive integer.</p>
+
+<p style="margin-top: 1em" valign="top">Temperature
+options:</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;T</b>
+<i>n m i</i>, <b>&minus;&minus;temperatures</b> <i>n m
+i</i></p>
+
+<p style="margin-left:32%;">The simulation will be done at
+temperatures ranging from <i>n</i> to <i>m</i> with
+increments by <i>i</i> Kelvin. If <i>i</i> is not given, the
+simulation is done at 50 temperatures evenly spread between
+<i>n</i> and <i>m</i>. If only <i>n</i> is given, the
+simulation is done for this temperature only. The first two
+arguments must be striclty positive real numbers. If
+<i>n</i> is less than <i>m</i>, then <i>i</i> has to be
+positive. Otherwise, it has to be negative.</p>
+
+<p style="margin-top: 1em" valign="top">Measurements
+options:</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;e</b>,
+<b>&minus;&minus;internalEnergy</b></p>
+
+<p style="margin-left:32%;">Measure internal energy per
+spin. Internal energy per spin is defined to be u = (J / N)
+\sum_{adjacent nodes i, j} s_i s_j where s_i is the spin of
+node i, N is the number of nodes in the graph and J is the
+interaction coefficient.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;k</b>,
+<b>&minus;&minus;susceptibility</b></p>
+
+<p style="margin-left:32%;">Measure magnetic
+susceptibility. It is defined as \chi = \beta N (&lt;M^2&gt;
+- &lt;M&gt;^2) where M is the magnetization and &lt;&gt; are
+used to indicate thermal average.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;m</b>,
+<b>&minus;&minus;magnetization</b></p>
+
+<p style="margin-left:32%;">Measure magnetization.
+Magnetization is defined as M = (1/N) |\sum_{i = 1}^N s_i|.
+It corresponds to the average spin value.</p>
+
+<p style="margin-top: 1em" valign="top">Output options:</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;o</b>
+<i>file</i>, <b>&minus;&minus;output</b> <i>file</i></p>
+
+<p style="margin-left:32%;">Write simulation data to
+<i>file</i>. Details about the content of the file are given
+in the description section above.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;p</b>,
+<b>&minus;&minus;python</b></p>
+
+<p style="margin-left:32%;">Output data in a
+Python-friendly way.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;r</b>,
+<b>&minus;&minus;raw</b></p>
+
+<p style="margin-left:32%;">Output the data in raw format,
+i.e., outputs only the data without any kind of decorations.
+This is the preferred format for data analysis using
+anything else than Python.</p>
+
+<p style="margin-top: 1em" valign="top"><b>&minus;w</b>
+<i>file</i>, <b>&minus;&minus;write-graph</b>
+<i>file</i></p>
+
+<p style="margin-left:32%;">Write the graph data to
+<i>file</i>. Details about the content of the file are given
+in the description section above.</p>
+
+<p style="margin-top: 1em" valign="top">Simulation
+options:</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;correlThreshold</b>
+<i>X</i></p>
+
+<p style="margin-left:32%;">The decorrelation time is the
+number of iterations required before the correlation between
+measurements drops below correlThreshold. This option sets
+the correlThreshold to <i>X</i>. It has to be a real number
+between -1 and 1.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;decorrelIter</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">Sets the number of measurements
+for the calculation of the decorrelation time to <i>N</i>.
+The higher this value, the more accurate the decorrelation
+time. However, setting this value too high slows the
+execution of the algorithm. This argument must be a strictly
+positive integer.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;Jval</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">Set the value ot the interation
+coefficient <i>J</i> to <i>N</i>. Set this value to -1 for
+ferromagnetism and to 1 for antiferromagnetism. This
+argument has to be an integer.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;maxDecorrelTime</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">This is an upper bound on the
+decorrelation time. If the calculated value is above
+<i>N</i> it is discarded and <i>N</i> is used instead. This
+argument must be a strictly positive integer.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;minDecorrelTime</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">This is a lower bound on the
+decorrelation time. If the calculated value is below
+<i>N</i> it is discarded and <i>N</i> is used instead. This
+argument must be a strictly positive integer.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;nInitTherm</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">Every time the temperature is
+changed, the program performs <i>N</i> iterations of the
+Swendsen-Wang-Wolff algorithm before starting measurements.
+It is very important to set this value high enough because
+otherwise the graph spin configuration will not be
+distributed according to the Gibbs distribution. This
+argument must be a strictly positive integer.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;nMeasures</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">For each measurement, take
+<i>N</i> measurements to compute the thermal average. The
+higher this number, the more accurate the measurement. This
+argument must be a strictly positive integer.</p>
+
+<p style="margin-top: 1em" valign="top">Surface options</p>
+
+<p style="margin-left:20%;">(used only for even node
+distribution on the sphere):</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;dampingExp</b>
+<i>X</i></p>
+
+<p style="margin-left:32%;">The dampening factor for the
+electric repulsion has the form |G|^X - N where |G| is the
+number of nodes in the graph.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;dampingSub</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">The dampening factor for the
+electric repulsion has the form |G|^X - N where |G| is the
+number of nodes in the graph.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;objectiveRatio</b>
+<i>X</i></p>
+
+<p style="margin-left:32%;">The electric repulsion is
+continued as long as the minimum distance is not at least (1
+- <i>X</i>) times the optimal solution. The larger this
+value, the closer the distribution will be to uniform. The
+smaller the value, the more even the distribution. However,
+the ratio should not be below 0.15 since it might be
+impossible to reach the stopping condition then. <i>X</i>
+must be between 0 and 1.</p>
+
+
+<p style="margin-top: 1em" valign="top"><b>&minus;&minus;rangeMultiplier</b>
+<i>N</i></p>
+
+<p style="margin-left:32%;">This modifies the range of the
+electric force. It must be a striclty positive real
+number.</p>
+
+<p style="margin-top: 1em" valign="top"><b>FILES</b> <br>
+~/.spinifyrc</p>
+
+<p style="margin-left:32%; margin-top: 1em">User
+configuration file. If the user does not specify a
+configuration file with the <b>&minus;c</b> <i>file</i>
+option, this file is searched for second.</p>
+
+<p valign="top">.spinifyrc</p>
+
+<p style="margin-left:32%; margin-top: 1em">Folder
+configuration data. If the user does not specify a
+configuration file with the <b>&minus;c</b> <i>file</i>
+option, this file is searched for first.</p>
+
+<p valign="top">$(docdir)/spinifyrc.sample</p>
+
+<p style="margin-left:32%;">A sample configuration file
+containing all possible options.</p>
+
+<p style="margin-top: 1em" valign="top"><b>AUTHORS</b></p>
+
+<p style="margin-left:8%;">Written by Loic Seguin-C.
+&lt;loicseguin@gmail.com&gt;</p>
+
+<p style="margin-left:8%; margin-top: 1em">Main website:
+&lt;http://bitbucket.org/loicseguin/spinify&gt;</p>
+
+<p style="margin-left:8%; margin-top: 1em">Copyright (C)
+2009, 2010 Loic Seguin-C. Free use of this software is
+granted under the terms of the BSD license.</p>
+
+<p style="margin-top: 1em" valign="top"><b>BUGS</b></p>
+
+<p style="margin-left:8%;">Please report bugs to
+&lt;http://bitbucket.org/loicseguin/spinify/issues/&gt;</p>
+
+<p valign="top">Darwin February&nbsp;28, 2010 Darwin</p></table>
+<hr>
+</body>
+</html>
