@@ -134,17 +134,6 @@ Simul::setParams(unsigned int dIter,
 	nInitTherm = nITherm;
 }
 
-double
-Simul::getBeta()
-{
-	return currentBeta;
-}
-
-int
-Simul::getJ()
-{
-	return Jval;
-}
 
 double
 Simul::measureInternalEnergy()

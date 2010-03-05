@@ -18,14 +18,6 @@
 #include "tezuka.h"
 
 
-Sphere::Sphere()
-{
-	rangeMultiplier = 10;
-	dampingExp = 1.2915;
-	dampingSub = 10000;
-	objectiveRatio = 0.21;
-}
-
 int
 Sphere::uniform(Graph& G, int N)
 {
@@ -136,18 +128,6 @@ Sphere::repulse(Graph& G)
 	// debugging, it should probably be removed or be controlled by a
 	// user flag.
 	std::cerr << "Number of repulsions: " << counter << std::endl;
-}
-
-double
-Sphere::distance(const Point3D& a, const Point3D& b) const
-{
-	return (a - b).norm();
-}
-
-double
-Sphere::distanceSq(const Point3D& a, const Point3D& b) const
-{
-	return (a - b).normSq();
 }
 
 int

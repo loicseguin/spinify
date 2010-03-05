@@ -10,6 +10,8 @@
 #ifndef POINT3D_H
 #define POINT3D_H
 
+#include <cmath>
+
 class Point3D {
 	/*
 	 * A Point3D is just a three dimensional vector. Coordinates are
@@ -52,10 +54,45 @@ public:
 	Point3D& operator=(const Point3D& pt);
 };
 
+inline
+Point3D::Point3D(const double xx, const double yy, const double zz)
+    : x(xx), y(yy), z(zz) {}
+
+inline double
+Point3D::norm()
+{
+	return sqrt(x*x + y*y + z*z);
+}
+
+inline double
+Point3D::normSq()
+{
+	return x*x + y*y + z*z;
+}
+
+inline double
+Point3D::sum()
+{
+	return x + y + z;
+}
+
+
+
 // The following two function take the dot product and the vector
 // product of two Point3D, respectively.
-double dot(Point3D& v1, Point3D& v2);
-Point3D vectorProd(Point3D& v1, Point3D& v2);
+inline double
+dot(Point3D& v1, Point3D& v2)
+{
+	return (v1*v2).sum();
+}
+
+inline Point3D
+vectorProd(Point3D& v1, Point3D& v2)
+{
+	return Point3D(v1[1]*v2[2] - v1[2]*v2[1],
+				   v1[2]*v2[0] - v1[0]*v2[2],
+				   v1[0]*v2[1] - v1[1]*v2[0]);
+}
 
 
 class Basis {

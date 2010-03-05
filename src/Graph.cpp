@@ -14,28 +14,10 @@
 #include "Graph.h"
 #include "tezuka.h"
 
-Node::Node(int name)
-{
-	spin = 0;
-	status = notVisited;
-	idnum = name;
-}
 
 Node::~Node()
 {
 	edges.clear();
-}
-
-int
-Node::getID()
-{
-	return idnum;
-}
-
-void
-Node::setID(const int n)
-{
-	idnum = n;
 }
 
 void
@@ -50,20 +32,6 @@ Node::setSpin(const int sp)
 		std::cerr << "Error: spin can be 1 or -1 only." << std::endl;
 		return;
 	}
-}
-
-int
-Node::getSpin()
-{
-	return spin;
-}
-
-int
-Node::degree()
-{
-	// The degree of a node is the number of edges that are incident to
-	// that node.
-	return edges.size();
 }
 
 void
@@ -83,58 +51,7 @@ Node::operator[](const int i)
 	}
 }
 
-void
-Node::setStatus(const Status s)
-{
-	status = s;
-}
 
-Status
-Node::getStatus()
-{
-	return status;
-}
-
-Point3D&
-Node::getCoords()
-{
-	return coords;
-}
-
-void
-Node::setCoords(const double x, const double y, const double z)
-{
-	coords[0] = x;
-	coords[1] = y;
-	coords[2] = z;
-}
-
-
-Edge::Edge(Node& n, Node& m, int name)
-{
-	status = notVisited;
-	idnum = name;
-	v1 = &n;
-	v2 = &m;
-}
-
-int
-Edge::getID()
-{
-	return idnum;
-}
-
-void
-Edge::setStatus(const Status s)
-{
-	status = s;
-}
-
-Status
-Edge::getStatus()
-{
-	return status;
-}
 
 Node&
 Edge::getOtherEnd(const Node& n)
@@ -151,13 +68,6 @@ Edge::getOtherEnd(const Node& n)
 	}
 }
 
-
-Graph::Graph(int N)
-{
-	edges.reserve(N);
-	nodes.reserve(N);
-}
-
 Graph::~Graph()
 {
 	for (unsigned int i = 0; i < nodes.size(); i++) {
@@ -168,12 +78,6 @@ Graph::~Graph()
 	}
 	edges.clear();
 	nodes.clear();
-}
-
-int
-Graph::size() const
-{
-	return nodes.size();
 }
 
 void

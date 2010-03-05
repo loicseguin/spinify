@@ -7,13 +7,9 @@
  *
  */
 
-#include <cmath>
 
 #include "Point3D.h"
 
-
-Point3D::Point3D(const double xx, const double yy, const double zz) :
-	x(xx), y(yy), z(zz) {}
 
 double&
 Point3D::operator[](const int i)
@@ -53,17 +49,6 @@ Point3D::operator[](const int i) const
 	}
 }
 
-double
-Point3D::norm()
-{
-	return sqrt(x*x + y*y + z*z);
-}
-
-double
-Point3D::normSq()
-{
-	return x*x + y*y + z*z;
-}
 
 void
 Point3D::normalize()
@@ -72,12 +57,6 @@ Point3D::normalize()
 	x /= n;
 	y /= n;
 	z /= n;
-}
-
-double
-Point3D::sum()
-{
-	return x + y + z;
 }
 
 Point3D
@@ -116,20 +95,6 @@ Point3D::operator=(const Point3D& pt)
 	return *this;
 }
 
-
-double
-dot(Point3D& v1, Point3D& v2)
-{
-	return (v1*v2).sum();
-}
-
-Point3D
-vectorProd(Point3D& v1, Point3D& v2)
-{
-	return Point3D(v1[1]*v2[2] - v1[2]*v2[1],
-				   v1[2]*v2[0] - v1[0]*v2[2],
-				   v1[0]*v2[1] - v1[1]*v2[0]);
-}
 
 
 Basis::Basis()

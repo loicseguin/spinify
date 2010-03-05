@@ -77,6 +77,26 @@ public:
 				   double oRatio);
 };
 
+inline
+Sphere::Sphere()
+    : rangeMultiplier(10), dampingExp(1.2915),
+      dampingSub(10000), objectiveRatio(0.21) {}
+
+inline double
+Sphere::distance(const Point3D& a, const Point3D& b) const
+{
+	return (a - b).norm();
+}
+
+inline double
+Sphere::distanceSq(const Point3D& a, const Point3D& b) const
+{
+	return (a - b).normSq();
+}
+
+
+
+
 class Plane {
 	/*
 	 * delaunay() takes a Graph with a node at the origin and finds the

@@ -109,6 +109,20 @@ public:
 	void readFile(std::string graphInFile);
 };
 
+inline
+Graph::Graph(int N)
+{
+	edges.reserve(N);
+	nodes.reserve(N);
+}
+
+inline int
+Graph::size() const
+{
+    return nodes.size();
+}
+
+
 
 
 class Node {
@@ -164,7 +178,7 @@ public:
 	~Node();
 	
 	int getID();
-	void setID(const int);
+	void setID(const int n);
 	void setSpin(const int);
 	int getSpin();
 	int degree();
@@ -176,6 +190,63 @@ public:
 	
 	friend void Graph::addEdge(Node& n, Node& m);
 };
+
+inline
+Node::Node(int name)
+    : spin(0), status(notVisited), idnum(name) {}
+
+inline int
+Node::getID()
+{
+    return idnum;
+}
+
+inline void
+Node::setID(const int n)
+{
+    idnum = n;
+}
+
+inline int
+Node::getSpin()
+{
+    return spin;
+}
+
+inline int
+Node::degree()
+{
+    return edges.size();
+}
+
+inline Status
+Node::getStatus()
+{
+    return status;
+}
+
+inline void
+Node::setStatus(const Status s)
+{
+    status = s;
+}
+
+inline Point3D&
+Node::getCoords()
+{
+	return coords;
+}
+
+inline void
+Node::setCoords(const double x, const double y, const double z)
+{
+	coords[0] = x;
+	coords[1] = y;
+	coords[2] = z;
+}
+
+
+
 
 
 class Edge {
@@ -202,15 +273,51 @@ class Edge {
 	Node* v2;
 
 public:
-	Edge(Node& n, Node& m, int idnum = 0);
+	Edge(Node& n, Node& m, int name = 0);
 	
 	int getID();
 	void setStatus(const Status);
 	Status getStatus();
 	Node& getOtherEnd(const Node&);
-	Node& getV1() {return *v1;}
-	Node& getV2() {return *v2;}
+	Node& getV1();
+	Node& getV2();
 };
+
+inline
+Edge::Edge(Node& n, Node& m, int name)
+    : status(notVisited), idnum(name), v1(&n), v2(&m) {}
+
+inline int
+Edge::getID()
+{
+    return idnum;
+}
+
+inline void
+Edge::setStatus(const Status s)
+{
+    status = s;
+}
+
+inline Status
+Edge::getStatus()
+{
+    return status;
+}
+
+inline Node&
+Edge::getV1()
+{
+    return *v1;
+}
+
+inline Node&
+Edge::getV2()
+{
+    return *v2;
+}
+
+
 
 
 #endif // !GRAPH_H
