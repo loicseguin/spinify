@@ -61,13 +61,13 @@ you use the software.
 
 == Help needed ==
 
-The founder of the Spinify project is a mathematician and a physicist
-who happens to know a little bit of programming. However, there are
-probably tons of improvements that any well trained programmer could
-suggest for the project. These improvements are more than welcome!
+The Spinify project is maintained by a mathematician and physicist who
+would be happy to get some help for reviewing parts of the code that
+could probably be improved a lot.
 
 Keep in mind that the objective is to make simulations on lattices with
-a huge number of nodes (> 10^6). Previous experiments have shown that
-the most computationnally expensive part of the simulation is actually
-the generation of the random lattice. Hence, this is probably the part
-of the code that should be worked on the most.
+a huge number of nodes (> 106). Previous experiments have shown that the
+most computationnally expensive part of the simulation is actually the
+generation of the random lattice. Hence, this is probably the part of
+the code that should be worked on the most.
+
