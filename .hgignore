@@ -22,6 +22,7 @@ test/point3dtest
 test/planedelaunaytest
 *.py
 *.htm
+build
 
 syntax: regexp
 ^build/

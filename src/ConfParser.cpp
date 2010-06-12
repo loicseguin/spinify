@@ -182,36 +182,36 @@ ConfParser::ConfParser ()
 	// The constructor sets default values for the parameters.
 	
 	// Main args
-	lattice = none;
-	nNodes = 0;
-	rectN = 0;
-	rectM = 0;
-	cfgFile[0] = ".spinifyrc";
-	cfgFile[1] = "~/.spinifyrc";
+	lattice         =   none;
+	nNodes          =   0;
+	rectN           =   0;
+	rectM           =   0;
+	cfgFile[0]      =   ".spinifyrc";
+	cfgFile[1]      =   "~/.spinifyrc";
 	temps.push_back(1./squareCritBeta);
-	nTemps = 1;
-	graphInFile = "";
+	nTemps          =   1;
+	graphInFile     =   "";
 	
 	// What and where to output
-	output = raw;
-	graphOutFile = "";
-	bool outToFile = false;
-	simulOutFile = "";
+	output          =   raw;
+	graphOutFile    =   "";
+	bool outToFile  =   false;
+	simulOutFile    =   "";
 	
 	// For class Simul
-	decorrelIter = 5000;
-	correlTreshold = 0.05;
-	maxDecorrelTime = 99;
-	minDecorrelTime = 5;
-	Jval = -1;
-	nMeasures = 200;
-	nInitTherm = 500;
+	decorrelIter    =   5000;
+	correlTreshold  =   0.05;
+	maxDecorrelTime =   99;
+	minDecorrelTime =   5;
+	Jval            =   -1;
+	nMeasures       =   200;
+	nInitTherm      =   500;
 	
 	// For class Surface
-	rangeMultiplier = 10;
-	dampingExp = 1.2915;
-	dampingSub = 10000;
-	objectiveRatio = 0.21;
+	rangeMultiplier =   10;
+	dampingExp      =   1.2915;
+	dampingSub      =   10000;
+	objectiveRatio  =   0.21;
 	
 	return;
 }
