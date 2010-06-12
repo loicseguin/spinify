@@ -1,0 +1,214 @@
+// !$*UTF8*$!
+{
+	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = EB62706811C0A570003A7596 /* SpinWithController */;
+		activeTarget = 8D15AC270486D014006FF6A4 /* SpinWithController */;
+		addToTargets = (
+			8D15AC270486D014006FF6A4 /* SpinWithController */,
+		);
+		codeSenseManager = EB62707611C0A58E003A7596 /* Code sense */;
+		executables = (
+			EB62706811C0A570003A7596 /* SpinWithController */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					519,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 297837936;
+			PBXWorkspaceStateSaveDate = 297837936;
+		};
+		perUserProjectItems = {
+			EB6270AC11C16222003A7596 /* PBXTextBookmark */ = EB6270AC11C16222003A7596 /* PBXTextBookmark */;
+			EB6270AD11C16222003A7596 /* PBXTextBookmark */ = EB6270AD11C16222003A7596 /* PBXTextBookmark */;
+			EB6270AE11C16222003A7596 /* PBXTextBookmark */ = EB6270AE11C16222003A7596 /* PBXTextBookmark */;
+			EB6270AF11C16222003A7596 /* PBXTextBookmark */ = EB6270AF11C16222003A7596 /* PBXTextBookmark */;
+			EB6270B011C16222003A7596 /* PBXTextBookmark */ = EB6270B011C16222003A7596 /* PBXTextBookmark */;
+			EB6270B111C16222003A7596 /* XCBuildMessageTextBookmark */ = EB6270B111C16222003A7596 /* XCBuildMessageTextBookmark */;
+			EB6270B211C16222003A7596 /* PBXTextBookmark */ = EB6270B211C16222003A7596 /* PBXTextBookmark */;
+		};
+		sourceControlManager = EB62707511C0A58E003A7596 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1356, 1040}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 450}";
+		};
+	};
+	2A37F4AEFDCFA73011CA2CEA /* MyDocument.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 306}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 237}";
+		};
+	};
+	8D15AC270486D014006FF6A4 /* SpinWithController */ = {
+		activeExec = 0;
+		executables = (
+			EB62706811C0A570003A7596 /* SpinWithController */,
+		);
+	};
+	EB62706811C0A570003A7596 /* SpinWithController */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SpinWithController;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	EB62707511C0A58E003A7596 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	EB62707611C0A58E003A7596 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	EB62708311C0A602003A7596 /* Measure.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {697, 332}}";
+			sepNavSelRange = "{383, 0}";
+			sepNavVisRange = "{0, 398}";
+		};
+	};
+	EB62708411C0A602003A7596 /* Measure.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {697, 332}}";
+			sepNavSelRange = "{305, 0}";
+			sepNavVisRange = "{0, 418}";
+		};
+	};
+	EB62709211C15335003A7596 /* SpinController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 325}}";
+			sepNavSelRange = "{358, 0}";
+			sepNavVisRange = "{0, 501}";
+		};
+	};
+	EB62709311C15335003A7596 /* SpinController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {697, 897}}";
+			sepNavSelRange = "{403, 0}";
+			sepNavVisRange = "{0, 629}";
+		};
+	};
+	EB6270AC11C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */;
+		name = "MyDocument.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 450;
+		vrLoc = 0;
+	};
+	EB6270AD11C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A37F4AEFDCFA73011CA2CEA /* MyDocument.h */;
+		name = "MyDocument.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 237;
+		vrLoc = 0;
+	};
+	EB6270AE11C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB62709211C15335003A7596 /* SpinController.h */;
+		name = "SpinController.h: 16";
+		rLen = 0;
+		rLoc = 358;
+		rType = 0;
+		vrLen = 501;
+		vrLoc = 0;
+	};
+	EB6270AF11C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB62708311C0A602003A7596 /* Measure.h */;
+		name = "Measure.h: 19";
+		rLen = 0;
+		rLoc = 383;
+		rType = 0;
+		vrLen = 398;
+		vrLoc = 0;
+	};
+	EB6270B011C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB62708411C0A602003A7596 /* Measure.m */;
+		name = "Measure.m: 17";
+		rLen = 0;
+		rLoc = 305;
+		rType = 0;
+		vrLen = 418;
+		vrLoc = 0;
+	};
+	EB6270B111C16222003A7596 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Variable-sized object may not be initialized";
+		fRef = EB62709311C15335003A7596 /* SpinController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 51;
+		rType = 1;
+	};
+	EB6270B211C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = EB62709311C15335003A7596 /* SpinController.m */;
+		name = "SpinController.m: 19";
+		rLen = 0;
+		rLoc = 403;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 0;
+	};
+}

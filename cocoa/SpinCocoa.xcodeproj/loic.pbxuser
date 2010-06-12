@@ -1,0 +1,168 @@
+// !$*UTF8*$!
+{
+	256AC3D80F4B6AC300CF3369 /* SpinCocoaAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {632, 387}}";
+			sepNavSelRange = "{725, 34}";
+			sepNavVisRange = "{0, 765}";
+		};
+	};
+	256AC3D90F4B6AC300CF3369 /* SpinCocoaAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {632, 1053}}";
+			sepNavSelRange = "{1727, 0}";
+			sepNavVisRange = "{1466, 831}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = EB5F5A7D11B0AA80006D5A09 /* SpinCocoa */;
+		activeTarget = 8D1107260486CEB800E47090 /* SpinCocoa */;
+		breakpoints = (
+		);
+		codeSenseManager = EB5F5A8B11B0AA9F006D5A09 /* Code sense */;
+		executables = (
+			EB5F5A7D11B0AA80006D5A09 /* SpinCocoa */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					454,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 297837999;
+			PBXWorkspaceStateSaveDate = 297837999;
+		};
+		perUserProjectItems = {
+			EB6270BF11C16222003A7596 /* PBXTextBookmark */ = EB6270BF11C16222003A7596 /* PBXTextBookmark */;
+			EB6270C011C16222003A7596 /* PBXTextBookmark */ = EB6270C011C16222003A7596 /* PBXTextBookmark */;
+			EB6270C111C16222003A7596 /* PBXTextBookmark */ = EB6270C111C16222003A7596 /* PBXTextBookmark */;
+		};
+		sourceControlManager = EB5F5A8A11B0AA9F006D5A09 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8D1107260486CEB800E47090 /* SpinCocoa */ = {
+		activeExec = 0;
+		executables = (
+			EB5F5A7D11B0AA80006D5A09 /* SpinCocoa */,
+		);
+	};
+	EB5F5A7D11B0AA80006D5A09 /* SpinCocoa */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = SpinCocoa;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			$cs = 1;
+			$ds = 1;
+			$eflags = 1;
+			$es = 1;
+			$fs = 1;
+			$gs = 1;
+			$r10 = 1;
+			$r11 = 1;
+			$r12 = 1;
+			$r13 = 1;
+			$r14 = 1;
+			$r15 = 1;
+			$r8 = 1;
+			$r9 = 1;
+			$rax = 1;
+			$rbp = 1;
+			$rbx = 1;
+			$rcx = 1;
+			$rdi = 1;
+			$rdx = 1;
+			$rip = 1;
+			$rsi = 1;
+			$rsp = 1;
+			$ss = 1;
+		};
+	};
+	EB5F5A8A11B0AA9F006D5A09 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	EB5F5A8B11B0AA9F006D5A09 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	EB6270BF11C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D80F4B6AC300CF3369 /* SpinCocoaAppDelegate.h */;
+		name = "SpinCocoaAppDelegate.h: 26";
+		rLen = 34;
+		rLoc = 725;
+		rType = 0;
+		vrLen = 765;
+		vrLoc = 0;
+	};
+	EB6270C011C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* SpinCocoaAppDelegate.m */;
+		name = "SpinCocoaAppDelegate.m: 20";
+		rLen = 1441;
+		rLoc = 420;
+		rType = 0;
+		vrLen = 832;
+		vrLoc = 1466;
+	};
+	EB6270C111C16222003A7596 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* SpinCocoaAppDelegate.m */;
+		name = "SpinCocoaAppDelegate.m: 55";
+		rLen = 0;
+		rLoc = 1727;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 1466;
+	};
+}
