@@ -36,22 +36,23 @@ main (int argc, char * const argv[])
 	const int nTemps = 100;
 	const int nMeasure2 = 50;
 	
-	Simul G;
-	G.initRect(L, W);
-	G.randSpin();
+    Graph H;
+    H.initRect(L, W);
+    H.randSpin();
+	Simul G(H);
 	
 	if (testNb == 1) {
 		// Test 1
 		std::cout << "Test 1. Thermalized " << nTherm <<" times, " << nMeasure << " measures.\n";
 		G.thermalize(nTherm);
-		int K = G.findDecorrelTime(&Simul::measureE);
+		int K = G.findDecorrelTime(&Simul::measureInternalEnergy);
 		std::cout << "        Beta: " << G.getBeta() << std::endl;
 		std::cout << "        Decorrelation time: " << K << std::endl;
 		
 		double Data[nMeasure];
 		for (int i = 0; i < nMeasure; i++) {
 			G.thermalize(K);
-			Data[i] = G.measureE();
+			Data[i] = G.measureInternalEnergy();
 		}
 		
 		double avgData = avg(Data, nMeasure);
@@ -78,11 +79,11 @@ main (int argc, char * const argv[])
 			G.thermalize(100);
 			std::cout << "Thermalized at temperature beta = " << G.getBeta() << std::endl;
 			std::cout.flush();
-			int K = G.findDecorrelTime(&Simul::measureE);
+			int K = G.findDecorrelTime(&Simul::measureInternalEnergy);
 			double Data[nMeasure2];
 			for (int j = 0; j < nMeasure2; j++) {
 				G.thermalize(K);
-				Data[j] = G.measureE();
+				Data[j] = G.measureInternalEnergy();
 			}
 			double avgData = avg(Data, nMeasure2);
 			outFile.open(fileName.c_str(), std::ofstream::app);

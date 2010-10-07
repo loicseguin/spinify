@@ -17,7 +17,7 @@
 #include "Simul.h"
 #include "tezuka.h"
 
-Simul::Simul(int N) : Graph(N)
+Simul::Simul(int N) : G(*(new Graph(N)))
 {
 	decorrelIter = 5000;
 	correlTreshold = 0.05;
@@ -28,6 +28,19 @@ Simul::Simul(int N) : Graph(N)
 	nMeasures = 200;
 	nInitTherm = 500;
 }
+
+Simul::Simul(Graph& H) : G(H)
+{
+    decorrelIter = 5000;
+	correlTreshold = 0.05;
+	maxDecorrelTime = 99;
+	minDecorrelTime = 5;
+	Jval = -1;
+	currentBeta = squareCritBeta;
+	nMeasures = 200;
+	nInitTherm = 500;
+}
+    
 
 void
 Simul::thermalize(const int n)
@@ -59,19 +72,19 @@ Simul::swendsen()
 	// probability predicted by the Gibbs distribution.
 	
 	// Set all statuses to not visited.
-	resetStatus();
+	G.resetStatus();
 	
 	// Repeat the procedure for all nodes.
-	for (int i = 0; i < size(); i++) {
+	for (int i = 0; i < G.size(); i++) {
 		
 		// If the node is not visited, run the algorithm. Otherwise, the
 		// node was part of a previous set and there is nothing to do.
-		if ((*this)[i].getStatus() == notVisited) {
+		if (G[i].getStatus() == notVisited) {
 			
 			// Start by keeping the value of the node's spin in a
 			// variable called oldSpin. Then, randomly choose a new spin
 			// value that will be assigned to every node in the set.
-			int oldSpin = (*this)[i].getSpin();
+			int oldSpin = G[i].getSpin();
 			int newSpin;
 			unsigned int rval = alea();
 			if (rval % 2 == 0)
@@ -81,7 +94,7 @@ Simul::swendsen()
 			
 			// We build a list of nodes that will be in the set.
 			std::vector<Node*> toTest;
-			toTest.push_back(&((*this)[i]));
+			toTest.push_back(&(G[i]));
 			for (unsigned int j = 0; j < toTest.size(); j++) {
 				// Test the first untested node.
 				Node& next = *toTest[j];
@@ -140,14 +153,14 @@ Simul::measureInternalEnergy()
 {
 	// u = (J / N) \sum_{adjacent nodes i, j} s_i s_j
 	int sumSpin = 0;
-	for (int i = 0; i < size(); i++) {
-		Node& v1 = (*this)[i];
+	for (int i = 0; i < G.size(); i++) {
+		Node& v1 = G[i];
 		for (int j = 0; j < v1.degree(); j++) {
 			Node& v2 = v1[j].getOtherEnd(v1);
 			sumSpin += v1.getSpin() * v2.getSpin();
 		}
 	}
-	return getJ() * sumSpin * 0.5 / size();
+	return getJ() * sumSpin * 0.5 / G.size();
 }
 
 double
@@ -155,9 +168,9 @@ Simul::measureMagnetization()
 {
 	// M = (1/N) \sum_{i = 1}^N s_i
 	double sumSpin = 0;
-	for (int i = 0; i < size(); i++)
-		sumSpin += (*this)[i].getSpin();
-	return sumSpin / size();
+	for (int i = 0; i < G.size(); i++)
+		sumSpin += G[i].getSpin();
+	return sumSpin / G.size();
 }
 
 double
@@ -203,7 +216,7 @@ Simul::thermalSusceptibility()
 	}
 	double avgSq = avg(Data, nMeasures);
 	avgSq *= avgSq;
-	return getBeta() * size()
+	return getBeta() * G.size()
 		   * (avg(DataSq, nMeasures) - avgSq);
 }
 
