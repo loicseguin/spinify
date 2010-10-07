@@ -38,11 +38,12 @@ int
 main (int argc, char * const argv[])
 {
 	std::cout << "SPINIFY\nThe Ising model simulator\n\n";
-	Simul G;
 	int L = 40;
 	int W = 40;
-	G.initRect(L, W);
-	G.randSpin();
+    Graph H;
+    H.initRect(L, W);
+    H.randSpin();
+    Simul G(H);
 	//S.setParams(0.001, -1);
 	//prGraph(&G, L, W);
 	G.thermalize(1000);

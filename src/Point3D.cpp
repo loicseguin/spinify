@@ -114,6 +114,7 @@ Basis::genOrthonormal(const Point3D& v1)
 	// of the first two.
 	
 	B[0] = v1;
+    B[0].normalize();
 	
 	// Here
 	//   dot(B[0], B[1]) = v1[0] (2*v1[1]*v1[2])

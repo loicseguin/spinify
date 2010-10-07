@@ -44,19 +44,9 @@ main (int argc, char * const argv[])
 	ConfParser cfg;
 	cfg.parseArgs(argc, argv);
 	
-	// Then, create a graph with the appropriate parameters.
-	Simul G(cfg.nNodes);
-	G.setParams(cfg.decorrelIter,
-				cfg.correlTreshold,
-				cfg.maxDecorrelTime,
-				cfg.minDecorrelTime,
-				cfg.Jval,
-				cfg.temps,
-				cfg.nMeasures,
-				cfg.nInitTherm);
-	
-	// Fill that graph with the appropriate nodes and edges depending on
-	// the lattice type.
+	// Create and fill the graph with the appropriate nodes and edges
+    // depending on the lattice type.
+    Graph G(cfg.nNodes);
 	switch (cfg.lattice) {
 		case sphere_even:
 		{
@@ -85,6 +75,17 @@ main (int argc, char * const argv[])
 		default:
 			break;
 	}
+    
+    // Then, create a simul with the appropriate parameters.
+	Simul simul(G);
+	simul.setParams(cfg.decorrelIter,
+                    cfg.correlTreshold,
+                    cfg.maxDecorrelTime,
+                    cfg.minDecorrelTime,
+                    cfg.Jval,
+                    cfg.temps,
+                    cfg.nMeasures,
+                    cfg.nInitTherm);
 	
 	// If required by the user, print the graph data to file.
 	std::ofstream outFile;
@@ -107,7 +108,7 @@ main (int argc, char * const argv[])
 		: std::cout;
 	
 	// Finally, run the simulation and exit.
-	G.runSimul(cfg.output, simulOutput);
+	simul.runSimul(cfg.output, simulOutput);
 	cerr << "Done!" << endl;
 	
     return 0;

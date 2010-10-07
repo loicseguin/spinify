@@ -27,10 +27,10 @@ const double triCritBeta = 0.27465307216702742285;
 #endif
 
 
-class Simul : public Graph {
+class Simul {
 	/*
 	 * When initializing a simulation, passing an integer argument N
-	 * reserves enough memory space for N Nodes. Simul inherits from
+	 * reserves enough memory space for N Nodes. Simul contains a
 	 * Graph. The Graph contains all the information about nodes and
 	 * edges which are then used to run the Swendsen-Wang-Wolff
 	 * algorithm. The constructor also takes care of setting the
@@ -73,6 +73,7 @@ class Simul : public Graph {
 	unsigned int nMeasures;
 	unsigned int nInitTherm;
 	unsigned int decorrelTime;
+    Graph& G;
 	void swendsen();
 	double measureInternalEnergy();
 	double measureMagnetization();
@@ -82,6 +83,7 @@ class Simul : public Graph {
 	unsigned int findDecorrelTime(double (Simul::*measure)());
 public:
 	Simul(int N = 10);
+    Simul(Graph& H);
 	void thermalize(const int n = 500);
 	void setParams(unsigned int dIter,
 				   double cTreshold,
