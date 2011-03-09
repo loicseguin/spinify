@@ -15,7 +15,11 @@
 
 #include "Point3D.h"
 #include "Surface.h"
-#include "tezuka.h"
+#ifdef _WIN32
+	#include "win32/tezuka.h"	
+#else
+	#include "tezuka.h"
+#endif
 
 
 int
@@ -70,7 +74,7 @@ Sphere::repulse(Graph& G)
 	//   4 \pi / (\pi r^2) = N
 	//   r = 2 / \sqrt{N}
 	// Of course, this is an over estimation.
-	const double expectedRadius = 2./sqrt(G.size());
+	const double expectedRadius = 2./sqrt((double)G.size());
 	
 	// Computing the force on a node becomes long if the number of nodes
 	// is large. However, since the force decreases with the square of
@@ -80,7 +84,7 @@ Sphere::repulse(Graph& G)
 	
 	// The minimum distance between two nodes should be close to twice
 	// radius of the disks.
-	const double objectiveDist = 4./sqrt(G.size());
+	const double objectiveDist = 4./sqrt((double)G.size());
 	
 	// If the force is not dampened, it quickly become so big that the
 	// nodes just move randomly on the sphere. To avoid this problem, we
@@ -148,7 +152,7 @@ Sphere::delaunay(Graph& G)
 	// neighbourhood of this node is projected on the tangent plane.
 	// Then, we perform a Delaunay triangulation on this plane graph.
 	
-	const double expectedRadius = 2./sqrt(G.size());
+	const double expectedRadius = 2./sqrt((double)G.size());
 	const double range = rangeMultiplier * expectedRadius;
 	Basis B;
 	for (int i = 0; i < G.size(); i++) {
