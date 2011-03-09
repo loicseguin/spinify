@@ -12,7 +12,11 @@
 #include <iostream>
 
 #include "Graph.h"
-#include "tezuka.h"
+#ifdef _WIN32
+	#include "win32/tezuka.h"	
+#else
+	#include "tezuka.h"
+#endif
 
 
 Node::~Node()

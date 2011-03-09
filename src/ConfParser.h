@@ -71,7 +71,9 @@ class ConfParser {
 	 *
 	 */
 	bool parseCfgFile();
+#ifndef _WIN32
 	void expandTildes();
+#endif
 public:
 	// Main args
 	std::string cfgFile[2];
@@ -111,6 +113,8 @@ public:
 	ConfParser();
 };
 
+#ifndef _WIN32
 std::string expandTilde(std::string& path);
+#endif
 
 #endif // !CONFPARSER_H

@@ -15,7 +15,11 @@
 
 #include "Maths.h"
 #include "Simul.h"
-#include "tezuka.h"
+#ifdef _WIN32
+	#include "win32/tezuka.h"	
+#else
+	#include "tezuka.h"
+#endif
 
 Simul::Simul(int N) : G(*(new Graph(N)))
 {
@@ -179,12 +183,16 @@ Simul::thermalInternalEnergy()
 	// Repeat the measure of internal energy per spin nMeasures times
 	// and return the average value (this is called the thermal
 	// average).
-	double Data[nMeasures];
+	double* Data = NULL;
+	Data = new double[nMeasures];
+	double avgEnergy;
 	for (unsigned int j = 0; j < nMeasures; j++) {
 		thermalize(decorrelTime);
 		Data[j] = measureInternalEnergy();
 	}
-	return avg(Data, nMeasures);
+	avgEnergy = avg(Data, nMeasures);
+	delete [] Data;
+	return avgEnergy;
 }
 
 double
@@ -193,12 +201,16 @@ Simul::thermalMagnetization()
 	// Repeat the measure of magnetization nMeasures times
 	// and return the average value (this is called the thermal
 	// average).
-	double Data[nMeasures];
+	double* Data = NULL;
+	Data = new double[nMeasures];
+	double avgMagnetization;
 	for (unsigned int j = 0; j < nMeasures; j++) {
 		thermalize(decorrelTime);
 		Data[j] = fabs(measureMagnetization());
 	}
-	return avg(Data, nMeasures);
+	avgMagnetization = avg(Data, nMeasures);
+	delete [] Data;
+	return avgMagnetization;
 }
 
 double
@@ -207,8 +219,11 @@ Simul::thermalSusceptibility()
 	// Magnetic susceptibility is defined to be
 	//   \chi = \beta N (<M^2> - <M>^2)
 	// where M is the magnetization and <> represent thermal average.
-	double Data[nMeasures];
-	double DataSq[nMeasures];
+	double* Data = NULL;
+	double* DataSq = NULL;
+	double avgSusceptibility;
+	Data = new double[nMeasures];
+	DataSq = new double[nMeasures];
 	for (unsigned int j = 0; j < nMeasures; j++) {
 		thermalize(decorrelTime);
 		Data[j] = measureMagnetization();
@@ -216,8 +231,11 @@ Simul::thermalSusceptibility()
 	}
 	double avgSq = avg(Data, nMeasures);
 	avgSq *= avgSq;
-	return getBeta() * G.size()
-		   * (avg(DataSq, nMeasures) - avgSq);
+	avgSusceptibility = getBeta() * G.size() *
+		(avg(DataSq, nMeasures) - avgSq);
+	delete [] Data;
+	delete [] DataSq;
+	return avgSusceptibility;
 }
 
 
@@ -232,8 +250,13 @@ Simul::findDecorrelTime(double (Simul::*measure)())
 	// number of iterations the decorrelation time.
 	
 	double C_k = 1.;		// Autocorrelation function at step k
-	double X[decorrelIter], X2[decorrelIter], X_k[decorrelIter];
+	double* X = NULL;
+	double* X2 = NULL;
+	double* X_k = NULL;
 	double avgX, avgX2, avgX_k;
+	X = new double[decorrelIter];
+	X2 = new double[decorrelIter];
+	X_k = new double[decorrelIter];
 	
 	for (unsigned int i = 0; i < decorrelIter; i++) {
 		swendsen();
@@ -253,6 +276,10 @@ Simul::findDecorrelTime(double (Simul::*measure)())
 		// We keep the decorrelation time to at most maxDecorrelTime.
 		if (k > maxDecorrelTime) break;
 	}
+
+	delete [] X;
+	delete [] X2;
+	delete [] X_k;
 	
 	// Better safe than sorry: always do at least minDecorrelTime
 	// iterations between every measure.

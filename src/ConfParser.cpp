@@ -275,7 +275,9 @@ ConfParser::parseArgs(int argc, char* const argv[])
 	
 	// Parse configuration file if parseArgs is not called from
 	// parseCfgFile.
+#ifndef _WIN32
 	expandTildes();
+#endif
 	if (!parsingFile)
 		parseCfgFile();
 	
@@ -604,10 +606,12 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		usage();
 		exit(1);
 	}
-	
+#ifndef _WIN32
 	expandTildes();
+#endif
 }
 
+#ifndef _WIN32
 string
 expandTilde(string& path)
 {
@@ -632,6 +636,8 @@ ConfParser::expandTildes()
 			*fileList[i] = expandTilde(*fileList[i]);
 	}
 }
+#endif // !_WIN32
+
 
 
 bool
