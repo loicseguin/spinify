@@ -83,17 +83,17 @@ Simul::swendsen()
 	
 	// Repeat the procedure for all nodes.
 	for (int i = 0; i < G.size(); i++) {
-		Node& currentNode = G[i];
+		Node* currentNode = G.nodes[i];
 		
         // If the node is not visited, run the algorithm. Otherwise, the
 		// node was part of a previous set and there is nothing to do.
-		if (currentNode.getStatus() == Visited)
+		if (currentNode->getStatus())
             continue;
         
         // Start by keeping the value of the node's spin in a
         // variable called oldSpin. Then, randomly choose a new spin
         // value that will be assigned to every node in the set.
-        int oldSpin = currentNode.getSpin();
+        int oldSpin = currentNode->getSpin();
         int newSpin;
         unsigned int rval = alea();
         if (rval % 2 == 0)
@@ -103,12 +103,12 @@ Simul::swendsen()
         
         // We build a list of nodes that will be in the set.
         std::vector<Node*> toTest;
-        toTest.push_back(&currentNode);
+        toTest.push_back(currentNode);
         for (unsigned int j = 0; j < toTest.size(); j++) {
             // Test the first untested node.
-            Node& next = *toTest[j];
-            next.setStatus(Visited);
-            next.setSpin(newSpin);
+            Node* next = toTest[j];
+            next->setStatus(Visited);
+            next->setSpin(newSpin);
             
             // Check its neighbour one by one. If the edge is
             // already visited, skip it. Otherwise, mark the edge as
@@ -117,18 +117,16 @@ Simul::swendsen()
             // node has the same spin. If it does, then add this
             // node to the set with probability
             //   1 - e^{2 \beta J}
-            for (int k = 0; k < next.degree(); k++) {
-                Edge* nEdge = next.edges[k];
-                Node* otherEnd = next.nodes[k];
-                if (nEdge->getStatus() == notVisited
-                    && otherEnd->getSpin() == oldSpin
+            for (int k = 0; k < next->degree(); k++) {
+                Edge* nEdge = next->edges[k];
+                Node* otherEnd = next->neighbors[k];
+                if (nEdge->getStatus())
+                    continue;
+                if (otherEnd->getSpin() == oldSpin
                     && (alea() / RANDMAX) < gibbsProb) {
                     toTest.push_back(otherEnd);
-                    nEdge->setStatus(Visited);
                 }
-                else if (nEdge->getStatus() == notVisited) {
-                    nEdge->setStatus(Visited);
-                }
+                nEdge->setStatus(Visited);
             }
 		}
 	}
@@ -165,8 +163,8 @@ Simul::measureInternalEnergy()
 	for (int i = 0; i < G.size(); i++) {
 		Node& v1 = G[i];
 		for (int j = 0; j < v1.degree(); j++) {
-			Node& v2 = v1[j].getOtherEnd(v1);
-			sumSpin += v1.getSpin() * v2.getSpin();
+			Node* v2 = v1.neighbors[j];
+			sumSpin += v1.getSpin() * v2->getSpin();
 		}
 	}
 	return getJ() * sumSpin * 0.5 / G.size();

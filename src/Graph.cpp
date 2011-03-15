@@ -22,6 +22,7 @@
 Node::~Node()
 {
 	edges.clear();
+    neighbors.clear();
 }
 
 void
@@ -42,7 +43,7 @@ void
 Node::addNghbor(Edge* pE)
 {
 	edges.push_back(pE);
-    nodes.push_back(&(pE->getOtherEnd(*this)));
+    neighbors.push_back(&(pE->getOtherEnd(*this)));
 }
 
 Edge&
@@ -102,7 +103,7 @@ Graph::addEdge(Node& n, Node& m)
 	
 	// Check if edge is already in the graph.
 	for (int i = 0; i < n.degree(); i++) {
-		if (&(n[i].getOtherEnd(n)) == &m) {
+		if (n.neighbors[i] == &m) {
 			return; 
 		}
 	}

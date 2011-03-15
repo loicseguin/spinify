@@ -87,11 +87,11 @@ class Graph {
 	 * raw files not Python files.
 	 *
 	 */
-	std::vector<Node*> nodes;
 	void prPython(std::ostream & output);
 	void prRaw(std::ostream & output);
 	
 public:
+	std::vector<Node*> nodes;
 	std::vector<Edge*> edges;
 	Graph(int N = 10);
 	~Graph();
@@ -174,7 +174,7 @@ class Node {
 
 public:
     std::vector<Edge*> edges;
-    std::vector<Node*> nodes;
+    std::vector<Node*> neighbors;
 
 	Node(int idnum = 0);
 	~Node();
