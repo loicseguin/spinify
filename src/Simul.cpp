@@ -77,19 +77,23 @@ Simul::swendsen()
 	
 	// Set all statuses to not visited.
 	G.resetStatus();
+    
+    // Calculate the Gibbs probability.
+    double gibbsProb = 1 - exp(2*getBeta()*getJ());
 	
 	// Repeat the procedure for all nodes.
 	for (int i = 0; i < G.size(); i++) {
+		Node& currentNode = G[i];
 		
-		// If the node is not visited, run the algorithm. Otherwise, the
+        // If the node is not visited, run the algorithm. Otherwise, the
 		// node was part of a previous set and there is nothing to do.
-		if (G[i].getStatus() == Visited)
+		if (currentNode.getStatus() == Visited)
             continue;
         
         // Start by keeping the value of the node's spin in a
         // variable called oldSpin. Then, randomly choose a new spin
         // value that will be assigned to every node in the set.
-        int oldSpin = G[i].getSpin();
+        int oldSpin = currentNode.getSpin();
         int newSpin;
         unsigned int rval = alea();
         if (rval % 2 == 0)
@@ -99,7 +103,7 @@ Simul::swendsen()
         
         // We build a list of nodes that will be in the set.
         std::vector<Node*> toTest;
-        toTest.push_back(&(G[i]));
+        toTest.push_back(&currentNode);
         for (unsigned int j = 0; j < toTest.size(); j++) {
             // Test the first untested node.
             Node& next = *toTest[j];
@@ -114,16 +118,17 @@ Simul::swendsen()
             // node to the set with probability
             //   1 - e^{2 \beta J}
             for (int k = 0; k < next.degree(); k++) {
-                Edge& nEdge = next[k];
-                Node& otherEnd = nEdge.getOtherEnd(next);
-                if (nEdge.getStatus() == notVisited
-                    && otherEnd.getSpin() == oldSpin
-                    && (alea() / RANDMAX) < 1 - exp(2*getBeta()*getJ())) {
-                    nEdge.setStatus(Visited);
-                    toTest.push_back(&otherEnd);
+                Edge* nEdge = next.edges[k];
+                Node* otherEnd = next.nodes[k];
+                if (nEdge->getStatus() == notVisited
+                    && otherEnd->getSpin() == oldSpin
+                    && (alea() / RANDMAX) < gibbsProb) {
+                    toTest.push_back(otherEnd);
+                    nEdge->setStatus(Visited);
                 }
-                else if (nEdge.getStatus() == notVisited)
-                    nEdge.setStatus(Visited);
+                else if (nEdge->getStatus() == notVisited) {
+                    nEdge->setStatus(Visited);
+                }
             }
 		}
 	}

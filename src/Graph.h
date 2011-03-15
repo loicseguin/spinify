@@ -169,11 +169,13 @@ class Node {
 	int spin;
 	int idnum;
 	Status status;
-	std::vector<Edge*> edges;
 	Point3D coords;
 	void addNghbor(Edge*);
 
 public:
+    std::vector<Edge*> edges;
+    std::vector<Node*> nodes;
+
 	Node(int idnum = 0);
 	~Node();
 	

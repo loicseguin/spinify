@@ -42,6 +42,7 @@ void
 Node::addNghbor(Edge* pE)
 {
 	edges.push_back(pE);
+    nodes.push_back(&(pE->getOtherEnd(*this)));
 }
 
 Edge&
