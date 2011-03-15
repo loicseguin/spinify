@@ -46,7 +46,7 @@ main (int argc, char * const argv[])
     Simul G(H);
 	//S.setParams(0.001, -1);
 	//prGraph(&G, L, W);
-	G.thermalize(1000);
+	G.thermalize(40000);
 	//prGraph(&G, L, W);
 	/*std::cout << "Internal energy per spin: "
 		<< G.measureInternalEnergy() << std::endl;

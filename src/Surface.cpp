@@ -115,9 +115,9 @@ Sphere::repulse(Graph& G)
 					continue;
 				Point3D& jCoords = G[j].getCoords();
 				double dSq = distanceSq(iCoords, jCoords);
-				if (dSq > range)
+				if (dSq > range * range)
 					continue;
-				double d = distance(iCoords, jCoords);
+				double d = sqrt(dSq);
 				Point3D temp = (iCoords - jCoords).divide(dSq*d);
 				force = force + temp;
 			}
