@@ -296,7 +296,7 @@
 							<real>185</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>9 69 900 620 0 0 1280 778 </string>
+						<string>29 217 900 620 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -326,11 +326,11 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EB6270C111C16222003A7596</string>
+										<string>EB1CBA8E132DBBAF0094D60D</string>
 										<key>history</key>
 										<array>
 											<string>EB6270BF11C16222003A7596</string>
-											<string>EB6270C011C16222003A7596</string>
+											<string>EB6270C111C16222003A7596</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -344,18 +344,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {693, 419}}</string>
+								<string>{{0, 0}, {693, 413}}</string>
 								<key>RubberWindowFrame</key>
-								<string>9 69 900 620 0 0 1280 778 </string>
+								<string>29 217 900 620 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>419pt</string>
+							<string>413pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>155pt</string>
+							<string>161pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -369,9 +369,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {693, 128}}</string>
+										<string>{{10, 27}, {693, 134}}</string>
 										<key>RubberWindowFrame</key>
-										<string>9 69 900 620 0 0 1280 778 </string>
+										<string>29 217 900 620 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -453,11 +453,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EB62708011C0A5B4003A7596</string>
+				<string>EB1CBA89132DBB2C0094D60D</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>EB62708111C0A5B4003A7596</string>
+				<string>EB1CBA8A132DBB2C0094D60D</string>
 				<string>EB5F5A9911B0C8F4006D5A09</string>
-				<string>EB62708211C0A5B4003A7596</string>
+				<string>EB1CBA8B132DBB2C0094D60D</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -606,14 +606,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>EB6270C211C16222003A7596</string>
+				<string>EB1CBA8F132DBBAF0094D60D</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>EB6270C311C16222003A7596</string>
-				<string>EB6270C411C16222003A7596</string>
-				<string>EB6270C511C16222003A7596</string>
-				<string>EB6270C611C16222003A7596</string>
-				<string>EB6270C711C16222003A7596</string>
+				<string>EB1CBA90132DBBAF0094D60D</string>
+				<string>EB1CBA91132DBBAF0094D60D</string>
+				<string>EB1CBA92132DBBAF0094D60D</string>
+				<string>EB1CBA93132DBBAF0094D60D</string>
+				<string>EB1CBA94132DBBAF0094D60D</string>
 			</array>
 			<key>ToolbarConfigUserDefaultsMinorVersion</key>
 			<string>2</string>
@@ -647,12 +647,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EB6270C811C16222003A7596</string>
-		<string>EB6270C911C16222003A7596</string>
-		<string>/Users/loic/Projects/SpinCocoa/SpinCocoa.xcodeproj</string>
+		<string>EB1CBA95132DBBAF0094D60D</string>
+		<string>EB1CBA96132DBBAF0094D60D</string>
+		<string>/Users/loic/Projects/spinify/spinify/cocoa/SpinCocoa.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>9 69 900 620 0 0 1280 778 </string>
+	<string>29 217 900 620 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

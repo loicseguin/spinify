@@ -317,7 +317,4 @@ Edge::getV2()
     return *v2;
 }
 
-
-
-
 #endif // !GRAPH_H

@@ -83,48 +83,48 @@ Simul::swendsen()
 		
 		// If the node is not visited, run the algorithm. Otherwise, the
 		// node was part of a previous set and there is nothing to do.
-		if (G[i].getStatus() == notVisited) {
-			
-			// Start by keeping the value of the node's spin in a
-			// variable called oldSpin. Then, randomly choose a new spin
-			// value that will be assigned to every node in the set.
-			int oldSpin = G[i].getSpin();
-			int newSpin;
-			unsigned int rval = alea();
-			if (rval % 2 == 0)
-				newSpin = -1;
-			else
-				newSpin = 1;
-			
-			// We build a list of nodes that will be in the set.
-			std::vector<Node*> toTest;
-			toTest.push_back(&(G[i]));
-			for (unsigned int j = 0; j < toTest.size(); j++) {
-				// Test the first untested node.
-				Node& next = *toTest[j];
-				next.setStatus(Visited);
-				next.setSpin(newSpin);
-				
-				// Check its neighbour one by one. If the edge is
-				// already visited, skip it. Otherwise, mark the edge as
-				// visited and check if the other end of the edge has
-				// already been visited. If not, check if the neighbour
-				// node has the same spin. If it does, then add this
-				// node to the set with probability
-				//   1 - e^{2 \beta J}
-				for (int k = 0; k < next.degree(); k++) {
-					Edge& nEdge = next[k];
-					Node& otherEnd = nEdge.getOtherEnd(next);
-					if (nEdge.getStatus() == notVisited
-						&& otherEnd.getSpin() == oldSpin
-						&& (alea() / RANDMAX) < 1 - exp(2*getBeta()*getJ())) {
-						nEdge.setStatus(Visited);
-						toTest.push_back(&otherEnd);
-					}
-					else if (nEdge.getStatus() == notVisited)
-						nEdge.setStatus(Visited);
-				}
-			}
+		if (G[i].getStatus() == Visited)
+            continue;
+        
+        // Start by keeping the value of the node's spin in a
+        // variable called oldSpin. Then, randomly choose a new spin
+        // value that will be assigned to every node in the set.
+        int oldSpin = G[i].getSpin();
+        int newSpin;
+        unsigned int rval = alea();
+        if (rval % 2 == 0)
+            newSpin = -1;
+        else
+            newSpin = 1;
+        
+        // We build a list of nodes that will be in the set.
+        std::vector<Node*> toTest;
+        toTest.push_back(&(G[i]));
+        for (unsigned int j = 0; j < toTest.size(); j++) {
+            // Test the first untested node.
+            Node& next = *toTest[j];
+            next.setStatus(Visited);
+            next.setSpin(newSpin);
+            
+            // Check its neighbour one by one. If the edge is
+            // already visited, skip it. Otherwise, mark the edge as
+            // visited and check if the other end of the edge has
+            // already been visited. If not, check if the neighbour
+            // node has the same spin. If it does, then add this
+            // node to the set with probability
+            //   1 - e^{2 \beta J}
+            for (int k = 0; k < next.degree(); k++) {
+                Edge& nEdge = next[k];
+                Node& otherEnd = nEdge.getOtherEnd(next);
+                if (nEdge.getStatus() == notVisited
+                    && otherEnd.getSpin() == oldSpin
+                    && (alea() / RANDMAX) < 1 - exp(2*getBeta()*getJ())) {
+                    nEdge.setStatus(Visited);
+                    toTest.push_back(&otherEnd);
+                }
+                else if (nEdge.getStatus() == notVisited)
+                    nEdge.setStatus(Visited);
+            }
 		}
 	}
 }
