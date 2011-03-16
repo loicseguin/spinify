@@ -2,7 +2,7 @@
 {
 	256AC3D80F4B6AC300CF3369 /* SpinCocoaAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {632, 387}}";
+			sepNavIntBoundsRect = "{{0, 0}, {632, 377}}";
 			sepNavSelRange = "{725, 34}";
 			sepNavVisRange = "{0, 765}";
 		};
@@ -11,7 +11,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {632, 1053}}";
 			sepNavSelRange = "{1727, 0}";
-			sepNavVisRange = "{0, 854}";
+			sepNavVisRange = "{3, 851}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
@@ -47,16 +47,23 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 321764136;
-			PBXWorkspaceStateSaveDate = 321764136;
+			PBXPerProjectTemplateStateSaveDate = 321982123;
+			PBXWorkspaceStateSaveDate = 321982123;
 		};
 		perUserProjectItems = {
-			EB1CBA8E132DBBAF0094D60D /* PBXTextBookmark */ = EB1CBA8E132DBBAF0094D60D /* PBXTextBookmark */;
-			EB6270BF11C16222003A7596 /* PBXTextBookmark */ = EB6270BF11C16222003A7596 /* PBXTextBookmark */;
-			EB6270C111C16222003A7596 /* PBXTextBookmark */ = EB6270C111C16222003A7596 /* PBXTextBookmark */;
+			EB1CBA8E132DBBAF0094D60D = EB1CBA8E132DBBAF0094D60D /* PBXTextBookmark */;
+			EB6270BF11C16222003A7596 = EB6270BF11C16222003A7596 /* PBXTextBookmark */;
+			EB6270C111C16222003A7596 = EB6270C111C16222003A7596 /* PBXTextBookmark */;
 		};
 		sourceControlManager = EB5F5A8A11B0AA9F006D5A09 /* Source Control */;
 		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {632, 375}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 273}";
 		};
 	};
 	8D1107260486CEB800E47090 /* SpinCocoa */ = {

@@ -3,7 +3,7 @@
  *  spinify
  *
  *  Created by Loïc Séguin-Charbonneau on 10-01-01.
- *  Copyright 2010 Loïc Séguin-Charbonneau. All rights reserved.
+ *  Copyright 2010, 2011 Loïc Séguin-Charbonneau. All rights reserved.
  *
  */
 
