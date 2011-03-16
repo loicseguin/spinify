@@ -11,7 +11,6 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
-#include <vector>
 
 #include "Maths.h"
 #include "Simul.h"
@@ -80,7 +79,11 @@ Simul::swendsen()
     
     // Calculate the Gibbs probability.
     double gibbsProb = 1 - exp(2*getBeta()*getJ());
-	
+    
+    // Initialize FIFO array for bfs.
+    Node** toTest = NULL;
+    toTest = new Node*[G.size()];
+    
 	// Repeat the procedure for all nodes.
 	for (int i = 0; i < G.size(); i++) {
 		Node* currentNode = G.nodes[i];
@@ -102,15 +105,15 @@ Simul::swendsen()
             newSpin = 1;
         
         // We build a list of nodes that will be in the set.
-        std::vector<Node*> toTest;
-        toTest.push_back(currentNode);
-        for (unsigned int j = 0; j < toTest.size(); j++) {
+        int counter = 1;
+        toTest[0] = currentNode;
+        for (unsigned int j = 0; j < counter; j++) {
             // Test the first untested node.
             Node* next = toTest[j];
             next->setStatus(Visited);
             next->setSpin(newSpin);
             
-            // Check its neighbour one by one. If the edge is
+            // Check its neighbors one by one. If the edge is
             // already visited, skip it. Otherwise, mark the edge as
             // visited and check if the other end of the edge has
             // already been visited. If not, check if the neighbour
@@ -120,16 +123,20 @@ Simul::swendsen()
             for (int k = 0; k < next->degree(); k++) {
                 Edge* nEdge = next->edges[k];
                 Node* otherEnd = next->neighbors[k];
-                if (nEdge->getStatus())
+                if (nEdge->getStatus()
+                    || otherEnd->getStatus())
                     continue;
                 if (otherEnd->getSpin() == oldSpin
                     && (alea() / RANDMAX) < gibbsProb) {
-                    toTest.push_back(otherEnd);
+                    toTest[counter] = otherEnd;
+                    counter++;
+                    otherEnd->setStatus(seen);
                 }
                 nEdge->setStatus(Visited);
             }
 		}
 	}
+    delete [] toTest;
 }
 
 void
@@ -303,7 +310,7 @@ Simul::runSimul(OutputType type, std::ostream & output)
 	extern bool internalEnergy;
 	extern bool magnetization;
 	extern bool susceptibility;
-	
+    
 	if (type == python) {
 		output << "import numpy as np\n"
 		<< "import matplotlib.pyplot as plt\n"

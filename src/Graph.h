@@ -32,7 +32,8 @@ enum Status {
 	 *
 	 */
 	notVisited,
-	Visited
+	Visited,
+    seen
 };
 
 #ifndef OUTPUT_ENUM
