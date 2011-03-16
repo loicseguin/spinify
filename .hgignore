@@ -28,6 +28,8 @@ tests/planedelaunaytest
 *.py
 *.htm
 build
+Release
+Debug
 
 syntax: regexp
 ^build/
