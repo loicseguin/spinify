@@ -1,9 +1,9 @@
 == Spinify ==
 
-Version: 2.2
+Version: 2.3
 
 http://bitbucket.org/loicseguin/spinify/
-Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>
+Copyright (C) 2009-2011 Loïc Séguin-C. <loicseguin@gmail.com>
 
 Spinify is a Markov chain Monte Carlo simulation for the 2D Ising model
 of ferromagnetism on curved surfaces. It is written in C++ and

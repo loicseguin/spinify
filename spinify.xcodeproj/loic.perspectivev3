@@ -277,8 +277,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>30</integer>
-									<integer>17</integer>
+									<integer>45</integer>
+									<integer>38</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>EB08D285114162940069A829</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Simul.cpp</string>
+								<string>spinify.1</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,49 +326,54 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>EB08D286114162940069A829</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Simul.cpp</string>
+										<string>spinify.1</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EB6591B9133053BC00D6139B</string>
+										<string>EB6591E713314D8F00D6139B</string>
 										<key>history</key>
 										<array>
 											<string>EB74F94011AC67CB0075C938</string>
 											<string>EB74F94111AC67CB0075C938</string>
-											<string>EB74F94711AC67CB0075C938</string>
-											<string>EB74F94911AC67CB0075C938</string>
-											<string>EBEE12DA125D5AE200489A89</string>
-											<string>EBEE12DC125D5AE200489A89</string>
-											<string>EBEE12DD125D5AE200489A89</string>
-											<string>EBEE12DF125D5AE200489A89</string>
-											<string>EBEE12E0125D5AE200489A89</string>
-											<string>EBEE12E6125D5AE200489A89</string>
-											<string>EBEE12E7125D5AE200489A89</string>
-											<string>EBEE12F0125D5AE200489A89</string>
 											<string>EB2F044A125E262E00731D01</string>
 											<string>EB2F0458125E327700731D01</string>
 											<string>EB2F0459125E327700731D01</string>
 											<string>EB2F045A125E327700731D01</string>
 											<string>EB2F04B2125E404C00731D01</string>
 											<string>EB2F04B5125E404C00731D01</string>
-											<string>EB1CBAA4132DC1A50094D60D</string>
-											<string>EB1CBAA5132DC1A50094D60D</string>
-											<string>EB1CBAA6132DC1A50094D60D</string>
-											<string>EB1CBAA7132DC1A50094D60D</string>
-											<string>EB1CBAA8132DC1A50094D60D</string>
-											<string>EB1CBAA9132DC1A50094D60D</string>
-											<string>EB1CBAAA132DC1A50094D60D</string>
-											<string>EB1CBAAB132DC1A50094D60D</string>
-											<string>EB1CBAAC132DC1A50094D60D</string>
-											<string>EB1CBAAD132DC1A50094D60D</string>
-											<string>EB1CBAC4132DC3650094D60D</string>
-											<string>EB1CBAC5132DC3650094D60D</string>
-											<string>EB6591871330468D00D6139B</string>
-											<string>EB6591881330468D00D6139B</string>
-											<string>EB65919813304CFD00D6139B</string>
-											<string>EB6591B0133053A700D6139B</string>
-											<string>EB6591B1133053A700D6139B</string>
-											<string>EB6591B8133053BA00D6139B</string>
+											<string>EB6591C613314D8F00D6139B</string>
+											<string>EB6591C713314D8F00D6139B</string>
+											<string>EB6591C813314D8F00D6139B</string>
+											<string>EB6591C913314D8F00D6139B</string>
+											<string>EB6591CA13314D8F00D6139B</string>
+											<string>EB6591CB13314D8F00D6139B</string>
+											<string>EB6591CC13314D8F00D6139B</string>
+											<string>EB6591CD13314D8F00D6139B</string>
+											<string>EB6591CE13314D8F00D6139B</string>
+											<string>EB6591CF13314D8F00D6139B</string>
+											<string>EB6591D013314D8F00D6139B</string>
+											<string>EB6591D113314D8F00D6139B</string>
+											<string>EB6591D213314D8F00D6139B</string>
+											<string>EB6591D313314D8F00D6139B</string>
+											<string>EB6591D413314D8F00D6139B</string>
+											<string>EB6591D513314D8F00D6139B</string>
+											<string>EB6591D613314D8F00D6139B</string>
+											<string>EB6591D713314D8F00D6139B</string>
+											<string>EB6591D813314D8F00D6139B</string>
+											<string>EB6591D913314D8F00D6139B</string>
+											<string>EB6591DA13314D8F00D6139B</string>
+											<string>EB6591DB13314D8F00D6139B</string>
+											<string>EB6591DC13314D8F00D6139B</string>
+											<string>EB6591DD13314D8F00D6139B</string>
+											<string>EB6591DE13314D8F00D6139B</string>
+											<string>EB6591DF13314D8F00D6139B</string>
+											<string>EB6591E013314D8F00D6139B</string>
+											<string>EB6591E113314D8F00D6139B</string>
+											<string>EB6591E213314D8F00D6139B</string>
+											<string>EB6591E313314D8F00D6139B</string>
+											<string>EB6591E413314D8F00D6139B</string>
+											<string>EB6591E513314D8F00D6139B</string>
+											<string>EB6591E613314D8F00D6139B</string>
 										</array>
 									</dict>
 									<key>Split1</key>
@@ -380,7 +385,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>EB6591BA133053BC00D6139B</string>
+										<string>EB6591E813314D8F00D6139B</string>
 										<key>history</key>
 										<array>
 											<string>EB6591201330316100D6139B</string>
@@ -701,7 +706,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>EB6591B5133053A700D6139B</string>
 		<string>EB65910A13302E7E00D6139B</string>
 		<string>EB65910B13302E7E00D6139B</string>
 		<string>/Users/loic/Projects/spinify/spinify/spinify.xcodeproj</string>
