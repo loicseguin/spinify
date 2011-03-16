@@ -37,7 +37,6 @@ prGraph(Graph *pG, int L, int W)
 int
 main (int argc, char * const argv[])
 {
-	std::cout << "SPINIFY\nThe Ising model simulator\n\n";
 	int L = 40;
 	int W = 40;
     Graph H;
