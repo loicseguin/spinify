@@ -3,7 +3,7 @@
  *  spinify
  *
  *  Created by Loïc Séguin-Charbonneau on 10-02-18.
- *  Copyright 2010 Loïc Séguin-Charbonneau. All rights reserved.
+ *  Copyright 2010, 2011 Loïc Séguin-Charbonneau. All rights reserved.
  *
  */
 
@@ -45,7 +45,7 @@ help()
 	// Print a message detailing the various options for the program.
 	cout
 	<< "Spinify " << VERSION << endl
-	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
+	<< "Copyright (C) 2009-2011 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
 	<< endl
 	<< "USAGE: spinify [ -g FILE | -r N M | -s N | -u N] [-ekm] [options]" << endl
 	<< endl
