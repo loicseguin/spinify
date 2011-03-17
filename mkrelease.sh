@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=2.3
+VERSION=2.4dev
 TMPDIR="spinify-$VERSION"
 FOLDERS="src doc"
 FILES="LICENSE Makefile README"

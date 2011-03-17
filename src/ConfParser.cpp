@@ -13,7 +13,7 @@
 
 #include "ConfParser.h"
 
-#define VERSION "2.3"
+#define VERSION "2.4dev"
 
 
 using namespace std;
@@ -105,7 +105,7 @@ version(void)
 	// Print version information, author and short license notice.
 	cout
 	<< "Spinify " << VERSION << endl
-	<< "Copyright (C) 2009, 2010 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
+	<< "Copyright (C) 2009-2011 Loïc Séguin-C. <loicseguin@gmail.com>" << endl
 	<< "Distributed under a BSD license." << endl
 	<< "This is free software: you are free to change and redistribute it." << endl
 	<< "There is NO WARRANTY, to the extent permitted by law." << endl;
@@ -346,8 +346,9 @@ ConfParser::parseArgs(int argc, char* const argv[])
 		
 		// Beta
 		else if (arg == "-T" || arg == "--temperatures") {
-			// Start by removing the default value.
-			temps.pop_back();
+			// Start by clearing the vector in case the default value or
+            // config file values are stored there.
+			temps.clear();
 			nTemps = 0;
 			double get[4];
 			int nget = 0;

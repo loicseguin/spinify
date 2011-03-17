@@ -11,7 +11,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {632, 1053}}";
 			sepNavSelRange = "{1727, 0}";
-			sepNavVisRange = "{3, 851}";
+			sepNavVisRange = "{1067, 1081}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
@@ -51,9 +51,10 @@
 			PBXWorkspaceStateSaveDate = 321982123;
 		};
 		perUserProjectItems = {
-			EB1CBA8E132DBBAF0094D60D = EB1CBA8E132DBBAF0094D60D /* PBXTextBookmark */;
-			EB6270BF11C16222003A7596 = EB6270BF11C16222003A7596 /* PBXTextBookmark */;
-			EB6270C111C16222003A7596 = EB6270C111C16222003A7596 /* PBXTextBookmark */;
+			EB6591EC13314F8200D6139B /* PBXTextBookmark */ = EB6591EC13314F8200D6139B /* PBXTextBookmark */;
+			EB6591ED13314F8200D6139B /* PBXTextBookmark */ = EB6591ED13314F8200D6139B /* PBXTextBookmark */;
+			EB6591EE13314F8200D6139B /* PBXTextBookmark */ = EB6591EE13314F8200D6139B /* PBXTextBookmark */;
+			EB6591EF13314F8200D6139B /* PBXTextBookmark */ = EB6591EF13314F8200D6139B /* PBXTextBookmark */;
 		};
 		sourceControlManager = EB5F5A8A11B0AA9F006D5A09 /* Source Control */;
 		userBuildSettings = {
@@ -71,16 +72,6 @@
 		executables = (
 			EB5F5A7D11B0AA80006D5A09 /* SpinCocoa */,
 		);
-	};
-	EB1CBA8E132DBBAF0094D60D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 256AC3D90F4B6AC300CF3369 /* SpinCocoaAppDelegate.m */;
-		name = "SpinCocoaAppDelegate.m: 55";
-		rLen = 0;
-		rLoc = 1727;
-		rType = 0;
-		vrLen = 854;
-		vrLoc = 0;
 	};
 	EB5F5A7D11B0AA80006D5A09 /* SpinCocoa */ = {
 		isa = PBXExecutable;
@@ -152,7 +143,17 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	EB6270BF11C16222003A7596 /* PBXTextBookmark */ = {
+	EB6591EC13314F8200D6139B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 273;
+		vrLoc = 0;
+	};
+	EB6591ED13314F8200D6139B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 256AC3D80F4B6AC300CF3369 /* SpinCocoaAppDelegate.h */;
 		name = "SpinCocoaAppDelegate.h: 26";
@@ -162,14 +163,24 @@
 		vrLen = 765;
 		vrLoc = 0;
 	};
-	EB6270C111C16222003A7596 /* PBXTextBookmark */ = {
+	EB6591EE13314F8200D6139B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 256AC3D90F4B6AC300CF3369 /* SpinCocoaAppDelegate.m */;
 		name = "SpinCocoaAppDelegate.m: 55";
 		rLen = 0;
 		rLoc = 1727;
 		rType = 0;
-		vrLen = 831;
-		vrLoc = 1466;
+		vrLen = 851;
+		vrLoc = 3;
+	};
+	EB6591EF13314F8200D6139B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* SpinCocoaAppDelegate.m */;
+		name = "SpinCocoaAppDelegate.m: 55";
+		rLen = 0;
+		rLoc = 1727;
+		rType = 0;
+		vrLen = 1081;
+		vrLoc = 1067;
 	};
 }
