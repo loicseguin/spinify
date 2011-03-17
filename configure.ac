@@ -1,4 +1,4 @@
-AC_INIT([spinify], [2.3], [spinify-discuss@googlegroups.com])
+AC_INIT([spinify], [2.4dev], [spinify-discuss@googlegroups.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CXX
 AC_CHECK_FUNCS([gettimeofday])

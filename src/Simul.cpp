@@ -154,9 +154,19 @@ Simul::setParams(unsigned int dIter,
 	maxDecorrelTime = maxDTime;
 	minDecorrelTime = minDTime;
 	Jval = J;
-	for (unsigned int i = 0; i < temps.size(); i++) {
-		beta.push_back(1./temps[i]);
-	}
+    // Start the simulation at the highest temperature, i.e., lowest
+    // beta.
+    unsigned int nb_temps = temps.size();
+    if (temps[0] <= temps[nb_temps]) {
+        for (unsigned int i = nb_temps - 1; i >=0; i--) {
+            beta.push_back(1./temps[i]);
+        }
+    }
+    else {
+        for (unsigned int i = 0; i < nb_temps; i++) {
+            beta.push_back(1./temps[i]);
+        }
+    }
 	nMeasures = nM;
 	nInitTherm = nITherm;
 }
@@ -324,11 +334,11 @@ Simul::runSimul(OutputType type, std::ostream & output)
 		
 		if (type == python) {
 			output.precision(14);
-			output << "[" << getBeta() << ", ";
+			output << "[" << 1./getBeta() << ", ";
 		}
 		else {
 			output.precision(14);
-			output << getBeta() << " ";
+			output << 1./getBeta() << " ";
 		}
 		
 		// We run a couple of iterations of SWW in order to ensure that
@@ -353,6 +363,7 @@ Simul::runSimul(OutputType type, std::ostream & output)
 		
 		// Make the measurements and output them to the output stream.
 		if (internalEnergy) {
+            output.precision(14);
 			output << thermalInternalEnergy();
 			if (type == python)
 				output << ", ";
@@ -360,6 +371,7 @@ Simul::runSimul(OutputType type, std::ostream & output)
 				output << " ";
 		}
 		if (magnetization) {
+            output.precision(14);
 			output << thermalMagnetization();
 			if (type == python)
 				output << ", ";
@@ -388,7 +400,7 @@ Simul::runSimul(OutputType type, std::ostream & output)
 			nCols++;
 		
 		output << "])\n"
-		<< "x = 1/data[:,0]\n";
+		<< "x = data[:,0]\n";
 		for (int i = 0; i < nCols; i++) {
 			output << "y" << i+1 << " = data[:," << i+1 << "]\n"
 			<< "plt.plot(x, y" << i+1 << ")\n"
