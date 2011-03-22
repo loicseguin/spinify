@@ -602,7 +602,7 @@ ConfParser::parseArgs(int argc, char* const argv[])
 	
 	// If the lattice type has not been specified or the number of nodes
 	// is not a positive integer, exit program.
-	if (!parsingFile && (lattice == none || nNodes <= 0)) {
+	if (!parsingFile && (lattice == none || (nNodes <= 0 && lattice != file))) {
 		cerr << "Error: lattice not defined." << endl;
 		usage();
 		exit(1);
