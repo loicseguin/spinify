@@ -1,9 +1,9 @@
-== Spinify ==
+# Spinify
 
 Version: 2.4dev
 
 http://bitbucket.org/loicseguin/spinify/
-Copyright (C) 2009-2011 Loïc Séguin-C. <loicseguin@gmail.com>
+Copyright (C) 2009-2015 Loïc Séguin-C. <lsc@loicseguin.com>
 
 Spinify is a Markov chain Monte Carlo simulation for the 2D Ising model
 of ferromagnetism on curved surfaces. It is written in C++ and
@@ -12,7 +12,7 @@ distributed under a BSD license (see LICENSE for more information).
 See INSTALL for detailed installation instructions.
 
 
-== Description ==
+## Description
 
 The Spinify project aims at producing an efficient simulation algorithm
 for the Ising model on surfaces with non trivial metric tensor.
@@ -34,7 +34,7 @@ I will try to write a complete and more up to date explanation of the
 background as well as the program as soon as possible.
 
 
-== Mailing list ==
+## Mailing list
 
 If you have questions, comments or just want to discuss about the
 development of Spinify, you can do so on the mailing list:
@@ -46,28 +46,14 @@ You can subscribe to the mailing list here:
 http://groups.google.ca:80/group/spinify-discuss?pli=1
 
 
-== Bug reporting ==
+## Bug reporting
 
 Please report any bug to the issue tracker at
 http://bitbucket.org/loicseguin/spinify/issues/
 
 
-== Feedback ==
+## Feedback
 
 If you use this software and find it useful, I would like to hear from
-you. Please send me an email at <loicseguin@gmail.com> and tell me how
+you. Please send me an email at <lsc@loicseguin.com> and tell me how
 you use the software.
-
-
-== Help needed ==
-
-The Spinify project is maintained by a mathematician and physicist who
-would be happy to get some help for reviewing parts of the code that
-could probably be improved a lot.
-
-Keep in mind that the objective is to make simulations on lattices with
-a huge number of nodes (> 106). Previous experiments have shown that the
-most computationnally expensive part of the simulation is actually the
-generation of the random lattice. Hence, this is probably the part of
-the code that should be worked on the most.
-
